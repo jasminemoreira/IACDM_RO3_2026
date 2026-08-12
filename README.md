@@ -1,5 +1,8 @@
 # IACDM — RO3: as 19 lentes de crítica são ortogonais?
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21908907.svg)](https://doi.org/10.5281/zenodo.21908907)
+[![Licença: CC BY 4.0](https://img.shields.io/badge/licen%C3%A7a-CC%20BY%204.0-blue.svg)](LICENSE)
+
 Corpus e análise do experimento que testa a **RO3** da metodologia IACDM: *cada uma das 19
 lentes de crítica detecta uma classe de falha que nenhuma outra detecta?*
 
@@ -111,5 +114,10 @@ Corpus e documentos sob **CC-BY-4.0**; o pipeline em `analise/` é adicionalment
 
 Para citar, use [`CITATION.cff`](CITATION.cff) — o GitHub monta a citação formatada no
 botão *Cite this repository*, na barra lateral.
+
+**No artigo, cite o DOI de conceito:** [`10.5281/zenodo.21908907`](https://doi.org/10.5281/zenodo.21908907).
+Ele resolve sempre para a versão mais recente, então uma correção futura no corpus não
+invalida a citação. O DOI desta versão especificamente é
+[`10.5281/zenodo.21908908`](https://doi.org/10.5281/zenodo.21908908).
 
 INDT · Jasmine Moreira ([0000-0002-3744-9528](https://orcid.org/0000-0002-3744-9528)) · 2026

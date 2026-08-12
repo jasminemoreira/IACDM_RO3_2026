@@ -32,6 +32,14 @@ keywords:
   - verificação
   - IACDM
   - artefato de pesquisa
+doi: 10.5281/zenodo.21908907
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21908907
+    description: DOI de conceito — resolve sempre para a versão mais recente
+  - type: doi
+    value: 10.5281/zenodo.21908908
+    description: DOI da versão 1.0.0
 license: CC-BY-4.0
 repository-code: https://github.com/jasminemoreira/IACDM_RO3_2026
 date-released: 2026-08-12
