@@ -104,4 +104,12 @@ leva segundos e não depende de confiar em quem publicou.
 
 ---
 
-INDT · 2026
+## Licença e citação
+
+Corpus e documentos sob **CC-BY-4.0**; o pipeline em `analise/` é adicionalmente MIT. Ver
+[`LICENSE`](LICENSE).
+
+Para citar, use [`CITATION.cff`](CITATION.cff) — o GitHub monta a citação formatada no
+botão *Cite this repository*, na barra lateral.
+
+INDT · Jasmine Moreira ([0000-0002-3744-9528](https://orcid.org/0000-0002-3744-9528)) · 2026

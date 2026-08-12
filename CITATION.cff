@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+title: >-
+  IACDM RO3 — corpus e análise do experimento de ortogonalidade
+  das 19 lentes de crítica
+message: Se usar este material, cite-o conforme os metadados abaixo.
+type: dataset
+authors:
+  - given-names: Jasmine
+    family-names: Moreira
+    orcid: https://orcid.org/0000-0002-3744-9528
+    affiliation: INDT
+abstract: >-
+  Corpus e análise do experimento que testa a RO3 da metodologia IACDM: se cada
+  uma das 19 lentes de crítica arquitetural detecta uma classe de falha que
+  nenhuma outra detecta. Doze projetos de software foram construídos do zero,
+  cada um em sessão única de 2 a 4 horas, todos sob o mesmo instrumento
+  (versus-claude 0.14.2, verificado por hash), produzindo 1.100 achados de
+  crítica em 130 módulos. Nenhuma das 19 lentes apresentou contribuição
+  exclusiva zero, em nenhum projeto e sob quatro clusterizações independentes
+  do que conta como o mesmo defeito. Dois achados não planejados: o critério
+  de ativação das lentes é a parte frágil, não a taxonomia; e o método produz
+  compromissos — premissas da arquitetura, resoluções de achados críticos —
+  que nenhum mecanismo reconfronta com o artefato construído. Inclui os doze
+  projetos com specs e matrizes de cobertura, o pipeline de análise, a
+  remarcação cega por avaliadores independentes, e o registro dos sete
+  descartes anteriores.
+keywords:
+  - engenharia de software
+  - crítica arquitetural
+  - agentes de IA
+  - ortogonalidade
+  - verificação
+  - IACDM
+  - artefato de pesquisa
+license: CC-BY-4.0
+repository-code: https://github.com/jasminemoreira/IACDM_RO3_2026
+date-released: 2026-08-12
+version: 1.0.0
