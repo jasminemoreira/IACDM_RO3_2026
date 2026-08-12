@@ -1,0 +1,930 @@
+{
+  "agent": "claude",
+  "projectName": "T25",
+  "projectDescription": "T25",
+  "projectSpec": {
+    "stack": [
+      {
+        "value": "Python 3",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "asyncio",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "servidor ASGI (FastAPI ou Starlette)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "sqlite3 (biblioteca padrão)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "SDK oficial anthropic",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "SPA em HTML/CSS/JS sem framework",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      }
+    ],
+    "outOfScope": [
+      {
+        "value": "Multi-provedor (apenas Anthropic)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Hierarquia de entidades org->projeto->chave",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Degradação, throttle ou downgrade de modelo",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Alertas e notificações",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Rateio, faturamento e cobrança",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Múltiplas instâncias e alta disponibilidade",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Retentativa automática ao provedor",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Cache de respostas do LLM",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Provedor de identidade externo (OAuth/SSO)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Expiração automática de reserva órfã (política indefinida — vai à Fase 2)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      }
+    ],
+    "patterns": [
+      {
+        "value": "Monolito modular",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "KISS + YAGNI",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "SOLID (SRP + inversão de dependência)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Transaction Script (Fowler)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Repository sobre SQL direto (Fowler)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Strategy (upstream real vs simulado)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Adapter (usage da Anthropic -> modelo interno)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Método Escrow: contador como par (confirmado, reservado) — O'Neil 1986",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Event loop único: seção crítica sem await + transação de banco",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Chave virtual emitida pelo gateway",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      }
+    ],
+    "constraints": [
+      {
+        "value": "Somente provedor Anthropic",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Instância única, um processo escritor",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Teto global E por entidade, o mais restritivo vence",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Janela mensal com virada à meia-noite UTC",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Bloqueio duro (hard stop), sem degradação nem throttle",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Decisão de corte síncrona: a próxima requisição após o esgotamento é negada",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Modelo ausente do rate card => requisição NEGADA (nunca preço zero ou estimado)",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Chamada ao provedor sempre FORA da seção crítica",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "escrow.reconciliar deve ser idempotente por id_reserva",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Todo parâmetro numérico exige fonte citada em specs/references",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Porte congelado: 8 a 12 módulos, sessão única de 2 a 4 horas",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      },
+      {
+        "value": "Critério de acerto: invariante do teto sob concorrência",
+        "phase": 1,
+        "at": "2026-08-10T20:54:04.593Z"
+      }
+    ]
+  },
+  "currentPhase": 7,
+  "currentIteration": 1,
+  "phase0Score": 93,
+  "phase0Breakdown": {
+    "clarezaProblema": 10,
+    "casosDeUso": 13,
+    "vocabulario": 10,
+    "ambiguidades": 12,
+    "foraDeEscopo": 10,
+    "criteriosSucesso": 10,
+    "premissas": 8,
+    "documentacao": 5,
+    "usuarioConfirmou": 10,
+    "iaConfiante": 5
+  },
+  "decisions": [
+    {
+      "id": "4d52a4a2-90ab-4857-bb70-1714378b5e0d",
+      "phase": 0,
+      "category": "scope",
+      "content": "DELIVERY TARGET: Produto completo — todos os requisitos entregues em um único ciclo, sem divisão v1.0/v2.0. Divisão de escopo só é permitida mediante BLOQUEADOR TÉCNICO explícito e documentado (capacidade de plataforma ausente, dependência imatura, Tier 3 inviável sem PoC). Consequências: (a) Fase 1 NÃO deve oferecer escopo progressivo; (b) Production Capacity Check é OBRIGATÓRIO no Nível 5 da HSA; (c) critérios de sucesso devem ser integralmente atingíveis dentro do porte congelado do enunciado (8–12 módulos, sessão única de 2–4h).",
+      "timestamp": "2026-08-10T19:26:37.065Z"
+    },
+    {
+      "id": "5879bed8-12e9-4218-8ecc-d2dac75a3607",
+      "phase": 0,
+      "category": "requirement",
+      "content": "VOCABULÁRIO N1 — GRANDEZA: \"consumo\" = custo de uso de API de LLM. Unidade base = tokens de entrada/saída por modelo, convertidos em moeda por tabela de preços (taxa por 1M tokens). Domínio teórico: FinOps aplicado a IA (governança de custo de inferência). Termos canônicos adotados: token de entrada (input/prompt), token de saída (output/completion), modelo, tabela de preços (rate card), evento de uso (usage record), janela de faturamento. Sinônimos a EVITAR: \"gasto\"/\"despesa\" (usar custo), \"chamada\"/\"hit\" (usar requisição), \"crédito\" (usar saldo do teto).",
+      "timestamp": "2026-08-10T19:27:54.562Z"
+    },
+    {
+      "id": "be9ea55b-96b2-459e-bb2d-11809864989b",
+      "phase": 0,
+      "category": "requirement",
+      "content": "VOCABULÁRIO N1 — CORTE: \"corte automático\" = bloqueio duro (hard stop) de novo consumo. Ao atingir 100% do teto vigente, novas requisições da entidade afetada são NEGADAS até (a) reset da janela de orçamento ou (b) intervenção explícita do operador. Enforcement determinístico: a decisão permitir/negar é função pura do estado de consumo acumulado vs teto. Implica critério de acerto objetivo e verificável: \"nenhum consumo é registrado acima do teto\".",
+      "timestamp": "2026-08-10T19:27:57.147Z"
+    },
+    {
+      "id": "e753fa5d-3224-4233-8ff3-55adcce7210d",
+      "phase": 0,
+      "category": "requirement",
+      "content": "VOCABULÁRIO N1 — TETO: expresso em MOEDA, por JANELA RECORRENTE (ex.: mês corrente), com reset automático no início da janela — o reset é o mecanismo canônico de reversão do corte. Consumos heterogêneos (modelos distintos) somam-se na unidade monetária comum. Subtetos por entidade e hierarquia de orçamentos NÃO foram escolhidos nesta iteração (ver decisão SUJEITO).",
+      "timestamp": "2026-08-10T19:28:00.346Z"
+    },
+    {
+      "id": "861beb2d-4484-4d7a-931c-caf675b2eb32",
+      "phase": 0,
+      "category": "requirement",
+      "content": "VOCABULÁRIO N1 — SUJEITO: o sistema rastreia MÚLTIPLAS ENTIDADES CONSUMIDORAS (chaves/projetos/usuários), cada uma com consumo próprio. Teto pode ser global e/ou por entidade (precedência a definir no Nível 3). Sem hierarquia em árvore (organização→projeto→chave) nesta iteração — modelo plano de entidades. Justifica o \"painel\" com múltiplas linhas e casos de uso de comparação entre entidades.",
+      "timestamp": "2026-08-10T19:28:02.495Z"
+    },
+    {
+      "id": "a263a473-687a-4b71-8b7b-269c9e289e91",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N2 (Why) MOTIVAÇÃO: dor = fatura-surpresa em produção. Sem teto rígido, um bug, loop de agente ou pico de uso gera custo ilimitado, descoberto só na fatura dias depois. Alertas assíncronos chegam tarde demais — é a AUSÊNCIA de limite rígido que dói, não a falta de visibilidade. Consequência de design: o corte deve ser preventivo (antes do gasto), não reativo.",
+      "timestamp": "2026-08-10T19:31:44.503Z"
+    },
+    {
+      "id": "585e8d6d-ee17-4ea0-96bd-624904f79101",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N2 (How/Where) PONTO DE ENFORCEMENT: GATEWAY no caminho da requisição. Toda requisição ao LLM atravessa o sistema, que (a) decide permitir/negar ANTES de gastar, (b) registra o uso real retornado pela resposta, (c) serve o painel a partir desse registro. É o único arranjo que sustenta o invariante 'nenhum consumo acima do teto'. Consequências: o sistema está no caminho crítico (disponibilidade e latência viram requisitos), precisa de estimativa de custo pré-chamada e reconciliação pós-chamada, e o painel é alimentado por dados próprios, não por API de billing de terceiro.",
+      "timestamp": "2026-08-10T19:31:44.511Z"
+    },
+    {
+      "id": "9a4c166e-b47b-42a4-bd4f-dea1c5d7834e",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N2 (When) LATÊNCIA DE REAÇÃO: imediata — a próxima requisição após o estouro já é negada, decisão síncrona com a requisição. Tolerância de overshoot = zero por política. Consequência crítica: o estado de consumo precisa estar consistente no instante da decisão, o que torna CONCORRÊNCIA (requisições simultâneas da mesma entidade) um problema de primeira ordem, não um detalhe de implementação. Requisições em voo cujo custo real só se conhece na resposta exigem tratamento explícito (reserva/hold antes da chamada e ajuste na reconciliação).",
+      "timestamp": "2026-08-10T19:31:47.977Z"
+    },
+    {
+      "id": "799d193a-9bda-45fd-9926-c0ca762544bc",
+      "phase": 0,
+      "category": "process",
+      "content": "PESQUISA AUTORIZADA: usuário aprovou 'pesquisar e depositar em specs/'. Todo número (preço por token, limites, janelas) depositado em specs/technical e specs/references DEVE citar fonte/URL. Cobre o critério 'Documentação/Pesquisa técnica+científica' do score de P0 e previne AP7 (implementar sem referência).",
+      "timestamp": "2026-08-10T19:31:50.088Z"
+    },
+    {
+      "id": "b0ea0758-0c45-491f-90e6-2fe128627121",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N3 PRECEDÊNCIA DE TETOS: coexistem teto GLOBAL e teto POR ENTIDADE; toda requisição é avaliada contra ambos e o MAIS RESTRITIVO vence (basta um estourar para negar). Consequência de primeira ordem: cada requisição exige DUAS verificações e DUAS reservas, que precisam ser atômicas em conjunto — reservar no global e falhar no da entidade (ou vice-versa) deixa saldo preso. A seção crítica cobre os dois contadores simultaneamente. Isto eleva concorrência de detalhe a problema estrutural.",
+      "timestamp": "2026-08-10T19:40:15.661Z"
+    },
+    {
+      "id": "3151c6c0-20df-4c03-89dd-5dd62823a158",
+      "phase": 0,
+      "category": "constraint",
+      "content": "N3 RECURSO/PERSISTÊNCIA: estado de consumo vive em banco embutido em arquivo (SQLite ou equivalente). Justificativa: sobrevive a reinício (sem isso, reiniciar o gateway zeraria o acumulado e viraria burla do teto) e oferece transação real, tornando a seção crítica 'reservar-e-decidir sobre dois contadores' correta por construção em vez de por convenção. Restrição aceita: um único processo escritor — compatível com gateway de instância única. Se a Fase 1 propuser múltiplas instâncias, esta decisão precisa ser revisitada (não é livre).",
+      "timestamp": "2026-08-10T19:40:19.597Z"
+    },
+    {
+      "id": "989d36c4-0be0-4c68-972f-c2d8a230804d",
+      "phase": 0,
+      "category": "constraint",
+      "content": "N3 RESTRIÇÕES TÉCNICAS: NENHUMA imposição de linguagem, runtime ou infraestrutura. A escolha tecnológica é decidida na Fase 1 com tabela comparativa (requisitos × tecnologias, LOC, bibliotecas, maturidade, consumo de contexto). Consequência: a Fase 0 NÃO pode assumir stack; a verificação de viabilidade técnica do Nível 4 deve ser feita sobre os MECANISMOS exigidos, não sobre uma plataforma específica.",
+      "timestamp": "2026-08-10T19:40:24.741Z"
+    },
+    {
+      "id": "86e98611-3cb4-4681-9d20-b2bff74ba6a9",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N5 CRITÉRIO DE ACERTO OBJETIVO (congelado antes de codar, conforme ENUNCIADO.md §2): INVARIANTE DO TETO SOB CONCORRÊNCIA. Enunciado formal: dado um teto T e N requisições simultâneas de uma mesma entidade contra saldo quase esgotado, (a) a soma dos custos reais das requisições ACEITAS não ultrapassa T, e (b) toda requisição submetida após o esgotamento é NEGADA. Verificável automaticamente e por construção adversarial. Os demais critérios oferecidos NÃO foram eleitos como definição de sucesso: exatidão contábil contra ground truth e reversão do corte no reset entram como testes de spec da Fase 6; execução ponta a ponta por pessoa permanece obrigatória como gate Human-AV (S4/AP5, exit criterion ui_runnable), não como critério de acerto.",
+      "timestamp": "2026-08-10T19:40:29.348Z"
+    },
+    {
+      "id": "42c735b3-3b81-4b80-9d86-55327853af89",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N5 DELIVERABLE — PAINEL: SPA web servida pelo próprio gateway, exibindo consumo por entidade, saldo, tetos vigentes e estado de corte. Consequência obrigatória (regra de P1): a UI entra como MÓDULO NOMEADO na decomposição da Fase 1, com contrato de interface próprio — nunca como extensão implícita do backend. Ativa a lente condicional UI/UX na Fase 2 e o exit criterion ui_runnable da Fase 5 (execução de um caso de uso ponta a ponta por pessoa, com confirmação literal do usuário).",
+      "timestamp": "2026-08-10T19:51:25.012Z"
+    },
+    {
+      "id": "3a44d551-50c7-45be-a5b5-098c26a710d2",
+      "phase": 0,
+      "category": "scope",
+      "content": "N3 ESCOPO DE PROVEDORES: apenas Anthropic. Único provedor com rate card verificado e fonte citada em specs/technical/rate-card-llm.md e com semântica de usage integralmente documentada. Multi-provedor está FORA DE ESCOPO nesta versão (YAGNI): cada provedor adicional exigiria rate card com fonte própria, semântica de usage própria e normalização — estouraria o porte congelado de 8–12 módulos e introduziria números sem referência verificada (AP7). A arquitetura PODE prever um ponto de extensão, mas uma segunda implementação de provedor não é entregável.",
+      "timestamp": "2026-08-10T19:51:32.000Z"
+    },
+    {
+      "id": "502e8cb7-5a0a-4ac6-a14e-7658b31e4c21",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N3 JANELA DE ORÇAMENTO: mensal de calendário, configurável por entidade, com reset no primeiro instante do mês. Alinha-se ao ciclo de faturamento real do provedor, permitindo conferir o acumulado contra a fatura. AMBIGUIDADE ABERTA daí decorrente: qual fuso horário define esse instante — sem resposta, 'início do mês' é indefinido e o reset (parte do ciclo de vida do corte) fica não especificado.",
+      "timestamp": "2026-08-10T19:51:34.634Z"
+    },
+    {
+      "id": "52af7cb9-03b4-4c36-8c04-9c0670930e5a",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N3 POLÍTICA — MODELO SEM PREÇO: requisição para modelo ausente do rate card é NEGADA. Sem preço não há como reservar nem contabilizar; permitir criaria consumo real invisível ao teto, tornando o critério de acerto verdadeiro por omissão de dados em vez de por enforcement. Segue o precedente da própria plataforma Anthropic (erro 400 ao orçar sessão cujo modelo não tem preço de tabela — ver specs/technical/rate-card-llm.md §4). Implica que atualizar o rate card é uma operação de manutenção de primeira classe, não um detalhe: modelo novo sem preço = serviço negado para aquele modelo.",
+      "timestamp": "2026-08-10T19:51:38.153Z"
+    },
+    {
+      "id": "f21733c9-af02-49db-b737-9887add5f669",
+      "phase": 0,
+      "category": "testing",
+      "content": "CAPACITY — UPSTREAM DE TESTE (resolve o capacity blocker da integração externa): estratégia dupla. (a) Testes automatizados, incluindo o do critério de acerto sob concorrência, rodam contra UPSTREAM SIMULADO que devolve usage controlável — determinístico, gratuito, repetível, e capaz de forjar casos de borda impossíveis de provocar sob demanda na API real (refusal antes da saída, timeout, stream interrompido, resposta muito maior que o esperado). (b) Validação manual da Fase 6 e o gate ui_runnable usam CHAVE REAL da Anthropic com teto baixo, de modo que o gasto seja insignificante. Consequência de arquitetura: o ponto de substituição do upstream é requisito de design da Fase 1, não gambiarra de teste — o mock é módulo do sistema.",
+      "timestamp": "2026-08-10T19:53:22.731Z"
+    },
+    {
+      "id": "b7fbe77c-352e-43c9-87cc-1245a0d2ad47",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N3 FUSO DO RESET: a janela mensal vira à meia-noite UTC do dia 1. Fecha a ambiguidade aberta pela decisão 502e8cb7. Justificativa: sem horário de verão, sem instante inexistente ou duplicado, e é o fuso dos timestamps da própria API. Consequência de UI (entra como requisito do módulo de painel): o painel DEVE exibir o instante do próximo reset em UTC de forma explícita — para um operador no Brasil o reset ocorre às 21h do último dia do mês anterior, e essa surpresa é um defeito de usabilidade se ficar implícita.",
+      "timestamp": "2026-08-10T19:53:26.543Z"
+    },
+    {
+      "id": "401e8c20-27b3-43fb-a393-42246a2cecba",
+      "phase": 0,
+      "category": "scope",
+      "content": "CAPACITY CONFIRMADA: usuário confirmou capacidade de produzir todos os ativos do inventário dentro da janela de sessão única de 2–4h. DELIVERY TARGET permanece 'Produto completo'. Inventário validado: autoria de volume desprezível (1 tela + ~20-30 rótulos), zero ativos visuais de terceiros, dados geráveis a partir do rate card já depositado, e a única integração externa resolvida pela estratégia de upstream duplo. Consequência: a Fase 1 NÃO deve oferecer escopo progressivo v1.0/v2.0; divisão só mediante bloqueador técnico documentado.",
+      "timestamp": "2026-08-10T19:53:29.221Z"
+    },
+    {
+      "id": "d8780304-e220-4235-8722-679ec5c343df",
+      "phase": 1,
+      "category": "architecture",
+      "content": "ARQUITETURA V(1) APROVADA pelo usuário ('Adequada e completa'). 10 módulos (dentro do porte congelado de 8-12), persistidos em specs/technical/architecture.md com tabela machine-readable: M-01 gateway-http, M-02 identidade, M-03 escrow, M-04 precificador, M-05 rate-card, M-06 janela, M-07 upstream, M-08 persistencia, M-09 painel-api, M-10 painel-web. Estes NOMES são a chave estável entre fases: a matriz de cobertura da Fase 2 e a implementação da Fase 5 devem usá-los literalmente. Contratos que carregam o invariante: escrow.reservar é o único ponto autorizado a negar, é atômico sobre os dois contadores e não contém await de rede; escrow.reconciliar é idempotente por id_reserva; rate-card.preco levanta exceção em vez de devolver zero.",
+      "timestamp": "2026-08-10T20:54:08.316Z"
+    },
+    {
+      "id": "b67ddd5a-f37c-4c63-980e-d8164e2baab6",
+      "phase": 1,
+      "category": "requirement",
+      "content": "AMBIGUIDADE #2 DA FASE 0 RESOLVIDA — ACESSO AO PAINEL: senha única de operador, configurada no gateway, protegendo tanto a SPA quanto os endpoints de escrita de teto (POST /api/login em M-09 painel-api, autenticação implementada em M-02 identidade). Razão: sem isso, quem alcança a porta lê o consumo de todas as entidades E altera tetos — ou seja, desliga o corte. Não introduz módulo novo. Fica FORA de escopo a integração com provedor de identidade externo (OAuth/SSO).",
+      "timestamp": "2026-08-10T20:54:13.466Z"
+    },
+    {
+      "id": "61d91d2a-9df6-4915-84c6-d4b42c32c7eb",
+      "phase": 2,
+      "category": "architecture",
+      "content": "CONCENTRAÇÃO (iteração 1, V(1), 47 achados, 42 defeitos distintos após 5 marcas de duplica). POR MÓDULO: escrow 9 achados / 4 críticos / 9 lentes distintas; gateway-http 8 achados / 2 críticos / 8 lentes. Juntos concentram 17 dos 47 achados e 6 dos 9 críticos. Diagnóstico diferenciado: escrow está SUBESPECIFICADO, não mal concebido — faltam política de reserva órfã, política de travessia de janela, código enumerado de motivo e defesa contra abuso de reserva; nenhum é defeito do padrão Escrow, todos são ausência de decisão. gateway-http tem defeito de CONCEPÇÃO: ARQ-01 (orquestração + roteamento + serviço de SPA + streaming num módulo com 4 dependências) explica por que oito lentes distintas acharam algo nele — candidato a REDESENHO na Fase 3, não a remendo. POR LENTE: nenhuma lente atingiu os 10 módulos, mas duas revelaram ausência SISTÊMICA de concern transversal em vez de defeito localizado — OBS-01 (nenhum dos 10 módulos tem log ou métrica, e negar é a função central do sistema) e REG-01 (nenhum requisito normativo rastreado a módulo algum). A Fase 3 deve tratá-las como concern transversal ausente. ORTOGONALIDADE: as lentes de contribuição exclusiva mais alta foram Game Theory (GAM-01, ataque de negação por reserva — invisível a todas as demais) e Mechanical Engineering (MEC-01, única a enxergar a data de expiração do preço promocional).",
+      "timestamp": "2026-08-10T21:01:26.267Z"
+    },
+    {
+      "id": "2c17ee32-c9f0-47ff-82a3-7bc574f0e249",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(2) ESCRITA (acrescentada a specs/technical/architecture.md, sem sobrescrever V(1)). Resposta unificada aos 47 achados. 10 módulos em V(1), 10 em V(2) — NENHUM módulo criado, o que satisfaz AP2 (a Fase 3 deve simplificar, não complexificar). DUAS SIMPLIFICAÇÕES ESTRUTURAIS resolveram 6 achados, sendo 4 críticos: (1) a virada de janela deixou de ser evento — a linha de contador é criada preguiçosamente e janela_inicio já era chave primária, então ninguém precisa ser dono do reset e a reserva grava a própria janela, debitando na reconciliação a janela em que o gasto ocorreu (resolve ARQ-03 e PRO-01); (2) expiração preguiçosa de reserva na leitura de reservado_nano, sem trabalhador de fundo, TTL padrão 15 min com fonte (timeout padrão dos SDKs é 10 min, e o TTL precisa ser maior que a requisição mais longa) (resolve RES-01, CTL-01, RES-03, PRO-02). Duas responsabilidades foram MOVIDAS em vez de duplicadas: serviço da SPA saiu de gateway-http e autenticação de operador saiu de identidade, ambas para painel-api, resolvendo ARQ-01 e ARQ-02 sem terceiro módulo. Premissa A6 EXTINTA (a chamada count_tokens saiu do desenho). Três achados aceitos com justificativa em vez de resolvidos: PERF-01 (a serialização no contador global é inerente ao invariante — Bailis et al. 2014: invariante de limite exige coordenação; removê-la removeria a garantia), A-02 (relógio confiável, mitigado por janela ser função pura de um instante fornecido), A-03 (gasto no provedor sem resposta ao gateway é subcontabilizado; o TTL limita o dano ao saldo, não à contabilidade).",
+      "timestamp": "2026-08-10T21:09:20.899Z"
+    },
+    {
+      "id": "dba0bcf0-b848-4c65-afe1-71cd29f6e273",
+      "phase": 3,
+      "category": "scope",
+      "content": "MUDANÇA DE ESCOPO CONSENTIDA (checklist anti-scope-creep, item 3 marcado com ressalva): entidade consumidora passa a significar IDENTIDADE TÉCNICA (projeto, serviço ou chave) e NUNCA uma pessoa. Isto RESTRINGE o vocabulário definido na Fase 0, que dizia 'chaves/projetos/usuários' (decisão 861beb2d). Foi decisão explícita do operador em resposta aos achados REG-01 e ETI-02, escolhida entre três opções, e não estreitamento silencioso — por isso está registrada como mudança de escopo e não como refinamento. Efeito: evento_uso deixa de ser dado pessoal por definição, o painel deixa de ser ferramenta de monitoramento individual de produtividade, e a ausência de política de retenção deixa de ser lacuna normativa. Glossário atualizado em specs/domain/glossario.md com 'usuário' na coluna de sinônimos PROIBIDOS.",
+      "timestamp": "2026-08-10T21:09:25.599Z"
+    },
+    {
+      "id": "24767f8c-2385-4dba-9987-d066ec800c72",
+      "phase": 2,
+      "category": "architecture",
+      "content": "CONCENTRAÇÃO (iteração 2, V(2), 21 achados: 3 críticos, 14 importantes, 4 sugestões). MUDANÇA DE DIAGNÓSTICO EM escrow: na iteração 1 recebeu 9 achados e foi diagnosticado como SUBESPECIFICADO; na iteração 2 recebe 10 achados de 10 lentes distintas — quase metade de tudo — e o diagnóstico muda para SOBRECARREGADO. V(2) empilhou expiração preguiçosa, teto de max_tokens, decisão sobre dois escopos, reserva e reconciliação dentro de uma única seção crítica bloqueante sem await. Pelo critério da metodologia (módulo criticado por quase todas as lentes), escrow pede REDESENHO na iteração 3, não remendo. CONTRAPROVA de que as correções funcionaram: upstream e identidade saíram com ZERO achados após serem simplificados, e gateway-http caiu de 8 para 2 achados depois de perder o serviço da SPA. TENDÊNCIA: 47->21 achados, 9->3 críticos. Porém os 3 críticos desta rodada são NOVOS e foram gerados pelas próprias correções de V(2): RES-04 (TTL expira reserva de requisição viva -> estouro do teto), RES-05 (reconciliação de reserva expirada é descartada pela guarda de idempotência -> perda contábil), A-05 (remoção de count_tokens deixou o custo de entrada fora da reserva -> uma requisição de prompt grande pode violar o invariante do critério de acerto). Isto é a evidência mais forte de que a iteração 2 se pagou.",
+      "timestamp": "2026-08-10T21:14:49.269Z"
+    },
+    {
+      "id": "146ef02a-b6f5-4bd9-a16b-96dec48c802b",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(3) ESCRITA (acrescentada, V(1) e V(2) preservadas). Redesenho de escrow motivado pelo sinal de concentração da iteração 2 (10 achados de 10 lentes). SIMPLIFICAÇÃO CENTRAL: a vida da reserva passa a ser a vida da requisição, não um relógio. Como todo request em voo é objeto vivo num processo único (premissa A3 já decidida), a liberação/reconciliação vai para um bloco finally de propriedade de gateway-http, executado em todos os caminhos de saída (sucesso, erro, timeout, desconexão, exceção). O único caso restante — queda do processo — é tratado deterministicamente no arranque: num processo recém-iniciado nenhuma requisição pode estar em voo, logo toda reserva 'aberta' encontrada no arranque é lixo de crash e é liberada. DESAPARECEM do desenho: o parâmetro TTL, o estado 'expirada', a varredura de expiração, a necessidade de observá-la, o laço de controle sem medição e a mutação sem autoria — 7 achados mortos por REMOÇÃO (RES-04, RES-05, PRO-03, GOV-03, OBS-03, CTL-03, CIE-04). SEGUNDA CORREÇÃO: A-05 resolvido sem reintroduzir count_tokens, usando o limite superior local tokens_entrada <= bytes_do_corpo (em BPE sobre UTF-8 todo token consome ao menos 1 byte); o corpo já está em memória, medir é gratuito e não há razão inventada. Superestima ~3-4x, sempre para o lado seguro. NOVA PREMISSA A8 registrada como NÃO VERIFICADA: a desigualdade é raciocínio derivado, não fonte citada, e deve ser validada empiricamente na Fase 6 comparando count_tokens com bytes numa amostra — se falhar, o invariante do critério de acerto cai junto. ARQ-05 e SEG-05 aceitos com justificativa. 10 módulos em V(1), V(2) e V(3): nenhum módulo criado em duas rodadas de correção.",
+      "timestamp": "2026-08-10T21:17:08.407Z"
+    },
+    {
+      "id": "6f6ffd87-91fe-4915-87cb-1d2c0d357c32",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "DESCOBERTA DO MICRO-CHECK S7 (só apareceu ao EXECUTAR o código, não ao lê-lo): o clamp `custo = min(custo_real_nano, valor_reservado)` em escrow.reconciliar mantém o invariante do teto POR CONSTRUÇÃO. Consequência não óbvia: o critério de acerto CA-1 passaria mesmo se a premissa A8 (tokens_entrada <= bytes_do_corpo) fosse FALSA — o excedente simplesmente não seria contabilizado, convertendo um estouro do teto em subcontagem silenciosa. O teste do invariante, sozinho, não distingue 'A8 verdadeira' de 'A8 falsa mascarada pelo clamp'. CORREÇÃO APLICADA: quando o clamp atua, escrow emite log ERROR 'RESERVA INSUFICIENTE' com reserva, custo real e excedente. É o único sinal capaz de denunciar A8 falsa em produção. Verificado empiricamente forçando uso impossível (5000 tokens de entrada num corpo de 94 bytes): o log dispara com excedente_nano=147030000. DUAS OUTRAS DIVERGÊNCIAS encontradas e corrigidas no mesmo micro-check: (1) sqlite3.connect sem check_same_thread=False falha quando o servidor ASGI constrói a app numa thread e serve noutra — a segurança do desenho não vem do guard do sqlite3 e sim de processo único, event loop único e BEGIN IMMEDIATE; (2) o objeto `usage` NÃO informa o TTL do cache, quem informa é a requisição — sem varrer cache_control.ttt no payload, escrita de cache com ttl='1h' (2,0x) seria cobrada como 5m (1,25x), subcontabilizando 1,6x.",
+      "timestamp": "2026-08-10T21:33:47.808Z"
+    },
+    {
+      "id": "97c0c9d7-bcb3-4a67-be8d-afacc5fc70a7",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "EXECUÇÃO REAL DA FASE 5 — 6 defeitos encontrados por RODAR, nenhum por ler. (1) sqlite3.connect sem check_same_thread=False falha quando o servidor ASGI constrói a app numa thread e serve noutra; corrigido, com a justificativa de que a segurança vem do desenho (processo único, event loop único, BEGIN IMMEDIATE) e não do guard da lib. (2) O objeto usage NÃO informa o TTL do cache — quem informa é a requisição; sem varrer cache_control.ttl no payload, escrita de cache 1h (2,0x) era cobrada como 5m (1,25x), subcontabilizando 1,6x; corrigido com ttl_de_cache_1h(). (3) O clamp min(custo_real, reserva) fazia o invariante do teto valer POR CONSTRUÇÃO e mascararia premissa A8 falsa como subcontagem silenciosa; corrigido com log ERROR 'RESERVA INSUFICIENTE' e verificado forçando uso impossível. (4) Corpo não-JSON derrubava /api/login com HTTP 500; corrigido para 400 em login e definir_teto. (5) O painel exibia 'ativa' enquanto o gateway respondia 402: o rótulo usava saldo<=0, mas a negação ocorre quando a RESERVA de pior caso não cabe no saldo; corrigido expondo quantos tokens de saída ainda cabem. (6) Esse número exibido era OTIMISTA por ignorar o custo do prompt — verificado empiricamente: com 'cabem ~50', max_tokens=40 foi negado e 20 aceito, porque 94 bytes de corpo consomem 470.000 nano da reserva; corrigido no rótulo, que agora declara ser limite superior. CASOS DE USO EXERCITADOS DE PONTA A PONTA: UC-1 (5x HTTP 200), UC-2 (402 teto_entidade_esgotado com escopo e reset_em), UC-3 (20 concorrentes, 3 aceitas, confirmado 6.300.000 <= teto 10.000.000, I2 íntegro), UC-4 (mesma reserva NEGADA em agosto e PERMITIDA em setembro com confirmado=0, provando que a janela preguiçosa reverte o corte sem agendador), UC-5 (painel com teto/confirmado/reservado/saldo/reset UTC). Segurança verificada: travessia de caminho 404, endpoints sem token 401, senha errada 401.",
+      "timestamp": "2026-08-10T21:42:11.898Z"
+    },
+    {
+      "id": "3e638b94-7dd0-4505-b9d8-6d2d7d31999e",
+      "phase": 6,
+      "category": "testing",
+      "content": "UI TOOL: Playwright — escolhido pelo operador entre Playwright, apenas-HTTP e Playwright-com-fallback. Racional: painel-web (M-10) é módulo declarado na Fase 1 e os testes HTTP não executam uma única linha de painel.js; sem navegador real o módulo ficaria sem teste automatizado algum. Escopo do teste de UI: UM smoke test do fluxo principal — abrir a SPA, autenticar como operador, ler a tabela e confirmar que o estado de corte e o instante do próximo reset em UTC aparecem em tela. Playwright já está instalado no ambiente; se o download do navegador (playwright install) falhar por ausência de rede, a limitação será registrada em GAPS no relatório de cobertura em vez de mascarada. SESSION RENEWAL: o operador optou por CONTINUAR NESTA SESSÃO no Passo 0, ciente do viés de testar o próprio código e do acúmulo de contexto (AP3) — decisão dele, registrada.",
+      "timestamp": "2026-08-10T22:00:51.443Z"
+    },
+    {
+      "id": "d1ef6f28-a48b-4ec8-9e45-2262fe9cac0e",
+      "phase": 6,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ das 2 falhas do smoke test de navegador: DEFEITO DO PRODUTO, não do teste. A função USD() de painel.js formata com 2 casas decimais ((centavos/100).toFixed(2)). Neste domínio o custo de uma requisição é fração de centavo, então com teto de USD 0,01 a tela exibe '$0.01' para o teto E '$0.01' para o confirmado, com saldo '$0.00', enquanto a entidade continua ativa e comporta 64 tokens de saída. O operador não distingue teto de consumo nem enxerga o saldo — o painel arredonda exatamente a informação que existe para transmitir, que é o mesmo erro de escala que a Fase 1 já havia detectado ao rejeitar centavos como unidade de armazenamento (specs/models §1). O defeito escapou de todos os 48 testes HTTP porque eles verificam o JSON da API, que traz nano inteiro; e escapou da minha verificação manual porque o script mostrar.py que usei formatava com 4 casas. Só o teste em navegador real, lendo o texto renderizado, o encontrou. FIX: USD() passa a formatar com 4 casas decimais, alinhado à granularidade real do domínio. Os dois testes falhos são o mesmo defeito visto duas vezes (o segundo esperava '$0.2500' e recebeu '$0.25').",
+      "timestamp": "2026-08-10T22:05:26.599Z"
+    },
+    {
+      "id": "b9b47cad-b5a5-4ab7-97e4-e4dfdf8780ba",
+      "phase": 6,
+      "category": "spec-coverage",
+      "content": "SPEC COVERAGE REPORT (50 testes, 50 verdes, executados com pytest).\nCOVERED: CA-1 invariante sob concorrência (test_uc3_invariante_do_teto_sob_concorrencia: 20 simultâneas, aceitas<=3, confirmado<=teto, reservado==0, i2_ok; mais test_nega_quando_teto_da_entidade_nao_comporta, test_nega_quando_teto_global_nao_comporta_o_mais_restritivo_vence, test_nega_quando_nao_ha_teto_configurado). CA-2 exatidão contábil (test_custo_quatro_categorias_exato, test_custo_cache_1h_e_16x_o_de_5m, test_preco_promocional_sonnet5_dentro_e_fora_da_vigencia, test_aritmetica_e_inteira_sem_ponto_flutuante, test_preco_sem_fonte_recusado_na_carga — ground truth calculado à mão a partir de specs/technical/rate-card-llm.md). CA-3 reset (test_reset_reverte_o_corte_sem_intervencao, test_reserva_de_agosto_reconcilia_na_janela_de_agosto, test_janela_mensal_utc, test_janela_de_dezembro_vira_para_janeiro, test_janela_rejeita_instante_sem_fuso). CA-4 (test_modelo_sem_preco_e_negado, test_modelo_desconhecido_levanta_em_vez_de_devolver_zero, test_categoria_desconhecida_levanta). CA-5 (test_refusal_sem_saida_nao_e_cobrada, test_max_tokens_atingido_e_cobrado_normalmente). CA-6 (test_erro_do_provedor_libera_a_reserva, test_reconciliar_e_idempotente, test_liberar_devolve_a_reserva_integralmente). CA-7 (test_recuperacao_no_arranque_libera_reservas_orfas). CA-8 (test_invariante_i2_soma_das_abertas_igual_ao_reservado, test_health_expoe_o_invariante_i2). CA-9 (test_nega_max_tokens_acima_do_limite_da_entidade, test_nega_reservas_simultaneas_acima_do_limite). CA-10 (11 testes HTTP de autenticação/travessia/conteúdo + 2 em navegador real com Playwright).\nNOT COVERED: CA-11 (premissa A8, tokens_entrada <= bytes_do_corpo) — exige comparar count_tokens real com tamanho em bytes e é IMPOSSÍVEL de verificar sem ANTHROPIC_API_KEY; é justamente a premissa que sustenta CA-1. Validação contra a chave real do provedor — toda a suíte roda contra o upstream simulado.\nNEGATIVE TESTS: 22 positivos / 28 negativos / ratio 1,27 negativo por positivo (mínimo exigido: 1 para cada 2 positivos).\nGAPS: (1) test_clamp_sinaliza_reserva_insuficiente aparece sob CA-11 no Test Map mas verifica o SINAL, não a PREMISSA — quem ler 'CA-11 tem teste' precisa saber que a premissa segue não verificada. (2) CA-1 passa PARCIALMENTE POR CONSTRUÇÃO: o clamp min(custo,reserva) impede confirmado>teto mesmo se A8 for falsa, então o teste do invariante sozinho não distingue 'A8 verdadeira' de 'A8 falsa mascarada pelo clamp'. (3) O smoke test de navegador encontrou um defeito que os 48 testes HTTP não podiam encontrar (formatação com 2 casas decimais escondendo teto, consumo e saldo), evidência de que cobertura de API não substitui cobertura de UI.",
+      "timestamp": "2026-08-10T22:06:28.187Z"
+    },
+    {
+      "id": "7caca398-828a-4392-ad06-26f7d1be233a",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: automated-done\nPASS: 50/50 testes verdes com pytest (12 precificação/janela, 14 escrow, 11 gateway, 11 painel-api, 2 SPA em navegador real com Playwright/Chromium). Critério de acerto CA-1 verificado: 20 requisições concorrentes contra teto que comporta ~3 resultam em <=3 aceitas, confirmado<=teto, reservado==0 e invariante I2 íntegro. Exatidão contábil CA-2 verificada ao nano contra ground truth calculado à mão. 28 negativos para 22 positivos.\nFAIL: nenhum teste falhando. Dois defeitos encontrados e corrigidos durante esta fase: (1) formatação da SPA com 2 casas decimais escondia teto, consumo e saldo num domínio onde a requisição custa fração de centavo — corrigido para 4 casas, causa-raiz registrada na decisão d1ef6f28; (2) nenhum outro.\nNEXT: teste manual exploratório pelo usuário — gate Human-AV obrigatório (S4/AP5), que teste automatizado NÃO substitui. Servidor demo no ar em http://127.0.0.1:8025 (senha `segredo`, entidade `equipe-busca` com teto USD 0,01, teto global USD 50,00) já servindo o painel.js corrigido. O usuário deve executar os cinco casos de uso da Fase 0 como operador, provocar os casos de borda (cliques rápidos e duplos, campo vazio, valor negativo, sessão expirada, recarga de página) e avaliar se as mensagens são compreensíveis e acionáveis por alguém que não leu o código. PENDENTE E NÃO COBERTO POR NENHUM TESTE: validação com chave real do provedor e a premissa A8 (CA-11).",
+      "timestamp": "2026-08-10T22:06:56.026Z"
+    },
+    {
+      "id": "b9085ceb-9cf8-480c-9d61-028f12a4ffb0",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: manual-done\nPASS: usuário reportou \"tudo certo\" após o teste manual exploratório no painel em http://127.0.0.1:8025. Plano executado conforme apresentado: UC-5 (leitura do painel como operador, coerência entre teto/confirmado/reservado/saldo e utilidade da linha \"<= N tokens de saída\"), UC-1 e UC-2 (disparo de consumo com a chave virtual até receber HTTP 402 e verificação de que o painel reflete), UC-5 novamente (alteração de teto pela própria tela e retomada do atendimento), UC-4 (compreensibilidade do próximo reset exibido em UTC para um operador no Brasil). Casos de borda propostos e não reportados como problema: clique duplo rápido em \"definir\", campo de teto vazio, valor negativo, recarga de página após login, 11 tentativas de senha errada até o bloqueio, e a atualização automática de 5 segundos com a aba aberta.\nFAIL: nenhum problema reportado pelo usuário nesta rodada.\nNEXT: Fase 7 — pós-revisão. PERMANECEM NÃO VERIFICADOS e devem constar como limitação conhecida: a premissa A8 (tokens_entrada <= bytes_do_corpo, CA-11) e toda a validação contra a chave real do provedor, já que tanto a suíte automatizada quanto este teste manual rodaram contra o upstream simulado.",
+      "timestamp": "2026-08-10T23:26:58.267Z"
+    },
+    {
+      "id": "1ee4c6dd-09aa-4e29-ad61-2a7479a34e62",
+      "phase": 7,
+      "category": "process",
+      "content": "AVALIAÇÃO DE PRODUTO (Human-AV, Fase 7): o usuário confirmou que o software ATENDE ao que a Fase 0 pediu — painel de consumo com teto de orçamento e corte automático — e que o critério de acerto foi cumprido. Base da avaliação: invariante do teto sob concorrência verificado (20 requisições simultâneas contra teto que comporta ~3 → <=3 aceitas, confirmado <= teto, reservado == 0, invariante I2 íntegro); cinco casos de uso da Fase 0 executados ponta a ponta; painel validado manualmente pelo usuário em navegador (\"tudo certo\" no gate ui_runnable da Fase 5 e novamente no teste manual exploratório da Fase 6). LIMITAÇÕES REGISTRADAS COMO DÍVIDA DO CICLO, NÃO COMO FALHA DE ESCOPO: (1) premissa A8 (tokens_entrada <= bytes_do_corpo, CA-11) nunca verificada empiricamente — sustenta o critério de acerto e exige ANTHROPIC_API_KEY; (2) chave real do provedor nunca usada — suíte e teste manual rodaram contra o upstream simulado, então erros de contrato com a API real só apareceriam em produção; (3) o preço promocional do Sonnet 5 expira em 2026-08-31, 21 dias após o fim deste ciclo, exigindo manutenção do rate_card.json nessa data; (4) GAM-03 (ataque de negação por reserva no agregado) foi mitigado pelo limite de reservas simultâneas, não eliminado. META-ITERAÇÃO: o usuário optou por ENCERRAR o ciclo v1.0 em vez de abrir um v2.0. O enunciado congelado pedia sessão única de 2 a 4 horas e o alvo 'Produto completo' foi cumprido. specs/ (10 arquivos), state.json (32 decisões) e specs/references/lessons.md ficam persistidos como baseline de qualquer ciclo futuro; as quatro dívidas acima são a pauta natural desse v2.",
+      "timestamp": "2026-08-10T23:30:17.615Z"
+    }
+  ],
+  "activatedLenses": [
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Sustainability / Proportionality",
+        "Ethical / Human Impact",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Observability / Operability",
+        "Control Engineering",
+        "Game Theory",
+        "Linguistics / Grammar",
+        "Mechanical Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Migration / Coexistence",
+          "reason": "Projeto greenfield: não substitui nem modifica sistema em produção existente, não há dados legados a migrar nem caminho de rollback para um sistema anterior."
+        }
+      ],
+      "iteration": 1,
+      "againstVersion": 1,
+      "recordedAt": "2026-08-10T20:58:14.634Z"
+    },
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Sustainability / Proportionality",
+        "Ethical / Human Impact",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Observability / Operability",
+        "Control Engineering",
+        "Game Theory",
+        "Linguistics / Grammar",
+        "Mechanical Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Migration / Coexistence",
+          "reason": "Continua greenfield: V(2) não introduziu sistema legado, dado a migrar nem caminho de rollback — reexaminado contra a nova arquitetura, o sinal segue ausente."
+        }
+      ],
+      "iteration": 2,
+      "againstVersion": 2,
+      "recordedAt": "2026-08-10T21:12:49.123Z"
+    }
+  ],
+  "stateVersion": 1,
+  "exitCriteria": [
+    {
+      "phase": 0,
+      "criterion": "score_90",
+      "met": true,
+      "details": "Score 93/100 registrado via update_score com breakdown por critério exibido em chat. Descontos conscientes: casos de uso 13/15 (fluxo de identificação da entidade não especificado), ambiguidades 12/15 (4 remanescentes, nomeadas), premissas 8/10 (cobrança de count_tokens e dispensa de autenticação do painel não verificadas)."
+    },
+    {
+      "phase": 0,
+      "criterion": "user_confirmed",
+      "met": true,
+      "details": "Usuário avaliou a síntese teach-back escrita (template completo de 5 níveis exibido em chat) e respondeu 'Correto — pode seguir' via AskUserQuestion. Avaliação sobre o TEXTO, não pergunta à IA sobre a própria qualidade (AP1 respeitado)."
+    },
+    {
+      "phase": 0,
+      "criterion": "ambiguities_zero",
+      "met": true,
+      "details": "ACEITAS, não zeradas. 4 ambiguidades remanescentes, todas exibidas em chat e aceitas explicitamente pelo usuário ao escolher 'Correto — pode seguir' sobre a opção 'Quase — resolver agora': (1) mecanismo de identificação da entidade → Fase 1; (2) autenticação do painel → Fase 1, com a lente de Segurança da Fase 2 cobrando; (3) política de reserva órfã → arquitetura, Fase 1/2; (4) se count_tokens é cobrado → premissa marcada, verificar antes da Fase 5."
+    },
+    {
+      "phase": 0,
+      "criterion": "use_cases_complete",
+      "met": true,
+      "details": "5 casos de uso com ator, objetivo, fluxo e exemplo numérico concreto (UC-1 requisição dentro do teto; UC-2 requisição que esgota; UC-3 N concorrentes — o caso que define o critério de acerto; UC-4 virada de janela reverte o corte; UC-5 operador observa e ajusta). 5 casos de borda identificados: modelo sem preço, refusal antes da saída, reserva órfã por timeout/falha, stream interrompido, fuso na virada da janela. Lacuna conhecida e refletida na nota 13/15: o fluxo de identificação da entidade não está especificado."
+    },
+    {
+      "phase": 0,
+      "criterion": "vocabulary_agreed",
+      "met": true,
+      "details": "Glossário persistido em specs/domain/glossario.md com 17 termos canônicos, definição, exemplo e sinônimos PROIBIDOS por termo. Os 4 termos vagos do enunciado ('consumo', 'teto de orçamento', 'corte automático', 'painel') estão resolvidos em tabela própria. Validado pelo usuário como parte da síntese."
+    },
+    {
+      "phase": 0,
+      "criterion": "out_of_scope_clear",
+      "met": true,
+      "details": "6 itens fora de escopo com justificativa de custo/benefício, exibidos em tabela e validados: multi-provedor (rate card sem fonte = AP7), hierarquia org→projeto→chave, degradação/throttle/downgrade (contradiz o bloqueio duro), alertas e notificações (é o que o mercado faz e chega tarde — a dor é o corte), rateio/faturamento/cobrança, múltiplas instâncias e alta disponibilidade (incompatível com a persistência escolhida)."
+    },
+    {
+      "phase": 0,
+      "criterion": "tech_feasibility",
+      "met": true,
+      "details": "VERIFICADA sobre os MECANISMOS (não sobre plataforma, pois não há stack imposta). M1 interceptar antes de gastar: disponível, é o padrão de LiteLLM/Portkey/Helicone em produção. M2 obter usage real: disponível, a API retorna usage em toda resposta. M3 transação atômica sobre os dois contadores: disponível via banco embutido. M4 count_tokens pré-chamada: disponível, desejável (não essencial) — custa ida-e-volta extra; sem ele a reserva ainda é finita por max_tokens. M5 usage em streaming: disponível no evento message_delta ao fim do stream, mantendo a reserva aberta durante a geração. M6 servir o painel: SPA servida pelo próprio gateway. NENHUMA capacidade essencial ausente → sem BLOCKER. Risco residual identificado (reserva órfã) não é limitação de plataforma."
+    },
+    {
+      "phase": 0,
+      "criterion": "implementation_feasibility",
+      "met": true,
+      "details": "Avaliação Tier por componente exibida em chat. Tier 1 (lib madura → usar): servidor HTTP/portão, encaminhador ao upstream, contadores transacionais, painel SPA, upstream simulado. Tier 2 (algoritmo documentado → portar literalmente): cálculo de custo a partir do usage (fórmula com multiplicadores de cache em specs/technical/token-accounting.md §1), reserva→reconciliação (padrão authorization & capture, com precedente documentado de portão pré-requisição em specs/technical/rate-card-llm.md §4), gestor de janela/reset em UTC. NENHUM componente Tier 3 → nenhum PoC exigido antes da Fase 1."
+    },
+    {
+      "phase": 0,
+      "criterion": "specs_populated",
+      "met": true,
+      "details": "5 arquivos criados, cada número com fonte citada: specs/technical/rate-card-llm.md (preços por 1M tokens por modelo, multiplicadores de cache/batch/fast mode, ferramentas server-side com preço próprio, precedente arquitetural da Anthropic); specs/technical/token-accounting.md (semântica dos 4 campos de usage, count_tokens e proibição do tiktoken, variação de tokenizador entre gerações, cobrança por stop_reason, rate limits como dimensão ortogonal); specs/domain/glossario.md; specs/references/fontes.md (8 fontes com proveniência + lacunas conhecidas); specs/competitors/gateways-llm.md (LiteLLM, Portkey, Helicone, OpenRouter, com nível de confiança declarado). Vazios ainda: models, design, examples, datasets, validation — alimentados nas Fases 1 e 6."
+    },
+    {
+      "phase": 0,
+      "criterion": "technical_scientific_research",
+      "met": true,
+      "details": "Pesquisa científica realizada e depositada em specs/references/fundamentos-teoricos.md. Duas referências revisadas por pares, VERIFICADAS por busca em 2026-08-10 (título, veículo, ano, ideia central): (F9) P. E. O'Neil, 'The Escrow Transactional Method', ACM TODS 11(4), dez. 1986, DOI 10.1145/7239.7265 — o padrão reserva→reconciliação de T25 é o método Escrow: updates incrementais não-bloqueantes sobre quantidade agregada sob contenção, projetado justamente para transações LONGAS, que é o caso da chamada ao LLM. Consequência de design derivada: o contador não é escalar, é o par (confirmado, reservado). (F10) P. Bailis et al., 'Coordination Avoidance in Database Systems', VLDB 2014, DOI 10.14778/2735508.2735509 / arXiv:1402.2237 — confluência de invariante dá critério formal necessário e suficiente para saber se o invariante do teto pode ser mantido sem coordenação; decide formalmente a questão de múltiplas instâncias. Registradas ainda F11 (Gray & Reuter 1993) e F12 (Berenson et al., SIGMOD 1995 — anomalia lost update é o modo de falha exato do critério de acerto sob concorrência), explicitamente marcadas como NÃO verificadas nesta sessão. Uma afirmação minha (limite superior sobre soma não seria I-confluente) está marcada no arquivo como A VERIFICAR antes de ser usada como fundamento."
+    },
+    {
+      "phase": 1,
+      "criterion": "patterns_defined",
+      "met": true,
+      "details": "Coletados em 2 chamadas AskUserQuestion, exibidos em tabela-resumo e confirmados pelo usuário: Monolito modular; KISS+YAGNI e SOLID (DDD e composição-sobre-herança NÃO escolhidos); event loop único + transação; GoF Strategy e Adapter (Facade não escolhido); Transaction Script (Fowler domínio); Repository sobre SQL direto (Fowler dados); chave virtual emitida pelo gateway. Persistidos em ProjectSpec.patterns."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_responsibility",
+      "met": true,
+      "details": "10 módulos, cada um com uma responsabilidade declarada em uma linha na tabela de specs/technical/architecture.md: gateway-http (orquestra e repassa), identidade (chave virtual -> entidade; autentica operador), escrow (seção crítica: decidir/reservar/reconciliar), precificador (custo e pior caso), rate-card (preços com vigência; nega desconhecido), janela (janela mensal UTC), upstream (Strategy real/simulado + Adapter de usage), persistencia (conexão, schema, transação, repositórios), painel-api (leitura e configuração de tetos), painel-web (SPA). A UI aparece como módulo NOMEADO (M-10), não como extensão implícita do backend, conforme exige a regra de P1."
+    },
+    {
+      "phase": 1,
+      "criterion": "interfaces_defined",
+      "met": true,
+      "details": "Assinaturas com tipos de entrada e saída na coluna 'interface' da tabela de módulos. Contratos que carregam o invariante, detalhados no documento: escrow.reservar(entidade, valor, instante) -> Decisao{permitido, id_reserva, motivo} — atômico sobre os DOIS contadores, único ponto autorizado a negar, sem await de rede; escrow.reconciliar(id_reserva, custo_real) — idempotente por id_reserva; rate-card.preco(modelo, categoria, instante) -> Decimal levantando ModeloSemPreco em vez de devolver zero. Assinaturas de referência com corpo em specs/examples/referencias-de-implementacao.md §4 e §5."
+    },
+    {
+      "phase": 1,
+      "criterion": "dependencies_explicit",
+      "met": true,
+      "details": "Coluna 'depends-on' preenchida para os 10 módulos. Três módulos sem dependência alguma (rate-card, janela, upstream, persistencia) — são as folhas do grafo e podem ser implementados e testados isoladamente primeiro. Grafo aciclico: painel-web -> painel-api -> {persistencia, janela, identidade}; gateway-http -> {identidade, escrow, upstream, precificador}; escrow -> {persistencia, janela}; precificador -> rate-card; identidade -> persistencia."
+    },
+    {
+      "phase": 1,
+      "criterion": "assumptions_listed",
+      "met": true,
+      "details": "7 premissas listadas em tabela no architecture.md, cada uma com estado de verificação E consequência caso seja falsa. Verificadas: A1 (max_tokens rígido torna a reserva finita), A2 (usage presente em toda resposta). Garantidas por operação, não por código: A3 (processo escritor único), A5 (apps não possuem a chave real). NÃO VERIFICADAS e marcadas como tal: A4 (confiabilidade do relógio para a virada da janela), A6 (count_tokens não cobrado), A7 (transação do SQLite basta contra lost update neste padrão de acesso). A7 é precisamente o que o critério de acerto mede — as três vão à crítica adversarial da Fase 2."
+    },
+    {
+      "phase": 1,
+      "criterion": "architecture_doc",
+      "met": true,
+      "details": "specs/technical/architecture.md escrito, com seção '## V(1) — Fase 1, iteração 1' e TABELA DE MÓDULOS machine-readable no formato exigido (id M-01..M-10 | module | responsibility | interface | depends-on). Os nomes da coluna 2 (gateway-http, identidade, escrow, precificador, rate-card, janela, upstream, persistencia, painel-api, painel-web) são a chave estável entre fases — a matriz da Fase 2 e a implementação da Fase 5 devem usá-los literalmente. Abaixo da tabela: contratos do invariante, fluxo principal, lista de premissas e escopo negativo. Estrutura preparada para o laço 2<->3 acrescentar V(2) sem sobrescrever V(1)."
+    },
+    {
+      "phase": 1,
+      "criterion": "tech_100_scope",
+      "met": true,
+      "details": "Tabela comparativa Python x TypeScript/Node x Go exibida em chat contra 7 requisitos discriminantes. Python cobre 100% do escopo sem forçar redução alguma — o teste da metodologia ('se a tecnologia força corte de escopo, é a tecnologia errada') não dispara. Premissa tecnológica verificada com evidência e não assumida: a linha decisiva é a seção crítica sem preempção no event loop, que ataca diretamente o critério de acerto. Honestidade registrada: NÃO forneci estimativa de LOC por não ter base medida — inventar número violaria a regra do projeto de fonte citada. Duas premissas tecnológicas permanecem NÃO verificadas e estão listadas como A6 e A7 no architecture.md."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_adherent_patterns",
+      "met": true,
+      "details": "Aderência verificada módulo a módulo: Transaction Script -> escrow concentra a lógica do teto em procedimentos lineares (reservar/reconciliar), sem espalhá-la entre objetos de domínio, coerente com a recusa de DDD. Repository sobre SQL direto -> persistencia expõe operações em linguagem de domínio (contadores, eventos) com transação explícita e visível. Strategy -> upstream alterna cliente real e simulado. Adapter -> upstream traduz o formato usage da Anthropic para o modelo interno, isolando o formato de terceiro num único ponto. SOLID/SRP -> um módulo, uma responsabilidade; inversão de dependência aplicada onde o upstream é trocado. KISS+YAGNI -> 10 módulos, nenhum criado para requisito hipotético; painel-api não virou módulo de autenticação separado. Método Escrow -> contador modelado como par (confirmado, reservado) em specs/models/modelo-de-dados.md, e não como escalar."
+    },
+    {
+      "phase": 2,
+      "criterion": "activated_lenses_recorded",
+      "met": true,
+      "details": "Redeclarado para a iteração 2 via record_activated_lenses em 2026-08-10T21:12:49Z, carimbado iteration=2, againstVersion=2. Mesmas 11 condicionais ativadas; Migration / Coexistence novamente não ativada, com razão reexaminada contra V(2): a nova arquitetura não introduziu sistema legado, dado a migrar nem caminho de rollback, então o sinal segue ausente."
+    },
+    {
+      "phase": 2,
+      "criterion": "lenses_applied",
+      "met": true,
+      "details": "18 lentes aplicadas aos 10 módulos de V(2). Dois módulos terminaram com ZERO achados (upstream, identidade) — ausência de achado é resultado válido e aqui é resultado positivo, pois ambos foram simplificados em V(2). Distribuição: escrow 10, persistencia 3, painel-api 2, gateway-http 2, precificador 1, janela 1, painel-web 1, rate-card 1, upstream 0, identidade 0."
+    },
+    {
+      "phase": 2,
+      "criterion": "coverage_matrix",
+      "met": true,
+      "details": "Seção '## Iteração 2 — V(2)' ACRESCENTADA a specs/design/coverage-matrix.md, preservando integralmente a seção da iteração 1. 21 linhas, uma por achado, com ids continuando a numeração por prefixo de lente (RES-04, RES-05, A-05, A-06, ARQ-05, IMP-04, CIE-04, SEG-05, SEG-06, PERF-05, UX-04, PRO-03, GOV-03, OBS-03, CTL-03, GAM-03, MEC-03, LIN-03, REG-02, SUS-03, ETI-03). Nenhum duplica nesta rodada: os 21 são defeitos distintos. Também exibido integralmente em chat."
+    },
+    {
+      "phase": 2,
+      "criterion": "criticals_identified",
+      "met": true,
+      "details": "3 críticos, todos GERADOS PELAS CORREÇÕES DE V(2) e não herdados de V(1). RES-04: o TTL de 15 min pode expirar a reserva de uma requisição ainda viva (gerações longas em streaming ultrapassam 15 min), liberando saldo que outra requisição consome, e a original reconcilia por cima do teto. RES-05: a guarda de idempotência descarta silenciosamente a reconciliação de uma reserva expirada, de modo que o custo real nunca é contabilizado — perda contábil além da perda de saldo. A-05: a remoção de count_tokens deixou o custo de ENTRADA fora da reserva; um prompt próximo de 1M tokens custa US$ 5,00 de entrada no Opus 5 sem reserva alguma, e o teto de max_tokens limita apenas a saída — uma única requisição pode violar o invariante que é o critério de acerto do projeto."
+    },
+    {
+      "phase": 2,
+      "criterion": "concentration_analyzed",
+      "met": true,
+      "details": "Análise por módulo e por lente exibida em chat e registrada na decisão de concentração da iteração 2. Achado central: escrow recebeu 10 dos 21 achados, vindos de 10 lentes distintas, e o diagnóstico mudou de SUBESPECIFICADO (iteração 1) para SOBRECARREGADO (iteração 2) — sinal de REDESENHO, não de remendo. Contraprova de eficácia das correções: upstream e identidade com zero achados, gateway-http de 8 para 2."
+    },
+    {
+      "phase": 3,
+      "criterion": "criticals_addressed",
+      "met": true,
+      "details": "Os 12 críticos das duas iterações estão endereçados por id. Iteração 1 (9): ARQ-03 e PRO-01 pela virada preguiçosa de janela; RES-01 e CTL-01 pela expiração de reserva (posteriormente substituída em V(3) por algo melhor); A-01 pela decisão explícita de sqlite3 síncrono com seção crítica declaradamente bloqueante e curta; GAM-01 pelo teto de max_tokens por entidade; SEG-01 por hash + comparação em tempo constante + limite de tentativas; SEG-02 pela remoção da rota curinga em favor de mapa de rotas explícito; OBS-01 por log estruturado de toda decisão. Iteração 2 (3, todos criados pelas correções de V(2)): RES-04 e RES-05 pela amarração da vida da reserva à vida da requisição via bloco finally, com queda de processo tratada deterministicamente no arranque; A-05 pelo limite superior local tokens_entrada <= bytes_do_corpo, que devolve o custo de entrada à reserva sem reintroduzir count_tokens. Zero críticos remanescentes."
+    },
+    {
+      "phase": 3,
+      "criterion": "important_decided",
+      "met": true,
+      "details": "Os 46 importantes (32 na iteração 1, 14 na iteração 2) têm decisão registrada por id nas tabelas 'Achados resolvidos' de V(2) e V(3). A maioria foi RESOLVIDA; sete foram extintos por remoção em V(3) (PRO-03, GOV-03, OBS-03, CTL-03, CIE-04 junto com o TTL; IMP-04 pelo encolhimento de escrow; A-06 pela captura única do instante). Cinco foram ACEITOS COM JUSTIFICATIVA EXPLÍCITA, e não silenciosamente: PERF-01 (a serialização no contador global é inerente ao invariante — Bailis et al. 2014 mostra que invariante de limite exige coordenação; removê-la removeria a garantia), A-02 (relógio confiável, mitigado por janela ser função pura de instante fornecido), A-03 (gasto no provedor sem resposta ao gateway é subcontabilizado; nenhum mecanismo o alcança), ARQ-05 (servir 3 arquivos por mapa de rotas fixo não é responsabilidade que pague um módulo), SEG-05 (login no mesmo event loop é consequência direta da restrição de processo único, mitigado por contador de tentativas sem espera bloqueante). As 10 sugestões verdes foram diferidas com registro."
+    },
+    {
+      "phase": 3,
+      "criterion": "scope_preserved",
+      "met": true,
+      "details": "Checklist anti-scope-creep exibido em chat nas duas iterações. Iteração 1: itens 1, 2 e 4 ✅; item 3 marcado com RESSALVA e registrado como mudança de escopo consentida (decisão dba0bcf0) — entidade consumidora passou a ser identidade técnica e nunca pessoa, restringindo o vocabulário da Fase 0, por decisão explícita do operador entre três opções, em resposta a REG-01/ETI-02. Iteração 2: os quatro itens ✅, nenhuma alteração no que o sistema faz. Nenhuma funcionalidade não solicitada foi adicionada em nenhuma das rodadas: todos os acréscimos são mecanismos técnicos (expiração, depois substituída por finally; teto de max_tokens; limite de reservas simultâneas; recuperação no arranque; log estruturado), e os três que tocavam decisão de produto foram arbitrados pelo operador via AskUserQuestion. Os cinco casos de uso da Fase 0 permanecem executáveis sobre V(3)."
+    },
+    {
+      "phase": 3,
+      "criterion": "architecture_simplified",
+      "met": true,
+      "details": "Evidência de simplificação em ambas as rodadas, medida por contagem e por natureza da mudança. CONTAGEM DE MÓDULOS: 10 em V(1), 10 em V(2), 10 em V(3) — nenhum módulo criado em duas rodadas de correção, apesar de 68 achados endereçados. RESPONSABILIDADES MOVIDAS EM VEZ DE DUPLICADAS: serviço da SPA saiu de gateway-http e autenticação de operador saiu de identidade, ambas para painel-api (V(2)). MECANISMOS ELIMINADOS: V(2) removeu a virada de janela como evento (linha de contador criada preguiçosamente, sem agendador e sem dono do reset); V(3) removeu o TTL inteiro, o estado 'expirada', a varredura de expiração e o laço de controle associado, substituindo tudo por um bloco finally e uma recuperação de arranque. V(3) resolveu 8 dos seus 11 achados endereçados por REMOÇÃO, não por adição — o oposto de AP2 (complexidade como falsa solução). Módulos que ficaram com zero achados na iteração 2 após simplificação: upstream e identidade; gateway-http caiu de 8 para 2."
+    },
+    {
+      "phase": 4,
+      "criterion": "exit_criteria_p2p3",
+      "met": true,
+      "details": "Verificados via get_exit_criteria e exibidos no relatório de convergência. Fase 2: 5/5 atendidos (lentes declaradas em 2 iterações com redeclaração contra V(2); 18 lentes aplicadas aos 10 módulos; matriz persistida com 68 achados em duas seções datadas por versão de arquitetura; 12 críticos identificados e classificados; concentração analisada por módulo e por lente nas duas rodadas). Fase 3: 4/4 atendidos (críticos endereçados por id; 46 importantes com decisão, dos quais 5 aceitos com justificativa explícita e não silenciosa; escopo preservado com uma única mudança consentida e registrada; arquitetura demonstravelmente mais simples — 10 módulos em V(1), V(2) e V(3), com V(3) resolvendo 8 de 11 achados por remoção)."
+    },
+    {
+      "phase": 4,
+      "criterion": "safeguards_s1_s5",
+      "met": true,
+      "details": "check_all_safeguards retornou 2 aplicáveis, 0 violações, 0 avisos. S2 (critério de parada pertence ao usuário): satisfeito de forma verificável — o usuário decidiu as duas paradas do laço 2↔3 via AskUserQuestion, e na segunda rodada a decisão contrariou a recomendação que eu havia dado na primeira, provando que a decisão é dele e não minha. S4 (Human-AV obrigatório em cada portão): satisfeito — o usuário validou a síntese teach-back da Fase 0 ('Correto'), validou a arquitetura da Fase 1 ('Adequada e completa'), arbitrou 3 trade-offs na Fase 3 (count_tokens, defesa contra GAM-01, natureza da entidade) e confirma a convergência da Fase 4 agora. S4 continua vinculante na Fase 6: teste manual exploratório humano é obrigatório e não substituível por teste automatizado."
+    },
+    {
+      "phase": 5,
+      "criterion": "ui_runnable",
+      "met": true,
+      "details": "CONFIRMACAO LITERAL DO USUARIO: \"tudo certo\". O usuario abriu a SPA em http://127.0.0.1:8025, autenticou-se com a senha de operador e confirmou a tela do painel. O que estava em tela no momento da confirmacao: teto global USD 50,00 com confirmado/reservado/saldo; linha da entidade 'equipe-busca' com teto USD 0,0100, confirmado ~USD 0,0097 e saldo ~USD 0,0003; o limite '<= N tokens de saida (o custo do prompt reduz este limite)' abaixo do saldo; e o proximo reset exibido explicitamente como 2026-09-01T00:00:00 UTC. Casos de uso da Fase 0 exercitados de ponta a ponta ANTES desta confirmacao, com saida real apresentada ao usuario: UC-1 (5 requisicoes HTTP 200), UC-2 (HTTP 402 com codigo teto_entidade_esgotado, escopo 'entidade' e reset_em), UC-4 (mesma reserva NEGADA em agosto e PERMITIDA em setembro com confirmado=0) e UC-5 (leitura do painel pelo operador). RESSALVA REGISTRADA PARA POST-MORTEM: o upstream em uso era o SIMULADO — a variavel ANTHROPIC_API_KEY nao estava no ambiente e o gateway avisou disso no arranque. Toda a cadeia de reserva, reconciliacao, rate card e contadores e real; apenas o objeto usage veio do mock. A validacao com chave real do provedor permanece como item da Fase 6 e NAO esta coberta por este criterio."
+    },
+    {
+      "phase": 5,
+      "criterion": "all_modules",
+      "met": true,
+      "details": "10/10 módulos da decomposição da Fase 1 presentes, com os NOMES EXATOS da tabela de architecture.md, o que mantém a rastreabilidade da matriz de cobertura: M-01 gateway-http (t25/gateway_http.py), M-02 identidade (t25/identidade.py), M-03 escrow (t25/escrow.py), M-04 precificador (t25/precificador.py), M-05 rate-card (t25/rate_card.py), M-06 janela (t25/janela.py), M-07 upstream (t25/upstream.py), M-08 persistencia (t25/persistencia.py), M-09 painel-api (t25/painel_api.py), M-10 painel-web (t25/static/painel.html + painel.css + painel.js). Mais a composição de arranque (app.py), a cola operacional de administração (admin.py — CLI das operações já declaradas em M-02 e M-08, sem a qual o gate ui_runnable seria impossível) e o rate_card.json com fonte citada em cada uma das 25 linhas de preço. Total: 1.559 linhas. Verificado por presença de arquivo E por execução: todos os 10 participam de pelo menos um caso de uso exercitado de ponta a ponta."
+    },
+    {
+      "phase": 5,
+      "criterion": "specs_consulted",
+      "met": true,
+      "details": "specs/ consultado antes de cada módulo, com rastro verificável no próprio código (cada arquivo cita a spec de onde veio a regra): janela.py cita a decisão b7fbe77c (virada à meia-noite UTC); rate_card.py cita 52af7cb9 (modelo sem preço é negado) e o achado MEC-03; precificador.py porta literalmente a fórmula de custo de specs/examples §2 e documenta a premissa A8; escrow.py cita O'Neil 1986 via specs/references/fundamentos-teoricos.md e reproduz o contrato de V(3); persistencia.py implementa o schema de specs/models/modelo-de-dados.md incluindo a unidade nano e o par (confirmado, reservado); upstream.py implementa a política de cobrança por stop_reason de specs/examples §7 e a verificação de cobertura de categorias do achado MEC-02; gateway_http.py implementa o contrato de passagem do achado LIN-01 e o HTTP 402 de UX-02. Nenhum parâmetro numérico foi inventado: as 25 linhas do rate card têm campo 'fonte' obrigatório (a carga levanta erro se faltar), e o único número derivado sem fonte citada — a desigualdade tokens <= bytes — está explicitamente marcado como premissa A8 NÃO VERIFICADA no código e em specs/validation/CA-11."
+    },
+    {
+      "phase": 5,
+      "criterion": "s6_applied",
+      "met": true,
+      "details": "S6 aplicado por módulo, conforme a avaliação Tier feita na Fase 0 e seguida na implementação. TIER 1 (lib madura aprovada em P1 -> usar, código novo é só integração): gateway-http e painel-api sobre Starlette; persistencia sobre sqlite3 da biblioteca padrão (zero dependência); upstream real sobre o SDK oficial anthropic; painel-web em HTML/CSS/JS sem framework. TIER 2 (algoritmo documentado -> portar literalmente, mesma estrutura e mesmos nomes): precificador porta a fórmula de custo de specs/examples §2 sem divisão intermediária; escrow porta o método Escrow de O'Neil 1986 com o contador como par (confirmado, reservado) e a chamada ao provedor fora da transação; janela porta a aritmética de janela mensal UTC da biblioteca padrão. TIER 3: NENHUM módulo — nenhum PoC foi necessário, como previsto na Fase 0. O alarme S6 (heurística para problema com solução conhecida, depuração às cegas, tentativa e erro em algo determinístico, mais de 2 iterações no mesmo módulo) NÃO disparou: os 6 defeitos encontrados na execução tiveram causa-raiz nomeada e correção de primeira, registradas nas decisões 6f6ffd87 e 97c0c9d7."
+    },
+    {
+      "phase": 6,
+      "criterion": "tests_passing",
+      "met": true,
+      "details": "50/50 testes verdes, executados nesta sessão com `python3 -m pytest tests -q` (saída literal: \"50 passed, 2 warnings in 5.76s\"). Distribuição: 12 em test_precificacao.py (exatidão contábil, vigência de preço, janela UTC), 14 em test_escrow.py (invariante, precedência de tetos, idempotência, recuperação de crash, I2, defesas GAM-01/GAM-03, sinal do clamp), 11 em test_gateway.py (casos de uso ponta a ponta e o teste de concorrência do critério de acerto), 11 em test_painel.py (autenticação, travessia de caminho, conteúdo, auditoria de teto), 2 em test_spa_playwright.py (navegador Chromium real dirigindo a SPA). 28 negativos para 22 positivos. Duas falhas ocorreram na primeira execução dos testes de navegador, ambas com causa-raiz nomeada antes de qualquer correção (decisão d1ef6f28): eram o MESMO defeito de produto — formatação com 2 casas decimais escondendo teto, consumo e saldo num domínio onde a requisição custa fração de centavo. Corrigido para 4 casas; a execução seguinte ficou verde."
+    },
+    {
+      "phase": 6,
+      "criterion": "manual_testing",
+      "met": true,
+      "details": "CONFIRMAÇÃO LITERAL DO USUÁRIO: \"tudo certo\". Teste manual exploratório executado pelo usuário (não simulado pela IA) no painel em http://127.0.0.1:8025, com o plano apresentado em chat antes da execução e o estado registrado na decisão 7caca398 antes de ele sair. Casos de uso exercitados como operador: UC-5 (leitura do painel e avaliação da coerência entre teto, confirmado, reservado e saldo), UC-1 e UC-2 (consumo até HTTP 402 e reflexo no painel), UC-5 novamente (alteração de teto pela interface e retomada do atendimento), UC-4 (compreensibilidade do próximo reset em UTC). Nenhum problema reportado. RESSALVA REGISTRADA: o teste manual, como a suíte automatizada, rodou contra o upstream SIMULADO — a validação com chave real do provedor permanece não realizada e é limitação conhecida deste ciclo."
+    },
+    {
+      "phase": 6,
+      "criterion": "edge_cases",
+      "met": true,
+      "details": "Casos de borda cobertos por duas vias. AUTOMATIZADOS (28 testes negativos): modelo inexistente e categoria inexistente no rate card; preço fora da janela de vigência; preço sem fonte na carga; max_tokens ausente, zero e acima do limite da entidade; reservas simultâneas acima do limite; chave virtual inválida e chave revogada; erro do provedor no meio da requisição (verificando que a reserva é liberada); reconciliação repetida (idempotência); liberação repetida; reserva atravessando a virada de janela; reservas órfãs no arranque; recusa do provedor sem tokens de saída; instante sem fuso horário; corpo não-JSON no login; senha errada; acesso sem token a consumo e a alteração de teto; travessia de caminho contra /../app.py, /etc/passwd, /painel.html e /t25.db; valor de teto negativo e payload sem o campo esperado. MANUAIS, propostos ao usuário no plano e não reportados como problema: clique duplo rápido em \"definir\", campo de teto vazio, valor negativo pela interface, recarga de página após login, 11 tentativas de senha até o bloqueio por tentativas excedidas, e a atualização automática de 5 segundos com a aba aberta por um minuto."
+    },
+    {
+      "phase": 7,
+      "criterion": "specs_updated",
+      "met": true,
+      "details": "specs/ atualizado com os resultados reais do ciclo. specs/validation/criterios-de-aceitacao.md ganhou a seção RESULTADOS com tabela esperado × obtido para os 11 critérios: CA-1 a CA-10 verificados com os valores concretos obtidos (16.000.000 nano contra ground truth em CA-2; 20 concorrentes com <=3 aceitas em CA-1; negada em agosto e permitida em setembro em CA-3), e CA-11 marcado explicitamente como NÃO VERIFICADO com a razão (exige ANTHROPIC_API_KEY) e a ressalva de que o teste existente prova o sinal do clamp, não a premissa. specs/datasets/ground-truth-custo.md criado com os cinco conjuntos de dados de referência (D-1 a D-5) calculados à mão a partir de specs/technical, incluindo o número 2.970.000 que explicou empiricamente a negação observada na Fase 5. specs/technical/architecture.md contém as três versões V(1), V(2) e V(3) com o histórico completo de decisões e o que foi descartado e por quê (o TTL de 15 minutos e a chamada a count_tokens, ambos removidos com justificativa). specs/design/coverage-matrix.md contém as duas iterações de crítica com os 68 achados. specs/references/fontes.md e fundamentos-teoricos.md registram a proveniência de cada número e as duas referências revisadas por pares. 14 arquivos ao todo; nenhum diretório de specs/ ficou vazio."
+    },
+    {
+      "phase": 7,
+      "criterion": "lessons_documented",
+      "met": true,
+      "details": "specs/references/lessons.md escrito com 6 lições sobre ESTE projeto (não sobre a metodologia), exibidas em chat como lista. L1 descoberta de domínio: dinheiro neste domínio não cabe em centavos, e o mesmo erro de escala reapareceu na apresentação (SPA com 2 casas decimais) depois de resolvido no armazenamento (nano-unidades) — precisão é decisão de ponta a ponta. L2 padrão que funcionou depois de um que não funcionou: a vida da reserva deve ser a vida da requisição e não um relógio; o TTL criado para limpar órfãs gerava dois críticos, e removê-lo eliminou parâmetro, estado, varredura e laço de controle — com a ressalva de que a solução depende da premissa de processo único e cai se houver múltiplas instâncias. L3 premissa perigosa: o clamp min(custo,reserva) garante o invariante por construção e por isso mascara A8 falsa como subcontagem silenciosa. L4 fato medido: 8 defeitos encontrados, nenhum por leitura de código, com a tabela de como cada um apareceu. L5 armadilhas concretas da stack: check_same_thread com ASGI, BEGIN IMMEDIATE contra lost update, o usage não informar o TTL do cache, e o hook de teste do motor exigir saída não canalizada. L6 dívida honesta do ciclo com os quatro itens em aberto."
+    },
+    {
+      "phase": 7,
+      "criterion": "human_feedback",
+      "met": true,
+      "details": "Feedback humano coletado em três momentos distintos e verificáveis desta fase final, todos via AskUserQuestion. (1) Gate ui_runnable da Fase 5: usuário executou o caso de uso ponta a ponta, abriu a SPA em navegador e respondeu \"tudo certo\". (2) Teste manual exploratório da Fase 6: usuário executou o plano apresentado (cinco casos de uso como operador mais os casos de borda propostos) e respondeu \"tudo certo\", sem reportar problemas. (3) Avaliação de produto da Fase 7: usuário confirmou que o software ATENDE ao que a Fase 0 pediu e que o critério de acerto foi cumprido, escolhendo essa opção entre 'atende com algo faltando' e 'não atende'. Na mesma chamada, escolheu ENCERRAR o ciclo v1.0 em vez de abrir um v2.0. Ao longo do ciclo o usuário arbitrou ainda: alvo de entrega, quatro decisões de vocabulário do Nível 1, quatro do Nível 2, quatro do Nível 3/5, autorização de pesquisa, capacidade de produção, padrões arquiteturais em duas rodadas, as duas paradas do laço 2↔3 (na segunda contrariando minha recomendação anterior), três trade-offs da Fase 3, a renovação de sessão da Fase 6 e a ferramenta de teste de UI."
+    }
+  ],
+  "safeguards": [
+    {
+      "id": "S0",
+      "status": "ok"
+    },
+    {
+      "id": "S1",
+      "status": "ok"
+    },
+    {
+      "id": "S2",
+      "status": "ok",
+      "details": "Stopping Criterion: behavioral check — requires agent attention. Stopping criterion belongs to the USER, not the AI.",
+      "lastChecked": "2026-08-10T21:21:02.484Z"
+    },
+    {
+      "id": "S3",
+      "status": "ok"
+    },
+    {
+      "id": "S4",
+      "status": "ok",
+      "details": "Explicit Verification (mandatory human-AV): behavioral check — requires agent attention. Human-AV is irreplaceable at each gate. Automated tests verify formalizable properties. Semantic adequacy, usability, and domain correctness REQUIRE human judgment. P0: human validates synthesis. P2: human arbitrated trade-offs. P4: human confirms convergence. P6: NEVER assume tests passed — execute and verify + mandatory manual exploratory testing.",
+      "lastChecked": "2026-08-10T21:21:02.484Z"
+    },
+    {
+      "id": "S5",
+      "status": "ok"
+    },
+    {
+      "id": "S6",
+      "status": "ok"
+    },
+    {
+      "id": "S7",
+      "status": "ok"
+    }
+  ],
+  "loopCounter": {
+    "pattern": "",
+    "count": 0,
+    "firstSeen": "",
+    "lastSeen": "",
+    "lastDiagnosis": "2026-08-10T22:05:26.603Z"
+  },
+  "createdAt": "2026-08-10T19:24:48.978Z",
+  "updatedAt": "2026-08-10T23:30:58.452Z",
+  "history": [
+    {
+      "from": 0,
+      "to": 1,
+      "timestamp": "2026-08-10T19:59:51.398Z",
+      "criteriaMet": [
+        "score_90",
+        "user_confirmed",
+        "ambiguities_zero",
+        "use_cases_complete",
+        "vocabulary_agreed",
+        "out_of_scope_clear",
+        "tech_feasibility",
+        "implementation_feasibility",
+        "specs_populated",
+        "technical_scientific_research"
+      ]
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "timestamp": "2026-08-10T20:56:26.827Z",
+      "criteriaMet": [
+        "patterns_defined",
+        "modules_responsibility",
+        "interfaces_defined",
+        "dependencies_explicit",
+        "assumptions_listed",
+        "architecture_doc",
+        "tech_100_scope",
+        "modules_adherent_patterns"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-10T21:01:54.160Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 2,
+      "timestamp": "2026-08-10T21:12:39.375Z",
+      "criteriaMet": []
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-10T21:15:05.446Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "timestamp": "2026-08-10T21:20:52.322Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "timestamp": "2026-08-10T21:23:21.500Z",
+      "criteriaMet": [
+        "exit_criteria_p2p3",
+        "safeguards_s1_s5"
+      ]
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "timestamp": "2026-08-10T21:55:52.329Z",
+      "criteriaMet": [
+        "ui_runnable",
+        "all_modules",
+        "specs_consulted",
+        "s6_applied"
+      ]
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "timestamp": "2026-08-10T23:28:19.640Z",
+      "criteriaMet": [
+        "tests_passing",
+        "manual_testing",
+        "edge_cases"
+      ]
+    }
+  ],
+  "lastPhaseStateCheck": "2026-08-10T19:25:32.997Z",
+  "lastTestOutcome": {
+    "outcome": "pass",
+    "phase": 6,
+    "at": "2026-08-10T23:28:17.142Z"
+  }
+}

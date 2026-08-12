@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema opera apenas com arquivos locais e bibliotecas in-memory; sem dependências de rede, filas ou serviços externos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença de módulo CLI (M-11) com subcomandos, formatação de saída e códigos de retorno para operação direta por humanos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Escopo descreve criação de nova ferramenta sem menção a substituição de legado, compatibilidade retroativa ou período de coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Assunção A7 limita explicitamente a escala a dezenas/centenas de datasets em memória única execução; sem custo elástico ou processamento volumétrico."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Ferramenta de metadados e linhagem técnica; sem classificação, pontuação ou decisões automatizadas sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Execução pontual de validação e consulta; sem máquina de estados, fluxos multi-ator ou transições de processo de negócio."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Problema central e invariantes INV-2/INV-3 obrigam e validam dono para cada domínio/dataset, garantindo rastreabilidade e responsabilidade sobre ativos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "CLI stateless que roda sob demanda; sem servidor, métricas, logs operacionais ou requisito de diagnóstico contínuo em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Validação retorna falhas estáticas em lote; sem loops de feedback, autorregulação ou sincronização dinâmica de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Uso isolado para declaração de catálogo; sem API pública, marketplace ou modelagem de incentivos entre atores independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Comunicação interna por chamada direta com tipos puros em repositório único; sem contratos entre equipes independentes ou protocolos distribuídos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura rigorosa e delimitada; sem requisitos de tolerância a deriva, desgaste ou gestão de dívida técnica em sistemas longevos."
+    }
+  ]
+}

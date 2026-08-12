@@ -1,0 +1,4 @@
+{"nome":"bancoy","versao":"1","alvo":"extrato","delimitador":",","encoding":"utf-8",
+ "formato_data":"%Y-%m-%d","separador_decimal":".","separador_milhar":"",
+ "sinal":"colunas_debito_credito","conta":"98765-0","instrumento_padrao":"desconhecido",
+ "colunas":{"data":"date","debito":"debit","credito":"credit","descricao":"memo"}}

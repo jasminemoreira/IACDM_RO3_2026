@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Ausência de dependências externas, filas ou redes; o sistema opera apenas com leitura local de arquivos e processamento em memória."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Superfície de interação via CLI (M-11) com subcomandos, formatação de saída e relatório agregado de erros (A9) destinado a operadores humanos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield sem menção a substituição de sistema legado, período de coexistência ou caminho de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Carregamento único em memória para escala pequena (A7) e execução single-threaded; sem alocação dinâmica ou consumo que escale com volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Gerencia metadados e donos de conjuntos de dados, sem tomar decisões automatizadas sobre pessoas ou aplicar classificação/moderação humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Fluxo síncrono de carga, validação e consulta pontual; não há máquinas de estado, transições de processo ou orquestração multi-ator."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O problema central exige declaração explícita de donos por domínio (INV-2 e INV-3) e rastreamento de linhagem, com validação que rejeita entidades órfãs."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Execução pontual via CLI sem tempo de execução persistente; não há requisitos de monitoramento, diagnóstico de incidentes ou operação contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Validação ocorre exclusivamente no carregamento inicial e bloqueia a execução se falhar; não há loops de feedback, autorregulação ou correção em tempo de execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ferramenta interna cooperativa para donos de domínio; não há atores independentes com incentivos desalinhados, API pública ou dinâmica de mercado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Base de código unificada com contratos de função interna; não há definição de protocolos ou interfaces entre times independentes que possam gerar ambiguidade."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Novo sistema que impõe invariantes exatas (INV-1 a INV-6) sem mecanismos de tolerância a variação, degradação gradual ou caminhos de evolução de dívida técnica."
+    }
+  ]
+}

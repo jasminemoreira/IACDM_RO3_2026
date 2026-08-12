@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 usa SQLite como dependência de persistência; falha no disco ou corrupção do arquivo quebra a escrita transacional."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 define 6 telas server-side para interação direta do usuário com o ciclo de vida dos chamados e recursos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há indicação de substituição de sistema legado ou necessidade de coexistência com outra versão em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura é leve (Node/SQLite, thread única) e não envolve processamento massivo de dados, IA ou custos elásticos escaláveis."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza classificação de prioridade (M-03) e julgamento de recursos (M-06), decisões que impactam diretamente o tratamento do solicitante."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existem fluxos multi-ator definidos (abertura, triagem, recurso, julgamento) com estados e transições explicitados em M-05 e M-06."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-07 registra eventos de trilha somente-inserção e M-08 controla autorização com motivos, permitindo auditoria de ações e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há menção a métricas, logs estruturados ou mecanismos de diagnóstico em produção além da trilha de negócios (M-07)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema não possui loops de feedback automáticos para correção de estado ou sincronização dinâmica; as regras são estáticas e aplicadas pontualmente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores com incentivos potencialmente divergentes (solicitante vs. gestor) e a Premissa A7 admite risco de abuso por parte do solicitante."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "A comunicação é interna via tipos TypeScript fortemente tipados e funções puras, sem contratos de protocolo externos ambíguos entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Não há indicação de tolerâncias físicas ou mecânicas, nem acúmulo de débito técnico estrutural que exija análise de desgaste material."
+    }
+  ]
+}

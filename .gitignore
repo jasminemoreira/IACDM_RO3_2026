@@ -1,0 +1,15 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+*.db
+*.db-shm
+*.db-wal
+*.log
+.DS_Store
+
+# artefatos de exploração, não fazem parte do registro
+analise/cego/.t*
+analise/cego/.err

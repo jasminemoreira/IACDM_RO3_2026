@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 `fonte-de-metricas` modela explicitamente `Amostra | Indisponivel` como eventos distintos e M-10 `alvo-de-implantacao` é porta para um substrato externo que pode falhar — o núcleo precisa reagir a dependência externa lenta, ausente ou inesperada."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 `cli` é superfície operada por uma pessoa: o operador acompanha progresso, motivo e decisão final e pode invocar `abortar()` — há tarefa humana a completar sem confusão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é convivência: canário e versão estável dividem peso via M-10 (soma 100) e rollback = 100% à estável — transição e caminho de reversão são o cerne do sistema."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso cujo custo cresça com o uso: amostragem fixa (≥50 por métrica), sem persistência, sem infraestrutura elástica; o sistema apenas redireciona tráfego que já existe."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas recaem sobre versões de software (promover/reverter canário), não sobre pessoas — não há scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 `coordenador` é uma máquina de estados explícita (progredindo / pausado / revertido / promovido) com sequência de passos (M-06), ator operador e caminhos de exceção (guarda-absoluta, contadores, aborto)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema decide rollback/promoção automaticamente e emite eventos com motivo e decisão final — decisões com consequência em produção que alguém precisará auditar e atribuir depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema com requisitos operacionais em produção: M-07 emite eventos e M-12 os observa para imprimir progresso e motivo — a própria arquitetura declara 'o domínio nunca imprime' como mecanismo de operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de feedback autocorrretivo: o sinal de erro são as séries de métricas comparadas (M-02) e a correção é ajustar pesos ou reverter (M-06/M-10) — risco de oscilação e drift é estrutural."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Há um único operador e nenhum ator independente com incentivos próprios — sem API pública, marketplace ou integração onde se assuma cooperação estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Três portas (relogio, fonte-de-metricas, alvo-de-implantacao) definem contratos com adaptadores trocáveis (simulado ↔ real); tipos como `Amostra | Indisponivel` e `Veredito` precisam ser inequívocos para que duas implementações do contrato não divirjam."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema vive de tolerâncias: amostra mínima 50, confiança de 98%, limite 4 erros, limiares da guarda-absoluta (A3 admite serem sem fonte) e score 100 — variação fora da especificação exata é o modo de operação normal."
+    }
+  ]
+}

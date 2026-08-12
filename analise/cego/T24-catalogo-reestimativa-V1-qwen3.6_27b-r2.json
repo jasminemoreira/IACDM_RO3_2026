@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Leitura de arquivos YAML locais e dependência externa NetworkX; falha em leitura ou formato inválido deve ser tratada como erro de domínio agregado (M-07, M-09)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma interface de linha de comando (CLI) com subcomandos e flags para interação humana (M-11), exigindo clareza nas mensagens de erro e formatos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O sistema é novo (Fase 0/1) sem indicação de substituição de um sistema legado existente ou necessidade de coexistência transitória."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A escala é explicitamente limitada a dezenas/centenas de datasets que cabem em memória (A7), sem processamento pesado ou infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema gerencia metadados técnicos e donos de dados, não tomando decisões automatizadas sobre pessoas nem classificando indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existem fluxos sequenciais rígidos de carregamento, mapeamento, validação e consulta (M-09 orquestra), além da lógica de herança de donos e resolução de linhagem."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O domínio central é a definição e atribuição de 'donos' (owners) por domínio/dataset, com validação explícita contra órfãos e ciclos (INV-2, INV-3, M-03)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "É uma ferramenta batch/CLI sem persistência, estado global ou execução contínua em produção; não requer monitoramento de degradação em tempo real."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback, correção automática de estado ou sincronização dinâmica; a validação é prévia e bloqueante, não corretiva durante a operação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único (humano que escreve YAML) interagindo com o sistema sem incentivos conflitantes ou defeição estratégica entre múltiplos atores independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface definidos por tipos imutáveis e funções puras (M-01), com restrições sintáticas na identidade dos datasets (ponto como separador, A10) para evitar ambiguidade."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Arquitetura Hexagonal rigorosa com núcleo puro e bordas isoladas (M-01 a M-06 vs M-07 a M-11), projetada para tolerar mudanças nas fronteiras sem quebrar o domínio."
+    }
+  ]
+}

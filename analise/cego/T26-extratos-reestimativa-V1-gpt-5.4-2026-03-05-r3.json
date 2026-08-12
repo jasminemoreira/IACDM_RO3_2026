@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e de I/O: parser OFX via ofxtools, persistência SQLite e leitura de arquivos OFX/CSV."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: o módulo cli é a interface do operador para importar, conciliar, revisar e gerar relatórios."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não descreve substituição de sistema existente, operação em paralelo, transição produtiva nem plano de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume de dados e explicita carga de 50k, blocking e risco de reintrodução de O(n²)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; a classificação é de transações, duplicatas e estados de conciliação."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multi-etapas com estados e exceções: importação, deduplicação L0-L5, fila de revisão humana, resolução e 5 estados terminais de conciliação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura exige auditabilidade e autoria de decisão: DecisaoDedup registra camada e evidência, e resoluções humanas são persistidas e não sobrescritas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de produção com importação, conciliação, revisão e relatórios, sujeito a degradação por fontes externas e persistência."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há sincronização e correção de estado entre extrato e livro, com feedback humano via review-queue alimentando a camada L0 do dedup-engine."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos próprios, API pública, marketplace ou interação estratégica descrita."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre componentes e formatos independentes: portas FonteDeExtrato e Repositorios, perfis CSV declarativos e adaptação OFX/CSV para representação canônica."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura explicita tolerâncias e variação admissível: janela de data, tolerância de valor, normalização canônica, perfis declarativos e evolução com múltiplas fontes."
+    }
+  ]
+}

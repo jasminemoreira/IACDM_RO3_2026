@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% set secao = 'simular' %}
+{% block titulo %}Simulador — Motor de preços{% endblock %}
+{% block conteudo %}
+<h1>Simular um preço</h1>
+
+<form method="post" action="/simular" class="caixa">
+  <div class="linha">
+    <div>
+      <label for="sku">Produto (SKU)</label>
+      <input id="sku" name="sku" value="{{ sku|default('') }}" required
+             aria-describedby="ajuda-sku">
+      <p id="ajuda-sku" class="discreto">Ex.: SKU-1003</p>
+    </div>
+    <div>
+      <label for="quantidade">Quantidade</label>
+      <input id="quantidade" name="quantidade" inputmode="numeric"
+             value="{{ quantidade|default('') }}" required>
+    </div>
+    <div>
+      <label for="data">Data do pedido</label>
+      <input id="data" name="data" type="date" value="{{ hoje }}" required
+             aria-describedby="ajuda-data">
+      <p id="ajuda-data" class="discreto">Preenchida com hoje — altere para
+        reconstruir um preço passado.</p>
+    </div>
+    <div><button type="submit">Simular</button></div>
+  </div>
+  <label style="font-weight:400">
+    <input type="checkbox" name="ver_todas" value="1"
+           {% if resultado and resultado.ver_todas %}checked{% endif %}>
+    ver todas as regras avaliadas
+  </label>
+</form>
+
+{% if erro %}
+<div class="caixa" role="alert">
+  <p class="erro" style="margin-top:0">{{ erro }}</p>
+  {% if sem_versao %}
+    {% if sem_versao.regras_no_rascunho %}
+      <p><strong>O que fazer:</strong> existem
+        <strong>{{ sem_versao.regras_no_rascunho }} regras em rascunho</strong>,
+        mas nenhuma versão foi publicada ainda — e o simulador só usa versões
+        publicadas. Vá para <a href="/regras">Regras</a>, corrija o que a
+        validação apontar e clique em <em>Publicar versão</em>.</p>
+      <p class="discreto">Importar salva no rascunho; publicar é o que faz as
+        regras valerem. São passos separados de propósito: é o portão que a
+        planilha não tinha.</p>
+    {% else %}
+      <p><strong>O que fazer:</strong> não há regras cadastradas. Comece pela
+        <a href="/importar">Importação</a> da planilha, ou cadastre regras
+        direto em <a href="/regras">Regras</a>.</p>
+    {% endif %}
+  {% endif %}
+</div>
+{% endif %}
+
+{% if resultado %}
+{% set d = resultado.decisao %}
+<div class="caixa">
+  <p class="preco">{{ d.preco_unitario }}/un &nbsp;·&nbsp; total {{ d.total }}</p>
+  <p>{{ resultado.explicacao }}</p>
+  <p class="discreto">
+    Versão de regras {{ d.versao_regras }} · cálculo: {{ d.trace.calculo }} ·
+    decisão <code>{{ d.id }}</code>
+  </p>
+</div>
+
+<h2>Por que este preço</h2>
+{% set mostrados, total = resumir_trace(d.trace.vereditos, d.quantidade,
+                                       999 if resultado.ver_todas else 10) %}
+<p class="discreto">
+  Mostrando {{ mostrados|length }} de {{ total }} regras avaliadas.
+  {% if mostrados|length < total %}
+    Marque <em>ver todas</em> acima para não esconder nenhuma.
+  {% endif %}
+</p>
+<div class="rolar">
+<table>
+  <caption class="discreto" style="text-align:left; padding:.3rem 0">
+    Toda regra avaliada aparece, inclusive as que casaram e perderam — é o que
+    responde “por que NÃO ganhei o desconto X”.
+  </caption>
+  <thead>
+    <tr><th scope="col">Regra</th><th scope="col">Escopo</th><th scope="col">Faixa</th>
+        <th scope="col">Prio.</th><th scope="col">Veredito</th></tr>
+  </thead>
+  <tbody>
+  {% for v in mostrados %}
+    <tr>
+      <td><code>{{ v.regra_id }}</code></td>
+      <td>{{ v.detalhe.get('escopo', '—') }}</td>
+      <td>{{ v.detalhe.get('faixa', '—') }} un</td>
+      <td>{{ v.detalhe.get('prioridade', '—') }}</td>
+      <td {% if v.codigo.value == 'VENCEU' %}class="ok"{% endif %}>
+        {{ motivo_em_texto(v) }}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endif %}
+{% endblock %}

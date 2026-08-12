@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas de biblioteca e I/O de arquivo no carregamento: PyYAML, filesystem e NetworkX."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma CLI operada por pessoas, com subcomandos, flag --json e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo é pequeno, em memória, sem infraestrutura elástica, sem processamento de alto volume e sem consumo de recurso que cresça materialmente com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não automatiza decisões sobre pessoas; opera sobre catálogo de dados, donos e linhagem."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de carregamento, mapeamento, validação e consulta, com responsabilidades distintas e caminhos de exceção por violações agregadas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema modela donos por domínio/dataset e invariantes como 'todo domínio tem dono' e 'nenhum dataset é órfão de dono'."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há sinal de requisitos operacionais de produção, telemetria, monitoramento, logs estruturados ou diagnóstico em execução contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há sincronização de estado em runtime, configuração dinâmica nem laço de realimentação que corrija comportamento do sistema."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há múltiplos atores independentes no domínio: donos de domínio humanos declaram YAML e podem cooperar ou não ao manter referências e ownership corretos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e gramática explícitos entre módulos e arquivos, incluindo DatasetId no formato dominio.nome, restrição do ponto e inversão semântica de aresta em alimentado_por."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo com fronteiras, invariantes e dependências rígidas, portanto sensível a tolerâncias de manutenção e mudança ao longo do tempo."
+    }
+  ]
+}

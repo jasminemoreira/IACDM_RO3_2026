@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O solver-cpsat (M-06) é uma dependência externa crítica para o núcleo de geração; a premissa A4 assume tempo de resposta e sucesso do solve, enquanto a arquitetura não define fallbacks ou degradação graciosa caso o solver falhe ou exceda o limite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo CLI (M-11) que serve como superfície de interação para operadores humanos executarem os casos de uso; a experiência e clareza dos comandos e saídas afetam diretamente a operação."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve um sistema novo com persistência em JSON local (M-08) e carregador de instâncias (M-09), sem menção a substituição de sistemas legados ou período de coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O solver-cpsat (M-06) consome recursos computacionais intensivos para otimização; a premissa A4 liga o custo de processamento ao tamanho da instância (30x3x30), exigindo avaliação da proporcionalidade do consumo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre alocação de turnos e restrições de trabalho (M-01, M-02), impactando diretamente a vida laboral das pessoas; o escopo negativo admite 'equidade' como termo flexível, levantando questões éticas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo multi-ator explícito em M-04 (troca) com máquina de estados (solicitar/responder/aceite) e validação cruzada, além do fluxo de geração e conformidade."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O módulo troca (M-04) e repositório (M-08) registram ações (solicitações, respostas, escalas geradas); a premissa A5 admite falta de autenticação forte, mas o sistema ainda precisa atribuir autoria às trocas e gerações para auditoria posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O módulo diagnostico (M-07) e avaliador (M-03) produzem sinais de estado (conflitos, violações, custo); a premissa A4 (tempo de solve) implica necessidade de monitoramento de desempenho e detecção de falhas no solver."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sistema utiliza feedback da escala anterior (M-05 fronteira) para influenciar a geração atual, e o avaliador (M-03) verifica conformidade pós-geração; há um loop de correção implícito nas trocas e revalidação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores (pessoas solicitantes e destinatários) interagem no módulo troca (M-04); a premissa A5 assume identidade verdadeira sem autenticação forte, criando risco de comportamento estratégico ou defeição na aceitação/rejeição."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são definidas internamente entre módulos do mesmo projeto (ex: M-02 para M-06/M-03); não há comunicação entre equipes independentes ou protocolos externos ambíguos que exijam análise de contrato linguístico."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura é rígida em suas interfaces e dependências (núcleo puro vs adaptadores); não há menção a tolerâncias de drift, manutenção incremental ou variação aceitável na especificação ao longo do tempo."
+    }
+  ]
+}

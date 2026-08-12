@@ -1,0 +1,9 @@
+# Forma valida. Defeito semantico 2: outra aresta pendente.
+dominio: gama
+dono:
+  nome: Outro
+  contato: outro@empresa.com
+datasets:
+  - nome: p
+    alimentado_por:
+      - delta.tambem_nao_existe

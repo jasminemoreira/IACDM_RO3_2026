@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema monolítico local com banco embutido (SQLite) e sem dependências externas, filas ou APIs de terceiros."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença de superfície de interação humana explícita (M-12) com 6 telas server-rendered para operação direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a substituição de sistema legado, compatibilidade retroativa ou fase de coexistência; é um projeto greenfield."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Premissa A7 assume volume pequeno, uso de SQLite local e ausência de paginação, sem alocação dinâmica ou consumo crescente de recursos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Sistema rotula e encaminha solicitações financeiras por regras fixas, sem realizar decisões automatizadas sobre classificação ou moderação de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multiator com cadeia de aprovação por valor, máquina de estados da despesa, vigência de delegação e caminhos de exceção explicitamente invariantizados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registro append-only em M-06, invariantes de atribuição (INV-7, INV-2, INV-4) e foco explícito em SoD e rastreabilidade de decisões."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de mecanismos explícitos de telemetria, logs estruturados, endpoints de saúde ou painéis operacionais na decomposição."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Transições de estado são sequenciais e determinísticas, sem loops de feedback, configuração em runtime ou sincronização de estado distribuída."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores com autonomia de decisão e premissa A5 que explicitamente assume identidade confiável e cooperação, exigindo análise de incentivos e defeição estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos de interface são internos, fortemente tipados e delimitados em repositório único, sem fronteiras entre times independentes ou protocolos abertos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura prioriza regras estritas e matriz fixa (A3), sem mecanismos explícitos para tolerância a deriva de estado ou gestão de débito técnico em evolução."
+    }
+  ]
+}

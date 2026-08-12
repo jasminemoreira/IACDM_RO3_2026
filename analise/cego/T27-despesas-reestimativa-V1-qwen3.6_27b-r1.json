@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O banco de dados (M-09/SQLite) é uma dependência externa crítica para persistência e consistência; sua indisponibilidade bloqueia todas as operações."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície de usuário web explícita (M-12) com 6 telas server-rendered para interação humana direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a sistema legado, estratégia de migração ou coexistência com versões anteriores; o escopo é um sistema novo isolado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O volume é limitado (A7: dezenas/centenas de despesas) e não há consumo elástico ou processamento intensivo (IA/big data); o custo é fixo e baixo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema registra decisões administrativas (despesas), mas não realiza classificação, scoring ou moderação automatizada sobre pessoas que causem dano direto ou discriminação."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura modela explicitamente estados, transições (INV-11), cadeias de aprovação sequenciais e fluxos multi-ator com delegação e revogação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Existe módulo dedicado a trilha auditável append-only (M-06) que grava ator, instante e autoridade exercida para cada decisão, atendendo à necessidade de atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O sistema é local/single-process (A4), sem requisitos declarados de monitoramento em produção, logs estruturados ou alertas operacionais."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O módulo 'autoridade' (M-04) e 'relogio' (M-07) formam um sistema de controle baseado em estado temporal: a validade da delegação é recalculada sob demanda contra o instante atual para garantir consistência."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A5 assume identidade confiável e impõe SoD apenas contra engano, não contra adversários; há risco de defeito estratégico (usuário se passar por outro) que o design não mitiga."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Interfaces contratuais rigorosas entre módulos hexagonais (M-01 a M-08) definem tipos precisos de entrada/saída e erros nomeados para evitar ambiguidade na comunicação interna."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura define tolerâncias explícitas via invariantes (INV-1 a INV-13) e premissas de fronteira (linearidade da hierarquia, imutabilidade do papel), delimitando o que é aceito vs. rejeitado."
+    }
+  ]
+}

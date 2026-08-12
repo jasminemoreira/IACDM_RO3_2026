@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência de arquivos externos (OFX/CSV) e banco de dados SQLite que podem falhar ou retornar dados inesperados durante a importação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de um módulo CLI (M-11) operado por humanos para gerenciar pendências e relatórios."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há indicação de substituição de sistema legado ou necessidade de coexistência com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento em lote (50k itens) com algoritmos de matching O(n²) potencial se o blocking falhar (A4), consumindo recursos computacionais significativos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas de classificação financeira (duplicata/pendente) afetam a precisão contábil e exigem revisão humana com mecanismos de auditoria explícitos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Definição clara de estados terminais (5 estados de conciliação) e fluxos de trabalho multi-estágio (Chain of Responsibility L0-L5)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Requisito explícito de rastreabilidade: DecisaoDedup deve registrar qual camada decidiu e a evidência para auditoria (VAL-2)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção que gera relatórios agregados e requer monitoramento de integridade dos dados conciliados."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Processamento em lote (batch) sem loops de feedback em tempo real ou controle dinâmico de parâmetros durante a execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Atores externos (bancos/ERP) são fontes passivas de dados sem incentivos estratégicos dentro do escopo do sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Interfaces contratuais rígidas entre módulos (Domain Model, Adapters) e necessidade de normalização semântica de descrições variadas (A6)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Não há indicação de tolerâncias físicas ou degradação mecânica; o sistema é puramente lógico/informacional."
+    }
+  ]
+}

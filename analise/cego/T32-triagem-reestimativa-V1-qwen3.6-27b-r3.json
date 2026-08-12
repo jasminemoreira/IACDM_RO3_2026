@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas (APIs, filas ou serviços de terceiros); persistência é SQLite local e relógio é abstração interna."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo M-12 (ui-web) expõe 6 telas server-side operadas por pessoas para abrir, triar, recorrer e julgar chamados."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a sistema legado, fase de transição ou necessidade de coexistência com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Stack leve e monolítica (thread única, SQLite, templates no servidor) sem alocação elástica ou processamento de alta volumetria que escale o custo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Derivação automática de prioridade (M-03) classifica chamados, e as premissas A6/A7 expõem riscos de viés e suposição de boa-fé não validados."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Ciclo de vida explícito em M-05 e M-06 com múltiplos atores (solicitante, gestor) e transições de estado (triar, reclassificar, recorrer, julgar)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha somente-inserção (M-07), exigência de justificativa e fundamentação (M-06), e autorização com motivo (M-08) estruturam atribuição e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de definições de logging, métricas, health checks ou ferramentas de diagnóstico operacional no escopo descrito."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Cálculo de SLA e prioridade são estáticos e unidirecionais, sem mecanismos de retroalimentação, sintonia em runtime ou correção automática de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Premissa A7 declara explicitamente a suposição de boa-fé do solicitante e o tratamento de abuso ('visível, não punido'), indicando risco de comportamento estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Interfaces são contratos internos de módulos em único repositório/codebase, sem definição de protocolos ou comunicação entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura prioriza restrição de estado e imutabilidade por tipo, sem mecanismos explícitos de tolerância a variação, adaptação ou gerenciamento de deriva técnica."
+    }
+  ]
+}

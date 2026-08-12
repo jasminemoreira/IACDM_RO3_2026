@@ -1,0 +1,40 @@
+SKU;Produto;Preco base;De;Ate;Preco un.;Obs
+SKU-1001;Caneta Esferografica Azul;2,50;1;9;2,50;
+SKU-1001;Caneta Esferografica Azul;2,50;10;49;2,30;
+SKU-1001;Caneta Esferografica Azul;2,50;50;199;2,10;
+SKU-1001;Caneta Esferografica Azul;2,50;200;acima de 200;1,85;combinado com o comercial
+SKU-1002;Caderno 96 folhas;12,90;1;9;12,90;
+SKU-1002;Caderno 96 folhas;12,90;10;49;11,60;
+SKU-1002;Caderno 96 folhas;12,90;50;199;10,30;
+SKU-1002;Caderno 96 folhas;12,90;100;50;9,90;REVISAR
+ sku-1002 ;Caderno 96 folhas;12,90;200;;9,80;
+SKU-1003;Papel A4 500fl (resma);24,90;1;4;24,90;
+SKU-1003;Papel A4 500fl (resma);24,90;5;19;23,40;
+SKU-1003;Papel A4 500fl (resma);24,90;20;99;21,90;
+SKU-1003;Papel A4 500fl (resma);24,90;100;;19,90;
+SKU-1003;Papel A4 500fl (resma);24,90;15;60;22,50;promo fevereiro
+SKU-1004;Marcador de Texto;4,75;1;9;4,75;
+SKU-1004;Marcador de Texto;4,75;10;99;4,20;
+SKU-1004;Marcador de Texto;4,75;100;;3,60;
+SKU-1004;Marcador de Texto;4,75;200;;;confirmar com fornecedor
+SKU-1004;Marcador de Texto;4,75;500;;-1,00;
+SKU-1005;Grampeador Medio;38,00;1;4;38,00;
+SKU-1005;Grampeador Medio;38,00;5;19;35,00;
+SKU-1005;Grampeador Medio;38,00;20;;31,50;
+SKU-1005;Grampeador Medio;38,00;50;;-10%;desconto negociado
+SKU-1006;Toner Compativel TN-2370;189,90;1;2;189,90;
+SKU-1006;Toner Compativel TN-2370;189,90;3;9;179,90;
+SKU-1006;Toner Compativel TN-2370;189,90;10;;R$ 165,00;
+SKU-1007;Mouse USB;29,90;1;9;29,90;
+SKU-1007;Mouse USB;29,90;10;49;27,40;
+SKU-1007;Mouse USB;29,90;10;49;27,40;
+SKU-1007;Mouse USB;31,00;50;;24,90;reajuste 01/2026
+SKU-1008;Teclado ABNT2;79,00;1;4;79,00;
+SKU-1008;Teclado ABNT2;79,00;5;19;72,50;
+SKU-1008;Teclado ABNT2;79,00;20;;66,90;
+SKU-1008;Teclado ABNT2;79,00;a partir de 50;;62,00;
+SKU-1009;Pasta Suspensa Kraft;3,20;1;9;3,20;
+SKU-1009;Pasta Suspensa Kraft;3,20;20;99;2,75;
+SKU-1010;Impressora Laser Mono;R$ 1.299,00;1;2;R$ 1.299,00;
+SKU-1010;Impressora Laser Mono;R$ 1.299,00;3;;R$ 1.189,50;
+SKU-9999;Item descontinuado;15,00;1;10;15,00;ainda esta na planilha

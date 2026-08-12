@@ -1,0 +1,111 @@
+{
+  "mcpServers": {
+    "versus-qwen": {
+      "command": "node",
+      "args": [
+        "/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/server.js"
+      ],
+      "env": {}
+    }
+  },
+  "permissions": {
+    "allow": [
+      "mcp__versus-qwen__get_phase_state",
+      "mcp__versus-qwen__get_decisions",
+      "mcp__versus-qwen__get_exit_criteria",
+      "mcp__versus-qwen__advance_phase",
+      "mcp__versus-qwen__start_iteration",
+      "mcp__versus-qwen__record_decision",
+      "mcp__versus-qwen__record_activated_lenses",
+      "mcp__versus-qwen__update_score",
+      "mcp__versus-qwen__mark_exit_criterion",
+      "mcp__versus-qwen__check_safeguard",
+      "mcp__versus-qwen__check_all_safeguards",
+      "mcp__versus-qwen__check_specs_status",
+      "mcp__versus-qwen__init_project",
+      "mcp__versus-qwen__get_phase_guidance",
+      "mcp__versus-qwen__update_project_spec",
+      "mcp__versus-qwen__start_new_cycle",
+      "ReadFileTool",
+      "WriteFileTool",
+      "EditFileTool",
+      "GlobTool",
+      "GrepSearchTool",
+      "ShellTool",
+      "WebFetchTool",
+      "WebSearchTool"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/inject-context.js\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "edit|write_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/phase-gate.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/loop-detector.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/block-destructive.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "grep_search|run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/truncation-check.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/test-outcome.js\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T21-certificados/.versus/qwen/stop-verify.js\"",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

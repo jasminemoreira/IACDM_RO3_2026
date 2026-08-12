@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "sonda-tls e repositorio abstraem dependências externas (rede e SQLite) com contratos explícitos de erro."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "web-ui expõe 5 telas HTML e sessão para operação humana direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto descrito como V(1) novo, sem menção a legado, migração de dados ou transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Premissa A7 assume volume pequeno (dezenas) e execução sequencial única; stack é leve sem alocação elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Classifica certificados técnicos e registra aprovações; não toma decisões automatizadas sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "pedido contém máquina de estados (pendente -> aprovado -> fechado) e autorizacao define papéis operacionais."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "trilha append-only com hash, registro de solicitanteId/aprovador e papéis visam auditoria e atribuição clara."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Estados classificados (ok/aviso/critico), erros tipados na sonda e verificarIntegridade() suportam diagnóstico contínuo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "reconciliacao compara estado observado vs esperado e gera sinais de correção (troca-nao-autorizada, escalar), formando ciclo de feedback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Atores são internos à organização; sem API pública, marketplace ou incentivos externos desalinhados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos definidos internamente no mesmo repositório; sem comunicação entre times independentes ou protocolos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Arquitetura hexagonal com domínio puro isolado, invariantes de construção e adaptadores facilita manutenção e evolução a longo prazo."
+    }
+  ]
+}

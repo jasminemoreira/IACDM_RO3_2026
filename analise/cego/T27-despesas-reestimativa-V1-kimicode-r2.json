@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 (SQLite) é uma dependência externa explicitada: transação leitura-para-atualização e A4 (um único processo escreve) mostram preocupação com falha e concorrência do banco."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-rendered operadas por pessoas (bandeja, delegações, auditoria), e M-11 é superfície HTTP usada por operadores."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "É um sistema novo com seed de matriz DoA e usuários (M-09); nada indica substituição ou convivência com sistema em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 fixa volume pequeno (dezenas a centenas de despesas) e não há recurso cujo custo cresça com o uso (sem IA, sem processamento em massa, sem infra elástica)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões sobre despesas são tomadas por aprovadores humanos; o sistema apenas valida regras (alçada, SoD), não pontua, classifica ou modera pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados da Despesa (M-01), cadeia de aprovação multi-ator com alçadas (M-02) e delegação temporária (M-03) formam um fluxo de negócio com caminhos de exceção (INV-9 a INV-13)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "INV-7 e INV-8 (M-06) exigem trilha append-only com ator efetivo, em-nome-de e limite exercido, e M-12 tem tela de auditoria — ações precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Nada declara requisitos operacionais de produção: identidade simulada (A5), relógio controlável por endpoint e volume pequeno (A7) indicam sistema de demonstração, sem métricas, logs ou alertas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há sincronização de estado, configuração em runtime que altere comportamento nem laço de realimentação: a expiração de delegação é avaliada sob demanda contra o relógio, sem processo autocorretivo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores com incentivos divergentes (solicitante quer aprovar, aprovador pode delegar): INV-2 e INV-4 existem contra autoapropriação, e A5 delimita explicitamente SoD contra engano, não contra adversário."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "12 módulos comunicam-se por contratos de interface explícitos (tipos de retorno, erros nomeados como ErroSoD(codigo, mensagem)), e a granularidade E=I₀/C faz das interfaces o único meio de coordenação entre implementações independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias e fronteiras são explicitadas (INV-1 fronteira inclusiva, A6 UTC/fronteira de vigência, centavos inteiros em INV-12) e há premissas de evolução sensíveis (A3 matriz congelada, API sem versionamento, dívida assumida em A4/A7)."
+    }
+  ]
+}

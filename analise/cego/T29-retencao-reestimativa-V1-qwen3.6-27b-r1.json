@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas (APIs, filas, bancos de dados); o sistema opera apenas em arquivos locais via adaptadores Store."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "A interface é um CLI (M-12) com 6 comandos explicitamente definidos para operadores, exigindo avaliação de usabilidade e clareza nos feedbacks de erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O módulo migrator (M-10) e a política de precheck/allow-lossy são projetados especificamente para trocar formatos de armazenamento (F1 ↔ F2) com controle de perda e consentimento."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa séries temporais, aplica compressão e agregação (downsampler), e o custo computacional e de I/O escala diretamente com o volume de dados ingeridos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema manipula apenas dados técnicos de séries temporais e não realiza classificações, pontuações ou decisões automatizadas sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Os casos de uso retain e migrate definem fluxos sequenciais com etapas explícitas (validação, planejamento, transformação, escrita) e tratamento estruturado de exceções (rejected, LossRisk)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura gera WriteReport e MigrationReport com contagem de rejeições, razões técnicas e flag de perda, além de exigir consentimento explícito para operações potencialmente destrutivas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Trata-se de uma ferramenta CLI executada em batch, sem requisitos declarados para monitoramento contínuo, alertas ou diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "A lógica é composta por funções puras e scripts de transação CLI, sem loops de feedback, auto-regulação ou sincronização dinâmica de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O sistema assume explicitamente um único escritor (P-A2) e não prevê interação entre atores independentes, mercados ou integrações públicas."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A porta Store (M-07) declara explicitamente capabilities(), usa Iterator sequencial para evitar inconsistências e exige WriteReport.rejected com razões, garantindo contrato não ambíguo entre implementações."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura define tolerâncias explícitas (ts_bits, quantized, MAX_BLOCK_SECONDS, xFilesFactor) e lida declarativamente com perda de precisão e limites físicos de representação."
+    }
+  ]
+}

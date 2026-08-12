@@ -1,0 +1,22 @@
+[project]
+name = "t24-catalogo"
+version = "0.1.0"
+description = "Catalogo de dados com donos declarados por dominio e linhagem entre eles"
+requires-python = ">=3.11"
+dependencies = [
+    "PyYAML>=6.0",
+    "networkx>=3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+t24 = "t24.cli:run"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["t24*"]

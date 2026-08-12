@@ -1,0 +1,7 @@
+dominio: b
+dono:
+  nome: Fulano
+  contato: fulano@empresa.com
+datasets:
+  - nome: y
+    campo_inventado: 1

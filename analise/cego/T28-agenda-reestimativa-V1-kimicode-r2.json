@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: portas Provider com token opaco invalidável (410), paginação que repete itens (A-2), janela obrigatória em M-05 e full resync em M-10 — falha/lentidão/dado inesperado do provedor é o cenário central."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe uma CLI que uma pessoa opera (sync, status, conflicts resolve --take a|b|merge, exit codes, saída tabular) — a resolução humana de conflitos depende dessa superfície ser compreensível."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield) sobre provedores simulados; não substitui nem modifica nenhum sistema em produção e não há caminho de rollback a preservar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Ferramenta local single-threaded com carga explicitamente limitada (PR-8: ~1.000 eventos por lado, < 5 s) e provedores simulados — não decide, aloca nem consome recurso cujo custo cresce com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisões automatizadas sobre pessoas (sem scoring, classificação ou moderação); conflitos são sobre eventos de calendário e sempre escalam para decisão humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita: M-08 modela conflitos como entidades com ciclo de vida aberto→resolvido, e M-10 orquestra o ciclo pull→reconciliar→aplicar com exceções (full resync, ESCALATE, limite de páginas) e responsabilidade humana na resolução."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões das quais alguém prestará contas: fila de conflitos persistida com decisão tomada (resolve(id, choice)), ancestral e mapa de identidade versionados, e escritas aplicadas em calendários externos que precisam ser atribuíveis a um ciclo/decisão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é sistema em produção com requisitos operacionais: escopo negativo exclui daemon, polling, webhook e agendamento — é uma CLI invocada sob demanda, com SyncReport como saída pontual."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O núcleo é sincronização de estado com realimentação: tokens de estado, ancestral como referência, neutralização de eco (A-5/PR-6) — o risco clássico de oscilação/deriva é ler a própria escrita como mudança externa e repropagar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Um único operador e provedores simulados sem agência estratégica; não há API pública, marketplace ou atores independentes com incentivos a defeccionar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos formais entre componentes independentes: porta Provider com invariantes declarados (token opaco, exatamente um token não-nulo, tombstone vs ausência), formato de mensagem .ics traduzido por M-03, e duas implementações da mesma porta (M-04/M-05) com semânticas divergentes que devem permanecer compatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema projetado para evoluir: porta Provider pronta para adaptador real futuro, tolerância explícita à variação entre provedores (paginação que repete item, janela obrigatória vs ausente, token distinto) e premissas AP4 documentadas como tolerâncias que podem ser violadas na vida longa do sistema."
+    }
+  ]
+}

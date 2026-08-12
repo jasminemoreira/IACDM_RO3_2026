@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% set secao = 'historico' %}
+{% block titulo %}Histórico — Motor de preços{% endblock %}
+{% block conteudo %}
+<h1>Histórico de decisões</h1>
+
+<form method="get" action="/historico" class="caixa">
+  <div class="linha">
+    <div>
+      <label for="sku">Filtrar por SKU</label>
+      <input id="sku" name="sku" value="{{ sku }}">
+    </div>
+    <div><button type="submit">Filtrar</button></div>
+  </div>
+</form>
+
+{% if comparacao %}
+{% set d = comparacao.registrada %}
+<h2>Registrado × recalculado</h2>
+<div class="caixa">
+  <div class="rolar"><table>
+    <thead><tr><th scope="col"></th><th scope="col">Preço unitário</th>
+               <th scope="col">Versão de regras</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Registrado — o que o motor respondeu</th>
+          <td class="preco" style="font-size:1.1rem">{{ d.preco_unitario }}</td>
+          <td>{{ d.versao_regras }} · {{ d.registrada_em.strftime('%d/%m/%Y %H:%M') }}</td></tr>
+      <tr><th scope="row">Recalculado — o que as regras de hoje dizem sobre {{ d.data_pedido.strftime('%d/%m/%Y') }}</th>
+          <td class="preco" style="font-size:1.1rem">{{ comparacao.recalculada.preco_unitario }}</td>
+          <td>vigente hoje</td></tr>
+    </tbody>
+  </table></div>
+  {% if comparacao.divergem %}
+  <p class="aviso"><strong>Os dois valores divergem.</strong> Isso não é erro: o
+    registrado prova o que foi respondido na época; o recalculado mostra o efeito
+    das regras atuais sobre aquela data.</p>
+  {% else %}
+  <p class="ok">Os dois valores coincidem.</p>
+  {% endif %}
+</div>
+{% endif %}
+
+<div class="rolar">
+<table>
+  <thead><tr><th scope="col">Quando</th><th scope="col">SKU</th><th scope="col">Qtd</th>
+             <th scope="col">Data do pedido</th><th scope="col">Unitário</th>
+             <th scope="col">Total</th><th scope="col">Versão</th>
+             <th scope="col">Solicitante</th><th scope="col"></th></tr></thead>
+  <tbody>
+  {% for d in decisoes %}
+    <tr>
+      <td>{{ d.registrada_em.strftime('%d/%m/%Y %H:%M') }}</td>
+      <td>{{ d.sku }}</td><td>{{ d.quantidade }}</td>
+      <td>{{ d.data_pedido.strftime('%d/%m/%Y') }}</td>
+      <td>{{ d.preco_unitario }}</td><td>{{ d.total }}</td>
+      <td>{{ d.versao_regras }}</td><td>{{ d.solicitante }}</td>
+      <td><a href="/historico?sku={{ sku }}&decisao={{ d.id }}">recalcular</a></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="9" class="discreto">Nenhuma decisão registrada ainda.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

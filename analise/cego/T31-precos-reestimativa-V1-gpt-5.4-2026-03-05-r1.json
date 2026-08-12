@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de SQLite no `repositorio-sqlite` e entrada externa via importação CSV."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa na `ui-web`, com 4 telas e fluxo de simulação/importação/histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e inclui `importador-csv` e `prova-paridade` para transição/paridade."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Há reprocessamento potencial de muitas linhas na importação e na `prova-paridade`, com custo crescendo com volume de uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; o domínio é precificação de produtos por SKU/faixa."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de rascunho → validação → publicação → histórico/recalcular, com estados e exceções."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões, mantém histórico, versões imutáveis e explicação/auditoria da decisão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É sistema de produção com histórico, registro de decisões e necessidade de diagnosticar divergências/importações/publicações."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de correção na `prova-paridade`, que recalcula no motor e compara com o legado para detectar desvio."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes, API pública exposta, marketplace ou integração externa com incentivos conflitantes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos formais entre módulos/adapters e formatos sensíveis como moeda BR, CSV, DTOs e regras de faixa/vigência."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É sistema modular e evolutivo, com tolerâncias explícitas como arredondamento, bordas de faixa e versionamento imutável."
+    }
+  ]
+}

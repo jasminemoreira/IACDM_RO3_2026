@@ -1,0 +1,19 @@
+T30-notifica · V1 (94 linhas de arquitetura) · kimicode · temp/seed não expostos pelo CLI · 3 rodadas
+
+lente                              estimado V1    Fase 2 declarou
+RES Resilience                     sim            SIM
+UX UI/UX                           sim            SIM
+MIG Migration / Coexistence        não            não
+SUS Sustainability / Proportionality sim            SIM
+ETI Ethical / Human Impact         sim            SIM
+PRO Process / Workflow             sim            SIM
+GOV Governance / Accountability    sim            SIM
+OBS Observability / Operability    sim            SIM
+CTR Control Engineering            sim            SIM
+JOG Game Theory                    sim            SIM
+LIN Linguistics / Grammar          sim            SIM
+MEC Mechanical Engineering         sim            SIM
+
+decisões estáveis: 12 coincidem, 0 divergem
+conjunto declarado : CTR, ETI, GOV, JOG, LIN, MEC, OBS, PRO, RES, SUS, UX
+conjunto estimado  : CTR, ETI, GOV, JOG, LIN, MEC, OBS, PRO, RES, SUS, UX

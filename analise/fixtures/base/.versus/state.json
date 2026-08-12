@@ -1,0 +1,19 @@
+{
+  "projectName": "FIXTURE",
+  "projectDescription": "fixture sintético",
+  "currentPhase": 2,
+  "createdAt": "2026-08-05T00:00:00.000Z",
+  "updatedAt": "2026-08-05T00:00:00.000Z",
+  "decisions": [
+    {
+      "id": "d1",
+      "phase": 2,
+      "category": "architecture",
+      "content": "ACTIVATED LENSES — iteration 1, against V(1). Resilience, Observability / Operability, Control Engineering. NOT ACTIVATED: Game Theory — sem atores estratégicos; UI/UX — sem interface; Migration / Coexistence — greenfield.",
+      "timestamp": "2026-08-05T00:00:00.000Z"
+    }
+  ],
+  "exitCriteria": [],
+  "safeguards": [],
+  "history": []
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "fonte-de-metricas (M-09) distingue Amostra de Indisponivel e contadores (M-05) tratam falha/erro — há dependência externa de coleta que pode falhar ou responder devagar"
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "cli (M-12) é superfície operada por uma pessoa: imprime progresso, motivo e decisão final, e recebe abortar do operador"
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "o próprio problema é canário convivendo com a versão estável, com plano-de-passos (M-06) e rollback para 100% estável (M-10) — transição velho→novo com caminho de reversão"
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "o sistema aloca um recurso cujo custo cresce com o uso: tráfego de produção exposto ao canário (pesos de alvo-de-implantacao) e volume de amostras coletadas por métrica×participante"
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "as decisões automatizadas recaem sobre versões de software e pesos de tráfego, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos"
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "coordenador (M-07) é uma máquina de estados explícita (progredindo/pausado/revertido/promovido) com ator humano (operador pode abortar) e caminhos de exceção"
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "cada decisão de aprovar/reprovar/reverter precisa ser atribuível: coordenador emite eventos com motivo (guarda-absoluta devolve Motivo) e cli registra a decisão final — alguém prestará contas do rollback"
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "sistema com requisito operacional em produção: detecção de degradação por métricas, eventos do coordenador e observação pela cli são o mecanismo de diagnóstico"
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "é um sistema de malha fechada: métricas geram sinal de erro (vereditos, guarda-absoluta) e o coordenador corrige a distribuição de peso — risco clássico de oscilação/drift entre passos"
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "não há atores independentes com incentivos próprios: operador, canário e estável pertencem ao mesmo dono; sem API pública, marketplace ou plataforma"
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "há contratos de interface entre componentes independentes: três portas (relogio, fonte-de-metricas, alvo-de-implantacao) com adaptadores trocáveis e tipos como Amostra|Indisponivel — duas implementações corretas do contrato podem divergir"
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "o sistema vive de tolerâncias explícitas: amostra mínima ≥50, confiança 98%, limiar de 4 erros, limiares da guarda-absoluta — e as premissas A3/A4/A6 questionam se esses valores toleram variação ou só funcionam no ponto exato"
+    }
+  ]
+}

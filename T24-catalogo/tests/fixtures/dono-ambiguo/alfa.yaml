@@ -1,0 +1,7 @@
+# Achado GOV-04. Duas pessoas distintas, mesmo contato.
+dominio: alfa
+dono:
+  nome: Maria Silva
+  contato: dados@empresa.com
+datasets:
+  - nome: x

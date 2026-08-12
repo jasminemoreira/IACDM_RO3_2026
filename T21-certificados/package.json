@@ -1,0 +1,20 @@
+{
+  "name": "t21-certificados",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monitor de validade de certificados X.509 com renovacao antecipada e trilha auditavel de quem aprovou cada emissao",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "start": "node --no-warnings src/main.ts",
+    "init": "node --no-warnings src/main.ts --init",
+    "test": "node --no-warnings --test-reporter=tap --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "^5.7.0"
+  }
+}

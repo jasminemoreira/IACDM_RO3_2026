@@ -1,0 +1,19 @@
+T24-catalogo · V1 (106 linhas de arquitetura) · kimicode · temp/seed não expostos pelo CLI · 3 rodadas
+
+lente                              estimado V1    Fase 2 declarou
+RES Resilience                     não            SIM   ← DIVERGE
+UX UI/UX                           sim            SIM
+MIG Migration / Coexistence        não            não
+SUS Sustainability / Proportionality não            SIM   ← DIVERGE
+ETI Ethical / Human Impact         não            não
+PRO Process / Workflow             não            SIM   ← DIVERGE
+GOV Governance / Accountability    sim            SIM
+OBS Observability / Operability    não            não
+CTR Control Engineering            não            SIM   ← DIVERGE
+JOG Game Theory                    1/3            SIM
+LIN Linguistics / Grammar          sim            SIM
+MEC Mechanical Engineering         sim            SIM
+
+decisões estáveis: 7 coincidem, 4 divergem · oscilou em 1
+conjunto declarado : CTR, GOV, JOG, LIN, MEC, PRO, RES, SUS, UX
+conjunto estimado  : GOV, LIN, MEC, UX

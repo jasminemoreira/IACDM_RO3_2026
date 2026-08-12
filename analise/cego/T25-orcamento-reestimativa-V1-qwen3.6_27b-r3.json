@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa síncrona (Anthropic) e banco de dados local (SQLite) com premissas não verificadas sobre falhas e latência."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença de painel web (SPA) e endpoints de API para operador gerenciar tetos e visualizar consumo."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (Fase 1), sem indicação de substituição ou coexistência com sistema legado em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema existe para controlar o custo financeiro direto do uso de LLMs (recurso cujo custo cresce com o uso)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automáticas referem-se a limites orçamentários e técnicos, não a classificação ou avaliação de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo complexo de estado com reserva atômica, chamada externa assíncrona e reconciliação idempotente (máquina de estados)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Necessidade de auditoria de gastos, identificação de entidades via chaves virtuais e registro de eventos de uso."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema em produção com requisitos operacionais explícitos (painel de status, logs de reconciliação, premissas de relógio e concorrência)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de feedback síncrono: leitura do estado atual (teto/gasto) para decidir permitir/negar a próxima ação, com risco de drift se a reconciliação falhar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Atores externos (aplicativos consumidores) podem tentar burlar o gateway ou explorar falhas na validação de chaves/preços (premissa A5)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos críticos entre módulos internos (ex: formato do contador, exceções de preço) e adaptação de dados externos (SDK Anthropic -> modelo interno)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura monolítica simples com dependências mínimas e contrato de interface fechado, sem indicação de acúmulo de dívida técnica ou tolerância a variações físicas."
+    }
+  ]
+}

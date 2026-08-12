@@ -1,0 +1,9 @@
+# Viola INV-5. Esperado: erro nomeando a referencia quebrada vendas.inexistente.
+dominio: financeiro
+dono:
+  nome: Joao Souza
+  contato: joao.souza@empresa.com
+datasets:
+  - nome: receita
+    alimentado_por:
+      - vendas.inexistente

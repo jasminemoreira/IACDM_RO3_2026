@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Tratamento explícito de falhas transitórias vs permanentes em canais externos, dead-letter, retry com jitter/backoff e timeouts para SMTP/webhook/SQLite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo CLI (M-02) para operadores e cabeçalhos List-Unsubscribe no e-mail constituem superfícies operadas diretamente por pessoas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descreve um sistema verde sem menção a substituição de legado, estratégia de migração de dados ou fase de coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Impõe worker único, SQLite local e token bucket por pessoa para limitar throughput e controlar consumo de recursos em escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas de supressão e janelas de silêncio afetam diretamente a pessoa, com transparência via explain e enum fechado de motivos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Pipeline de supressão em dois estágios, máquina de estados explícita da notificação e fluxos de exceção mapeados (dead-letter, retry)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registro de chaves de idempotência, motivos de supressão estruturados, dead-letter e comandos operacionais garantem atribuição e auditoria de ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "CLI operacional (pending, explain, retry), dead-letter e agregação de estados de entrega permitem diagnóstico e remediação sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Token bucket consome na entrega e emite retryAfter, combinado com reavaliação de supressão no estágio deliver e backoff para corrigir desvios."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Assume cooperação de emissores (fornecer chave de dedup, PRE-3) e destinos de webhook (idempotência, PRE-7) sem mecanismos de verificação ou penalização."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contrato ChannelPort com booleano permanent e enum fechado de decisão de supressão evitam implementações incompatíveis dos adaptadores de canal."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerância a drift de relógio (300 s), tratamento de cruzamento de meia-noite (EDGE-1) e jitter absorvem variações temporais e de rede."
+    }
+  ]
+}

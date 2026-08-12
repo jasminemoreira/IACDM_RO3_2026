@@ -1,0 +1,1016 @@
+{
+  "agent": "claude",
+  "projectName": "T27",
+  "projectDescription": "T27",
+  "projectSpec": {
+    "stack": [
+      {
+        "value": "TypeScript",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Node.js",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Fastify",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "better-sqlite3 (SQLite em arquivo)",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "UI server-rendered (HTML/CSS, sem build, sem SPA)",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Vitest",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      }
+    ],
+    "outOfScope": [
+      {
+        "value": "Autenticação real (senha/sessão) — identidade simulada",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Notificações (e-mail/push)",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "SLA / escalonamento por tempo",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Qualquer agendamento (cron, timer) — expiração avaliada sob demanda contra o relógio",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Matriz DoA editável em runtime",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Override administrativo em despesa travada",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Delegação transitiva / multi-passo",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Anexos e comprovantes",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Multi-moeda e câmbio",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Integração ERP/contábil",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Relatórios e BI",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Orçamento por centro de custo",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Paginação e busca avançada",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "API pública versionada",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Multi-tenant",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      }
+    ],
+    "patterns": [
+      {
+        "value": "Hexagonal (Ports & Adapters)",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "KISS + YAGNI (único princípio transversal selecionado)",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Domain Model (Fowler) — invariantes nos objetos de domínio",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Repository (porta) + mapeamento manual, sem ORM",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Nenhum padrão GoF",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Single-threaded + transação SQLite leitura-para-atualização",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      }
+    ],
+    "constraints": [
+      {
+        "value": "Dinheiro em inteiro de centavos (BRL) — nenhuma comparação de alçada em ponto flutuante",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Domínio (M-01..M-08) não importa HTTP nem SQLite — dependências apontam para dentro",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Relógio é porta injetável; nenhum módulo de domínio chama Date.now() diretamente",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Trilha é append-only: TrilhaRepo expõe apenas anexar e porDespesa",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "13 invariantes INV-1..INV-13 são vinculantes",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Módulos e nomes fixados em specs/technical/architecture.md — Fases 2 e 5 devem usar os mesmos nomes",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "8 a 12 módulos, sessão única de 2-4h (ENUNCIADO §2)",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Critérios de aceite CA-1..CA-11 congelados antes de codar",
+        "phase": 1,
+        "at": "2026-08-11T11:17:55.003Z"
+      },
+      {
+        "value": "Arquitetura vigente é V(4) em specs/technical/architecture.md — as seções V(1), V(2) e V(3) são histórico, não especificação",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "Invariantes vigentes: INV-1..INV-14 e INV-16..INV-18; INV-15 foi REVOGADA em V(3)",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "Regra do pulo: nível sem decisor é pulado e grava NIVEL_PULADO na trilha; contida por INV-17 (criação) e INV-18 (aprovação)",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "'Decidível' tem definição única: autoridade.resolver devolve sucesso. Nenhum segundo conceito de elegibilidade no sistema",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "Delegação é caminho adicional, não transferência de posse: delegado inelegível por INV-2/INV-4 não retira o item do delegante",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "Núcleo (M-01..M-08) retorna Resultado<T,ErroDominio> e nunca lança; exceção só na borda de infraestrutura",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "Instante é string ISO-8601 UTC; agora() = relógio real + T27_RELOGIO_OFFSET_MS lido no boot",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "Cookie carrega apenas o nonce anti-CSRF; identidade viaja no parâmetro u a cada requisição",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "render(template, dados) escapa todo valor exceto os do tipo marcado Html",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "registrar() da trilha é chamado dentro de emTransacao e seu erro aborta a transação inteira",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      },
+      {
+        "value": "CA-1 e CA-3 foram reescritos nas Fases 3 com aprovação explícita do operador — ver specs/validation/criterios-aceite.md, não o texto original da Fase 0",
+        "phase": 4,
+        "at": "2026-08-11T12:29:02.611Z"
+      }
+    ]
+  },
+  "currentPhase": 7,
+  "currentIteration": 1,
+  "phase0Score": 96,
+  "phase0Breakdown": {
+    "clarezaProblema": 10,
+    "casosDeUso": 14,
+    "vocabulario": 10,
+    "ambiguidades": 14,
+    "foraDeEscopo": 10,
+    "criteriosSucesso": 10,
+    "premissas": 8,
+    "documentacao": 5,
+    "usuarioConfirmou": 10,
+    "iaConfiante": 5
+  },
+  "decisions": [
+    {
+      "id": "6a6dcc45-a1c7-47dd-aaf5-2c70d409862f",
+      "phase": 0,
+      "category": "scope",
+      "content": "DELIVERY TARGET: Produto completo — todos os requisitos entregues em um único ciclo. Sem divisão de escopo v1.0/v2.0, exceto mediante bloqueador técnico documentado (record_decision). Coerente com a forma congelada do ENUNCIADO.md §2: 8-12 módulos, sessão única de 2-4h, critério de acerto objetivo escrito antes de codar.",
+      "timestamp": "2026-08-11T10:55:17.285Z"
+    },
+    {
+      "id": "65f8ab7f-ce3d-43cb-b077-d13730c63c7a",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N1 DOMÍNIO (vocabulário fixado): (a) ALÇADA = limite de valor preso ao PAPEL (cargo); a pessoa herda a alçada do papel que ocupa. (b) ESCALONAMENTO = cadeia sequencial: a despesa sobe nível a nível, cada aprovador da cadeia decide, até que o nível cuja alçada cobre o valor dê o aval final. (c) DELEGAÇÃO = o delegado exerce a ALÇADA DO DELEGANTE, decidindo em nome dele; o registro guarda ambos (ator efetivo + em nome de). (d) FILA = bandeja por aprovador, ordenada, contendo as pendências próprias + as recebidas por delegação.",
+      "timestamp": "2026-08-11T10:57:32.229Z"
+    },
+    {
+      "id": "9049b63d-9125-4f50-a722-372edf4f43a0",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N2 PROBLEMA (5W1H): (Where) web app local — API HTTP + UI web, persistência local, sobe com um comando, sem infra externa. (Who) três papéis — Solicitante, Aprovador, Admin — com IDENTIDADE SIMULADA (usuário ativo informado/selecionado, sem senha); autenticação real fora de escopo. (When) delegação tem vigência início/fim; ao expirar, o item volta à bandeja do delegante e as ações já tomadas dentro da vigência permanecem válidas para sempre — autoridade avaliada no INSTANTE DO ATO. (How/auditoria, 4 exigências) 1. cada ação registra quem decidiu, quando, em nome de quem e sob qual limite de alçada vigente; 2. histórico completo e imutável das transições de cada despesa; 3. histórico das delegações (criadas, revogadas, expiradas); 4. motivo textual OBRIGATÓRIO em rejeição (comentário opcional em aprovação).",
+      "timestamp": "2026-08-11T10:57:37.135Z"
+    },
+    {
+      "id": "6b11c2bc-f5d2-4653-b3af-f9e82b6c1ba3",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N3 ELEMENTOS (restrições e invariantes): (a) FRONTEIRA DE ALÇADA inclusiva — o papel aprova quando valor <= limite; despesa de valor exatamente igual ao limite é encerrada por aquele papel. (b) SoD — quatro invariantes obrigatórias: 1. ninguém aprova a própria despesa (inclusive quando ocuparia o nível por delegação recebida); 2. delegação NÃO é transitiva — B não pode redelegar autoridade recebida de A (elimina ciclos A→B→C); 3. um mesmo ator não decide duas vezes na mesma cadeia da mesma despesa; 4. delegações sobrepostas do mesmo delegante são proibidas (vigências de um mesmo delegante não podem se cruzar). (c) PERSISTÊNCIA — SQLite em arquivo local, com transações reais (necessárias para trava de decisões concorrentes e trilha imutável); estado sobrevive ao restart. (d) RELÓGIO — tempo é dependência explícita (porta Clock injetável) com mecanismo de avanço para teste/demo, de modo que 'delegação expirou com item na fila' seja testável de forma determinística.",
+      "timestamp": "2026-08-11T10:59:38.822Z"
+    },
+    {
+      "id": "e72bd1bd-44cc-4e81-9b55-47bb90ecd6ca",
+      "phase": 0,
+      "category": "technology",
+      "content": "N4 VIABILIDADE + STACK: nenhuma capacidade essencial ausente (HTTP local, SQLite transacional, relógio injetável, runner de teste reconhecido, aritmética monetária exata, automação de UI) — sem bloqueador técnico. STACK ESCOLHIDA: TypeScript + Fastify + better-sqlite3, UI server-rendered (sem passo de build), testes com Vitest via 'npm test'. Dinheiro representado em INTEIRO DE CENTAVOS (sem ponto flutuante). Rejeitadas: Python/FastAPI (equivalente; escolha por fluência) e React SPA/Vite (~60% mais LOC, toolchain de build, risco de consumir a janela de 2-4h em encanamento em vez de regra de negócio).",
+      "timestamp": "2026-08-11T11:01:02.625Z"
+    },
+    {
+      "id": "7cfeb8e4-9ec7-4b92-8611-7a6d9949e3a7",
+      "phase": 0,
+      "category": "requirement",
+      "content": "N4 PROCESSOS (regras de fluxo): (a) REJEIÇÃO em qualquer nível da cadeia é TERMINAL — encerra a despesa como REJEITADA na hora, com motivo obrigatório, sem retorno à fila; para tentar de novo, cria-se nova despesa (não há estado 'devolvida' nem reinício de cadeia). (b) DESPESA ACIMA DO MAIOR LIMITE da hierarquia é RECUSADA NA CRIAÇÃO com mensagem explícita — não entra na fila, eliminando o item eternamente pendente sem aprovador possível. (c) DELEGAÇÃO é criada e revogada pelo PRÓPRIO DELEGANTE; o Admin também pode revogar (válvula de escape para delegante indisponível). A revogação é registrada na trilha e devolve imediatamente as pendências ao delegante.",
+      "timestamp": "2026-08-11T11:01:06.072Z"
+    },
+    {
+      "id": "314a88cb-64dc-4be6-8757-b367db7f0b62",
+      "phase": 0,
+      "category": "scope",
+      "content": "N5 PRODUTO. ESCOPO ADMIN: papel de governança apenas — revogar delegações e consultar auditoria. Hierarquia de papéis, limites de alçada e usuários vêm de SEED FIXO, não editável em runtime (sem tela de matriz DoA). FORA DE ESCOPO (YAGNI, confirmado pelo operador): 1. autenticação real (senha/sessão) — identidade simulada; 2. notificações (e-mail/push) e SLA/prazo com escalonamento automático por tempo; 3. anexos/comprovantes, multi-moeda e câmbio (despesa = valor em BRL inteiro de centavos + descrição); 4. integração ERP/contábil, relatórios/BI e orçamento por centro de custo; 5. edição de usuários/papéis/limites em runtime; 6. override administrativo forçando decisão em despesas travadas. CAPACIDADE DE PRODUÇÃO: confirmada pelo operador — nenhum ativo depende de terceiros, licença ou conta externa; o operador executará pessoalmente o teste manual da Fase 6 (CA-11). Sem CAPACITY BLOCKER.",
+      "timestamp": "2026-08-11T11:02:32.242Z"
+    },
+    {
+      "id": "ff277b3c-e56e-4e8c-955d-5efe26993f95",
+      "phase": 0,
+      "category": "requirement",
+      "content": "CRITÉRIO DE ACERTO OBJETIVO (escrito antes de codar, exigência do ENUNCIADO §2) — 11 critérios de aceite verificáveis: CA-1 despesa que exige N níveis percorre exatamente N aprovações antes de APROVADA (N=1,2,3). CA-2 valor exatamente igual ao limite encerra naquele papel (valor <= limite). CA-3 com delegação ativa A->B o item aparece na bandeja de B e não na de A. CA-4 decisão de B registra ator efetivo=B, em nome de=A, autoridade=limite de A. CA-5 ao expirar/revogar, o pendente volta à bandeja de A e as decisões tomadas dentro da vigência permanecem válidas. CA-6 cada uma das 4 invariantes SoD bloqueia com mensagem específica. CA-7 despesa acima do maior limite é recusada na criação. CA-8 rejeição sem motivo é recusada; com motivo encerra REJEITADA. CA-9 trilha de auditoria recupera a sequência completa e imutável de transições. CA-10 estado sobrevive ao restart. CA-11 (humano) operador executa os casos de uso na UI de ponta a ponta e confirma. CA-1..CA-10 são verificáveis por teste automatizado (Vitest); CA-11 exige validação humana na Fase 6.",
+      "timestamp": "2026-08-11T11:02:40.017Z"
+    },
+    {
+      "id": "cbaee241-d0d8-4473-883f-e7cb2a9910c7",
+      "phase": 0,
+      "category": "requirement",
+      "content": "CASOS DE USO (Fase 0) — UC-1 Solicitar despesa: Solicitante informa valor (centavos BRL) e descrição; sistema recusa se valor > maior limite da hierarquia (INV-10), senão cria PENDENTE no nível mais baixo da cadeia. UC-2 Aprovar na cadeia: Aprovador abre a bandeja, aprova item cujo valor <= seu limite -> APROVADA; se valor > seu limite -> escala ao nível seguinte (PENDENTE nível k+1). UC-3 Rejeitar com motivo: Aprovador rejeita informando motivo obrigatório; despesa encerra REJEITADA (terminal, INV-11); sem motivo a ação é recusada (INV-9). UC-4 Delegar temporariamente: Aprovador A cria delegação para B com vigência início/fim; sistema recusa se B receberia autoridade já delegada (INV-3 não transitiva) ou se A já tem delegação ativa sobreposta (INV-5); durante a vigência os pendentes de A aparecem na bandeja de B. UC-5 Decidir por delegação: B aprova/rejeita item de A exercendo a alçada de A; o registro guarda ator efetivo=B, em nome de=A, limite exercido=limite de A (INV-7). UC-6 Revogar/expirar delegação: A (ou o Admin) revoga antes do fim, ou a vigência expira pelo relógio; pendentes voltam à bandeja de A e as decisões já tomadas dentro da vigência permanecem válidas (INV-6). UC-7 Consultar trilha: qualquer ator abre uma despesa e vê a sequência completa e imutável de transições, com autor, instante e autoridade exercida (INV-8). CASOS DE BORDA: valor exatamente igual ao limite (INV-1); auto-aprovação, inclusive via delegação recebida (INV-2); mesmo ator ocupando dois níveis da mesma cadeia (INV-4); expiração da delegação com item na bandeja do delegado; decisões concorrentes no mesmo item (trava por transação SQLite); restart do processo com estado preservado.",
+      "timestamp": "2026-08-11T11:05:14.734Z"
+    },
+    {
+      "id": "a8adffe7-8ae9-4269-913f-182fbdab16c5",
+      "phase": 0,
+      "category": "requirement",
+      "content": "AMBIGUIDADES RESOLVIDAS (validação da síntese = 'Correta'): (1) INÍCIO DA CADEIA — a cadeia começa no nível imediatamente ACIMA do papel do solicitante (um Gerente que solicita sobe direto ao Diretor; nunca um subordinado decide sobre gasto de superior). Reforça INV-2 estruturalmente. (2) ALCANCE DA DELEGAÇÃO — GLOBAL: uma delegação ativa transfere TODA a autoridade de aprovação de A; não há teto parcial opcional (entidade Delegação permanece mínima: delegante, delegado, início, fim, estado). (3) ORDENAÇÃO DA BANDEJA — FIFO, mais antiga primeiro, com valor visível; ordem determinística e testável. SÍNTESE (teach-back iteração 1) VALIDADA PELO OPERADOR como CORRETA.",
+      "timestamp": "2026-08-11T11:10:46.832Z"
+    },
+    {
+      "id": "38f56ced-c990-4b03-905f-61ecb9ebf9de",
+      "phase": 1,
+      "category": "pattern",
+      "content": "PADRÕES P1 (confirmados pelo operador): Arquitetura = HEXAGONAL (Ports & Adapters) — domínio puro sem dependência de HTTP/SQLite; Clock e persistência são portas explícitas. Princípios transversais = APENAS KISS + YAGNI (SOLID, DDD tático e composição-sobre-herança foram deliberadamente NÃO selecionados — tratar como restrição dura: nenhum padrão entra sem se pagar). Concorrência = single-threaded (Node) + transação SQLite com leitura-para-atualização: a decisão inteira (ler estado, checar invariantes, gravar decisão + trilha + novo estado) roda dentro de UMA transação síncrona do better-sqlite3; decisão concorrente no mesmo item encontra o estado já mudado e falha com erro de conflito determinístico. GoF = NENHUM específico (Strategy, State e Specification avaliados e recusados sob KISS). Domínio (Fowler) = DOMAIN MODEL — as invariantes moram nos objetos de domínio, testáveis sem banco nem HTTP. Dados (Fowler) = REPOSITORY (porta) + mapeamento manual com SQL explícito, sem ORM; repositório em memória disponível para teste.",
+      "timestamp": "2026-08-11T11:16:01.301Z"
+    },
+    {
+      "id": "5884b4b8-4f38-4982-8154-e18b2d353a39",
+      "phase": 1,
+      "category": "architecture",
+      "content": "LACUNA RESOLVIDA + PREMISSA ACEITA. (1) INV-13 (nova, exposta pela decomposição de M-02): despesa cujo SOLICITANTE ocupa o papel de topo da hierarquia é RECUSADA NA CRIAÇÃO — não existe nível acima e INV-2 proíbe auto-aprovação. Mesma lógica de INV-10: nunca existe pendência sem aprovador possível. Alternativas recusadas: papel 'Conselho' acima do Diretor (empurra o problema um nível) e aprovação por par do mesmo nível (segundo modo de roteamento em M-02/M-04, superfície extra sob KISS). (2) PREMISSA A5 ACEITA EXPLICITAMENTE: a identidade simulada é confiável, logo toda invariante SoD é contornável por quem chame a API diretamente. O sistema impõe SoD contra ENGANO, não contra ADVERSÁRIO. Limitação consciente e registrada — a lente Security da Fase 2 registrará o achado já nascido aceito, impedindo que autenticação entre de contrabando no escopo (AP9). (3) DECOMPOSIÇÃO de 12 módulos e contratos VALIDADOS pelo operador.",
+      "timestamp": "2026-08-11T11:16:08.499Z"
+    },
+    {
+      "id": "af35c15b-2e15-460c-b1e4-5cf69f561956",
+      "phase": 2,
+      "category": "architecture",
+      "content": "ANÁLISE DE CONCENTRAÇÃO (iteração 1, V(1), 57 achados). POR MÓDULO: matriz-doa e bandeja empatam no topo com 7 achados cada, atingidos por 7 das 15 lentes — nenhum módulo foi atingido por TODAS as lentes, logo nenhum exige redesenho total. matriz-doa concentra o problema da CADEIA: subespecificada (IMP-01, LING-02), não validada (A-01), montada sobre papéis e não pessoas (PROC-01) e sem defesa contra splitting (GT-02). bandeja concentra o problema do ESTADO DERIVADO: PROC-02 e CTRL-01 são o mesmo defeito por dois ângulos (posse da pendência derivada e nunca reconciliada com a trilha), PERF-01 e SUS-02 idem. ui-web tem 7 achados mas só 3 lentes (5 são UI/UX) — é subespecificação de superfície, não desenho errado. dominio-despesa e portas-repositorio têm 1 achado cada, possivelmente rasos demais para atrair crítica. POR LENTE: Assumptions é a mais dispersa, atingindo 6 dos 12 módulos. FALHA SISTÊMICA IDENTIFICADA: premissa declarada != premissa imposta — o desenho enumera A1-A8 honestamente e depois confia nelas; nenhuma tem verificação em código. Seis módulos falham pelo mesmo mecanismo. A Fase 3 deve responder com UM mecanismo único (validação da matriz e das premissas na carga/na borda), não com oito remendos isolados — responder módulo a módulo produziria correções individualmente corretas e sistemicamente contraditórias.",
+      "timestamp": "2026-08-11T11:23:56.424Z"
+    },
+    {
+      "id": "15884573-139c-49ea-9ff9-27fb2a19ddad",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(2) — SIMPLIFICAÇÃO UNIFICADA (8 movimentos R1-R8, persistida em specs/technical/architecture.md, seção V(2); V(1) preservada). R1 premissa declarada vira verificação executada: matriz DoA validada na carga e imutável em memória, semear() só em banco vazio (resolve A-01, A-02, IMP-05; A1 e A3 deixam de ser premissas e viram INV-14). R2 cadeia como função total explícita: cadeia(valor,papelSolicitante) = papéis de nível estritamente acima do solicitante até o menor papel cujo limite >= valor, inclusive, em ordem crescente; N de CA-1 = |cadeia| (resolve IMP-01 e LING-02). R3 remove o evento DEVOLVIDA_AO_DELEGANTE: a posse da pendência é 100% derivada, fonte de verdade única; decisão passa a gravar delegacao_id (resolve PROC-02, CTRL-01, GOV-01). R4 remove POST /relogio/avancar da API; tempo controlado por injeção em teste e variável T27_RELOGIO no boot; porta Clock de produção só de leitura (resolve SEC-02, IMP-04, GOV-03, CTRL-02, ARQ-04, A-04). R5 borda única: usuário validado em um ponto, limite de corpo, escape por padrão na renderização, identidade explícita por requisição sem cookie de sessão (elimina CSRF por construção), prepared statements exigidos no contrato (resolve A-05, SEC-03, SEC-04, SEC-05, RES-03). R6 rebaixa a promessa ao que o código sustenta: INV-8 é append-only PELA APLICAÇÃO, sem proteção contra adulteração do arquivo por fora; retenção ilimitada como decisão consciente (REG-01, REG-02, SUS-01 aceitos com justificativa). R7 convenção única de contrato: núcleo retorna Resultado<T,ErroDominio> e nunca lança; Instante = string ISO-8601 UTC; Evento como união discriminada; pendentesDe(nivel) vira pendentes(); autoridade não depende de trilha (resolve LING-01, LING-03, LING-04, IMP-02, ARQ-01, ARQ-05). R8 bandeja cai de 4 para 2 dependências (resolve ARQ-02); casos-de-uso mantido como camada de aplicação (ARQ-03 aceito). NOVAS INVARIANTES nascidas da crítica: INV-14 matriz válida (níveis contíguos, únicos, limites estritamente crescentes) verificada na carga; INV-15 todo papel da cadeia tem titular, senão a criação é recusada (fecha PROC-01, o último estado órfão); INV-16 delegação não pode ser antedatada. ANTI-AP2 VERIFICADO: 12 módulos antes e depois (nenhum acrescentado), 8 rotas -> 7, 4 tipos de evento -> 3, bandeja 4 deps -> 2, 8 premissas não verificadas -> 5, convenção de erro ambígua -> 1. LOC estável (<10%): adições compensadas por remoções.",
+      "timestamp": "2026-08-11T11:31:14.302Z"
+    },
+    {
+      "id": "927c6bb2-8f44-4f1c-b119-a8ce17b8c140",
+      "phase": 3,
+      "category": "scope",
+      "content": "LIMITAÇÕES ACEITAS PELO OPERADOR (fronteira escopo x arquitetura — os três itens abaixo mudariam O QUE o sistema faz, logo a Fase 3 os apresentou em vez de decidir, conforme S5/AP9). (1) GT-02 SPLITTING ACEITO: o sistema NÃO detecta fracionamento de despesa — dividir R$60k em duas de R$30k pula o nível superior. Coerente com A5 (SoD contra engano, não contra adversário). Recusada a alternativa de agregação por janela de N dias, que seria capacidade nova. Candidato a v2.0. (2) GT-01 ESCOLHA DO DELEGADO ACEITA: o sistema não restringe para quem se pode delegar; delegado complacente e par recíproco A<->B permanecem possíveis. Recusada a alternativa de exigir delegado de nível igual ou superior. Coerente com a decisão da Fase 0 de que a delegação é global e do próprio aprovador. (3) PROC-03 SEM CANCELAMENTO: o solicitante não pode cancelar a própria despesa pendente; a única saída é a decisão de um aprovador. A Fase 0 não pediu cancelamento e nenhum critério de aceite depende dele; a máquina de estados permanece com três estados. ANTI-SCOPE-CREEP verificado 4/4: requisitos da Fase 0 cobertos, nenhuma funcionalidade não solicitada adicionada, o que o sistema faz não mudou (só o como), UC-1..UC-7 continuam válidos.",
+      "timestamp": "2026-08-11T11:31:21.729Z"
+    },
+    {
+      "id": "93e85702-229a-4188-af8a-c167bfedf7ed",
+      "phase": 2,
+      "category": "architecture",
+      "content": "ANÁLISE DE CONCENTRAÇÃO (iteração 2, V(2), 21 achados novos; 78 acumulados). POR MÓDULO: matriz-doa concentra 6 dos 21 achados e 4 dos 6 críticos — é o módulo que V(2) mais alterou (R1 + R2 + INV-14 + INV-15), logo a concentração foi CRIADA PELA CORREÇÃO, não herdada de V(1). bandeja tem 4 achados, 3 deles duplicatas: o defeito é o mesmo de V(1) (custo O(n·m) da montagem da fila), agora endurecido em exigência de contrato por R7. ui-web tem 3 achados vindos da especificação nova de telas. relogio tem 2, ambos originados de R4. dominio-despesa, portas-repositorio e casos-de-uso ficaram com ZERO achados nesta rodada — não foram tocados por V(2). POR LENTE: Assumptions caiu de 6 módulos na iteração 1 para 2 na iteração 2 — R1 (converter premissa declarada em verificação executada) eliminou a falha sistêmica identificada na rodada anterior. Em compensação, Architectural REINCIDIU com o mesmo padrão exato (dependência real não declarada no depends-on), agora em matriz-doa (ARQ-06) e bandeja (ARQ-07). ACHADO PRINCIPAL DA RODADA, acima de qualquer item isolado: 5 dos 6 críticos são REGRESSÕES INTRODUZIDAS PELAS PRÓPRIAS CORREÇÕES de V(2) — ARQ-06 (R1/INV-15 recriou em matriz-doa a contradição que R7 acabara de corrigir em autoridade), IMP-06 (a fórmula de cadeia de R2 produz cadeia vazia quando a alçada do próprio papel do solicitante já cobre o valor — o caso mais comum do domínio), PROC-06 (INV-15 verifica titular e não titular elegível: via delegação, INV-4 volta a produzir despesa órfã), REG-04 (INV-15 nega o gasto por assento vago, bloqueio que nenhuma prática de DoA levantada pratica — a convenção é pular o nível e escalar), CTRL-03 (R4 removeu a rota de relógio e fixou o instante no boot, tornando agora() constante: criada_em iguais, FIFO indefinido, trilha sem cronologia, nenhuma vigência expira). Nenhum desses defeitos existia em V(1). É AP2 materializado e é precisamente o que a iteração extra do laço 2-3 existia para encontrar.",
+      "timestamp": "2026-08-11T11:35:18.910Z"
+    },
+    {
+      "id": "5040d46e-938a-4ae7-b47b-312796d757e4",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(3) — SIMPLIFICAÇÃO (Fase 3, iteração 2; persistida em architecture.md seção V(3), com V(1) e V(2) preservadas). Princípio da rodada: V(2) respondeu ACRESCENTANDO regras e gerou 5 regressões críticas; V(3) responde REVOGANDO uma regra, corrigindo uma fórmula e unificando mecanismos — nenhum mecanismo novo entra. S1 (três faces de uma ideia): S1.1 a fórmula da cadeia é corrigida — p* é o menor papel ACIMA DO SOLICITANTE cujo limite >= valor (a âncora estava errada em V(2), produzindo cadeia vazia quando a alçada do próprio papel do solicitante já cobria o valor); a cadeia nunca é vazia (resolve IMP-06, PROC-07). S1.2 INV-15 é REVOGADA: nível intermediário sem aprovador elegível é PULADO, não bloqueia — é o que a prática de DoA levantada em specs/references faz; a recusa só existe quando o ÚLTIMO papel da cadeia não tem aprovador elegível (INV-17), com mensagem verdadeira (resolve REG-04, UX-07). S1.3 titulares sai da assinatura de cadeiaPara: matriz-doa volta a ser domínio puro e casos-de-uso passa a consultar elegibilidade nível a nível (resolve ARQ-06). S2 delegação é CAMINHO ADICIONAL, não transferência de posse: delegado inelegível por INV-2/INV-4 não retira o item do delegante (resolve PROC-06). S3 relógio deslocável em vez de fixável: T27_RELOGIO_OFFSET_MS substitui T27_RELOGIO — agora() = real + offset, o relógio volta a andar, cronologia e FIFO preservados, vigências expiram; offset mal formado impede a subida; datas de vigência com fuso normalizado por regra escrita (resolve CTRL-03, RES-04, A-07). S4 identidade em cookie para navegar + campo em todo POST com igualdade exigida (duplo envio): sai da query string sem reabrir CSRF (resolve SEC-06, UX-06). S5 convenção sem exceção: registrar devolve Resultado<void,ErroPersistencia> (resolve LING-05) e a renderização é uma única função render(template,dados) que escapa tudo, sem caminho de interpolação crua (resolve IMP-07). SCI-04 resolvido por specs/technical/dw-rbac-mapeamento.md, que mapeia assertion/acceptance/execution/revocation do DW-RBAC às funções do projeto e nomeia 4 divergências conscientes. ACEITOS com justificativa: GOV-04 (informação completa, só não pré-computada; registrar exigiria o agendador que o escopo exclui), A-08, PERF-04, SUS-03, GOV-05, GT-04. ANTI-AP2: 12 módulos antes e depois; invariantes 16->16 (INV-15 revogada, INV-17 entra); assinaturas com dado fora do domínio 1->0; exceções à convenção Resultado 1->0; caminhos de interpolação crua indefinido->0. Mudança estrutural 16,7% (2 de 12), 0 críticos remanescentes, tendência 41,7%->16,7% e 6 críticos->0.",
+      "timestamp": "2026-08-11T11:49:23.529Z"
+    },
+    {
+      "id": "f6544c84-77a5-46e5-8061-32cd71fcdf92",
+      "phase": 3,
+      "category": "requirement",
+      "content": "CA-3 REFINADO COM APROVAÇÃO EXPLÍCITA DO OPERADOR (o refinamento toca o texto literal de um critério de aceite da Fase 0, logo foi levado à decisão em vez de aplicado em silêncio). Texto novo: com delegação ativa A->B o item aparece na bandeja de B e não na de A, EXCETO quando B é inelegível para aquele item específico por INV-2 (B é o solicitante) ou INV-4 (B já decidiu outro nível da mesma cadeia) — nesse caso o item PERMANECE COM A. Justificativa: a delegação é caminho adicional de decisão, não transferência de posse; sem a exceção, o cenário do achado PROC-06 (Diretor delega à única Gerente, que decide o nível 2 e é barrada por INV-4 no nível 3) deixa a despesa órfã permanentemente. Alternativa recusada pelo operador: manter CA-3 ao pé da letra e registrar PROC-06 como limitação aceita. Consequência para a Fase 6: CA-3b criado como teste próprio da exceção (delegação ativa + delegado inelegível => item na bandeja do delegante, não na do delegado). specs/validation/criterios-aceite.md atualizado.",
+      "timestamp": "2026-08-11T11:49:28.102Z"
+    },
+    {
+      "id": "f69fad16-afef-464a-893f-177e441bf905",
+      "phase": 2,
+      "category": "architecture",
+      "content": "ANÁLISE DE CONCENTRAÇÃO (iteração 3, V(3), 17 achados novos; 95 acumulados). POR MÓDULO: casos-de-uso saltou de 0 achados na iteração 2 para 5 na iteração 3, atingido por 5 lentes distintas — é o novo topo; matriz-doa caiu de 6 para 3. PADRÃO CENTRAL DA RODADA: a concentração não diminuiu, MUDOU DE ENDEREÇO. S1.3 corrigiu a contradição de contrato de matriz-doa (ARQ-06) TRANSFERINDO a decisão de elegibilidade para casos-de-uso em vez de removê-la — a mesma massa de complexidade em outro módulo, e agora num que o padrão Domain Model da Fase 1 diz que não deveria hospedá-la (ARQ-08). bandeja, autoridade, dominio-despesa, portas-repositorio e sqlite-adaptador ficaram com zero. POR LENTE: Sustainability / Proportionality foi aplicada e não produziu achado — resultado válido, V(3) não mexeu em nada cujo custo cresça com o uso. TENDÊNCIA ACUMULADA, o dado mais importante: rodada 1 (V(1)) 57 achados e 10 críticos, desenho original; rodada 2 (V(2)) 21 achados e 6 críticos, dos quais 5 eram regressões das correções da rodada 1; rodada 3 (V(3)) 17 achados e 5 críticos, dos quais 5 de 5 são regressões das correções da rodada 2 (ARQ-08 de S1.3, IMP-08 de S1.2, SEC-07 de S4, UX-08 de S4, PROC-08 da incompletude de S1.2). O volume cai (57->21->17) mas a proporção de críticos que são regressões subiu de 0% para 83% e agora 100%: corrigir deixou de reduzir o número de críticos. CARÁTER DOS 5 CRÍTICOS RESTANTES: diferente das rodadas anteriores — não são falhas de desenho profundas, são QUATRO ESCOLHAS NÃO FEITAS (definir 'elegível'; reconciliar CA-1 com a regra do pulo; escolher um token de CSRF imprevisível; decidir identidade por cookie ou por requisição) mais uma regra faltante (nível que se torna inelegível durante a cadeia). Todas decidíveis em uma passada, o que sugere que a rodada seguinte da Fase 3 pode fechá-las e parar.",
+      "timestamp": "2026-08-11T11:52:17.877Z"
+    },
+    {
+      "id": "f664f3ae-3dd0-4d84-8861-e6bbd47d878d",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(4) — SIMPLIFICAÇÃO (Fase 3, iteração 3; architecture.md seção V(4), com V(1), V(2) e V(3) preservadas). Diagnóstico da rodada: os 5 críticos de V(3) não eram falhas estruturais, eram quatro escolhas não feitas mais uma regra faltante. T1: 'decidível' passa a ter uma definição única — um nível é decidível por u em t sse autoridade.resolver devolve sucesso para u; a pergunta 'existe alguém que decida este nível?' vira autoridade.algumDecisor(...), EM AUTORIDADE e não em casos-de-uso, desfazendo o deslocamento de S1.3 e devolvendo a invariante SoD ao domínio (resolve ARQ-08, LING-07, A-09). T2: a regra do pulo permanece mas passa a ser (1) generalizada — nível sem decisor é pulado em qualquer momento e por qualquer causa, papel vago ou INV-2 ou INV-4, avaliada sempre no ato conforme INV-6 (resolve PROC-08); (2) registrada — todo pulo grava NIVEL_PULADO(nivel, motivo) na trilha (resolve GOV-06); (3) reconciliada com CA-1, reescrito com aprovação explícita do operador (resolve IMP-08, REG-05); (4) contida por INV-18 (nova): APROVADA exige pelo menos uma aprovação humana registrada, o que impede o pulo degradar quatro olhos a zero olhos. T3: o cookie deixa de carregar identidade e passa a carregar apenas um nonce ALEATÓRIO, conferido em todo POST — o id do usuário é público na tela T1 e nunca serviu como token de duplo envio (resolve SEC-07). T4: identidade volta a viajar por requisição no parâmetro u, o que devolve duas abas / dois usuários no mesmo navegador, exigência de CA-3, CA-3b e do teste manual de CA-11; URL vazada revela identidade mas não permite escrever, pois escrever exige o nonce do cookie (resolve UX-08, reduz SEC-06). T5: registrar é chamado dentro de emTransacao e seu erro aborta a transação inteira — não existe decisão gravada sem trilha (resolve RES-05); render ganha o tipo marcado Html, valores Html não são escapados e todo o resto é (resolve LING-06); validar passa a cobrir o seed de usuários (resolve A-10). IMP-09 resolvido por documentação em specs/design/telas.md (procedimento de reinício com offset para demonstrar CA-5, e procedimento de duas abas para CA-3/CA-3b). ACEITOS: CTRL-04 (o offset é ferramenta do operador; impedi-lo de voltar o tempo seria mecanismo novo), PROC-09 e GT-05 (coerentes com GT-01 já aceito), PERF-05 e SEC-06 (residuais sob A7 e A5). Corrigida também a mensagem órfã de INV-15 em telas.md, que sobrevivera à revogação da invariante em V(3).",
+      "timestamp": "2026-08-11T12:27:09.996Z"
+    },
+    {
+      "id": "0e391bfc-ed49-4055-8a29-010c49ef13a8",
+      "phase": 3,
+      "category": "requirement",
+      "content": "CA-1 REESCRITO COM APROVAÇÃO EXPLÍCITA DO OPERADOR (segundo critério de aceite da Fase 0 alterado nesta fase, também levado à decisão em vez de aplicado em silêncio). Texto anterior: 'despesa que exige N níveis percorre exatamente N aprovações antes de ficar APROVADA'. Tornou-se inverificável quando a regra do pulo (nível sem decisor é pulado) entrou em V(3) — achado IMP-08. Texto novo: a despesa percorre EXATAMENTE OS NÍVEIS DA CADEIA QUE TÊM DECISOR, e cada nível pulado por falta de decisor aparece na trilha como NIVEL_PULADO com o motivo; verificado para cadeias de 1, 2 e 3 níveis com decisor. Acrescentados dois critérios irmãos: CA-1b (cadeia com nível intermediário sem decisor: a despesa é aprovada com uma aprovação a menos e a trilha contém o NIVEL_PULADO correspondente) e CA-1c (cadeia em que nenhum nível tem decisor: a criação é recusada; nenhuma despesa chega a APROVADA sem ao menos uma aprovação humana — INV-17, INV-18). Alternativa recusada pelo operador: manter CA-1 literal e revogar a regra do pulo, o que faria REG-04 voltar (nenhuma prática de DoA levantada bloqueia gasto por assento vago) e UX-07 ressurgir. specs/validation/criterios-aceite.md atualizado.",
+      "timestamp": "2026-08-11T12:27:14.811Z"
+    },
+    {
+      "id": "9e0d1450-6b8c-4b0a-b696-73298c0ea708",
+      "phase": 5,
+      "category": "technology",
+      "content": "VERSÕES FIXADAS NA INSTALAÇÃO (a stack aprovada na Fase 1 foi mantida integralmente; só as versões mudaram, por bloqueio real e por segurança). (1) better-sqlite3 ^9.6 NÃO instala neste ambiente: não há prebuild para Node 24.13.1 e a compilação via node-gyp falha ('make failed with exit code 2'). Subida para ^13.0.3, que tem prebuild para Node 24 — verificado carregando o módulo e executando uma query. A alternativa node:sqlite (embutida no Node 24) foi avaliada e RECUSADA: trocaria a lib aprovada na Fase 1 por uma API marcada como experimental, o que a restrição vinculante de P1/P5 não autoriza — subir a versão da mesma lib preserva a decisão. (2) npm audit apontou 6 vulnerabilidades (1 crítica, 3 altas) em fastify ^4 (DoS por alocação de memória em sendWebStream; find-my-way DDoS via HTTP/2) e em vitest ^1.6 (leitura e execução arbitrária de arquivo pela UI do Vitest; cadeia vite/esbuild). Subidos para fastify ^5.2.0 com @fastify/formbody ^8.0.1 e vitest ^3.0.5. Resultado: 0 vulnerabilidades. Nenhuma troca de tecnologia, nenhum padrão novo, nenhum item do escopo negativo tocado.",
+      "timestamp": "2026-08-11T12:32:35.605Z"
+    },
+    {
+      "id": "126d233a-ceb8-4ba6-8930-90c21b582e0b",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA RAIZ (smoke test HTTP): toda criação de despesa falhava com 'Papel undefined não existe na matriz'. Em src/adaptadores/sqlite.ts, `usuarios.porId` fazia `st.usuarioPorId.get(id) as Usuario` — um cast de tipo SEM mapeamento de coluna. A linha do SQLite tem `papel_id` (snake_case do schema) e o tipo de domínio tem `papelId` (camelCase), logo `solicitante.papelId` era undefined e `cadeiaPara` recusava o papel. O cast silenciou o erro que o mapeamento explícito teria evitado — `usuarios.todos` mapeava corretamente, `porId` não. FIX: aplicar o mesmo mapeamento explícito em `porId`, como já é feito em `todos`, `despesas`, `delegacoes` e `trilha`.",
+      "timestamp": "2026-08-11T12:42:18.690Z"
+    },
+    {
+      "id": "8e068d32-3022-4461-9a1c-440e3056514f",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA RAIZ (smoke test de delegação): com delegação ativa carla->bruno, o item aparecia na bandeja de bruno E na de carla, violando CA-3 ('o item aparece na bandeja de B e NÃO na de A'). Em autoridade.resolver, o ramo de AUTORIDADE PRÓPRIA devolvia sucesso para o delegante sem considerar que ele havia delegado: a delegação acrescentava o delegado sem remover o delegante. O refinamento de CA-3 aprovado pelo operador na Fase 3 (V(3)/S2) diz que a delegação é caminho adicional APENAS na exceção — quando o delegado é inelegível para aquele item por INV-2/INV-4. No caso geral, a posse se transfere. FIX: no ramo de autoridade própria, se o atuante tem delegação vigente como DELEGANTE e o delegado é elegível para este item, resolver falha para o delegante com código DELEGADA; se o delegado é inelegível, o delegante mantém o item (é exatamente CA-3b). A verificação de elegibilidade do delegado é feita com a regra de transferência desligada, o que evita recursão mútua.",
+      "timestamp": "2026-08-11T12:43:59.687Z"
+    },
+    {
+      "id": "d4f494a6-c8c6-4929-aad6-59639887063d",
+      "phase": 6,
+      "category": "testing",
+      "content": "UI TOOL: fastify.inject() — escolhido pelo operador. Rationale: a UI é server-rendered sem JavaScript de cliente; toda interação é link ou formulário POST, então inject() exercita rota, nonce anti-CSRF, redirecionamento e o HTML efetivamente renderizado, sem navegador nem dependência nova. Playwright foi apresentado e recusado: ~200 MB de download de navegadores para exercitar pouca coisa além do que inject cobre, num projeto sem JS de cliente. O que inject NÃO cobre — renderização visual e layout — é exatamente o que o teste manual humano da Fase 6 cobre, e por isso os dois gates continuam obrigatórios. SESSION RENEWAL: operador escolheu continuar nesta sessão; mitigação declarada do viés de confirmação — o Mapa de Testes (30 testes: 15 positivos, 14 negativos, 1 manual) foi derivado de specs/validation e specs/datasets, dos critérios e não da implementação.",
+      "timestamp": "2026-08-11T13:34:13.654Z"
+    },
+    {
+      "id": "56f5b1aa-5d4b-43a0-b7ee-7e7e78f1cd8d",
+      "phase": 6,
+      "category": "spec-coverage",
+      "content": "SPEC COVERAGE REPORT (43 testes, 100 asserções, 4 arquivos; npm test verde). COVERED: CA-1 -> cadeia_de_1_nivel (D-1), cadeia_de_2_niveis com 2 aprovações e níveis [2,3] na trilha (D-2), cadeia começa acima do papel do solicitante, cadeia nunca vazia (regressão do achado IMP-06), um nível não encerra a cadeia (negativo) — PASS. CA-1b -> D-20 empresa sem gerentes: diretor aprova sozinho E a trilha contém NIVEL_PULADO(nivel=2, motivo 'nenhum titular') com exatamente 1 APROVADA_NIVEL — PASS. CA-1c -> D-21 empresa só de coordenadores: SEM_DECISOR e transação revertida (zero despesas) — PASS. CA-2 -> D-3 valor exatamente igual ao limite encerra no papel; D-4 um centavo acima escala — PASS. CA-3 -> D-7 item na bandeja de B, ausente na de A, presente na do outro gerente que não delegou — PASS. CA-3b -> D-8 delegado inelegível por INV-2 mantém o item com o delegante — PASS. CA-4 -> D-9 ator=bruno, emNomeDe=carla, limiteExercido=5000000 (a alçada de CARLA), delegacaoId preenchido — PASS. CA-5 -> D-10 expiração por avanço de relógio devolve o item; INV-6 decisão tomada na vigência permanece após 30 dias; D-11 revogação devolve imediatamente; só delegante ou Admin revogam (negativo) — PASS. CA-6 -> D-12 AUTO_APROVACAO, D-13 DUPLO_VOTO (com verificação extra de que o item volta ao delegante, fechando PROC-06), D-14 REDELEGACAO, D-15 VIGENCIAS_SOBREPOSTAS, INV-16 ANTEDATADA, e um teste que exige os 4 códigos DISTINTOS em um Set exato — PASS. CA-7 -> D-5 ACIMA_DO_TETO e D-6 SEM_AUTORIDADE_ACIMA, ambos com zero despesas criadas — PASS. CA-8 -> D-16 MOTIVO_AUSENTE mantendo PENDENTE; D-17 REJEITADA terminal, ausente das 6 bandejas, reabertura recusada com CONFLITO — PASS. CA-9 -> D-18 sequência CRIADA/APROVADA_NIVEL/APROVADA_NIVEL na ordem; INV-8 evento anterior byte-a-byte inalterado após novo evento E o contrato de TrilhaRepo tem exatamente as chaves anexar e porDespesa — PASS. CA-10 -> D-19 banco em arquivo, fechar e reabrir, mesma bandeja e mesma trilha — PASS. D-22 -> segunda decisão no mesmo item falha com CONFLITO determinístico — PASS. INV-14 -> níveis não contíguos, limites não crescentes, usuário com papel inexistente, e o seed real aceito — PASS. INV-12 -> conversão por parsing de string, incluindo assert explícito de que difere de parseFloat*100 — PASS. SEC-04 -> render escapa dado de usuário e NÃO escapa sub-template Html; descrição maliciosa chega escapada na página real — PASS. UI (fastify.inject) -> fluxo UC-1->UC-2 completo por HTTP até APROVADA; UX-01 verificado nas duas formas (autoridade própria e EM NOME DE com o nome do delegante e a alçada exercida); anti-CSRF recusa nonce divergente e ausência de cookie, com zero despesas criadas; identidade inexistente cai na tela de seleção — PASS. NOT COVERED (não testável automaticamente): CA-11 (execução humana na UI) — gate manual, pendente; layout visual e legibilidade das mensagens — por isso o gate manual existe; RES-01 (banco corrompido/sem permissão/disco cheio) — exigiria simular falha de sistema de arquivos, aceito como não coberto. NEGATIVE TESTS: 14 explicitamente negativos de 43 casos, razão 1 negativo para 2,07 positivos — acima do mínimo de 1 para 2. GAPS: (1) o teste D-12 aceita AUTO_APROVACAO OU SEM_AUTORIDADE no primeiro cenário (carla solicitante), pois ali a barreira estrutural chega antes da invariante; o caso literal de INV-2 é verificado exatamente no segundo cenário. (2) Concorrência é verificada de forma sequencial (segunda decisão após a primeira), não com duas conexões simultâneas — a serialização real do better-sqlite3 síncrono em processo único torna o caso paralelo inatingível em teste, o que é consequência de A4. VERIFICAÇÃO ANTI-VACUIDADE (contra AP1): duas mutações deliberadas foram injetadas e a suíte as PEGOU — inverter a fronteira de INV-1 (<= para <) quebrou exatamente CA-2/D-3, e desligar INV-4 quebrou D-13 e o teste das quatro mensagens distintas; restaurado o código, 43/43 voltaram a passar. A suíte não é verde por vacuidade.",
+      "timestamp": "2026-08-11T13:37:57.251Z"
+    },
+    {
+      "id": "94c87368-97aa-4b02-9f80-6ed16e99bcbd",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: automated-done | manual-in-progress\nPASS: 43/43 testes automatizados verdes (npm test, Vitest 3, 100 asserções, 4 arquivos), tsc --noEmit limpo, npm audit com 0 vulnerabilidades. Cobertura por critério: CA-1, CA-1b, CA-1c, CA-2, CA-3, CA-3b, CA-4, CA-5, CA-6, CA-7, CA-8, CA-9, CA-10, D-22, INV-12, INV-14, SEC-04 e fumaça de UI por fastify.inject (fluxo UC-1->UC-2 completo, UX-01 nas duas formas, anti-CSRF em dois cenários, identidade inexistente). Verificação anti-vacuidade feita: duas mutações deliberadas (inverter a fronteira de INV-1; desligar INV-4) foram DETECTADAS pela suíte, e o verde voltou após restaurar. Gate empírico da Fase 5 já fechado: o operador executou UC-1->UC-2 na UI real até APROVADA.\nFAIL: nenhum teste automatizado falhando. Dois defeitos foram encontrados e corrigidos durante a Fase 5, ambos com causa raiz registrada: cast de linha SQLite sem mapeamento em usuarios.porId (decisão 126d233a) e violação de CA-3 — a delegação acrescentava o delegado sem remover o delegante (decisão 8e068d32).\nNEXT: teste manual exploratório pelo operador em http://127.0.0.1:3000, sete cenários entregues em chat — (1) UC-1->UC-2 já confirmado; (2) UC-3 rejeição sem e com motivo; (3) UC-4->UC-5 delegação carla->bruno, verificando a tarja EM NOME DE na bandeja e o aviso de alçada exercida de R$ 50.000 na tela de decisão; (4) UC-6 revogação com devolução imediata; (5) CA-5 expiração reiniciando com T27_RELOGIO_OFFSET_MS=432000000; (6) bordas — clique duplo em Aprovar, campo vazio, valor 19,99, e descrição com <script> que deve aparecer como texto; (7) julgamento das mensagens de erro: compreensíveis por não-técnico e dizendo o que fazer, não só o que foi bloqueado. O critério manual_testing NÃO será marcado até o operador retornar com os resultados.",
+      "timestamp": "2026-08-11T13:38:36.211Z"
+    },
+    {
+      "id": "769a84e6-cf89-4eae-9bb6-b1a2217ce63b",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: manual-done\nPASS: 43/43 automatizados (execução final testemunhada nesta fase). MANUAL: o operador retornou do teste exploratório e reportou, literalmente, \"me parece tudo ok\". A confirmação foi GLOBAL sobre os sete cenários entregues em chat — UC-1->UC-2 (já confirmado antes, na saída da Fase 5), UC-3 rejeição sem e com motivo, UC-4->UC-5 delegação carla->bruno com tarja EM NOME DE e aviso de alçada exercida, UC-6 revogação com devolução imediata, CA-5 expiração via reinício com T27_RELOGIO_OFFSET_MS, bordas (clique duplo em Aprovar, campo vazio, valor 19,99, descrição com <script>) e julgamento das mensagens de erro — e NÃO item a item. Registro essa granularidade porque ela é a diferença entre \"o operador validou cada borda\" e \"o operador não viu nada errado no conjunto\": a segunda é o que de fato temos, e é o que a Fase 7 e um eventual post-mortem devem ler.\nFAIL: nenhum problema reportado pelo operador; nenhum teste automatizado falhando.\nNEXT: Fase 7 — atualizar specs/validation com os resultados obtidos, capturar as lições do projeto em specs/references/lessons.md e oferecer a meta-iteração v2.0.",
+      "timestamp": "2026-08-11T14:16:12.227Z"
+    },
+    {
+      "id": "3d2e383d-4add-4492-b6f1-bb3322c98883",
+      "phase": 7,
+      "category": "requirement",
+      "content": "AVALIAÇÃO DO PRODUTO PELO OPERADOR (Fase 7): \"Atende — os 14 critérios de aceite estão cumpridos\". CA-1, CA-1b, CA-1c, CA-2, CA-3, CA-3b, CA-4, CA-5, CA-6, CA-7, CA-8, CA-9, CA-10 verificados por 43 testes automatizados verdes com verificação anti-vacuidade por mutação, e CA-11 verificado por execução humana na UI real (UC-1->UC-2 até APROVADA na saída da Fase 5, mais teste exploratório dos sete cenários na Fase 6). Nenhuma pendência adicional levantada pelo operador além dos sete itens já registrados em L8 de specs/references/lessons.md. META-ITERAÇÃO: operador escolheu \"Projeto concluído — encerrar a metodologia aqui\". Não foi chamado start_new_cycle(); o estado permanece na Fase 7 do ciclo v1.0, com specs/ completo (9 de 9 diretórios, 11 arquivos) servindo de baseline caso um v2.0 seja aberto depois.",
+      "timestamp": "2026-08-11T14:23:31.789Z"
+    }
+  ],
+  "activatedLenses": [
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Control Engineering",
+        "Game Theory",
+        "Linguistics / Grammar"
+      ],
+      "notActivated": [
+        {
+          "lens": "Migration / Coexistence",
+          "reason": "Greenfield: não há sistema em produção sendo substituído, nem dados legados a migrar — o banco nasce vazio com seed próprio."
+        },
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "Nenhuma decisão automatizada sobre pessoas: todo julgamento de mérito é humano; o sistema apenas roteia por regra determinística de valor e registra."
+        },
+        {
+          "lens": "Observability / Operability",
+          "reason": "Não há implantação em produção nem requisito operacional: roda localmente, processo único, sem SLA, monitoramento ou plantão no escopo."
+        },
+        {
+          "lens": "Mechanical Engineering",
+          "reason": "Ciclo único de 2-4h sem evolução prolongada prevista: não há acumulação de dívida técnica ao longo do tempo nem variação de ambiente a tolerar (dependências fixadas, um alvo de execução)."
+        }
+      ],
+      "iteration": 1,
+      "againstVersion": 1,
+      "recordedAt": "2026-08-11T11:20:56.480Z"
+    },
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Control Engineering",
+        "Game Theory",
+        "Linguistics / Grammar"
+      ],
+      "notActivated": [
+        {
+          "lens": "Migration / Coexistence",
+          "reason": "Continua greenfield em V(2): nenhum sistema em produção substituído e nenhum dado legado — o schema nasce vazio e o seed só roda em banco vazio."
+        },
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "V(2) acrescentou recusas automáticas (INV-14, INV-15, INV-16), mas todas são regra determinística sobre a DESPESA; nenhum juízo automático sobre a pessoa — o mérito segue sendo decidido por humano."
+        },
+        {
+          "lens": "Observability / Operability",
+          "reason": "Segue sem implantação em produção, SLA ou plantão: a única falha operacional que V(2) introduziu (processo não sobe com matriz inválida) é de inicialização e autoexplicativa por mensagem."
+        },
+        {
+          "lens": "Mechanical Engineering",
+          "reason": "Segue sendo ciclo único de 2-4h com dependências fixadas: nenhuma evolução prolongada nem variação de ambiente a tolerar."
+        }
+      ],
+      "iteration": 2,
+      "againstVersion": 2,
+      "recordedAt": "2026-08-11T11:33:37.230Z"
+    },
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Control Engineering",
+        "Game Theory",
+        "Linguistics / Grammar"
+      ],
+      "notActivated": [
+        {
+          "lens": "Migration / Coexistence",
+          "reason": "Segue greenfield em V(3): nenhum sistema em produção substituído, nenhum dado legado, schema nasce vazio."
+        },
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "V(3) revogou uma recusa automática (INV-15) e passou a pular níveis vazios; segue sem qualquer juízo automático sobre pessoas — as regras incidem sobre a despesa."
+        },
+        {
+          "lens": "Observability / Operability",
+          "reason": "Segue sem implantação em produção, SLA ou plantão; as duas falhas de inicialização (matriz inválida, offset mal formado) são autoexplicativas por mensagem no boot."
+        },
+        {
+          "lens": "Mechanical Engineering",
+          "reason": "Segue ciclo único de 2-4h com dependências fixadas; nenhuma evolução prolongada nem variação de ambiente a tolerar."
+        }
+      ],
+      "iteration": 3,
+      "againstVersion": 3,
+      "recordedAt": "2026-08-11T11:50:56.832Z"
+    }
+  ],
+  "stateVersion": 1,
+  "exitCriteria": [
+    {
+      "phase": 0,
+      "criterion": "score_90",
+      "met": true,
+      "details": "Score 96/100 (breakdown exibido em chat: clareza 10, casos de uso 14, vocabulário 10, ambiguidades 14, fora de escopo 10, critérios 10, premissas 8, documentação 5, usuário confirmou 10, IA confiante 5)."
+    },
+    {
+      "phase": 0,
+      "criterion": "user_confirmed",
+      "met": true,
+      "details": "Operador avaliou a síntese teach-back (iteração 1, template completo de 5 níveis exibido em chat) como 'Correta' via AskUserQuestion."
+    },
+    {
+      "phase": 0,
+      "criterion": "ambiguities_zero",
+      "met": true,
+      "details": "As 3 ambiguidades remanescentes da síntese foram fechadas por decisão do operador: início da cadeia = nível imediatamente acima do papel do solicitante; alcance da delegação = global (sem teto parcial); ordenação da bandeja = FIFO com valor visível. Ambiguidade residual aceita: valores numéricos do seed (arbitrários por natureza — a referência justifica a forma, ordem de grandeza por nível, não os números)."
+    },
+    {
+      "phase": 0,
+      "criterion": "use_cases_complete",
+      "met": true,
+      "details": "UC-1 a UC-7 registrados com ator/objetivo/fluxo/exemplo concreto (decisão cbaee241), mais 6 casos de borda: valor no limite exato, auto-aprovação via delegação, mesmo ator em dois níveis da cadeia, expiração com item na bandeja, decisões concorrentes, restart do processo."
+    },
+    {
+      "phase": 0,
+      "criterion": "vocabulary_agreed",
+      "met": true,
+      "details": "Glossário de 12 termos com definição operacional, exemplo e sinônimo a evitar, persistido em specs/domain/glossario-e-invariantes.md e exibido no teach-back. Os 4 termos vagos do enunciado (alçada, por valor, delegação temporária, fila) foram convertidos em definições concretas e aprovados pelo operador."
+    },
+    {
+      "phase": 0,
+      "criterion": "out_of_scope_clear",
+      "met": true,
+      "details": "7 itens fora de escopo, cada um com razão de custo/benefício (decisão 314a88cb): autenticação real; notificações e SLA/escalonamento por tempo; anexos/multi-moeda/câmbio; integração ERP/BI/orçamento; matriz DoA editável em runtime; override administrativo; delegação transitiva. Confirmados pelo operador via multi-seleção."
+    },
+    {
+      "phase": 0,
+      "criterion": "tech_feasibility",
+      "met": true,
+      "details": "VERIFICADA, não presumida, com tabela capacidade × essencial × suportada exibida em chat. Essenciais confirmadas: servidor HTTP local + servir UI (Fastify); SQLite com transação real para trava de decisão concorrente (better-sqlite3); relógio injetável (padrão de código, não de plataforma); runner de teste reconhecido pelo motor (npm test/Vitest); aritmética monetária exata em inteiro de centavos. Desejável confirmada: automação de UI (Playwright). NENHUMA capacidade essencial ausente — sem bloqueador. Comparação de 3 stacks apresentada em tabela (requisitos × tecnologia × LOC × dependências × consumo de contexto)."
+    },
+    {
+      "phase": 0,
+      "criterion": "implementation_feasibility",
+      "met": true,
+      "details": "9 componentes avaliados por Tier (tabela exibida em chat). Tier 1 (lib madura, usar): HTTP/Fastify, persistência/better-sqlite3, UI server-rendered, aritmética em centavos, relógio injetável, Vitest. Tier 2 (algoritmo documentado, portar): motor de cadeia por alçada (roteamento por matriz DoA), resolução de autoridade e delegação (DW-RBAC, Wainer & Kumar — asserção/execução/revogação), trilha append-only (event log). NENHUM componente Tier 3 → nenhuma PoC exigida antes da Fase 1."
+    },
+    {
+      "phase": 0,
+      "criterion": "technical_scientific_research",
+      "met": true,
+      "details": "Pesquisa realizada por autorização do operador (N5/Pesquisa = pesquisar e depositar) e persistida em specs/references/dominio-aprovacao-despesas.md com URL para cada afirmação. Quatro blocos: (1) matriz DoA — 6 fontes, incl. política pública real (GGGI 2017); achado aplicável ao seed: limites sobem ~uma ordem de grandeza por nível; (2) SoD e princípio dos quatro olhos / maker-checker — 6 fontes, fundamenta INV-2 e INV-4; (3) semântica 'em nome de' e trilha de auditoria — 6 fontes, o par act/obo fundamenta INV-7; (4) modelo formal DW-RBAC (Wainer & Kumar, Information Systems) para delegação e revogação em workflow, mais survey arXiv sobre delegação multi-passo e dimensões de revogação — fundamenta INV-3, INV-5, INV-6. Lacunas registradas explicitamente: nenhuma fonte fixa a fronteira inclusiva/exclusiva do limite nem o destino de pendências no instante da expiração — ambas resolvidas por decisão do operador e cobertas por CA-2 e CA-5. Nenhum parâmetro numérico do sistema vem de literatura (os limites do seed são dados de configuração arbitrários); a referência justifica a FORMA, não os números."
+    },
+    {
+      "phase": 0,
+      "criterion": "specs_populated",
+      "met": true,
+      "details": "4 diretórios populados nesta fase: specs/domain/glossario-e-invariantes.md (12 termos + 12 invariantes INV-1..INV-12 + regras de tempo + estados da despesa); specs/references/dominio-aprovacao-despesas.md (4 blocos, ~20 fontes com URL, incl. DW-RBAC, + lacunas conhecidas); specs/competitors/ferramentas-similares.md (8 produtos comparados + tabela de escolhas conscientes vs. mercado); specs/validation/criterios-aceite.md (CA-1..CA-11 mapeados a invariantes + regras anti-falsa-cobertura). specs/technical, models, design, examples e datasets serão populados na Fase 1 e Fase 5 conforme o calendário R4."
+    },
+    {
+      "phase": 1,
+      "criterion": "patterns_defined",
+      "met": true,
+      "details": "6 dimensões coletadas em 2 chamadas AskUserQuestion e confirmadas em tabela exibida em chat: Hexagonal (Ports & Adapters); KISS+YAGNI como ÚNICO princípio transversal (SOLID/DDD/composição recusados pelo operador); single-threaded + transação SQLite leitura-para-atualização; nenhum GoF; Domain Model; Repository (porta) + mapeamento manual. Registrado em decisão 38f56ced e em projectSpec.patterns."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_responsibility",
+      "met": true,
+      "details": "12 módulos (dentro da faixa 8-12 do ENUNCIADO §2), cada um com uma responsabilidade única na tabela de specs/technical/architecture.md: dominio-despesa, matriz-doa, dominio-delegacao, autoridade, bandeja, trilha, relogio, portas-repositorio, sqlite-adaptador, casos-de-uso, api-http, ui-web. A UI aparece como módulo nomeado (M-12), não como extensão implícita do backend. Cada uma das 13 invariantes tem um módulo guardião explícito (tabela invariante x módulo no documento)."
+    },
+    {
+      "phase": 1,
+      "criterion": "interfaces_defined",
+      "met": true,
+      "details": "Coluna 'interface' da tabela de módulos traz assinatura com tipos de entrada e saída para os 12 módulos, incluindo os tipos de erro nomeados (ErroAcimaDoTeto, ErroSemAutoridadeAcima, ErroSoD(codigo,mensagem), ErroMotivoAusente, ErroConflito) — necessários para CA-6 (mensagem específica por invariante). Rotas HTTP de M-11 enumeradas. Contratos de persistência de M-08 declarados por agregado mais emTransacao<T>(fn)."
+    },
+    {
+      "phase": 1,
+      "criterion": "dependencies_explicit",
+      "met": true,
+      "details": "Coluna 'depends-on' preenchida para os 12 módulos. Regra de dependência hexagonal declarada: M-01..M-08 formam o núcleo e não importam nada de M-09 (sqlite-adaptador), M-11 (api-http) nem M-12 (ui-web); as setas apontam sempre para dentro. M-04 (autoridade) é declarado como o único ponto de cruzamento entre alçada e delegação, dependendo de M-02, M-03 e M-06."
+    },
+    {
+      "phase": 1,
+      "criterion": "assumptions_listed",
+      "met": true,
+      "details": "8 premissas A1-A8 listadas com a consequência de cada uma ser falsa (tabela em specs/technical/architecture.md e exibida em chat): A1 hierarquia linear sem lacunas; A2 um papel por usuário, imutável; A3 matriz DoA imutável durante a vida da despesa; A4 processo único escrevendo no banco; A5 identidade informada é confiável — ACEITA EXPLICITAMENTE pelo operador como limitação (SoD contra engano, não contra adversário); A6 instantes UTC e relógio monotônico; A7 volume pequeno, sem paginação; A8 delegação global, no máximo uma ativa por delegante. Serão atacadas pela lente Assumptions na Fase 2 (AP4)."
+    },
+    {
+      "phase": 1,
+      "criterion": "architecture_doc",
+      "met": true,
+      "details": "specs/technical/architecture.md escrito, com seção '## V(1) — Decomposição' contendo a tabela de módulos no formato exigido (id M-01..M-12 | module | responsibility | interface | depends-on), mais a tabela invariante x módulo guardião, a lista de premissas A1-A8 e o escopo negativo. Os nomes de módulo (dominio-despesa, matriz-doa, dominio-delegacao, autoridade, bandeja, trilha, relogio, portas-repositorio, sqlite-adaptador, casos-de-uso, api-http, ui-web) são a chave estável a ser reusada pela matriz de cobertura da Fase 2 e pela implementação da Fase 5."
+    },
+    {
+      "phase": 1,
+      "criterion": "tech_100_scope",
+      "met": true,
+      "details": "A stack cobre 100% do escopo sem redução: tabela requisitos x tecnologias apresentada na Fase 0 (3 opções, LOC, dependências, consumo de contexto), com verificação capacidade a capacidade — nenhuma capacidade essencial ausente. Premissas técnicas verificadas com evidência, não assumidas: transação síncrona do better-sqlite3 documentada em specs/examples/referencias-de-implementacao.md com link à API oficial; tratamento de erro do Fastify idem; relógio como porta é padrão de código. Nenhum requisito precisou ser cortado para caber na tecnologia. Alvo de entrega 'Produto completo' preservado — escopo progressivo v1.0/v2.0 NÃO foi oferecido, pois não há bloqueador técnico."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_adherent_patterns",
+      "met": true,
+      "details": "Aderência verificada padrão a padrão: HEXAGONAL — núcleo M-01..M-08 sem import de HTTP/SQLite, Clock (M-07) e persistência (M-08) como portas, adaptadores em M-09/M-11/M-12. DOMAIN MODEL — as 13 invariantes têm módulo guardião de domínio (M-01, M-02, M-03, M-04, M-06), nenhuma mora em serviço ou rota. REPOSITORY + mapeamento manual — M-08 declara portas por agregado, M-09 implementa com SQL explícito, sem ORM. NENHUM GoF — decomposição por responsabilidade, sem Strategy/State/Specification. KISS+YAGNI — nenhum módulo existe para requisito fora de escopo; M-05 (bandeja) e M-04 (autoridade) são separados porque guardam invariantes distintas, não por simetria. CONCORRÊNCIA — M-10 orquestra cada caso de uso dentro de uma transação; a leitura-para-atualização mora em M-09."
+    },
+    {
+      "phase": 2,
+      "criterion": "activated_lenses_recorded",
+      "met": true,
+      "details": "Redeclarado para a iteração 3 contra V(3) (motor carimbou iteration=3, againstVersion=3). Conjunto reexaminado e mantido: 8 ativadas, 4 não ativadas com razão por sinal de projeto atualizada para V(3) — inclusive reavaliando as duas falhas de inicialização (matriz inválida e offset mal formado) contra Observability / Operability e a revogação de INV-15 contra Ethical / Human Impact."
+    },
+    {
+      "phase": 2,
+      "criterion": "lenses_applied",
+      "met": true,
+      "details": "15 lentes aplicadas aos 12 módulos de V(3), em modo generativo. 17 achados. Ausência de achado como resultado válido: Sustainability / Proportionality não produziu nenhum achado nesta rodada (V(3) não alterou nada cujo custo cresça com o uso), e cinco módulos (bandeja, autoridade, dominio-despesa, portas-repositorio, sqlite-adaptador) ficaram sem achado."
+    },
+    {
+      "phase": 2,
+      "criterion": "coverage_matrix",
+      "met": true,
+      "details": "Seção '## Iteração 3 — V(3)' anexada a specs/design/coverage-matrix.md, preservando as seções das iterações 1 e 2. 17 linhas com ids continuando os prefixos por lente (A-09/10, ARQ-08, IMP-08/09, SEC-07, PERF-05, REG-05, RES-05, UX-08, PROC-08/09, GOV-06, CTRL-04, GT-05, LING-06/07). 1 duplicata marcada: REG-05 duplica IMP-08. 16 defeitos distintos novos; 95 achados acumulados nas três rodadas."
+    },
+    {
+      "phase": 2,
+      "criterion": "criticals_identified",
+      "met": true,
+      "details": "5 críticos, e os 5 são regressões das correções de V(3): ARQ-08 (S1.3 tirou a invariante SoD do domínio e a pôs na camada de aplicação, violando o padrão Domain Model da Fase 1), IMP-08 (S1.2 quebra CA-1 — com nível pulado, aprovações != |cadeia|), SEC-07 (o duplo envio de S4 confere o id do usuário, que é público na tela T1; valor adivinhável não é token, CSRF volta com aparência de defesa), UX-08 (identidade em cookie faz um navegador = um usuário, mas CA-3, CA-3b e o teste manual de CA-11 exigem operar delegante e delegado lado a lado), PROC-08 (nível que se torna inelegível durante a cadeia não tem regra — S1.2 definiu o pulo só para o caso 'sem titular')."
+    },
+    {
+      "phase": 2,
+      "criterion": "concentration_analyzed",
+      "met": true,
+      "details": "Exibida em chat e registrada na decisão f69fad16. Achado central: a concentração mudou de endereço em vez de diminuir — casos-de-uso 0 -> 5, matriz-doa 6 -> 3, porque S1.3 transferiu a lógica em vez de removê-la. Tendência acumulada exibida: 57/10 -> 21/6 -> 17/5 achados/críticos, com a proporção de críticos que são regressões subindo de 0% para 83% e 100%."
+    },
+    {
+      "phase": 3,
+      "criterion": "criticals_addressed",
+      "met": true,
+      "details": "Iteração 3: os 5 críticos de V(3) tratados por id. ARQ-08 por T1 (algumDecisor volta para autoridade; a invariante SoD retorna ao domínio e o padrão Domain Model da Fase 1 volta a valer). PROC-08 por T2.1 (uma regra só: nível sem decisor é pulado em qualquer momento e por qualquer causa). IMP-08 por T2.3 + T2.4 (CA-1 reescrito com aprovação do operador, decisão 0e391bfc; INV-18 impede o pulo degradar quatro olhos a zero). SEC-07 por T3 (cookie passa a carregar nonce aleatório em vez do id público). UX-08 por T4 (identidade volta a ser por requisição: duas abas comuns, dois usuários, como CA-3/CA-3b/CA-11 exigem)."
+    },
+    {
+      "phase": 3,
+      "criterion": "important_decided",
+      "met": true,
+      "details": "Os 10 importantes e 2 sugestões da iteração 3 com decisão. RESOLVIDOS: LING-07 e A-09 por T1 (definição única de decidível, usada na criação e na decisão); GOV-06 por T2.2 (NIVEL_PULADO na trilha); REG-05 por T2.3; RES-05 por T5 (registrar dentro da transação, erro aborta tudo); LING-06 por T5 (tipo Html marcado); A-10 por T5 (validar cobre o seed de usuários); IMP-09 por documentação em specs/design/telas.md (procedimento de reinício com offset para CA-5 e de duas abas para CA-3/CA-3b). ACEITOS COM JUSTIFICATIVA: CTRL-04 (o offset é ferramenta de demonstração do próprio operador; persistir o último offset para impedi-lo de voltar o tempo seria mecanismo novo contra uma ação deliberada), PROC-09 e GT-05 (coerentes com GT-01, já aceito pelo operador: o sistema não restringe para quem se delega nem sinaliza delegação inócua), PERF-05 (leitura por nível na criação, irrelevante com 3 papéis) e SEC-06 (URL revela identidade mas não permite escrever, sob A5)."
+    },
+    {
+      "phase": 3,
+      "criterion": "scope_preserved",
+      "met": true,
+      "details": "Checklist 4/4. (1) requisitos da Fase 0 cobertos; (2) nenhuma funcionalidade não solicitada — o único evento novo (NIVEL_PULADO) é explicabilidade de uma regra existente, não capacidade; (3) o comportamento visível mudou em um ponto — a regra do pulo tornou CA-1 inverificável — e isso NÃO foi resolvido em silêncio: CA-1 foi levado ao operador via AskUserQuestion, reescrito com aprovação explícita, registrado (0e391bfc) e desdobrado em CA-1b e CA-1c em specs/validation/criterios-aceite.md; (4) UC-1..UC-7 continuam válidos. Segundo critério de aceite alterado nesta fase (o primeiro foi CA-3 na iteração 2) — ambos por decisão registrada do operador, nenhum por preferência da IA."
+    },
+    {
+      "phase": 3,
+      "criterion": "architecture_simplified",
+      "met": true,
+      "details": "V(3) -> V(4), medido: definições possíveis de 'elegível' 3 (nenhuma escrita) -> 1 (escrita, no domínio); invariantes SoD fora do domínio 1 -> 0; tokens anti-CSRF previsíveis 1 -> 0; módulos 12 -> 12. Acréscimos: 1 evento de trilha (NivelPulado, que é explicabilidade de uma regra já existente) e 1 invariante (INV-18, que é a guarda contra o pulo degradar quatro olhos a zero). Mudança estrutural 16,7% (autoridade e casos-de-uso), a mesma da rodada anterior. Nenhum módulo acrescentado ou removido em nenhuma das três rodadas do laço."
+    },
+    {
+      "phase": 4,
+      "criterion": "exit_criteria_p2p3",
+      "met": true,
+      "details": "Verificados item a item e exibidos em chat. Fase 2: 5/5 (activated_lenses_recorded redeclarado nas 3 rodadas com carimbo do motor it.1/V1, it.2/V2, it.3/V3; lenses_applied 15 lentes x 12 módulos por rodada; coverage_matrix com 3 seções '## Iteração N — V(N)' e 95 linhas; criticals_identified 21 críticos no acumulado; concentration_analyzed por módulo e por lente nas 3 rodadas). Fase 3: 4/4 (criticals_addressed 21/21 tratados por id, sendo 1 aceito explicitamente — SEC-01/premissa A5; important_decided 52 importantes resolvidos ou aceitos com justificativa registrada; scope_preserved checklist 4/4 nas 3 rodadas, com os 2 critérios de aceite alterados — CA-3 e CA-1 — levados ao operador e aprovados por decisão registrada; architecture_simplified V(1)->V(4) com 12 módulos do início ao fim, nenhum acrescentado nem removido)."
+    },
+    {
+      "phase": 4,
+      "criterion": "safeguards_s1_s5",
+      "met": true,
+      "details": "check_all_safeguards: 2 instrumentadas, 0 violadas, 0 avisos. S2 (critério de parada é do usuário) verificado na prática: o operador decidiu em três pontos do laço 2-3 — iterar na it.1 (aceitando minha recomendação), iterar na it.2 (aceitando a recomendação contra a conveniência de tempo) e parar na it.3 (aceitando recomendação que ia CONTRA a tabela do método). S4 (verificação humana explícita) verificado: P0 o operador julgou a síntese teach-back; P2/P3 arbitrou 7 trade-offs de escopo (GT-01, GT-02, PROC-03, A5, lacuna do papel de topo, CA-3, CA-1); P6 ainda cobrará o teste manual, que é dele. S5 (escopo é do usuário) observada na prática: todos os itens de fronteira escopo/arquitetura foram levados a AskUserQuestion em vez de decididos pela IA. VERIFICAÇÕES ADICIONAIS DO PORTÃO, todas ✅: as 4 perguntas da Fase 1 seguem respondidas em V(4); a análise de concentração não deixou falha sistêmica não resolvida (a da rodada 1 foi fechada por R1, a da rodada 3 por T1; nenhuma lente atingiu todos os módulos e nenhum módulo foi atingido por todas as lentes); specs/ com 9 de 9 diretórios populados. RESSALVA REGISTRADA: o meta-padrão 'cada rodada de correção gera novos críticos' NÃO foi resolvido — foi a razão de parar. V(4) não passou por crítica adversarial, e esse é o risco explícito que o operador assumiu ao aceitar avançar."
+    },
+    {
+      "phase": 5,
+      "criterion": "ui_runnable",
+      "met": true,
+      "details": "Confirmação literal do operador via AskUserQuestion: \"Funcionou — executei o roteiro até APROVADA\" — isto é, entrou como Ana (Coordenadora) em http://127.0.0.1:3000, criou a despesa de R$ 80.000,00 (UC-1), aprovou como Carla Dias no nível Gerente e como Elisa Rocha no nível Diretor (UC-2), e a despesa chegou ao estado APROVADA com a trilha completa. Caso de uso da Fase 0 executado de ponta a ponta por um humano na UI real, não simulado pela IA."
+    },
+    {
+      "phase": 5,
+      "criterion": "all_modules",
+      "met": true,
+      "details": "12/12 módulos da decomposição P1 presentes no código, com os nomes canônicos de specs/technical/architecture.md: src/dominio/despesa.ts (dominio-despesa), matriz-doa.ts, delegacao.ts (dominio-delegacao), autoridade.ts, bandeja.ts, trilha.ts, relogio.ts, portas.ts (portas-repositorio), src/adaptadores/sqlite.ts (sqlite-adaptador), src/app/casos-de-uso.ts, src/api/http.ts (api-http), src/ui/telas.ts + render.ts (ui-web). 2.076 LOC. tsc --noEmit passa sem erro. Todos os 11 critérios de specs/validation têm ao menos um módulo que os cobre (tabela exibida em chat). A revisão adversarial de escopo P0 x entrega não encontrou nenhum ❌; os 4 🟡 são de verificação (suíte automatizada, cenários D-20/D-21 com variante de seed, concorrência, teste manual) e o operador decidiu explicitamente que pertencem à Fase 6."
+    },
+    {
+      "phase": 5,
+      "criterion": "specs_consulted",
+      "met": true,
+      "details": "specs/ consultado antes de cada módulo e citado NO CÓDIGO, por achado e por versão: specs/technical/architecture.md V(4) deu a tabela de módulos, interfaces e depends-on; specs/domain/glossario-e-invariantes.md deu as 18 invariantes vigentes (INV-15 revogada) e a regra do pulo; specs/models/modelo-de-dados.md deu o schema SQLite literal (incluindo o índice idx_evento_despesa do achado PERF-02 e a decisão de NÃO gravar estado EXPIRADA); specs/examples/referencias-de-implementacao.md deu o padrão de transação leitura-para-atualização do better-sqlite3 (leitura DENTRO do bloco), o tratamento de erro do Fastify, o relógio como porta e a regra de conversão monetária por parsing de string em vez de parseFloat*100; specs/references + specs/technical/dw-rbac-mapeamento.md deram a construção 'execution' do DW-RBAC que autoridade.resolver porta; specs/datasets/seed-e-cenarios.md deu SEED_PAPEIS e SEED_USUARIOS literais; specs/design/telas.md deu as 6 telas e o TEXTO EXATO de cada mensagem de erro. Nenhum parâmetro numérico foi inventado: os três limites de alçada vêm do dataset, declarados arbitrários por natureza em SCI-01."
+    },
+    {
+      "phase": 5,
+      "criterion": "s6_applied",
+      "met": true,
+      "details": "S6 aplicado por módulo. TIER 1 (lib madura aprovada em P1, usada como está): api-http com Fastify 5 + @fastify/formbody; sqlite-adaptador com better-sqlite3 13 (transação síncrona nativa); relogio e crypto do Node; Vitest para a Fase 6. TIER 2 (algoritmo documentado, portado): autoridade.resolver porta a construção 'execution' do DW-RBAC (autoridade efetiva = própria união delegada vigente NAQUELE instante, verificada no ato), conforme specs/technical/dw-rbac-mapeamento.md, com as 4 divergências conscientes nomeadas; matriz-doa porta a regra de roteamento por matriz DoA de specs/references; trilha porta o padrão de event log append-only. TIER 3: nenhum — nada foi escrito sem referência. S7 (micro-verificação adversarial) executado: encontrou e corrigiu 5 divergências, três estáticas (registro de NIVEL_PULADO antes de gravar a despesa violaria a FK; INV-16 comparando instante com data; exports mortos em api-http) e duas empíricas via smoke test HTTP, cada uma com diagnóstico de causa raiz registrado (126d233a: cast de linha SQLite sem mapeamento em usuarios.porId, papel_id vs papelId; 8e068d32: violação de CA-3 — a delegação acrescentava o delegado sem remover o delegante do ramo de autoridade própria). Também registrada em architecture.md a correção do depends-on de bandeja, que na prática usa matriz-doa — dependência real não declarada, da mesma classe de ARQ-06/ARQ-07."
+    },
+    {
+      "phase": 6,
+      "criterion": "tests_passing",
+      "met": true,
+      "details": "npm test (Vitest 3) executado nesta fase: 4 arquivos, 43 testes, 43 passando, 100 asserções, 499 ms. tsc --noEmit limpo; npm audit com 0 vulnerabilidades. S4 respeitado: a saída foi lida, não presumida. Anti-vacuidade verificada por mutação — inverter a fronteira de INV-1 (<= para <) quebrou exatamente CA-2/D-3, e desligar INV-4 quebrou D-13 e o teste das quatro mensagens distintas; restaurado o código, 43/43 voltaram ao verde."
+    },
+    {
+      "phase": 6,
+      "criterion": "manual_testing",
+      "met": true,
+      "details": "Teste exploratório executado pelo operador na aplicação real em http://127.0.0.1:3000, com retorno literal: \"me parece tudo ok\". Antes disso, na saída da Fase 5, o mesmo operador já havia confirmado explicitamente a execução de UC-1->UC-2 de ponta a ponta até o estado APROVADA com a trilha completa. Nenhum problema reportado. RESSALVA DE GRANULARIDADE, registrada de propósito: a confirmação desta rodada foi global sobre os sete cenários entregues em chat, não item a item — o que temos é \"o operador não encontrou nada errado no conjunto\", não \"cada cenário foi validado individualmente\"."
+    },
+    {
+      "phase": 6,
+      "criterion": "edge_cases",
+      "met": true,
+      "details": "Bordas cobertas em duas frentes. AUTOMATIZADA (verificada, com asserção específica): valor exatamente igual ao limite e um centavo acima (CA-2, D-3/D-4); cadeia vazia quando a alçada do próprio papel do solicitante cobre o valor — regressão do achado IMP-06; valor acima do teto e solicitante no topo da hierarquia (D-5, D-6); nível intermediário sem decisor e nenhum nível com decisor (D-20, D-21); auto-aprovação via delegação recebida, duplo voto na mesma cadeia, redelegação e vigências sobrepostas (D-12 a D-15); delegação antedatada (INV-16); expiração de vigência com item na fila e permanência da decisão tomada dentro dela (D-10, INV-6); rejeição sem motivo e rejeição terminal irreversível (D-16, D-17); segunda decisão no mesmo item (D-22); restart do processo (D-19); matriz inválida em três formas (INV-14); conversão monetária de 19,99 sem ponto flutuante (INV-12); XSS armazenado na descrição e nonce anti-CSRF divergente ou ausente (SEC-04, SEC-07). MANUAL: o cenário 6 do plano entregue ao operador era explicitamente de bordas — clique duplo em Aprovar, campo vazio, valor 19,99 e descrição com <script> — e ele retornou \"me parece tudo ok\" sobre o conjunto dos sete cenários, sem reportar problema. Mesma ressalva de granularidade do critério manual_testing: a confirmação foi global, não item a item."
+    },
+    {
+      "phase": 7,
+      "criterion": "specs_updated",
+      "met": true,
+      "details": "specs/validation/criterios-aceite.md ganhou a seção 'Resultados obtidos (Fase 7)' com esperado x obtido por critério, a verificação anti-vacuidade por mutação, o que NÃO foi coberto (layout visual, RES-01, concorrência paralela) e a ressalva de granularidade do gate manual. specs/technical/architecture.md ganhou 'Decisões finais e alternativas descartadas', com as 11 alternativas avaliadas e recusadas ao longo do ciclo (React SPA, Python/FastAPI, node:sqlite, Playwright, padrões GoF, hash encadeado, INV-15, papel Conselho, aprovação por par, trava otimista, persistir offset) e as versões fixadas com motivo. specs/domain/glossario-e-invariantes.md já fora reconciliado com o conjunto vigente de invariantes (INV-13 a INV-18, com INV-15 revogada). 9 de 9 diretórios de specs/ populados, 11 arquivos."
+    },
+    {
+      "phase": 7,
+      "criterion": "lessons_documented",
+      "met": true,
+      "details": "specs/references/lessons.md escrito com 8 lições sobre ESTE projeto, cada uma citando o achado ou a decisão que a produziu: L1 a âncora dupla da cadeia e por que o caso pequeno é o caso limite (IMP-06); L2 as três semânticas distintas de delegação e o fato de conviverem em autoridade.resolver (CA-3, CA-3b, INV-6, PROC-06); L3 controle que bloqueia versus controle que escala, com a heurística de que mensagem instruindo ação impossível denuncia o controle e não o texto (REG-04, UX-07); L4 'as T' sobre linha de banco desliga a verificação que justificava escolher TypeScript (diagnóstico 126d233a); L5 premissa declarada não é premissa imposta, com a queda de 6 para 2 módulos na lente Assumptions após INV-14, e A5 como a premissa cara que restou; L6 o custo próprio de corrigir, medido — 🔴 10/6/5 por rodada com a fração de regressões subindo de 0% a 100%, com três exemplos concretos; L7 achados de stack (prebuild de better-sqlite3 em Node 24, vulnerabilidades de Fastify 4 e Vitest 1.6, inexistência de escape por padrão em template de string, duplo envio com valor público não sendo defesa, relógio deslocável e não fixável); L8 os sete itens deliberadamente fora de escopo, cada um com o achado que o nomeou, como candidatos a v2.0."
+    },
+    {
+      "phase": 7,
+      "criterion": "human_feedback",
+      "met": true,
+      "details": "Coletado via AskUserQuestion na Fase 7. Avaliação do produto: \"Atende — os 14 critérios de aceite estão cumpridos\". Meta-iteração: \"Projeto concluído — encerrar a metodologia aqui\". Nenhuma pendência adicional levantada além dos sete itens já registrados em L8. Este é o último de uma sequência de decisões humanas que atravessou o ciclo inteiro (S2/S4/S5): alvo de entrega, 16 respostas de HSA na Fase 0, validação da síntese teach-back, 6 escolhas de padrão na Fase 1, a lacuna do papel de topo, a aceitação explícita da premissa A5, três decisões pós-ciclo do laço 2-3 (iterar, iterar, parar — a última contra a recomendação da tabela do método), quatro decisões de fronteira escopo/arquitetura (GT-01, GT-02, PROC-03 e a reescrita de CA-3 e CA-1), a escolha de continuar na mesma sessão em dois pontos de troca, a ferramenta de teste de UI, a saída da Fase 5 e o gate manual da Fase 6."
+    }
+  ],
+  "safeguards": [
+    {
+      "id": "S0",
+      "status": "ok"
+    },
+    {
+      "id": "S1",
+      "status": "ok"
+    },
+    {
+      "id": "S2",
+      "status": "ok",
+      "details": "Stopping Criterion: behavioral check — requires agent attention. Stopping criterion belongs to the USER, not the AI.",
+      "lastChecked": "2026-08-11T12:27:49.616Z"
+    },
+    {
+      "id": "S3",
+      "status": "ok"
+    },
+    {
+      "id": "S4",
+      "status": "ok",
+      "details": "Explicit Verification (mandatory human-AV): behavioral check — requires agent attention. Human-AV is irreplaceable at each gate. Automated tests verify formalizable properties. Semantic adequacy, usability, and domain correctness REQUIRE human judgment. P0: human validates synthesis. P2: human arbitrated trade-offs. P4: human confirms convergence. P6: NEVER assume tests passed — execute and verify + mandatory manual exploratory testing.",
+      "lastChecked": "2026-08-11T12:27:49.616Z"
+    },
+    {
+      "id": "S5",
+      "status": "ok"
+    },
+    {
+      "id": "S6",
+      "status": "ok"
+    },
+    {
+      "id": "S7",
+      "status": "ok"
+    }
+  ],
+  "loopCounter": {
+    "pattern": "",
+    "count": 0,
+    "firstSeen": "",
+    "lastSeen": "",
+    "lastDiagnosis": "2026-08-11T12:43:59.687Z"
+  },
+  "createdAt": "2026-08-11T10:50:37.763Z",
+  "updatedAt": "2026-08-11T14:23:52.339Z",
+  "history": [
+    {
+      "from": 0,
+      "to": 1,
+      "timestamp": "2026-08-11T11:11:49.161Z",
+      "criteriaMet": [
+        "score_90",
+        "user_confirmed",
+        "ambiguities_zero",
+        "use_cases_complete",
+        "vocabulary_agreed",
+        "out_of_scope_clear",
+        "tech_feasibility",
+        "implementation_feasibility",
+        "technical_scientific_research",
+        "specs_populated"
+      ]
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "timestamp": "2026-08-11T11:18:30.853Z",
+      "criteriaMet": [
+        "patterns_defined",
+        "modules_responsibility",
+        "interfaces_defined",
+        "dependencies_explicit",
+        "assumptions_listed",
+        "architecture_doc",
+        "tech_100_scope",
+        "modules_adherent_patterns"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-11T11:26:00.547Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 2,
+      "timestamp": "2026-08-11T11:31:58.311Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-11T11:35:43.864Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 2,
+      "timestamp": "2026-08-11T11:49:54.156Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-11T11:52:39.667Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "timestamp": "2026-08-11T12:27:38.421Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "timestamp": "2026-08-11T12:30:10.121Z",
+      "criteriaMet": [
+        "exit_criteria_p2p3",
+        "safeguards_s1_s5"
+      ]
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "timestamp": "2026-08-11T13:21:37.656Z",
+      "criteriaMet": [
+        "ui_runnable",
+        "all_modules",
+        "specs_consulted",
+        "s6_applied"
+      ]
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "timestamp": "2026-08-11T14:16:38.139Z",
+      "criteriaMet": [
+        "tests_passing",
+        "manual_testing",
+        "edge_cases"
+      ]
+    }
+  ],
+  "lastPhaseStateCheck": "2026-08-11T10:54:21.082Z",
+  "lastTestOutcome": {
+    "outcome": "pass",
+    "phase": 6,
+    "at": "2026-08-11T14:16:02.061Z"
+  }
+}

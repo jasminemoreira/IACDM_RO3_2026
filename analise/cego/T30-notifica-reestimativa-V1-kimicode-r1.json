@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: SMTP, webhooks de destino e SQLite; o design já prevê timeout, retry com jitter, distinção falha permanente/transitória e dead-letter (PRE-5, PRE-7, EDGE-3)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI do operador (M-02: explain, pending, retry, serve) e a API REST consumida por emissores."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield); nada substitui ou modifica um sistema em produção — a única menção a legado é cadastro antigo sem fuso, tratado como premissa, não como migração."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso cujo custo cresce com o uso: envios de e-mail/webhook e quota por pessoa; o token bucket e a supressão do excedente são decisões explícitas de consumo proporcional."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas sobre pessoas: suprimir, adiar ou entregar notificações a cada destinatário (opt-out, quiet hours, rate limit), com mecanismos de correção (preferences, unsubscribe)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita (notificação agrega entregas: delivered/partially_delivered/failed/suppressed/deferred), fluxo multi-ator (emissor, destinatário, operador) e caminhos de exceção (retry, dead-letter, reprocessamento)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Toda supressão produz decisão nomeada com motivo de enum fechado e a CLI oferece 'explain' — o sistema registra decisões pelas quais alguém terá de responder depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com requisitos operacionais: worker em laço, fila durável, dead-letter, e ferramentas de diagnóstico/intervenção (pending, retry) sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sistema com feedback e autocorreção: laço de retry com backoff/jitter, reavaliação de supressão no estágio deliver, token bucket reativo — com risco de oscilação/drift (20 adiadas viram rajada às 08:00, relógio confiável em PRE-4)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Atores independentes com incentivos não garantidos: qualquer emissor autenticado pode notificar qualquer pessoa (PRE-8), e a idempotência do consumidor do webhook é apenas esperada, não garantida (PRE-7)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes independentes: ChannelPort com semântica sutil de 'permanent', formato de assinatura HMAC sobre id.timestamp.payload, headers List-Unsubscribe e contratos de API REST."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa com tolerâncias explícitas (PAR-06: 300 s de skew de relógio) e manutenção/evolução previstas: node:sqlite experimental isolado atrás de M-12 (PRE-5) e critério de fronteira para extrair regras de supressão."
+    }
+  ]
+}

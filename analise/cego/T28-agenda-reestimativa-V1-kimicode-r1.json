@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Duas dependências externas (porta Provider com dois provedores) com falhas explícitas no contrato: invalidated=True, tombstones, paginação que repete item, janela obrigatória e a regra R-A3 para saída-de-janela versus deleção."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é uma superfície operada por pessoa: CLI com comandos sync/status/conflicts resolve, exit codes e saída tabular — inclusive o fluxo humano de resolver conflito com --take a|b|merge."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "É um sistema novo que não substitui nem modifica sistema de produção existente — os calendários externos continuam sendo o que são, sem transição de velho para novo nem caminho de rollback a projetar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome um recurso cujo custo cresce com o uso — chamadas e páginas de pull/write nos provedores por evento — e a própria arquitetura o reconhece: limite de páginas no M-10 e orçamento de PR-8 (< 5 s com ~1.000 eventos por lado)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automáticas (reconcile, policies) são sobre campos de eventos, não scoring, classificação ou moderação de pessoas; não há sujeito classificado pelo sistema."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-08 define uma máquina de estados explícita (conflito aberto → resolvido, com regra 'nada aplicado sem decisão'), ator humano no caminho de exceção ESCALATE, e fluxo de exceção de full resync por token invalidado."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões pelas quais alguém responderá depois: fila de conflitos persistida com a escolha humana (resolve(id, choice)), SyncReport por ciclo, ancestral e mapa de identidade que atribuem autoria/origem a cada escrita."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O escopo negativo exclui daemon, polling, webhook e servidor: é uma CLI disparada manualmente, sem requisito de operação contínua em produção a ser monitorada; status/SyncReport são saída de comando, não operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de sincronização de estado com realimentação explícita: a neutralização de eco (A-5, gravar ETag no mesmo commit) existe para impedir que a própria escrita volte como mudança externa — risco clássico de oscilação e deriva de estado entre token e ancestral (PR-1, PR-6)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Integração com dois atores externos independentes cuja cooperação o design apenas assume: PR-3 (UID preservado nas escritas dos dois provedores) e a fidelidade de tombstones não têm mecanismo de enforcement — se um provedor 'desviar', eventos duplicam a cada ciclo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface centrais e ambíguos por natureza: a porta Provider com invariantes ('exatamente um de next_page_token/next_state_token não-nulo', token opaco), duas implementações independentes do mesmo contrato (M-04, M-05) e a tradução bidirecional ics ↔ canônico do M-03."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema precisa de tolerâncias, não de especificação exata: a armadilha A-2 (paginação que repete item) exige tolerância a duplicatas, dois provedores com semânticas divergentes cabem na mesma porta, e a evolução/manutenção depende de libs externas (PR-7) com comportamento fora do controle do projeto."
+    }
+  ]
+}

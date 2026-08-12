@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-07 persiste em SQLite (arquivo único, transações) e M-08 consome dados externos (CSV legado) — há dependência de armazenamento e de entrada de dados cujas falhas/corrupções precisam de comportamento definido, mesmo sem rede em runtime."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 4 telas operadas por pessoa (regras, simulador, importação, histórico), com decisões de usabilidade explícitas como a data preenchida com 'hoje' de forma visível e editável."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada: M-08 (importador-csv) migra a planilha existente e M-09 (prova-paridade, CS-1) verifica equivalência com o preço original antes da troca."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema local, single-user, SQLite em arquivo único, sem IA/ML, sem infraestrutura elástica e sem processamento de alto volume — nenhum recurso cujo custo cresça com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas são sobre preço de produto × quantidade × data, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos (sem dados pessoais no domínio)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há máquina de estados de negócio explícita: rascunho → validação de coerência (M-05) → publicação atômica (M-07), com versões imutáveis após publicadas e exceção de empate insolúvel."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra e precisa responder por cada decisão: LogDeDecisoes (registrar/listar/obter), trace exaustivo (I-3), explicador contrastivo, histórico e recálculo de decisão, e versões publicadas imutáveis (I-4/I-7)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Processo único local, UI e API no mesmo processo (A-08), sem requisitos operacionais declarados — nada na arquitetura exige detectar degradação ou diagnosticar incidentes em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há realimentação nem configuração em runtime alterando comportamento: o motor é determinístico e nunca lê o relógio (A-04), versões publicadas são imutáveis (A-12) e 'recalcular' é consulta sob demanda, não correção automática."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Premissas A-06/A-08: processo single-user, sem auth, sem exposição em rede e sem atores independentes — não há API pública, marketplace ou integração onde cooperação possa ser traída."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A arquitetura é densa em contratos sujeitos a ambiguidade: interfaces e portas entre módulos, contrato REST com data obrigatória, formato CSV com normalizações (`R$ 1.189,50`, `Ate` textual, SKU com trim/upper) e semântica de faixa fechada [min,max] — dois leitores corretos do contrato poderiam divergir."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa projetado para evoluir: decomposição modular com portas (DIP), versionamento de regras, tolerância explícita de R$ 0,01 na paridade, arredondamento só no resultado final (A-13) e ciclo de sessões desacoplado que assume manutenção por módulo."
+    }
+  ]
+}

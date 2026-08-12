@@ -1,0 +1,47 @@
+:root {
+  --fundo: #12131a;
+  --painel: #1b1d27;
+  --borda: #2c2f3d;
+  --texto: #e7e8ee;
+  --fraco: #9a9db0;
+  --ok: #46b17b;
+  --alerta: #d6a13a;
+  --corte: #d9534f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 2rem 1.5rem 3rem;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+header, main, footer, section { max-width: 1000px; margin-inline: auto; }
+h1 { font-size: 1.35rem; margin: 0 0 .25rem; }
+h2 { font-size: 1rem; margin: 2rem 0 .6rem; color: var(--fraco); font-weight: 600; }
+.sub { color: var(--fraco); margin: .1rem 0 0; font-size: .87rem; }
+.erro { color: var(--corte); min-height: 1.2em; }
+table { width: 100%; border-collapse: collapse; background: var(--painel);
+        border: 1px solid var(--borda); border-radius: 8px; overflow: hidden; }
+th, td { padding: .55rem .75rem; text-align: left; border-bottom: 1px solid var(--borda);
+         font-variant-numeric: tabular-nums; }
+thead th { color: var(--fraco); font-weight: 600; font-size: .82rem;
+           text-transform: uppercase; letter-spacing: .04em; }
+tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+#global-card th { color: var(--fraco); font-weight: 500; width: 12rem; }
+.pill { display: inline-block; padding: .12rem .5rem; border-radius: 999px;
+        font-size: .8rem; font-weight: 600; }
+.pill.ok { background: rgba(70,177,123,.15); color: var(--ok); }
+.pill.corte { background: rgba(217,83,79,.15); color: var(--corte); }
+.pill.sem-dados { background: rgba(154,157,176,.15); color: var(--fraco); }
+input, button {
+  font: inherit; padding: .38rem .6rem; border-radius: 6px;
+  border: 1px solid var(--borda); background: #23262f; color: var(--texto);
+}
+input:focus-visible, button:focus-visible { outline: 2px solid #6ea8fe; outline-offset: 1px; }
+button { cursor: pointer; background: #2f3442; }
+button:hover { background: #3a4152; }
+form { display: flex; gap: .5rem; align-items: end; flex-wrap: wrap; }
+label { display: block; font-size: .82rem; color: var(--fraco); margin-bottom: .2rem; }
+.linha-teto { display: flex; gap: .35rem; }
+.linha-teto input { width: 7rem; }

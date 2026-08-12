@@ -1,0 +1,6 @@
+dominio: beta
+dono:
+  nome: Ana Costa
+  contato: dados@empresa.com
+datasets:
+  - nome: y

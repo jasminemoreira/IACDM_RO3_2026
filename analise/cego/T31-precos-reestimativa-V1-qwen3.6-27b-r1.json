@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Persistência local em SQLite e ausência declarada de dependências de rede em runtime."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença do módulo UI-web (M-12) com quatro telas interativas e campos de entrada explícitos como a data."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Substituição de tabela legada com importador CSV dedicado (M-08) e verificação de paridade (M-09)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Carga computacional trivial e escopo single-user, sem processamento intensivo ou alocação dinâmica de recursos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões comerciais de precificação de produtos, sem scoring, classificação ou moderação de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo estruturado com estados explícitos (rascunho → validação → publicação atômica → versionamento) orquestrados por M-10."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trace exaustivo, log de decisões, histórico e versionamento imutável projetados para rastreabilidade e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Sistema local single-user sem requisitos de monitoramento, health checks ou métricas operacionais em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Motor determinístico sem loops de feedback em runtime; validação e correção ocorrem apenas na fase de publicação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operação isolada single-user sem atores externos, marketplace ou APIs públicas."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos definidos internamente com tipagem explícita e dataclasses, sem protocolos externos ou comunicação entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Versionamento imutável, validação de coerência no rascunho, tolerância numérica explícita e reconsulta para evolução controlada."
+    }
+  ]
+}

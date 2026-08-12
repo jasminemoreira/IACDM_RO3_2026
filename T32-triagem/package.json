@@ -1,0 +1,30 @@
+{
+  "name": "t32-triagem",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.11.0 <25"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "start": "tsx src/main.ts",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^9.3.1",
+    "@fastify/formbody": "^7.4.0",
+    "better-sqlite3": "^11.3.0",
+    "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.0"
+  }
+}

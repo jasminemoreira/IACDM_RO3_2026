@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "versus-localqwen": {
+      "command": "node",
+      "args": [
+        "/home/jasmine/INDT/RO3/T21-certificados/.versus/localqwen/server.js"
+      ],
+      "env": {
+        "VERSUS_OLLAMA_URL": "${config:versus-localqwen.ollamaUrl}",
+        "VERSUS_OLLAMA_MODEL": "${config:versus-localqwen.model}",
+        "VERSUS_GENERATION_RESERVE": "${config:versus-localqwen.generationReserve}"
+      }
+    }
+  }
+}

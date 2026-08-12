@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: SMTP (nodemailer, M-10) e webhooks HTTP com timeout/HMAC (M-11), consumidas via ChannelPort com distinção falha permanente/transitória e retry com Full Jitter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-02 é uma CLI operada por pessoas (explain, pending, retry, serve) — superfície humana explícita de operação e diagnóstico de supressão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nenhum sistema legado sendo substituído ou modificado; é um serviço novo — apenas 'cadastros antigos/importados' aparecem como risco de dados (PRE-2), não como transição de sistema."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca recurso cujo custo cresce com o uso: envios de e-mail/webhook limitados por token bucket (PAR-11/12) e supressão do excedente — decisão explícita de descarte vs. digest, além de worker único como teto de throughput (PRE-1)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas sobre pessoas: suprimir, adiar ou entregar notificações (opt-out, quiet hours, rate limit) com decisão nomeada e motivo auditável via CLI 'explain' — há impacto direto no destinatário e mecanismo de transparência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita: estado da Notificação agrega estados das Entregas (delivered/partially_delivered/failed/suppressed/deferred), pipeline de supressão em 2 estágios, ciclo outbox→claim→retry→dead-letter e atores distintos (emissor, operador, destinatário)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém terá de responder depois: decisões de supressão nomeadas com motivo, dead-letter, reprocessamento via CLI — e PRE-8 assume emissor confiável sem autorização por recurso, tornando a atribuição de cada notificação um ponto crítico."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com requisitos operacionais: CLI dedicada a explicar supressões, listar pendentes e reprocessar (UC-8), tick() reportando claimed/delivered/failed, dead-letter como sinal de degradação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laços de realimentação autorregulados: token bucket com recarga consumido na entrega, backoff exponencial com jitter recalculado a cada falha, reavaliação de supressão no estágio deliver — com risco de comportamento emergente já admitido (20 adiadas viram supressões às 08:00)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com incentivos desalinhados: emissores autenticados por API key que podem notificar qualquer pessoa (PRE-8), destinatários com opt-out, e destinos de webhook cuja cooperação (idempotência, PRE-7) o sistema assume sem poder garantir."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes independentes: ChannelPort.send com semântica sensível de 'permanent', formato de assinatura HMAC sobre id.timestamp.payload, headers List-Unsubscribe, enum fechado de motivos — ambiguidade em qualquer um gera implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema projetado com tolerâncias explícitas e vida longa: PRE-5 isola node:sqlite experimental atrás de M-12, PRE-4 assume relógio sem retrocesso com tolerância de 300s (PAR-06), migrações de schema em M-12 — manutenção e evolução de módulos são preocupações declaradas."
+    }
+  ]
+}

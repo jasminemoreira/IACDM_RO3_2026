@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Presença de dependência externa de persistência (SQLite) com contratos explícitos em portas-repositorio e adaptadores."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo M-12 define interface web server-rendered com telas de interação direta do usuário humano (bandeja, solicitação, detalhes)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a substituição de sistema legado ou estratégia de coexistência; trata-se de um novo sistema verde."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo negativo e premissa A7 definem volume pequeno (dezenas/centenas), sem processamento intensivo de dados ou recursos elásticos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema registra processos administrativos, mas não toma decisões automatizadas que classifiquem, pontuem ou modifiquem o status de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Arquitetura centrada em máquinas de estado (despesa, delegação) e fluxos multi-ator (cadeia de aprovação, alçadas, trilha de auditoria)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Módulos M-04 e M-06 projetados para atribuir autoria ('ator efetivo', 'em-nome-de') e garantir auditabilidade (trilha append-only, invariantes SoD)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há módulos de telemetria, logging estruturado ou monitoramento de saúde; o foco é funcionalidade e persistência local."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema não possui loops de feedback automatizados nem mecanismos de auto-correção de estado; as transições são acionadas por comando explícito."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Premissa A5 admite que a identidade não é autenticada e o sistema impõe SoD apenas contra engano, criando cenário de possível defecação estratégica por atores internos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são definidas internamente dentro de um único repositório sem separação de equipes independentes ou protocolos públicos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Módulos M-03 e M-07 lidam com tolerâncias temporais (vigência, instantes UTC, monotonicidade) essenciais para a validade das delegações."
+    }
+  ]
+}

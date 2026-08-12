@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema interage com provedores externos e prevê falhas como invalidação de token, limite de páginas e divergência de escrita local/externa (PR-6)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície CLI (M-12) operada por pessoa para executar ciclos, listar conflitos e tomar decisões manuais de resolução."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve a criação de um sincronizador novo e isolado, sem menção a substituir sistema legado ou definir rotas de retorno."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema é single-threaded, executa localmente com SQLite e processa volumes limitados (~1.000 eventos), sem consumo elástico."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema trata de sincronização de dados e escalada de conflitos para decisão humana, sem tomar decisões automatizadas sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define ciclos de sincronização (M-10), ciclo de vida explícito para conflitos (M-08) e caminhos de exceção (ESCALATE, invalidação)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "O sistema registra estado e conflitos, mas não implementa trilhas de auditoria, autoria de ações ou modelo de propriedade de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O sistema executa via CLI sob demanda, não roda como serviço em produção e não define métricas ou logs operacionais."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sistema realiza sincronização de estado com reconciliação 3-vias (M-06) e neutralização de eco (A-5) para evitar deriva e oscilação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores são provedores de API e um motor local, sem incentivos estratégicos, competição ou design de mercado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A arquitetura define contratos de porta (Provider, Repository) que devem acomodar implementações semanticamente distintas (M-04 vs M-05) sob a mesma interface."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema lida com variações inerentes de padrões externos (ICS, RFC 5545) e define normalizadores (M-03) para tolerar desvios entre provedores."
+    }
+  ]
+}

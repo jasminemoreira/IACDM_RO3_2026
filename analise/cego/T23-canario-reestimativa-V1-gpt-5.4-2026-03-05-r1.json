@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas explicitadas por portas e adaptadores: relogio, fonte-de-metricas e alvo-de-implantacao."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o módulo cli como entrada do operador e observador de eventos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema e a arquitetura tratam convivência entre canário e versão estável, com promoção e rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca recurso operacional por distribuição de peso entre canário e estável, cujo custo cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; participante é papel de implantação, não indivíduo humano avaliado."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há máquina de estados explícita no coordenador e fluxo de execução com progressão, pausa, reversão e promoção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema toma decisões auditáveis de rollback/promoção e define donos claros para entidades e ações em módulos específicos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção/implantação que emite eventos operacionais e decide com base em métricas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação: coleta métricas, julga desvio, pontua e corrige a distribuição via rollback ou avanço de passo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos potencialmente conflitantes; o operador e os adaptadores não formam marketplace nem API pública."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre componentes por interfaces e portas, com tipos e distinções semânticas como Amostra vs Indisponivel."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É sistema evolutivo com módulos, portas, adaptadores e parâmetros/tolerâncias explícitos como limiares, amostra mínima e sequência de passos."
+    }
+  ]
+}

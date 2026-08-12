@@ -1,0 +1,26 @@
+{
+  "_fonte": "specs/technical/matriz-prioridade.md — matriz e definicoes de nivel: fonte F1 (Tier B). Metas de SLA: fonte F1 (Tier C, default configuravel — NAO sao norma ITIL). Prazos do rito: Tier C. prazoTriagemMin: Tier D, parametro originado neste projeto, sem precedente nos produtos pesquisados em specs/competitors.",
+  "_unidade": "Todos os prazos em MINUTOS INTEIROS. Nao existe calendario de negocio: horas corridas, sem jornada, feriados ou fuso.",
+  "_versao": "derivada do conteudo deste arquivo (hash), nunca declarada aqui — ver src/configuracao.ts",
+
+  "matriz": {
+    "ALTO":  { "ALTA": "P1", "MEDIA": "P2", "BAIXA": "P3" },
+    "MEDIO": { "ALTA": "P2", "MEDIA": "P3", "BAIXA": "P4" },
+    "BAIXO": { "ALTA": "P3", "MEDIA": "P4", "BAIXA": "P5" }
+  },
+
+  "metas": {
+    "P1": { "reconhecerMin": 10,   "resolverMin": 240 },
+    "P2": { "reconhecerMin": 15,   "resolverMin": 480 },
+    "P3": { "reconhecerMin": 60,   "resolverMin": 2880 },
+    "P4": { "reconhecerMin": 240,  "resolverMin": 7200 },
+    "P5": { "reconhecerMin": 1440, "resolverMin": 14400 }
+  },
+
+  "prazoTriagemMin": 60,
+
+  "rito": {
+    "prazoRecorrerMin": 2880,
+    "prazoJulgarMin": 1440
+  }
+}

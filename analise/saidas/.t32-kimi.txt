@@ -1,0 +1,21 @@
+T32-triagem · V1 (70 linhas de arquitetura) · kimicode · temp/seed não expostos pelo CLI · 3 rodadas
+
+nota: o conjunto declarado MUDA entre iterações; comparando contra a it1 (10 condicionais), não contra a união (11).
+
+lente                              estimado V1    Fase 2 declarou
+RES Resilience                     sim            SIM
+UX UI/UX                           sim            SIM
+MIG Migration / Coexistence        não            não
+SUS Sustainability / Proportionality 2/3            SIM
+ETI Ethical / Human Impact         sim            SIM
+PRO Process / Workflow             sim            SIM
+GOV Governance / Accountability    sim            SIM
+OBS Observability / Operability    sim            não   ← DIVERGE
+CTR Control Engineering            1/3            SIM
+JOG Game Theory                    sim            SIM
+LIN Linguistics / Grammar          sim            SIM
+MEC Mechanical Engineering         sim            SIM
+
+decisões estáveis: 9 coincidem, 1 divergem · oscilou em 2
+conjunto declarado : CTR, ETI, GOV, JOG, LIN, MEC, PRO, RES, SUS, UX
+conjunto estimado  : ETI, GOV, JOG, LIN, MEC, OBS, PRO, RES, UX

@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de provedores externos (M-04, M-05) com contratos que preveem falhas específicas como invalidação de token, repetição de itens e remoções assíncronas, exigindo tratamento explícito no sync-engine."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma interface CLI (M-12) operada por humanos que precisa apresentar status, conflitos e sobreposições de forma compreensível para tomada de decisão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O escopo negativo afirma explicitamente que não há substituição de sistema em produção nem rollback; é um novo sincronizador isolado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O processamento é local, single-threaded e limitado a ~1.000 eventos por ciclo com SQLite local; não há consumo escalável de recursos externos ou custos variáveis significativos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema gerencia dados de calendário pessoal/profissional, mas não toma decisões automatizadas sobre pessoas (classificação, scoring, moderação) que causem dano direto; conflitos são escalados para decisão humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define fluxos complexos de estado: ciclo de sync (pull-normalize-reconcile-apply), gestão de fila de conflitos (M-08) com transições aberto/resolvido, e lógica purificada de reconciliação 3-vias."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema persiste ancestrais, tokens e decisões em um repositório atômico (M-11) para garantir rastreabilidade de quem alterou o quê (neutralização de eco), permitindo auditoria do estado sincronizado."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O escopo negativo declara explicitamente que não roda como daemon, não tem polling/webhook e não há requisitos de diagnóstico em produção contínuos; a CLI é uma ferramenta pontual."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sistema é um controlador de sincronização que deve corrigir desvios de estado entre dois ambientes externos usando o ancestral como referência, com riscos de oscilação (eco) e deriva de estado se o commit não for atômico."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores são APIs externas simuladas ou reais que seguem protocolos definidos; não há incentivos estratégicos nem defeição intencional por parte dos provedores no contexto deste sincronizador."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há interfaces contratuais críticas entre módulos (porta Provider, porta Repository) e tradução de formatos semânticos complexos (ICS para modelo canônico), onde ambiguidades em campos como TZID, EXDATE ou recursividade podem causar incompatibilidades."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema lida com tolerâncias de dados inconsistentes entre provedores (paginação diferente, remoções assíncronas, repetição de itens) e acumula débito técnico na gestão de tokens e mapeamento de identidade a longo prazo."
+    }
+  ]
+}

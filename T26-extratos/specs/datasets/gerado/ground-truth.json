@@ -1,0 +1,821 @@
+{
+  "duplicatas_reimportacao": [
+    [
+      "F420000004",
+      "F420000004"
+    ],
+    [
+      "F420000009",
+      "F420000009"
+    ],
+    [
+      "F420000017",
+      "F420000017"
+    ],
+    [
+      "F420000019",
+      "F420000019"
+    ],
+    [
+      "F420000033",
+      "F420000033"
+    ],
+    [
+      "F420000034",
+      "F420000034"
+    ],
+    [
+      "F420000038",
+      "F420000038"
+    ],
+    [
+      "F420000049",
+      "F420000049"
+    ],
+    [
+      "F420000054",
+      "F420000054"
+    ],
+    [
+      "F420000061",
+      "F420000061"
+    ],
+    [
+      "F420000068",
+      "F420000068"
+    ],
+    [
+      "F420000070",
+      "F420000070"
+    ],
+    [
+      "F420000078",
+      "F420000078"
+    ],
+    [
+      "F420000079",
+      "F420000079"
+    ],
+    [
+      "F420000083",
+      "F420000083"
+    ],
+    [
+      "F420000096",
+      "F420000096"
+    ],
+    [
+      "F420000097",
+      "F420000097"
+    ],
+    [
+      "F420000104",
+      "F420000104"
+    ],
+    [
+      "F420000105",
+      "F420000105"
+    ],
+    [
+      "F420000106",
+      "F420000106"
+    ],
+    [
+      "F420000111",
+      "F420000111"
+    ],
+    [
+      "F420000112",
+      "F420000112"
+    ],
+    [
+      "F420000118",
+      "F420000118"
+    ],
+    [
+      "F420000126",
+      "F420000126"
+    ],
+    [
+      "F420000136",
+      "F420000136"
+    ],
+    [
+      "F420000146",
+      "F420000146"
+    ],
+    [
+      "F420000151",
+      "F420000151"
+    ],
+    [
+      "F420000155",
+      "F420000155"
+    ],
+    [
+      "F420000167",
+      "F420000167"
+    ],
+    [
+      "F420000171",
+      "F420000171"
+    ],
+    [
+      "F420000176",
+      "F420000176"
+    ],
+    [
+      "F420000182",
+      "F420000182"
+    ],
+    [
+      "F420000183",
+      "F420000183"
+    ],
+    [
+      "F420000184",
+      "F420000184"
+    ],
+    [
+      "F420000185",
+      "F420000185"
+    ],
+    [
+      "F420000196",
+      "F420000196"
+    ],
+    [
+      "F42C000001",
+      "F42C000001"
+    ],
+    [
+      "F42T000020",
+      "F42T000020"
+    ],
+    [
+      "F42T000021",
+      "F42T000021"
+    ],
+    [
+      "F42T000022",
+      "F42T000022"
+    ],
+    [
+      "F42T000023",
+      "F42T000023"
+    ],
+    [
+      "F42T000024",
+      "F42T000024"
+    ],
+    [
+      "F42T000025",
+      "F42T000025"
+    ],
+    [
+      "F42T000026",
+      "F42T000026"
+    ],
+    [
+      "F42T000027",
+      "F42T000027"
+    ],
+    [
+      "F42T000050",
+      "F42T000050"
+    ],
+    [
+      "F42T000051",
+      "F42T000051"
+    ],
+    [
+      "F42T000052",
+      "F42T000052"
+    ],
+    [
+      "F42T000053",
+      "F42T000053"
+    ],
+    [
+      "F42T000054",
+      "F42T000054"
+    ],
+    [
+      "F42T000055",
+      "F42T000055"
+    ],
+    [
+      "F42T000056",
+      "F42T000056"
+    ],
+    [
+      "F42T000057",
+      "F42T000057"
+    ]
+  ],
+  "duplicatas_cross_source": [
+    [
+      "F420000025",
+      "SEGURO FROTA 00025"
+    ],
+    [
+      "F420000056",
+      "SEGURO FROTA 00056"
+    ],
+    [
+      "F420000085",
+      "ALUGUEL IMOVEL 00085"
+    ],
+    [
+      "F42T000000",
+      "TARIFA MENSAL 000"
+    ],
+    [
+      "F42T000030",
+      "TARIFA MENSAL 030"
+    ],
+    [
+      "F420000055",
+      "MANUTENCAO PREDIAL 00055"
+    ],
+    [
+      "F420000157",
+      "MATERIAL ESCRITORIO 00157"
+    ],
+    [
+      "F420000166",
+      "ALUGUEL IMOVEL 00166"
+    ],
+    [
+      "F420000195",
+      "TELEFONIA MOVEL 00195"
+    ],
+    [
+      "F42T000001",
+      "TARIFA MENSAL 001"
+    ]
+  ],
+  "colisoes_legitimas": [
+    [
+      "F420000021",
+      "F42C000000"
+    ],
+    [
+      "F420000184",
+      "F42C000001"
+    ],
+    [
+      "F420000092",
+      "F42C000002"
+    ],
+    [
+      "F420000138",
+      "F42C000003"
+    ]
+  ],
+  "estornos": [
+    [
+      "F420000170",
+      "F42E000000"
+    ],
+    [
+      "F420000181",
+      "F42E000001"
+    ]
+  ],
+  "casamentos_esperados": [
+    [
+      "F420000025",
+      "SEGURO FROTA 00025"
+    ],
+    [
+      "F420000056",
+      "SEGURO FROTA 00056"
+    ],
+    [
+      "F420000085",
+      "ALUGUEL IMOVEL 00085"
+    ],
+    [
+      "F42T000000",
+      "TARIFA MENSAL 000"
+    ],
+    [
+      "F42T000030",
+      "TARIFA MENSAL 030"
+    ],
+    [
+      "F420000055",
+      "MANUTENCAO PREDIAL 00055"
+    ],
+    [
+      "F420000157",
+      "MATERIAL ESCRITORIO 00157"
+    ],
+    [
+      "F420000166",
+      "ALUGUEL IMOVEL 00166"
+    ],
+    [
+      "F420000195",
+      "TELEFONIA MOVEL 00195"
+    ],
+    [
+      "F42T000001",
+      "TARIFA MENSAL 001"
+    ],
+    [
+      "F42T000031",
+      "TARIFA MENSAL 031"
+    ],
+    [
+      "F420000041",
+      "SEGURO FROTA 00041"
+    ],
+    [
+      "F420000057",
+      "SEGURO FROTA 00057"
+    ],
+    [
+      "F420000073",
+      "SERVICOS TI 00073"
+    ],
+    [
+      "F420000099",
+      "MANUTENCAO PREDIAL 00099"
+    ],
+    [
+      "F420000153",
+      "PAGTO FORNEC ACME 00153"
+    ],
+    [
+      "F420000161",
+      "TELEFONIA MOVEL 00161"
+    ],
+    [
+      "F420000188",
+      "MATERIAL ESCRITORIO 00188"
+    ],
+    [
+      "F42T000002",
+      "TARIFA MENSAL 002"
+    ],
+    [
+      "F42T000032",
+      "TARIFA MENSAL 032"
+    ],
+    [
+      "F420000066",
+      "TELEFONIA MOVEL 00066"
+    ],
+    [
+      "F420000094",
+      "MANUTENCAO PREDIAL 00094"
+    ],
+    [
+      "F42T000003",
+      "TARIFA MENSAL 003"
+    ],
+    [
+      "F42T000033",
+      "TARIFA MENSAL 033"
+    ],
+    [
+      "F420000062",
+      "MATERIAL ESCRITORIO 00062"
+    ],
+    [
+      "F420000092",
+      "SEGURO FROTA 00092"
+    ],
+    [
+      "F42C000002",
+      "SEGURO FROTA 00092"
+    ],
+    [
+      "F42T000004",
+      "TARIFA MENSAL 004"
+    ],
+    [
+      "F42T000034",
+      "TARIFA MENSAL 034"
+    ],
+    [
+      "F420000011",
+      "ENERGIA ELETRICA 00011"
+    ],
+    [
+      "F420000031",
+      "SEGURO FROTA 00031"
+    ],
+    [
+      "F420000143",
+      "ENERGIA ELETRICA 00143"
+    ],
+    [
+      "F420000190",
+      "SALARIO FOLHA 00190"
+    ],
+    [
+      "F420000194",
+      "PIX ENVIADO JOAO 00194"
+    ],
+    [
+      "F42T000005",
+      "TARIFA MENSAL 005"
+    ],
+    [
+      "F42T000035",
+      "TARIFA MENSAL 035"
+    ],
+    [
+      "F420000008",
+      "ENERGIA ELETRICA 00008"
+    ],
+    [
+      "F42T000006",
+      "TARIFA MENSAL 006"
+    ],
+    [
+      "F42T000036",
+      "TARIFA MENSAL 036"
+    ],
+    [
+      "F420000032",
+      "PIX ENVIADO JOAO 00032"
+    ],
+    [
+      "F420000081",
+      "TELEFONIA MOVEL 00081"
+    ],
+    [
+      "F420000110",
+      "TELEFONIA MOVEL 00110"
+    ],
+    [
+      "F420000131",
+      "SALARIO FOLHA 00131"
+    ],
+    [
+      "F420000135",
+      "MATERIAL ESCRITORIO 00135"
+    ],
+    [
+      "F420000145",
+      "SALARIO FOLHA 00145"
+    ],
+    [
+      "F420000191",
+      "ALUGUEL IMOVEL 00191"
+    ],
+    [
+      "F42T000007",
+      "TARIFA MENSAL 007"
+    ],
+    [
+      "F42T000037",
+      "TARIFA MENSAL 037"
+    ],
+    [
+      "F420000021",
+      "PIX ENVIADO JOAO 00021"
+    ],
+    [
+      "F420000084",
+      "SEGURO FROTA 00084"
+    ],
+    [
+      "F420000164",
+      "SEGURO FROTA 00164"
+    ],
+    [
+      "F420000168",
+      "PAGTO FORNEC ACME 00168"
+    ],
+    [
+      "F420000198",
+      "ALUGUEL IMOVEL 00198"
+    ],
+    [
+      "F42C000000",
+      "PIX ENVIADO JOAO 00021"
+    ],
+    [
+      "F42T000008",
+      "TARIFA MENSAL 008"
+    ],
+    [
+      "F42T000038",
+      "TARIFA MENSAL 038"
+    ],
+    [
+      "F420000002",
+      "SALARIO FOLHA 00002"
+    ],
+    [
+      "F42T000009",
+      "TARIFA MENSAL 009"
+    ],
+    [
+      "F42T000039",
+      "TARIFA MENSAL 039"
+    ],
+    [
+      "F420000013",
+      "PIX ENVIADO JOAO 00013"
+    ],
+    [
+      "F420000100",
+      "PIX ENVIADO JOAO 00100"
+    ],
+    [
+      "F420000113",
+      "SALARIO FOLHA 00113"
+    ],
+    [
+      "F420000137",
+      "SALARIO FOLHA 00137"
+    ],
+    [
+      "F420000152",
+      "SALARIO FOLHA 00152"
+    ],
+    [
+      "F42T000010",
+      "TARIFA MENSAL 010"
+    ],
+    [
+      "F42T000040",
+      "TARIFA MENSAL 040"
+    ],
+    [
+      "F420000026",
+      "MATERIAL ESCRITORIO 00026"
+    ],
+    [
+      "F420000040",
+      "PIX ENVIADO JOAO 00040"
+    ],
+    [
+      "F420000064",
+      "PAGTO FORNEC ACME 00064"
+    ],
+    [
+      "F420000075",
+      "MATERIAL ESCRITORIO 00075"
+    ],
+    [
+      "F420000088",
+      "ALUGUEL IMOVEL 00088"
+    ],
+    [
+      "F420000108",
+      "SALARIO FOLHA 00108"
+    ],
+    [
+      "F420000123",
+      "ENERGIA ELETRICA 00123"
+    ],
+    [
+      "F420000192",
+      "TELEFONIA MOVEL 00192"
+    ],
+    [
+      "F42T000011",
+      "TARIFA MENSAL 011"
+    ],
+    [
+      "F42T000041",
+      "TARIFA MENSAL 041"
+    ],
+    [
+      "F420000199",
+      "MANUTENCAO PREDIAL 00199"
+    ],
+    [
+      "F42T000012",
+      "TARIFA MENSAL 012"
+    ],
+    [
+      "F42T000042",
+      "TARIFA MENSAL 042"
+    ],
+    [
+      "F420000020",
+      "ENERGIA ELETRICA 00020"
+    ],
+    [
+      "F420000048",
+      "PAGTO FORNEC ACME 00048"
+    ],
+    [
+      "F420000181",
+      "SERVICOS TI 00181"
+    ],
+    [
+      "F42E000001",
+      "ESTORNO SERVICOS TI 00181"
+    ],
+    [
+      "F42T000013",
+      "TARIFA MENSAL 013"
+    ],
+    [
+      "F42T000043",
+      "TARIFA MENSAL 043"
+    ],
+    [
+      "F420000028",
+      "PIX ENVIADO JOAO 00028"
+    ],
+    [
+      "F420000029",
+      "ENERGIA ELETRICA 00029"
+    ],
+    [
+      "F420000074",
+      "SERVICOS TI 00074"
+    ],
+    [
+      "F420000115",
+      "SALARIO FOLHA 00115"
+    ],
+    [
+      "F420000139",
+      "SERVICOS TI 00139"
+    ],
+    [
+      "F42T000014",
+      "TARIFA MENSAL 014"
+    ],
+    [
+      "F42T000044",
+      "TARIFA MENSAL 044"
+    ],
+    [
+      "F420000042",
+      "TELEFONIA MOVEL 00042"
+    ],
+    [
+      "F420000044",
+      "SERVICOS TI 00044"
+    ],
+    [
+      "F420000065",
+      "MANUTENCAO PREDIAL 00065"
+    ],
+    [
+      "F420000102",
+      "ALUGUEL IMOVEL 00102"
+    ],
+    [
+      "F420000124",
+      "TELEFONIA MOVEL 00124"
+    ],
+    [
+      "F420000133",
+      "SEGURO FROTA 00133"
+    ],
+    [
+      "F420000160",
+      "SERVICOS TI 00160"
+    ],
+    [
+      "F42T000015",
+      "TARIFA MENSAL 015"
+    ],
+    [
+      "F42T000045",
+      "TARIFA MENSAL 045"
+    ],
+    [
+      "F420000007",
+      "PAGTO FORNEC ACME 00007"
+    ],
+    [
+      "F420000039",
+      "PIX ENVIADO JOAO 00039"
+    ],
+    [
+      "F420000107",
+      "TELEFONIA MOVEL 00107"
+    ],
+    [
+      "F420000129",
+      "ENERGIA ELETRICA 00129"
+    ],
+    [
+      "F42T000016",
+      "TARIFA MENSAL 016"
+    ],
+    [
+      "F42T000046",
+      "TARIFA MENSAL 046"
+    ],
+    [
+      "F420000043",
+      "SEGURO FROTA 00043"
+    ],
+    [
+      "F420000052",
+      "MATERIAL ESCRITORIO 00052"
+    ],
+    [
+      "F420000080",
+      "ALUGUEL IMOVEL 00080"
+    ],
+    [
+      "F420000087",
+      "MANUTENCAO PREDIAL 00087"
+    ],
+    [
+      "F420000122",
+      "MANUTENCAO PREDIAL 00122"
+    ],
+    [
+      "F420000150",
+      "SALARIO FOLHA 00150"
+    ],
+    [
+      "F420000175",
+      "SALARIO FOLHA 00175"
+    ],
+    [
+      "F42T000017",
+      "TARIFA MENSAL 017"
+    ],
+    [
+      "F42T000047",
+      "TARIFA MENSAL 047"
+    ],
+    [
+      "F420000010",
+      "SEGURO FROTA 00010"
+    ],
+    [
+      "F420000098",
+      "SERVICOS TI 00098"
+    ],
+    [
+      "F420000141",
+      "PAGTO FORNEC ACME 00141"
+    ],
+    [
+      "F42T000018",
+      "TARIFA MENSAL 018"
+    ],
+    [
+      "F42T000048",
+      "TARIFA MENSAL 048"
+    ],
+    [
+      "F420000022",
+      "ALUGUEL IMOVEL 00022"
+    ],
+    [
+      "F420000024",
+      "SALARIO FOLHA 00024"
+    ],
+    [
+      "F420000053",
+      "PAGTO FORNEC ACME 00053"
+    ],
+    [
+      "F420000138",
+      "PIX ENVIADO JOAO 00138"
+    ],
+    [
+      "F420000162",
+      "PIX ENVIADO JOAO 00162"
+    ],
+    [
+      "F420000177",
+      "ALUGUEL IMOVEL 00177"
+    ],
+    [
+      "F420000180",
+      "SALARIO FOLHA 00180"
+    ],
+    [
+      "F42C000003",
+      "PIX ENVIADO JOAO 00138"
+    ],
+    [
+      "F42T000019",
+      "TARIFA MENSAL 019"
+    ],
+    [
+      "F42T000049",
+      "TARIFA MENSAL 049"
+    ],
+    [
+      "F420000036",
+      "ALUGUEL IMOVEL 00036"
+    ],
+    [
+      "F420000058",
+      "ENERGIA ELETRICA 00058"
+    ]
+  ],
+  "total_transacoes": 266
+}

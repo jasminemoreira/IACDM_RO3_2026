@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e internas críticas: SQLite, SMTP e webhook HTTP, com timeout, retries, dead-letter e distinção transient/permanent."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa no módulo cli, com comandos de explicar supressão, listar pendentes e reprocessar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não descreve substituição de sistema existente, transição em produção, convivência entre versões nem plano de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O serviço consome recursos que crescem com uso: armazenamento, fila durável, retries, chamadas a canais externos e processamento de alto volume de notificações."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre pessoas ao suprimir, adiar ou permitir notificações com base em preferências, quiet hours e rate limiting."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiestágio com máquina de estados e exceções: ingestão, supressão em 2 estágios, outbox, retries, dead-letter e agregação de estado da notificação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões e ações que exigem atribuição e auditoria: API key identifica emissor, preferências pertencem à pessoa e supressões têm motivo nomeado."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com requisitos operacionais explícitos, inclusive CLI operacional para pending, retry e explain suppression."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laços de correção em tempo de execução: rate limiter com retryAfter, quiet hours com opensAt, retries com backoff/jitter e reavaliação no estágio deliver."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes com incentivos potencialmente desalinhados: emissor fornece dedup key, consumidor webhook deve ser idempotente e qualquer emissor autenticado pode notificar qualquer pessoa."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Existem contratos entre componentes e integrações independentes: ChannelPort, API HTTP, webhook assinado e enums/razões de supressão que precisam ser interpretados sem ambiguidade."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura define tolerâncias e pontos de evolução: contrato ChannelPort sensível em permanent, isolamento de SQLite em M-12 e regra explícita para extrair módulos só quando o algoritmo é não trivial."
+    }
+  ]
+}

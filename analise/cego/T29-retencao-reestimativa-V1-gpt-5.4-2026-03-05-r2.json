@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há APIs, DBs, filas ou serviços de terceiros; o armazenamento é local via módulos internos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: o CLI `tsz` com 6 comandos e flags operacionais como `--allow-lossy`."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura substitui/coexiste entre formatos F1 e F2 e inclui `migrator`, `precheck`, aborto por padrão e modo lossy explícito."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais com custo que cresce com volume, retenção, migração e compressão."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas, scoring, moderação ou classificação com impacto humano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos operacionais definidos com estados/exceções: ingestão, retenção, expiração, migração, validação e rejeição de escrita."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra ações e decisões auditáveis como rejeições de escrita, `LossRisk` e `MigrationReport.lossless`, exigindo atribuição operacional."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema com operação em produção via CLI e riscos declarados de corrupção, perda e rejeição que precisam ser detectados/diagnosticados."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A retenção aplica um plano periódico sobre estado de tiers e corrige deriva entre resolução/retensão desejada e dados armazenados."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes, API pública, marketplace ou integração externa com incentivos potencialmente desalinhados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos que precisam ser inequívocos entre implementações independentes: `Store`, `capabilities()`, bitstream, bloco e codecs F1/F2."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema é evolutivo e sensível a tolerâncias de formato/invariantes, com limites exatos como `ts_bits`, bloco de 2 h e append-only em formatos persistentes."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa do provedor Anthropic (M-07) com chamada de rede longa fora da seção crítica, onde falhas ou lentidão afetam a experiência do usuário sem mecanismos explícitos de fallback ou degradação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de uma SPA (M-10) e endpoints de painel (M-09) operados por humanos para monitoramento e configuração, exigindo clareza na apresentação de status, tetos e erros."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O projeto é uma implementação inicial (Fase 1) sem indicação de substituição de sistema legado em produção ou necessidade de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca e consome recursos financeiros diretos (tokens/custo) vinculados ao uso da API, onde a decisão de corte impacta diretamente o custo operacional e o valor entregue."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas restringem acesso técnico/orçamentário a serviços de API, não envolvendo classificação, scoring ou moderação que causem dano direto a indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo de estado complexo com transações atômicas, reservas, reconciliação idempotente e tratamento de exceções (preço ausente, teto excedido), envolvendo múltiplas etapas síncronas e assíncronas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso (M-08) e associa consumo a entidades específicas via chaves virtuais (M-02), permitindo auditoria posterior de quem gastou o quanto."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Necessidade operacional de monitorar saldo, tetos e estado de corte em tempo real via painel (M-10/M-09) para detectar degradação ou esgotamento de orçamento."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de controle fechado onde o sistema mede consumo acumulado, compara contra limite (setpoint) e ajusta a permissão de novas requisições (ação corretiva), com risco de drift se a reconciliação falhar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos agentes independentes com incentivos conflitantes ou possibilidade de defeição estratégica; os consumidores são finais e o provedor é único."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Os contratos entre módulos são internos a um monolito com tipos definidos no mesmo código-base, sem ambiguidade de protocolo entre equipes ou sistemas externos independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Sistema novo com escopo congelado e premissas operacionais rígidas (ex: único escritor), sem indicação de tolerância a deriva técnica acumulada ou evolução modular a longo prazo."
+    }
+  ]
+}

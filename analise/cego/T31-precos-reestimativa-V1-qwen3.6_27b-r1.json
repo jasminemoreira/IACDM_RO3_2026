@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O M-07 (repositorio-sqlite) é uma dependência externa crítica; a arquitetura assume transação atômica e arquivo único (A-07), mas não define comportamento explícito de falha do disco ou corrupção de banco no núcleo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existem adapters de entrada para pessoa: M-12 (ui-web) com 4 telas e M-06/M-11 que expõem explicações contrastivas em pt-BR, exigindo clareza na apresentação de decisões complexas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e inclui M-08 (importador-csv) e M-09 (prova-paridade) especificamente para transição de dados e validação de equivalência com o sistema antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo é local, single-threaded (A-06), sem processamento em lote massivo ou infraestrutura elástica; o custo de recursos não escala com complexidade algorítmica significativa."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas afetam preços comerciais e não envolvem classificação, scoring ou moderação de pessoas físicas; não há risco direto de dano humano ou discriminação social."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo de estado definido: rascunho -> validação (M-05) -> publicação atômica (M-07) -> vigência temporal; o M-10 orquestra transições e exceções como 'empate insolúvel'."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema gera 'Trace exaustivo' (M-03/M-06) e registra decisões no M-07 para auditoria posterior; há obrigação de explicar o motivo da decisão e manter histórico imutável (A-12)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O núcleo depende de portas de LogDeDecisoes (M-07) para registrar ações; a UI expõe histórico e detalhes da decisão, permitindo diagnóstico de 'por que este preço' sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loop de feedback automático nem correção em tempo real; a validação ocorre pré-publicação (M-05) e a recálculo é manual via UI/API, sem auto-regulação do sistema."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores externos competitivos nem marketplace; é um sistema interno single-user (A-06) sem incentivos estratégicos ou risco de defeição entre participantes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Interfaces rigorosas definem contratos entre módulos (ex: M-02 dataclasses imutáveis, M-04 resolvedor de precedência); ambiguidades em 'faixas', 'vigência' e 'desempate' são resolvidas por invariantes explícitos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias numéricas críticas (arredondamento half-up em M-01, tolerância R$ 0,01 em M-09) e invariantes de domínio (intervalos fechados, SKU normalizado) definem margens de erro aceitáveis."
+    }
+  ]
+}

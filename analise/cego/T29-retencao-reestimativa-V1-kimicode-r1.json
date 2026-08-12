@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de dependências externas ao processo — disco/arquivos com corrupção possível (P-A7: bit trocado em F2 perde o resto do bloco, sem checksum) e entrada de produtores de dados que pode chegar fora de ordem (P-A4) — e a arquitetura declara explicitamente o comportamento de falha dessas dependências (sem WAL, sem detecção de corrupção, erro em vez de reordenação)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é uma CLI com 7 subcomandos operada por uma pessoa (operador), com superfícies de decisão sensíveis: abort por padrão, flag --allow-lossy como consentimento, WriteReport.rejected e MigrationReport.lossless como feedback — a clareza desses relatórios e flags é exatamente o que a lente avalia."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A própria razão de ser do sistema inclui troca de formato de armazenamento: existe um módulo dedicado (M-10 migrator) com precheck de LossRisk, UC-4 (migrate), e uma decisão arquitetural central sobre a assimetria F1→F2 vs F2→F1 e migração lossy."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca e consome recursos cujo custo cresce com o uso — espaço em disco sob política de retenção (downsample + expire em M-05), razão de compressão dependente do perfil (P-A10, medida, com limiar nenhum prometido) e memória em migração streaming (P-A8) — o que convida a pergunta sobre proporcionalidade e custo em escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas — o sistema compacta séries temporais numéricas, sem scoring, classificação ou moderação de indivíduos; os únicos humanos envolvidos são operadores técnicos da ferramenta."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com transições de estado e caminhos de exceção: o plano de retenção move dados entre tiers (downsample: (src,dst,range); expire: (tier,before_ts)) e a migração tem estados e exceções explícitos (precheck → abort/--allow-lossy → relatório lossless), executados por um operador via transaction scripts."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões pelas quais alguém terá de responder depois: WriteReport{written, rejected, reasons}, MigrationReport{read, written, rejected, lossless} e LossRisk do precheck existem justamente para atribuir e auditar o que foi escrito, rejeitado ou perdido — incluindo o registro de consentimento via --allow-lossy."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema com requisitos operacionais em produção: existe UC-6 ('tsz report') dedicado a medir e reportar, contadores de rejeição/perda nos relatórios de escrita e migração, e riscos operacionais declarados (P-A2 sem lock, P-A7 sem checksum) cuja detecção em produção é uma questão aberta."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há sinalização de erro gerada em runtime que realimente o sistema: a retenção é um plano computado por função pura e executado sob comando do operador (não um loop autônomo), não há sincronização de estado (escritor único declarado, P-A2) nem configuração em runtime que altere comportamento continuamente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único: escritor único é premissa (P-A2), não há API pública, marketplace, nem integrações com atores independentes — o design assume cooperação porque só existe um operador/produtor, não porque há incentivos divergentes a analisar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "O contrato Store (M-07) é implementado independentemente por dois Data Mappers (M-08, M-09) com capacidades divergentes, e a arquitetura gira em torno de ambiguidades de contrato: iteração sequencial vs get(ts), capabilities declaradas vs vazadas, write() que devolve rejected — exatamente a classe 'duas implementações corretas do mesmo contrato com comportamentos incompatíveis'."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema é explicitamente tolerante a variação e pensado para evolução de longo prazo: formatos com limites físicos distintos (ts_bits=32 ⇒ teto 2106, quantização, colisão de slots em F1), MAX_BLOCK_SECONDS=14400 como margem de falha sobre o teto de 14 bits (P-A5), e uma porta que admite trocar/adicionar formatos sem restringir o formato bom pelo limitado."
+    }
+  ]
+}

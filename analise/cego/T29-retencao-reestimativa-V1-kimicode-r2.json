@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa implícita (disco) com falha declarada sem mitigação: P-A7 afirma que um bit trocado em F2 perde o resto do bloco e o próprio texto nomeia isso como cenário para esta lente; P-A2 assume escritor único sem lock nem WAL."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: M-12 (cli) com 7 subcomandos argparse, e a política de migração exige decisão do operador (--allow-lossy vs. abort), que é um caminho de erro/escolha do usuário."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A migração entre formatos é caso de uso central (UC-4): M-10 migrator com precheck, LossRisk, MigrationReport e política abort-por-padrão; F1 e F2 coexistem sob a mesma porta Store."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e consome um recurso cujo custo cresce com o uso (disco): retenção/downsample (M-05/M-06) existem justamente para controlar consumo de armazenamento, e P-A10 registra que a razão de compressão depende do perfil da série sem limiar prometido."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas: o sistema processa séries temporais técnicas, sem scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há máquina de estados do ciclo de vida do dado com caminhos de exceção: ingest → downsample → expire (RetentionPlan), e o fluxo de migração tem transições e saídas de erro explícitas (precheck aborta, allow-lossy prossegue, rejected conta colisões)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema toma decisões de destruição/perda de dados pelas quais alguém terá de responder: expire() apaga pontos, WriteReport.rejected registra rejeições com reasons, e MigrationReport.lossless documenta perda — mecanismos de auditoria e atribuição explícitos na arquitetura."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é um sistema em produção contínua: é uma ferramenta CLI single-threaded sem daemon, sem requisitos operacionais de detecção de degradação; o comando 'report' é medição pontual, não telemetria de operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: retention.plan() é computação pura e pontual (config + now → plano), sem sinal de erro, autocorreção ou sincronização de estado em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único: premissa P-A2 declara escritor único e o escopo negativo exclui servidor, API pública e concorrência — não há atores independentes com incentivos possivelmente divergentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A arquitetura se apoia em contratos de interface entre componentes independentes: a porta Store (M-07) com capabilities declaradas, formatos binários byte-a-byte (big-endian, layouts F1/F2) e o protocolo bitstream — terreno clássico para duas implementações corretas divergirem."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema projetado para evolução de formato com tolerâncias explícitas: convivência F1/F2, teto de timestamp de 32 bits (2106), quantização de slots, MAX_BLOCK_SECONDS para falhar alto e a decisão de não restringir F2 ao domínio de F1 — tudo é gestão de tolerância e dívida de longo prazo."
+    }
+  ]
+}

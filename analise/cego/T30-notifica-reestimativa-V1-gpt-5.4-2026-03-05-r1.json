@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: SQLite, SMTP e webhooks HTTP com timeout, retry e dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa no módulo cli, com comandos explain, pending, retry e serve."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência entre versões ou plano de rollback de transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos por volume de notificações e retentativas; custo de banco, fila durável e canais externos cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre pessoas ao suprimir, adiar ou permitir notificações por preferência, quiet hours e rate limit."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiestado explícito: ingestão, supressão em dois estágios, enfileiramento, entrega, retry, dead-letter e agregação de status."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações e entidades exigem atribuição: API key identifica emissor, notificações e supressões têm motivos nomeados e o operador pode reprocessar/explicar."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com worker, pendências, retries, dead-letter e tooling operacional via CLI."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laços de correção por feedback em retry com backoff/jitter, reavaliação de supressão na entrega e token bucket consumido em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes com incentivos próprios: emissores fornecem chave de dedup, destinos webhook devem ser idempotentes e qualquer emissor autenticado pode notificar qualquer pessoa."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Existem contratos entre componentes e integrações externas: ChannelPort, payloads HTTP, assinatura HMAC e semântica de permanent vs transitório."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema explicita tolerâncias e pontos de evolução: enum fechado de motivos, premissas sobre relógio/fuso, módulo SQLite isolado e fronteiras de extração de regras."
+    }
+  ]
+}

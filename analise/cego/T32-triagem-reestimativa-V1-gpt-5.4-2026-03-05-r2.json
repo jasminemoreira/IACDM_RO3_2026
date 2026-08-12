@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de persistência SQLite no M-09 e servidor HTTP no M-11, sujeitas a falha ou lentidão."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoas: 6 telas server-side no M-12 e rotas HTTP no M-11."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, transição, convivência ou rollback entre velho e novo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura não indica consumo elástico, alocação de recurso de custo crescente nem processamento volumoso sensível a escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisão automatizada sobre pessoas ao atribuir prioridade automática e permitir reclassificação/recurso."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiator com estados e exceções: abrir, triar, reclassificar, recorrer, julgar e encerrar."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra trilha somente-inserção e autoria/legitimidade em ações que exigem auditabilidade posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com operação via API/UI e necessidade de diagnosticar degradação em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há mecanismo explícito de correção de classificação por reclassificação e recurso, com recálculo de prazos sobre estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes com incentivos potencialmente divergentes — solicitante, triador e gestor — e a premissa A7 assume boa-fé."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos intermodulares com regra embutida nas assinaturas, cuja interpretação precisa ser inequívoca entre módulos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo com 12 módulos, contratos rígidos e manutenção futura sujeita a tolerâncias de mudança."
+    }
+  ]
+}

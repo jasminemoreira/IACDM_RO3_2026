@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa explícita (API Anthropic via módulo upstream) e banco de dados, com isolamento de chamadas de rede da seção crítica."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de SPA (M-10) e endpoints operacionais (M-09) para operador e visualização de consumo, configurados por senha."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descrita como construção inicial (Fase 1) sem menção a migração de legado ou coexistência com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema controla alocação de recurso de custo variável (tokens) e aplica corte automático ao atingir o teto orçamentário."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automatizadas restringem-se a limites orçamentários de API, sem avaliação, classificação ou impacto direto em pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo de uso detalhado com transições de estado explícitas (confirmado/reservado) e responsabilidades separadas entre cliente, gateway e provedor."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registro de eventos, contadores por entidade e reconciliação idempotente garantem rastreabilidade, auditoria e autoria financeira."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema projetado para produção com endpoints de leitura de estado (M-09) e dashboard (M-10), embora alertas estejam no escopo negativo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Módulo escrow implementa loop de realimentação com reserva, reconciliação e idempotência para sincronizar estado e evitar deriva."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Premissa A5 expõe risco de contorno do gateway pelos consumidores, assumindo cooperação para que o corte de orçamento seja efetivo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Definição explícita de interfaces e contratos entre módulos (ex: retorno de Decisao, exceções específicas) para garantir comunicação determinista."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Projeto prevê evolução (Fase 2), explicita premissas não verificadas que impactam manutenção e define tolerâncias entre reserva e custo real."
+    }
+  ]
+}

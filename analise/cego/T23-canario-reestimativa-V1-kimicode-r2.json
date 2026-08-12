@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 fonte-de-metricas modela dependência externa de coleta e distingue explicitamente Amostra de Indisponivel — falha/lentidão da fonte é caso de projeto."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 cli é superfície operada por uma pessoa (operador), com progresso, motivo, decisão final e ação de abortar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é convivência canário×estável com progressão de pesos (M-06, M-10) e caminho de rollback = 100% à estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresce com o uso é decidido ou alocado — o sistema não toca infraestrutura real, e a carga do simulador é fixa por cenário."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas são sobre métricas e versões de software, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é máquina de estados explícita (progredindo/pausado/revertido/promovido) com transições, responsabilidades e caminhos de exceção (guarda, estouro de erros, aborto)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Cada decisão de rollout (promover/reverter) é registrada como evento com motivo e desfecho — algo que alguém precisará auditar e responder depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A arquitetura se desenha para operação: coordenador emite eventos, cli apenas observa, e abortar() é caminho de intervenção sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sistema autocorrigido por feedback: vereditos de métricas são o sinal de erro que corrige o peso do canário (progressão, pausa ou rollback automático), com risco clássico de oscilação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Um único ator (o operador) e nenhum agente independente, API pública ou marketplace — não há incentivos estratégicos nem cooperação assumida."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Três portas (relogio, fonte-de-metricas, alvo-de-implantacao) são contratos com múltiplos adaptadores previstos (simulado vs. real) — ambiguidade de contrato gera implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema é desenhado para evoluir (trocar substrato simulado por real só via adaptador) e vive de tolerâncias explícitas (limiares, amostra mínima, limite de erros) — variação e manutenção de longo prazo são sinais presentes."
+    }
+  ]
+}

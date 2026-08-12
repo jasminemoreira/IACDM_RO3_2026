@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa concreta: o solver CP-SAT via `ortools` (M-06) pode falhar, estourar o limite de 60s (A4, PR-2 aberta) ou não provar otimalidade (`otimalidade_provada`), e a persistência em disco (M-08) pode falhar."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 expõe uma CLI operada por pessoas com 5 comandos (`gerar · consultar · trocar · responder · conformidade`), incluindo superfície de erro (`ErroDeValidacao`, status do solver)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema consome a escala do mês anterior como entrada (M-05 `derivar`, A3, PR-4 aberta), criando coexistência/transição contínua entre ciclos de produção — a virada de mês depende do estado publicado pelo ciclo anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome um recurso cujo custo cresce com o tamanho da instância: tempo de solve CP-SAT dimensionado em A4 (30×3×30 em ≤60s), com risco já reconhecido (PR-2 aberta)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão automatizada sobre pessoas: o solver aloca plantões e valida recusas de troca, com equidade deliberadamente relegada a termo flexível com peso e pesos calibrados em outro país (A8)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é uma máquina de estados multi-ator (`solicitar` → PENDENTE → `responder(aceite)` → revalidação) com caminho de exceção explícito (violação no aceite) — processo de negócio com transições."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões auditáveis: trocas persistidas com autoria (A5: identidade não verificada, qualquer um aceita em nome de qualquer um) e relatório de conformidade (UC-5) pelo qual alguém responderá."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema com requisitos operacionais: status de geração exposto (`status, otimalidade_provada`), diagnóstico estrutural pré-solve (M-07) e violações por restrição (`custo_por_restricao`) — mas sem sinal de como degradação seria detectada em produção sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há malha de feedback nem sincronização de estado em runtime: o fluxo é gerar-once, persistir e consultar; a 'revalidação no aceite' é verificação pontual, não sinal de erro corretivo contínuo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com incentivos próprios: pessoas solicitam e aceitam trocas entre si, e o desenho assume cooperação/identidade honesta (A5, sem autenticação) — solo clássico para defecção estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contrato dual sobre o mesmo catálogo: `aplicar` (compilação no modelo CP-SAT) e `verificar` (checagem da escala concreta) precisam denotar exatamente a mesma regra — duas implementações corretas do contrato podem divergir, e o invariante declarado depende disso."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa com evolução prevista: o catálogo (H1-H4, L1-L8, S1-S7) crescerá com novas regras internas, e as premissas rígidas (A1 horários fixos, A2 contrato único) são tolerâncias que podem não suportar variação do domínio."
+    }
+  ]
+}

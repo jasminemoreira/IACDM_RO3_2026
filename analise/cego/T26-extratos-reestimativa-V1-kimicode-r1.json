@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas concretas: arquivos OFX/CSV de fontes fora do controle do sistema (ofx-adapter M-03, csv-adapter M-04) e SQLite no repository M-05 — com premissas frágeis sobre elas (A1 FITID instável, A6 formato de descrição divergente)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "O cli (M-11) é explicitamente a 'superfície do operador' com comandos import/reconcile/review/report, e o review-queue (M-09) exige que um humano resolva pendências — superfície operada por pessoa."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nada na arquitetura indica substituição ou modificação de um sistema em produção; é um importador novo com dados sintéticos gerados por fixture-generator (M-12)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de volume com custo que cresce com o uso: matching par-a-par com risco O(n²) documentado (A4, bloco degenerado por tarifas repetidas) e carga de 50k itens prevista no fixture-generator."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas (dedup, casamento) recaem sobre eventos financeiros abstratos, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita com 5 estados terminais de conciliação (M-01/M-08) e fluxo multi-ator: motor decide, humano resolve pendências via review-queue (M-09), e decisão humana não pode ser sobrescrita."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Atribuição é requisito de design: DecisaoDedup sempre carrega camada (L0-L5) e evidência para auditoria, resoluções humanas são persistidas (M-09) e VAL-2 exige rastreabilidade de falsos positivos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "A arquitetura não menciona deploy em produção, monitoramento, métricas ou requisitos operacionais — é ferramenta CLI local sem sinal de operação contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Feedback explícito: resoluções humanas persistidas realimentam a camada L0 do dedup-engine (M-09 → M-07), criando laço de correção cujo comportamento (deriva de estado, decisões obsoletas) precisa ser examinado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos próprios: fontes externas são arquivos passivos, o operador é único e não há API pública, marketplace ou plataforma."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes com múltiplas implementações independentes: porta FonteDeExtrato (OFX v1/v2 vs CSV por perfil), perfis CSV declarativos, hash canônico e gramáticas de parsing — ambiguidade de contrato gera implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias são mecanismo central: janela de data e tolerância de valor configuráveis no reconcile (M-08), score de similaridade fuzzy em vez de igualdade exata (M-06), e premissas sobre variação de formato entre fontes (A6, A7)."
+    }
+  ]
+}

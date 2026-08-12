@@ -1,0 +1,77 @@
+{
+  "_nota": "Dados de teste prometidos no Production Capacity Check da Fase 0. 6 pessoas com fusos e janelas distintas, 10 payloads, e o catálogo de categorias. A tabela-verdade de supressão está em suppression-truth-table.md.",
+  "categories": [
+    { "name": "security", "defaultEnabled": true, "transactional": true, "_nota": "transacional: ignora opt-out, janela e teto — nunca ignora dedup" },
+    { "name": "billing", "defaultEnabled": true, "transactional": false },
+    { "name": "marketing", "defaultEnabled": false, "transactional": false, "_nota": "padrão DESLIGADO: ausência de preferência não significa consentimento" },
+    { "name": "ops", "defaultEnabled": true, "transactional": false, "retentionDays": 7 }
+  ],
+  "recipients": [
+    {
+      "id": "ana",
+      "timezone": "America/Sao_Paulo",
+      "email": "ana@example.test",
+      "webhook": true,
+      "quietStart": 1320,
+      "quietEnd": 480,
+      "_nota": "janela padrão 22:00-08:00 — CRUZA A MEIA-NOITE (EDGE-1)"
+    },
+    {
+      "id": "bruno",
+      "timezone": "Asia/Tokyo",
+      "email": "bruno@example.test",
+      "webhook": false,
+      "quietStart": 0,
+      "quietEnd": 0,
+      "_nota": "janela desligada; fuso muito adiantado — expõe uso de fuso do servidor"
+    },
+    {
+      "id": "carla",
+      "timezone": "Europe/Lisbon",
+      "email": null,
+      "webhook": true,
+      "quietStart": 60,
+      "quietEnd": 300,
+      "_nota": "só webhook, janela 01:00-05:00 que NÃO cruza a meia-noite"
+    },
+    {
+      "id": "diego",
+      "timezone": "America/New_York",
+      "email": "diego@example.test",
+      "webhook": true,
+      "quietStart": 1380,
+      "quietEnd": 420,
+      "_nota": "23:00-07:00, também cruzando a meia-noite, em fuso com horário de verão"
+    },
+    {
+      "id": "elena",
+      "timezone": "Pacific/Kiritimati",
+      "email": "elena@example.test",
+      "webhook": false,
+      "quietStart": 720,
+      "quietEnd": 780,
+      "_nota": "UTC+14, janela CURTA de 1h (12:00-13:00) — limita o jitter de PAR-25 a 6 min"
+    },
+    {
+      "id": "fabio",
+      "timezone": "America/Sao_Paulo",
+      "email": "fabio@example.test",
+      "webhook": true,
+      "quietStart": 0,
+      "quietEnd": 0,
+      "_nota": "sem janela, dois canais — pessoa de controle para UC-1 e UC-5"
+    }
+  ],
+  "payloads": [
+    { "id": "p1", "category": "billing", "subject": "Fatura de agosto", "body": "Sua fatura vence hoje." },
+    { "id": "p2", "category": "billing", "subject": "Pagamento confirmado", "body": "Recebemos seu pagamento." },
+    { "id": "p3", "category": "security", "subject": "Novo acesso detectado", "body": "Acesso a partir de um dispositivo novo." },
+    { "id": "p4", "category": "security", "subject": "Seu código é 448120", "body": "Use em até 5 minutos." },
+    { "id": "p5", "category": "marketing", "subject": "Novidades de agosto", "body": "Veja o que mudou." },
+    { "id": "p6", "category": "marketing", "subject": "Oferta relâmpago", "body": "Só até amanhã." },
+    { "id": "p7", "category": "ops", "subject": "Deploy concluído", "body": "Versão 1.4.2 em produção." },
+    { "id": "p8", "category": "ops", "subject": "Fila acima do limiar", "body": "Entrega mais velha com 18 min." },
+    { "id": "p9", "category": "billing", "subject": "Cobrança recusada", "body": "Cartão expirado." },
+    { "id": "p10", "category": "ops", "subject": "Backup falhou", "body": "Tentativa 3 de 5." }
+  ]
+}

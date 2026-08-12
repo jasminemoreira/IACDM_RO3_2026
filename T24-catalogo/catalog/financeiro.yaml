@@ -1,0 +1,26 @@
+dominio: financeiro
+dono:
+  nome: Joao Souza
+  contato: joao.souza@empresa.com
+
+datasets:
+  - nome: receita
+    descricao: Receita reconhecida por competencia
+    alimentado_por:
+      - vendas.itens_pedido
+
+  # Diamante: alcancavel a partir de vendas.pedidos por dois caminhos independentes.
+  - nome: conciliacao
+    descricao: Conciliacao entre receita reconhecida e custo de envio
+    alimentado_por:
+      - financeiro.receita
+      - logistica.envios
+
+  # Dono sobrescrito: pertence a financeiro, mas responde Carlos Lima.
+  - nome: previsao
+    descricao: Projecao de receita para o trimestre
+    dono:
+      nome: Carlos Lima
+      contato: carlos.lima@empresa.com
+    alimentado_por:
+      - financeiro.receita

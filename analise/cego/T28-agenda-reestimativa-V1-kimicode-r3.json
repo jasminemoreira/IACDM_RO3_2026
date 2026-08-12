@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Duas dependências externas (M-04/M-05) com modos de falha explícitos no contrato: token invalidado (410 => full resync), tombstones, NOT_FOUND, paginação que repete item (A-2) e janela temporal obrigatória."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é uma superfície operada por uma pessoa: CLI com sync, status, conflicts list/resolve, overlaps, dry-run, exit codes e saída tabular."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: nenhum sistema de produção existente é substituído ou modificado; não há transição de antigo para novo nem caminho de rollback em questão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos cujo custo cresce com o uso: chamadas de API paginadas aos provedores (com limite de páginas em M-10) e armazenamento do ancestral/fila que crescem com o volume de eventos — PR-8 quantifica o limite (~1.000 eventos em <5s) e admite que a escala exigiria repensar o single-threaded."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisões automatizadas sobre pessoas (scoring, classificação, moderação): as políticas POL-1..4 decidem sobre dados de eventos, e o que não é resolvido escala para decisão humana na fila (M-08)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita com múltiplos atores: ciclo de vida de conflito aberto→resolvido (M-08), ESCALATE como caminho de exceção, ator humano resolvendo via `conflicts resolve`, e transições de token invalidado => full resync."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões pelas quais alguém prestará contas depois: conflitos persistidos com a escolha da resolução (M-08: 'nada aplicado sem decisão'), AppliedWrite e ancestral gravados em commit atômico (M-11) e SyncReport por ciclo."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é um sistema de produção em operação contínua: escopo negativo proíbe daemon, polling e webhook — é uma CLI invocada sob demanda contra provedores simulados, com o SyncReport como saída do ciclo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de sincronização de estado bidirecional com realimentação: o eco da própria escrita volta no pull seguinte (PR-6) e a neutralização de eco (A-5) existe exatamente para evitar oscilação e divergência de estado entre os lados."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores independentes com incentivos estratégicos: os 'atores' são duas APIs de calendário simuladas e um único operador — sem API pública, marketplace ou plataforma onde deserção estratégica faça sentido."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes independentes: a porta Provider tem duas implementações (M-04/M-05) sob o mesmo contrato (token opaco, exatamente um de next_page_token/next_state_token não-nulo) e o formato de mensagem é .ics/RFC 5545 — ambiguidade de contrato produziria comportamentos incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema projetado para evoluir (porta Provider pronta para adaptadores reais futuros, escopo negativo 1) e com tolerâncias explícitas a variação fora da especificação exata: paginação que repete itens (A-2), tokens opacos que podem ser invalidados, DATE vs DATE-TIME e fusos (PR-5)."
+    }
+  ]
+}

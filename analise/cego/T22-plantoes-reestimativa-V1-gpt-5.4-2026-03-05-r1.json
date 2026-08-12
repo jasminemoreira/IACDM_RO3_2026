@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas de solver CP-SAT e persistência em arquivos JSON, com leitura/escrita e resposta sob limite de tempo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em M-11 cli, com cinco comandos de uso operacional."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso escasso e valioso — plantões de pessoas — e o custo computacional do solve é premissa explícita de escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Há decisão automatizada sobre pessoas na geração e avaliação de escalas, afetando distribuição de plantões, trocas e restrições."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multi-etapa com máquina de estados de troca, aceite e revalidação, além de cinco casos de uso encadeados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas e trocas que exigem atribuição e auditabilidade, inclusive aceite em nome de pessoas e premissa frágil de identidade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema com operação de produção implícita por geração, consulta, conformidade e diagnóstico, sujeito a inviabilidade e degradação operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há realimentação por avaliador e revalidação de trocas sobre estado persistido da escala, corrigindo ou rejeitando mudanças conforme violações."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Existem atores independentes em trocas de plantão, com possibilidade de comportamento estratégico na solicitação e no aceite."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos explícitos entre módulos por interfaces, formatos de instância/JSON e catálogo de restrições que precisam interpretação unívoca."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura foi desenhada para evolução modular com fronteiras rígidas e um ponto único de regras, sinal de sistema durável sujeito a manutenção e variação."
+    }
+  ]
+}

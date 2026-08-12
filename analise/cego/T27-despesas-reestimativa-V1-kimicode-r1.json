@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa concreta: banco SQLite atrás do adaptador M-09 e da porta de transação em M-08 (falha, lentidão ou dado inesperado da persistência afetam o núcleo)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-rendered operadas por pessoas (bandeja, nova despesa, delegações, auditoria), com formulários POST via M-11."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo com seed próprio (M-09 semear/migrar); nenhum sistema de produção existente é substituído ou modificado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 limita o volume a dezenas/centenas de despesas e não há consumo de recurso cujo custo cresça com o uso (sem IA, sem processamento em massa, sem infraestrutura elástica)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas: aprovar/rejeitar é ato humano registrado na trilha; o sistema só valida autoridade, não pontua nem classifica indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados de Despesa (M-01), cadeia de aprovação multi-ator por alçada (M-02) e fluxo de delegação temporária com vigência e revogação (M-03), orquestrados em UC-1..UC-7 (M-10)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha append-only (M-06, INV-8) registrando ator efetivo, em-nome-de, instante e limite exercido (INV-7) — cada decisão precisa ser atribuível e auditável, com tela de auditoria em M-12."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "A4 assume um único processo escrevendo no banco e A7 volume pequeno; nenhum requisito operacional de produção (métricas, alertas, diagnóstico sem deploy) é declarado."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de feedback nem sincronização de estado: o escopo negativo proíbe cron/timer e a expiração de delegação é avaliada sob demanda contra o relógio, sem autocorreção."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com incentivos divergentes (solicitante vs. aprovador vs. delegante) e A5 admite explicitamente que o sistema 'impõe SoD contra engano, não contra adversário' — o design assume cooperação em pontos que admitem deserção estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Comunicação inter-componentes densa: 12 módulos com contratos de interface explícitos, portas hexagonais (M-07, M-08) e gramática de erros nomeados (ErroSoD, ErroNomeado, ErroAcimaDoTeto) que implementações distintas precisam interpretar igual."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Arquitetura hexagonal com adaptadores substituíveis (relógio real vs. controlável em M-07, SQLite em M-09) e granularidade E=I₀/C desenhada para manutenção e evolução independente de módulos."
+    }
+  ]
+}

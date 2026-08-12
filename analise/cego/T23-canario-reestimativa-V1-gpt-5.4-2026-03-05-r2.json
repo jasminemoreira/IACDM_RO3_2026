@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas explicitamente isoladas por portas: relogio, fonte-de-metricas e alvo-de-implantacao."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o módulo cli é a entrada do operador e imprime progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema e a arquitetura tratam de implantação canário convivendo com versão estável e rollback automático em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide alocação de tráfego/peso entre canário e estável, um recurso operacional cujo custo cresce com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; participante refere-se a papéis de implantação, não indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O coordenador é uma máquina de estados com laço de execução, abortar manual e transições progredindo/pausado/revertido/promovido."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema emite eventos e toma decisões de promoção/rollback que precisam ser atribuíveis e explicáveis depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção/implantação com eventos operacionais, coleta de métricas e necessidade explícita de detectar degradação para agir."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação: métricas geram vereditos e score que corrigem a distribuição de peso via progressão ou rollback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos próprios; os módulos externos são portas técnicas, não agentes estratégicos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre componentes e adaptadores independentes, como coletar() retornando Amostra ou Indisponivel e aplicar/distribuicao de pesos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema evolutivo com tolerâncias e parâmetros explícitos como amostra mínima, limiares, sequência de passos e contratos de manutenção entre módulos."
+    }
+  ]
+}

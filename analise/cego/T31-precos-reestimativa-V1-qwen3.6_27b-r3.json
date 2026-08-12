@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de um banco de dados local (SQLite) e lê arquivos CSV; falhas na escrita/transação ou corrupção do arquivo quebram a publicação atômica (A-07) e a importação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma interface web (M-12) com 4 telas operadas por humanos, incluindo lógica de preenchimento de data 'hoje' visível e editável para garantir determinismo."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O projeto substitui uma tabela legada e inclui um importador CSV (M-08) e uma prova de paridade (M-09) para validar a migração dos dados históricos."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema é single-user/single-threaded (A-06) com motor de regras simples e persistência local; não há consumo elástico nem processamento de alta volume que gere custo desproporcional."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema calcula preços comerciais automáticos, mas não toma decisões classificatórias sobre pessoas (como crédito ou moderação) que causem dano humano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo de estado definido: importação -> validação de coerência (M-05) -> publicação atômica (I-4); existem estados intermediários como 'rascunho' e transições controladas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema gera um trace exaustivo da decisão (M-03), mantém histórico imutável de versões (A-12) e permite auditoria via exploração das regras aplicadas (M-06)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há menção a métricas de runtime, logs estruturados para diagnóstico ou alertas; o sistema é local/single-user e a 'observabilidade' é substituída pela rastreabilidade do domínio (trace/histórico)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback em tempo real nem correção automática baseada em erro; o 'recalcular' é uma ação manual explícita do usuário sobre um histórico estático."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores com incentivos conflitantes nem mercado aberto; é um sistema interno de precificação administrado por um único operador (A-06)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há interfaces claras entre módulos do núcleo e adapters (DIP), além de parsing textual complexo para moeda BR e CSV legado que exige ambiguidade zero nos contratos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema lida com tolerâncias numéricas críticas: arredondamento half-up apenas no final (A-13), tolerância de R$ 0,01 na paridade e invariantes de faixa fechada [min, max]."
+    }
+  ]
+}

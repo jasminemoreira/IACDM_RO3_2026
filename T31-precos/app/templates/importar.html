@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% set secao = 'importar' %}
+{% block titulo %}Importação — Motor de preços{% endblock %}
+{% block conteudo %}
+<h1>Importar a planilha legada</h1>
+
+<form method="post" action="/importar" enctype="multipart/form-data" class="caixa"
+      onsubmit="document.getElementById('btn').disabled=true;
+                document.getElementById('progresso').hidden=false">
+  <label for="arquivo">Arquivo CSV</label>
+  <input id="arquivo" name="arquivo" type="file" accept=".csv,text/csv" required
+         aria-describedby="ajuda-arq">
+  <p id="ajuda-arq" class="discreto">
+    Até 5 MB e 2.000 linhas. Delimitador e acentuação do cabeçalho são
+    detectados automaticamente.
+  </p>
+  <label style="font-weight:400">
+    <input type="checkbox" name="substituir" value="1" {% if confirmar %}checked{% endif %}>
+    substituir o rascunho atual (apaga edições não publicadas)
+  </label>
+  <p><button id="btn" type="submit">Importar</button>
+     <span id="progresso" hidden class="discreto">Importando…</span></p>
+</form>
+
+{% if erro %}<p class="erro" role="alert">{{ erro }}</p>{% endif %}
+
+{% if r %}
+{% set res, val, par = r.res, r.val, r.par %}
+<div class="caixa">
+  <p><strong>{{ res.importadas }}</strong> regras importadas ·
+     <strong>{{ res.rejeitadas|length }}</strong> linhas rejeitadas ·
+     paridade <strong class="{{ 'ok' if par.divergencias|length == 0 else 'erro' }}">
+     {{ par.conferem }}/{{ par.total }}</strong></p>
+  {% if val.erros %}
+  <p class="erro"><strong>Próximo passo:</strong> as regras foram salvas no
+    <strong>rascunho</strong>, mas a publicação está bloqueada. Corrija em
+    <a href="/regras">Regras</a> e publique de lá — enquanto nada for publicado,
+    o simulador não tem versão para usar.</p>
+  {% else %}
+  <p class="ok"><strong>Próximo passo:</strong> as regras estão no
+    <strong>rascunho</strong> e ainda NÃO valem. Vá para
+    <a href="/regras">Regras</a> e clique em <em>Publicar versão</em> —
+    só então o simulador e a API passam a respondê-las.</p>
+  {% endif %}
+  <p class="aviso">
+    A partir da publicação, a fonte de verdade passa a ser o motor — a planilha
+    está aposentada. Use <a href="/api/exportar">exportar</a> se precisar voltar a ela.
+  </p>
+  {% if res.colunas_desconhecidas %}
+  <p class="discreto">Colunas não reconhecidas, preservadas aqui e não
+    reexportadas: {{ res.colunas_desconhecidas|join(', ') }}</p>
+  {% endif %}
+</div>
+
+{% if res.rejeitadas %}
+<h2>Linhas rejeitadas</h2>
+<div class="rolar"><table>
+  <thead><tr><th scope="col">Linha</th><th scope="col">Motivo</th></tr></thead>
+  <tbody>{% for x in res.rejeitadas %}
+    <tr><td>{{ x.linha or '—' }}</td><td>{{ x.motivo }}</td></tr>
+  {% endfor %}</tbody>
+</table></div>
+{% endif %}
+
+{% if res.avisos %}
+<h2>Avisos de leitura</h2>
+<ul>{% for a in res.avisos %}<li class="aviso">Linha {{ a.linha }}: {{ a.descricao }}</li>{% endfor %}</ul>
+{% endif %}
+
+<h2>Validação de coerência</h2>
+{% if val.erros %}
+<p class="erro" role="alert">A publicação está BLOQUEADA — corrija na
+  <a href="/regras">tela de regras</a>:</p>
+<ul>{% for e in val.erros %}<li class="erro">{{ e.descricao }}</li>{% endfor %}</ul>
+{% else %}
+<p class="ok">Nenhum erro de coerência. A versão pode ser publicada.</p>
+{% endif %}
+{% if val.avisos %}
+<ul>{% for a in val.avisos %}<li class="aviso">{{ a.descricao }}</li>{% endfor %}</ul>
+{% endif %}
+
+{% if par.divergencias %}
+<h2>Divergências de paridade</h2>
+<div class="rolar"><table>
+  <thead><tr><th scope="col">Linha</th><th scope="col">SKU</th><th scope="col">Qtd</th>
+             <th scope="col">Planilha</th><th scope="col">Motor</th></tr></thead>
+  <tbody>{% for d in par.divergencias %}
+    <tr><td>{{ d.linha }}</td><td>{{ d.sku }}</td><td>{{ d.quantidade }}</td>
+        <td>{{ d.get('esperado', '—') }}</td>
+        <td class="erro">{{ d.get('obtido') or d.get('erro') }}</td></tr>
+  {% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endif %}
+{% endblock %}

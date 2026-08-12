@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Presença de portas abstratas para dependências externas e mecanismo de contagem de falhas/erros para lidar com indisponibilidade e degradação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo CLI (M-12) projetado para operação humana, recebendo entradas e exibindo progresso e decisões no terminal."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Arquitetura centrada em implantação canário com divisão de peso entre versão estável e nova, incluindo mecanismo explícito de rollback automático."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Ausência de sinalização sobre consumo escalável de recursos, custos operacionais ou otimização de alocação em larga escala; o foco é precisão estatística e controle de fluxo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automatizadas restringem-se a versões de software e tráfego, sem impacto direto em pessoas, avaliações humanas ou dados pessoais."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Coordenador (M-07) implementado como máquina de estados explícita que orquestra fluxos, exceções e transições de fase da implantação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "Não há persistência de histórico, rastreamento de auditoria ou atribuição de ações a operadores; o escopo negativo explicita ausência de banco ou retenção de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Módulo de contadores, guarda absoluta e emissão de eventos pelo coordenador projetados para detectar degradação e suportar diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço fechado de coleta de métricas, julgamento estatístico e ajuste dinâmico de pesos de tráfego com rollback automático, caracterizando sistema de controle por feedback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operação restrita a um único operador via CLI e módulos internos cooperativos, sem atores independentes, incentivos estratégicos ou dinâmica de mercado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos de interface restritos ao escopo interno do projeto, sem sinal de implementação independente por equipes distintas ou definição de protocolos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Uso de testes estatísticos com nível de confiança, tratamento explícito de métricas ruidosas e modelagem de aquecimento, indicando tolerância a variação e desgaste operacional."
+    }
+  ]
+}

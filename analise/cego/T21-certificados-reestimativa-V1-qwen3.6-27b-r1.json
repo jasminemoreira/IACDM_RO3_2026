@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Adaptador `sonda-tls` interage com hosts externos e retorna erros tipados (`timeout`, `recusado`, `dns`, `tls`); `repositorio` depende de SQLite local."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo `web-ui` expõe servidor HTTP com 5 telas HTML, sessões e formulários para operação direta por pessoas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descreve implantação greenfield sem menção a substituição de legado, fase de transição ou rota de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Premissa A7 delimita explicitamente o escopo a dezenas de alvos e varredura sequencial, sem requisitos de escalabilidade ou custo variável."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Sistema classifica estado técnico de certificados e gerencia fluxos operacionais, sem tomar decisões automatizadas sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Módulo `pedido` implementa máquina de estados explícita (`pendente -> aprovado -> fechado`) e `autorizacao` define papéis com fluxos orquestrados em `casos-de-uso`."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha hash encadeada, registro obrigatório de `aprovador` nos pedidos e função `auditar` garantem rastreabilidade e imutabilidade das ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema é um monitor que expõe erros tipados de sondagem, verifica integridade da trilha em runtime e fornece telas operacionais para diagnóstico sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "`reconciliacao` compara observações consecutivas e pedidos abertos para detectar drift e emitir decisões de correção; `politica-limiar` consome configurações que alteram classificação em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operação restrita a atores internos com confiança mútua; sem API pública, marketplace ou incentivos divergentes entre partes independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos internos tipados em monólito; ausência de comunicação entre times independentes, protocolos distribuídos ou formatos de mensagem externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Fronteiras explícitas (portas/adaptadores), domínio puro e desacoplamento de I/O criam tolerâncias para substituição de dependências voláteis e evolução contínua."
+    }
+  ]
+}

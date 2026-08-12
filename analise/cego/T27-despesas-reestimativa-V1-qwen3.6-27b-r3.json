@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 adapta a persistência para SQLite, introduzindo risco de falha de I/O ou bloqueio de banco."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (ui-web) define 6 telas server-rendered para interação humana."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Escopo foca em novo sistema com seed inicial, sem menção a legado ou migração."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Premissa A7 restringe o volume a dezenas/centenas, eliminando preocupação com custo de escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Fluxo de aprovação é humano; o sistema não classifica pessoas automaticamente."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-01 a M-05 modelam estados, transições e delegação em cadeia de aprovação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-06 (trilha) e INV-7/8 impõem registro auditável e atribuível de decisões."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de definição de métricas, logs estruturados ou health-checks na arquitetura."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sistema opera por transações discretas sem loops de feedback ou auto-correção."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Premissa A5 explicita a confiança na identidade e descarta o cenário de adversário."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface explícitos e tipados conectam os módulos do núcleo."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Invariantes rígidas e matriz fixa (A3) indicam funcionamento em especificação exata."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas explícitas nos módulos provider-alpha/provider-beta e falhas previstas como invalidated, paginação e dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa na CLI M-12, com comandos sync, status, conflicts e overlaps."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve substituição de sistema existente nem transição/rollback entre velho e novo em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos de processamento e I/O por ciclo, com expansão de recorrência, paginação e meta explícita de desempenho para ~1.000 eventos por lado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas como scoring, moderação ou classificação com impacto humano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiestado explícito de sincronização e fila de conflitos, com ciclo de vida aberto→resolvido e caminhos de exceção como ESCALATE e full resync."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema persiste conflitos, ancestrais, tokens e resoluções que precisarão ser auditáveis e atribuíveis depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há requisitos operacionais de produção nem mecanismos descritos de telemetria, métricas, logs ou diagnóstico em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sincronizador de estado entre dois sistemas externos, com reconciliação, neutralização de eco e correção de drift por ciclos."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há integrações com provedores externos independentes, cujos contratos e comportamentos não são controlados pelo sistema e assumem cooperação suficiente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos formais entre componentes independentes, incluindo Provider, Repository, formato .ics e regras como UID/RECURRENCE-ID, DATE vs DATE-TIME e tombstones."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de evolução em módulos, contratos e semânticas variantes de provedores, incluindo duplicação de item, janela temporal e preservação de UID/TZ."
+    }
+  ]
+}

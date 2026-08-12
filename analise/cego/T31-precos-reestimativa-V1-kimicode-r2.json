@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas ao núcleo: SQLite (M-07), entrada CSV legada (M-08) e contratos REST (M-11) que podem falhar, rejeitar linhas ou receber dados inesperados — apesar de o escopo negativo excluir rede em runtime."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 ui-web é superfície operada por pessoa com 4 telas, simulador e preenchimento visível/editável de 'hoje'; o explicador (M-06) produz frase contrastiva pt-BR para humano."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada: importador-csv (M-08) e prova-paridade (M-09, CS-1) existem exatamente para a transição do legado para o novo motor."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso que cresce com o uso: log de decisões persistido por transação (LogDeDecisoes/M-07), versões de regras imutáveis acumuladas (A-12) e trace exaustivo por decisão — custo de armazenamento a 10× está em jogo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões são sobre preços de produtos (regras, faixas, SKUs), não scoring, classificação ou moderação de pessoas; não há decisão automatizada sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo de negócio com transições de estado: rascunho → validar → publicar (A-12 imutável), mais importar → prova de paridade, e recalcular decisão; exceções como EmpateInsoluvel e rejeitadas com motivo são caminhos do fluxo."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões para prestação de contas futura: log de decisões com trace exaustivo (I-3), versões imutáveis auditáveis (I-4/A-12), recalcular(decisao_id) e publicação como ato atribuível."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Processo single-user/single-thread local (A-06), SQLite arquivo único (A-07), sem requisito operacional de produção; o trace exaustivo é explicação de decisão de negócio, não telemetria de degradação operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de feedback, sincronização de estado em runtime nem configuração que realimente comportamento: o motor é determinístico, sem relógio (A-04), e versões publicadas nunca mudam (A-12)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "M-11 expõe uma API HTTP pública de preços e regras: atores externos podem consultar/simular estrategicamente (ex.: sondar bordas de faixa 19/20 para maximizar desconto), o que caracteriza API aberta a comportamento estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre componentes independentes: parsing de formato BR (`R$ 1.189,50`, `Ate` textual, milhar), contrato REST com DTOs, portas DIP declaradas pelo núcleo — ambiguidades de formato (SKU ` sku-1002 `, faixa fechada) são risco de interpretação divergente."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa com tolerâncias explícitas: arredondamento half-up 2 casas só no final (A-13), tolerância de R$ 0,01 na paridade (M-09), faixas fechadas [min,max] com bordas 19/20, e escopo negativo registra dívida deliberada (sem migração de schema, sem i18n)."
+    }
+  ]
+}

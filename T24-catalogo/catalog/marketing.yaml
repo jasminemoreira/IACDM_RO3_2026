@@ -1,0 +1,10 @@
+dominio: marketing
+dono:
+  nome: Bia Rocha
+  contato: bia.rocha@empresa.com
+
+datasets:
+  # Dataset isolado: sem produtores e sem consumidores. Existe para que a borda
+  # "conjunto vazio" seja distinguivel de "dataset inexistente" (UX-02, CA-13/CA-14).
+  - nome: campanhas
+    descricao: Campanhas ativas por periodo

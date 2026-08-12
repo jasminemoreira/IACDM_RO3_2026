@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema monolítico com banco embutido (SQLite) e sem dependências externas declaradas."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo M-12 define 6 telas server-side para interação direta de operadores."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a substituição de legado, migração de dados ou fase de transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Stack leve e local sem indicação de escalabilidade ou consumo de recursos proporcional ao valor."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Classificação automática de prioridade e SLA com mecanismo formal de recurso e transparência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Ciclo de vida explícito de chamados e recursos com transições de estado e atores definidos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Autorização com motivo, trilha somente-inserção e registro de autoria fundamentam auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de mecanismos de métricas, logs operacionais ou diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Configuração estática e regras determinísticas sem loops de correção automática ou retroalimentação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Premissa A7 trata explicitamente de incentivos do solicitante e possíveis comportamentos de abuso."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos carregam regras com garantias estáticas do compilador para evitar ambiguidade."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Uso explícito de Clean Architecture, SOLID e DDD tático sinaliza foco em manutenção e evolução."
+    }
+  ]
+}

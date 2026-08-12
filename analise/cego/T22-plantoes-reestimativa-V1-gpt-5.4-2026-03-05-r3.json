@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "não há APIs, filas ou serviços de terceiros; as dependências externas visíveis são apenas solver local e arquivos JSON"
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "há uma superfície operada por pessoas: o módulo M-11 cli expõe os 5 casos de uso como comandos"
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "a arquitetura não menciona substituição de sistema existente, coexistência com legado nem plano de transição"
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "o sistema aloca um recurso escasso e valioso — plantões — e o custo de geração cresce com tamanho da instância e tempo de solve"
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "o sistema toma decisões automatizadas sobre pessoas ao gerar escalas e avaliar trocas sob restrições e pesos"
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "há fluxo multiator e máquina de estados explícita de troca em M-04, com solicitar e responder"
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "o sistema registra escalas e trocas que depois precisam ser atribuídas, auditadas e justificadas"
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "é um sistema com operação prevista via CLI, persistência, geração e diagnóstico, portanto sujeito a incidentes em produção"
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "há realimentação por revalidação no aceite da troca e por contadores de fronteira derivados do mês anterior"
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "há múltiplos atores independentes em trocas de plantão, com possibilidade de comportamento estratégico e premissa explícita de identidade verdadeira"
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "há contratos explícitos entre módulos e formatos de entrada/saída como comandos CLI, JSON e interfaces formais entre componentes"
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "a arquitetura é modular, evolutiva e de longa vida, com invariante central de dono único das regras sujeito a erosão por manutenção"
+    }
+  ]
+}

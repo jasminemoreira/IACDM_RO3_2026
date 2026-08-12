@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas em solver-cpsat (ortools) e repositorio-json (sistema de arquivos), sem mecanismos declarados de retry, fallback ou tolerância a falhas/discos lentos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença do módulo cli (M-11) como única superfície de operação humana para os 5 casos de uso, com exclusão explícita de UI gráfica/API no escopo negativo."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há indicação de substituição de sistema legado, conversão de dados históricos em outro formato, nem caminhos de rollback; o sistema carrega apenas a escala anterior em JSON como contexto operacional."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Uso de solver de otimização (CP-SAT) com custo computacional não linear, explicitamente limitado pela premissa A4 (≤60s), sem análise de escalabilidade ou alternativas de menor consumo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre alocação de turnos e aceite de trocas que impactam diretamente a vida laboral, com equidade tratada como peso flexível e sem mecanismos de auditoria ou recurso."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Presença explícita de máquina de estados no módulo troca (M-04) e fluxo multi-etapa (solicitar → pendente → responder → revalidação), mapeado nos casos de uso UC-3 e UC-4."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões e trocas que exigem rastreabilidade, mas declara explicitamente a ausência de autenticação/permissões (A5 e escopo negativo), comprometendo a atribuição de ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O sistema é projetado como ferramenta local/CLI com persistência em JSON, sem indicadores de logs, métricas, health checks ou mecanismos de monitoramento para ambiente de produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback em tempo real, ajuste dinâmico de parâmetros baseado em erro, nem sincronização de estado contínuo; o fluxo é batch com revalidação pontual."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O sistema opera em contexto fechado (CLI local) e assume explicitamente identidade verdadeira e comportamento cooperativo (A5, A6), sem modelar incentivos divergentes ou defesa estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Definição explícita de interfaces tipadas entre módulos e invariante arquitetural que centraliza as regras no catalogo-restricoes para evitar duplicação ou divergência de implementação."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Uso de contadores de fronteira, regras parametrizadas e módulo de diagnóstico de conflitos estruturais indica projeto para tolerar variações de entrada e evolução de restrições ao longo do tempo."
+    }
+  ]
+}

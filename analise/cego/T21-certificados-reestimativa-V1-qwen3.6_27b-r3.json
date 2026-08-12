@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa de rede (M-08 sonda-tls) e banco de dados local (M-09 repositorio) com tratamento explícito de erros (Ok/ErroSonda) e timeouts."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de adaptador de entrada web (M-11 web-ui) com 5 telas renderizadas e gerenciamento de sessão para interação humana."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a sistema legado, processo de migração de dados ou necessidade de coexistência com versão anterior; é um projeto verde (greenfield)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo limita o volume a 'dezenas' de alvos (A7) e não há alocação dinâmica ou processamento intensivo que escale custosamente; o custo é linear e baixo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As classificações ('ok', 'critico') são técnicas sobre validade de certificados X.509, não sobre评分 ou moderação de pessoas; não há decisão automatizada que prejudique diretamente indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Presença explícita de máquina de estados em M-03 (pedido: pendente->aprovado->fechado) e fluxo de reconciliação multi-ator em M-04."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra 'quem aprovou' (M-03), possui atores/papéis definidos (M-06) e mantém uma trilha de auditoria append-only encadeada por hash (M-05, M-09)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Existência de endpoint de auditoria e verificação de integridade na camada de casos-de-uso (M-10) e geração de relatórios de varredura."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O módulo M-04 (reconciliacao) funciona como controlador em malha fechada: compara estado observado vs. esperado e gera decisões corretivas (fechar pedido, escalar)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores (solicitante/aprovador) operam dentro de uma infraestrutura controlada com papéis definidos pelo sistema; não há mercado aberto ou incentivos econômicos estratégicos externos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são contratos internos em TypeScript entre módulos do mesmo repositório (monolito modular), não protocolos públicos ou distribuídos entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sensibilidade crítica a variações de tempo (premissa A2 sobre relógio) e tolerância definida para falhas de rede (timeouts em M-08), além da rigidez do invariante `limiar < vidaTotal`."
+    }
+  ]
+}

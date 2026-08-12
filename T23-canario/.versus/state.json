@@ -1,0 +1,902 @@
+{
+  "agent": "claude",
+  "projectName": "T23",
+  "projectDescription": "T23",
+  "projectSpec": {
+    "stack": [
+      {
+        "value": "Python 3.12",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "scipy (scipy.stats.mannwhitneyu)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "stdlib argparse (CLI)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "stdlib random.Random (RNG semeável)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "pytest (Fase 6)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      }
+    ],
+    "outOfScope": [
+      {
+        "value": "Kubernetes, service mesh ou Prometheus reais",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Persistência entre execuções (banco, retomada, histórico)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Latência p99 de falha como métrica julgada",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Aprovação manual por passo na promoção",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Faixa Marginal do score (inalcançável com 3 métricas)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Módulo modelo compartilhado (hub de acoplamento)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Impressão a partir de dentro do domínio",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Leitura do relógio do sistema em qualquer módulo",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      }
+    ],
+    "patterns": [
+      {
+        "value": "Hexagonal / Portas e Adaptadores",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "KISS + YAGNI",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "SOLID (ênfase SRP + Inversão de Dependência)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Funções puras no núcleo de decisão (julgamento, score, guarda-absoluta)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Monothread determinístico dirigido por relógio virtual",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "GoF State (máquina de promoção)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "GoF Strategy (políticas de decisão e cenários)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "GoF Observer (coordenador emite, CLI observa)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Fowler Domain Model",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Sem padrão de acesso a dados (sem persistência)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      }
+    ],
+    "constraints": [
+      {
+        "value": "8 a 12 módulos, sessão única de 2-4h (ENUNCIADO §2)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Substrato simulado auto-contido: sem infraestrutura externa, sem credenciais",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Determinismo obrigatório: mesma semente -> mesmo desfecho; proibido sleep real ou relógio de parede em testes",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Julgamento compara canário contra BASELINE PAREADO, nunca contra a estável de vida longa",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Amostra mínima de 50 pontos por métrica antes de julgamento estatístico válido (R-03/R-05)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Falha (total acumulado) e erro (sucessão, limite 4, reset) são contadores DISTINTOS",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Todo parâmetro numérico deve ter fonte em specs/technical/canary-decision-parameters.md; única exceção declarada é a guarda-absoluta (VAL-9)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "CRITÉRIO DE ACERTO CA-0: com UMA MESMA configuração de limiares, UC-2 reverte e UC-3 não reverte",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Latência medida como p99 de requisições bem-sucedidas, separada das falhas (R-01)",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      },
+      {
+        "value": "Três métricas julgadas, todas com direção menor-é-melhor: latência p99 de sucesso, taxa de erro, saturação",
+        "phase": 1,
+        "at": "2026-08-10T17:59:37.746Z"
+      }
+    ]
+  },
+  "currentPhase": 7,
+  "currentIteration": 1,
+  "phase0Score": 94,
+  "phase0Breakdown": {
+    "clarezaProblema": 10,
+    "casosDeUso": 14,
+    "vocabulario": 10,
+    "ambiguidades": 13,
+    "foraDeEscopo": 10,
+    "criteriosSucesso": 10,
+    "premissas": 8,
+    "documentacao": 5,
+    "usuarioConfirmou": 10,
+    "iaConfiante": 4
+  },
+  "decisions": [
+    {
+      "id": "829d3f7c-0075-42ce-b4b2-cc9273d17614",
+      "phase": 0,
+      "category": "scope",
+      "content": "DELIVERY TARGET: Produto completo — todos os requisitos entregues em um único ciclo. Sem fatiamento v1.0/v2.0 na Fase 1, exceto mediante BLOQUEADOR TÉCNICO explícito e documentado (capacidade de plataforma ausente, dependência imatura, Tier 3 inviável sem PoC). Justificativa do operador: o ENUNCIADO.md §2 congela forma e porte (8-12 módulos, sessão única de 2-4h) e exige critério de acerto objetivo escrito ANTES de codar; fatiar escopo no meio do ciclo contaminaria a medição de retrabalho que é o objeto do experimento. Consequência para o HSA: profundidade total de pesquisa, fronteiras de escopo definidas de uma vez em Nível 5, e Production Capacity Check OBRIGATÓRIO ao fim do Nível 5.",
+      "timestamp": "2026-08-10T17:12:01.644Z"
+    },
+    {
+      "id": "e26d702f-0f09-4d54-9676-b673d51b92bd",
+      "phase": 0,
+      "category": "requirement",
+      "content": "COEXISTÊNCIA (desambiguação do termo vago \"convivendo com a versão estável\"): estável e canário executam SIMULTANEAMENTE e ambos recebem fatias de TRÁFEGO REAL, cuja proporção é controlada pelo coordenador (ex.: 95/5 evoluindo por etapas até 100% ou revertendo a 0%). Rollback = devolver 100% do tráfego à estável. Consequências: (a) o coordenador é dono do peso de tráfego, logo precisa de um ponto de controle de roteamento; (b) as duas versões geram métricas concorrentes no mesmo intervalo, que é precisamente o insumo da decisão comparativa; (c) descartadas as leituras de shadow traffic (canário não serve usuários) e de rolling por réplica sem divisão de tráfego.",
+      "timestamp": "2026-08-10T17:15:39.539Z"
+    },
+    {
+      "id": "f8cd9b99-d809-463e-9dc0-3e1fc2445f71",
+      "phase": 0,
+      "category": "constraint",
+      "content": "SUBSTRATO DE EXECUÇÃO: simulado / auto-contido. O coordenador é real e completo, mas o alvo de implantação (as duas versões e o ponto de divisão de tráfego) e a fonte de métricas são adaptadores SIMULADOS executando no próprio processo — sem cluster, sem Prometheus externo, sem credenciais. Justificativa: ENUNCIADO.md §2 fixa sessão única de 2-4h; depender de infraestrutura real tornaria o critério de acerto não-verificável dentro da janela. CONSEQUÊNCIA PARA A FASE 6: sem infra externa, o determinismo do simulador é o que torna o rollback testável de ponta a ponta — cenários de falha (canário degradado, canário saudável, ruído sem culpa do canário) precisam ser reproduzíveis. RISCO REGISTRADO: a fidelidade do simulador vira premissa implícita do sistema inteiro (alvo da lente Premissas na Fase 2).",
+      "timestamp": "2026-08-10T17:15:44.064Z"
+    },
+    {
+      "id": "c2fada3d-f699-4414-8b77-2205eb348309",
+      "phase": 0,
+      "category": "requirement",
+      "content": "SINAL DE DECISÃO (desambiguação de \"rollback automático por métrica\"): decisão por COMPARAÇÃO CONCORRENTE canário vs. estável no MESMO intervalo de tempo (baseline concorrente), não por limiar absoluto fixo. Justificativa registrada na pergunta: um limiar absoluto dispara falso positivo em todo pico de carga que degrada as duas versões igualmente — o baseline concorrente cancela variação de ambiente comum às duas. Consequências: (a) exige coleta pareada por versão no mesmo intervalo; (b) exige definição de quanto pior o canário precisa estar para reprovar (delta/razão) e por quanto tempo; (c) parâmetros de janela, amostra mínima e delta precisam de fonte bibliográfica (AP7/S6) — não podem ser inventados na Fase 5.",
+      "timestamp": "2026-08-10T17:15:48.683Z"
+    },
+    {
+      "id": "f912a517-235b-4cc3-8729-fdc1bce0801e",
+      "phase": 0,
+      "category": "process",
+      "content": "PESQUISA AUTORIZADA: modo \"pesquisar e depositar\". Depositar em specs/references (fontes primárias), specs/technical (algoritmos, parâmetros numéricos com fonte) e specs/competitors (Argo Rollouts, Flagger, Spinnaker Kayenta e afins). Regra aplicada: cada parâmetro numérico depositado carrega URL/fonte citável; nenhum algoritmo entra na Fase 5 sem referência verificável (AP7).",
+      "timestamp": "2026-08-10T17:15:51.068Z"
+    },
+    {
+      "id": "f5cbc112-930a-4b70-95b0-44d2aeb6b3e0",
+      "phase": 0,
+      "category": "architecture",
+      "content": "BASELINE PAREADO (emenda que refina a decisão SINAL DE DECISÃO à luz da pesquisa R-03/R-04/R-05): o sistema tem TRÊS participantes, não dois — (1) ESTÁVEL: vida longa, recebe a maioria do tráfego, é o destino do rollback; (2) BASELINE: executa a MESMA versão e configuração da estável, porém recém-implantado no mesmo instante que o canário, recebendo fatia de tráfego equivalente à do canário; (3) CANÁRIO: versão nova, recém-implantado, fatia equivalente à do baseline. O JULGAMENTO compara canário contra BASELINE, nunca contra a estável. Justificativa (citada em R-05): \"Don't compare the canary to production instances. Many differences can skew the results of the analysis: cache warmup time, heap size, load-balancing algorithms\". Comparar contra a estável de vida longa atribui à mudança de versão uma diferença que é de idade de instância. CONSEQUÊNCIAS: (a) o modelo de domínio tem três participantes e o peso é distribuído entre três, somando 100; (b) o simulador DEVE modelar efeito de aquecimento/idade de instância — sem isso o baseline pareado é indistinguível da estável e a decisão vira código morto não demonstrável; (c) o rollback continua devolvendo 100% à estável. NOTA: 'baseline' e 'estável' são termos distintos e não intercambiáveis — ver specs/domain/glossary.md.",
+      "timestamp": "2026-08-10T17:28:31.960Z"
+    },
+    {
+      "id": "09715517-7b29-4a14-9202-6887f0cb7c29",
+      "phase": 0,
+      "category": "requirement",
+      "content": "ATORES E AUTONOMIA: o coordenador é TOTALMENTE AUTÔNOMO durante a execução — promove e reverte sozinho, sem aprovação humana por passo. Há UM ator humano, o OPERADOR, com três interações: iniciar a implantação, observar o progresso transmitido, e abortar manualmente a qualquer momento. Justificativa: o enunciado exige 'rollback automático'; exigir aprovação por passo contradiz o requisito central. CONSEQUÊNCIAS: (a) existe superfície operada por pessoa (CLI + abortar manual) — a lente UI/UX da Fase 2 ATIVA, pois a definição da lente cobre 'qualquer superfície que uma PESSOA opera — incluindo uma CLI ou ferramental operacional'; (b) abortar manual é um evento assíncrono concorrente com o laço de decisão automático — ponto de corrida a ser examinado; (c) o operador precisa entender POR QUE o sistema reverteu, senão a autonomia vira caixa-preta.",
+      "timestamp": "2026-08-10T17:28:37.255Z"
+    },
+    {
+      "id": "04a75e2c-4438-42ec-ba69-96f4e28053c4",
+      "phase": 0,
+      "category": "constraint",
+      "content": "MODELO DE TEMPO: relógio VIRTUAL INJETÁVEL. O tempo é uma dependência injetada no coordenador; nenhum módulo lê o relógio do sistema diretamente. Em teste, o relógio avança programaticamente — uma implantação de 3 horas simuladas executa em milissegundos, de forma determinística e sem sleep. Justificativa: resolve o conflito registrado em specs/technical/canary-decision-parameters.md §6 (amostra mínima de 50 pontos por métrica, R-03/R-05, vs. janela de sessão única de 2-4h do §2 do enunciado) SEM inventar parâmetros menores sem fonte: preserva as RAZÕES entre amostra mínima, intervalo entre julgamentos e passos até maxWeight, comprimindo apenas a escala de relógio. Isso mantém verificáveis no teste as fórmulas citadas em R-07 (tempo mínimo de promoção = interval * (maxWeight/stepWeight); tempo até rollback = interval * threshold). CONSEQUÊNCIA PARA A FASE 6: testes de temporização são determinísticos e não-intermitentes; proibido usar sleep real ou relógio de parede em qualquer teste.",
+      "timestamp": "2026-08-10T17:28:43.301Z"
+    },
+    {
+      "id": "34ffcb9e-dc6a-4b33-9c4f-4e5387b53d96",
+      "phase": 0,
+      "category": "requirement",
+      "content": "SUPERFÍCIE DE OPERAÇÃO: CLI que executa uma implantação contra um cenário simulado e TRANSMITE o progresso no terminal — peso atual por participante, veredito de cada julgamento, e a decisão final com o motivo. Justificativa: é executável de ponta a ponta por um humano, sem infraestrutura, o que é exatamente o que o critério 'ui_runnable' do inventário de escopo da Fase 5 exige como prova empírica (não basta o arquivo existir; um humano precisa rodar um caso de uso da Fase 0 e confirmar). CONSEQUÊNCIA: a CLI é um MÓDULO NOMEADO na decomposição da Fase 1, com contrato de interface próprio — não é extensão implícita do núcleo (regra explícita da Fase 1 sobre módulos de interface). ESCOPO: descartados serviço HTTP (gasta módulos em transporte e ciclo de vida de servidor) e biblioteca-sem-superfície (deixaria ui_runnable apenas como N/A e o caso de uso não demonstrável por humano).",
+      "timestamp": "2026-08-10T17:28:50.336Z"
+    },
+    {
+      "id": "012ddbe1-d238-4c2a-8be3-00f73f29cd24",
+      "phase": 0,
+      "category": "technology",
+      "content": "STACK: Python 3.12 + scipy. Decidido por VERIFICAÇÃO Tier 1 explícita (tabela requisitos × tecnologias apresentada ao operador), não por preferência. Fato verificado: scipy.stats.mannwhitneyu é a ÚNICA implementação madura do teste entre as candidatas — gonum não tem (issue #320 aberta), golang.org/x/perf tem porém em pacote 'internal' não importável, TypeScript não tem opção madura e ainda carece de RNG semeável nativo, Rust não verificado/improvável. Evidência empírica corroborante: o PipeCD, coordenador de entrega progressiva real escrito em Go, precisou vendorizar sua própria implementação (github.com/pipe-cd/pipecd/pkg/app/pipedv1/executor/analysis/mannwhitney). Fora do Python o teste custa ~150-250 LOC de port Tier 2 mais validação, dentro de janela de 2-4h. NENHUM BLOQUEADOR DE VIABILIDADE: todas as candidatas suportam os mecanismos essenciais (relógio injetável, CLI com transmissão, RNG semeável exceto TS) — a decisão é de custo, não de capacidade ausente. Assinatura de referência: scipy.stats.mannwhitneyu(x, y, use_continuity=True, alternative='two-sided', method='auto', nan_policy='propagate'); method='auto' usa exato quando uma amostra tem <=8 pontos sem empates, assintótico caso contrário. RNG semeável nativo (random.Random(seed)) atende ao determinismo exigido pela decisão MODELO DE TEMPO.",
+      "timestamp": "2026-08-10T17:35:28.187Z"
+    },
+    {
+      "id": "dc5bd1a0-e57d-4fa2-a78e-da9e9b9a6178",
+      "phase": 0,
+      "category": "requirement",
+      "content": "MÉTODO DE JULGAMENTO: híbrido — Mann-Whitney U como decisão PRINCIPAL somada a uma GUARDA ABSOLUTA como piso de segurança. (1) Principal: teste Mann-Whitney U comparando canário vs. baseline pareado, confiança 98% (R-02), classificação Pass/High/Low/Nodata por métrica respeitando a DIREÇÃO declarada de cada uma, score = (Pass/Total)*100 excluindo Nodata do denominador (R-02/R-04), comparado contra limiares marginal=75 e pass=95 com comparação inclusiva >= (R-03). (2) Guarda absoluta: piso que dispara rollback imediato sob degradação grosseira SEM aguardar a amostra mínima de 50 pontos. Justificativa da guarda: o teste estatístico puro exige >=50 pontos por métrica antes de decidir qualquer coisa (R-03/R-05) — um canário retornando 100% de erro não pode sobreviver aguardando significância estatística. A guarda é o reconhecimento de que existem duas classes de falha com urgências diferentes: regressão sutil (estatística) e falha catastrófica (imediata). CONSEQUÊNCIA: os limiares da guarda absoluta são parâmetros SEM fonte na literatura consultada — precisam ser justificados na Fase 1 ou explicitamente marcados como decisão de projeto do operador, e são alvo declarado da lente Científica na Fase 2.",
+      "timestamp": "2026-08-10T17:35:34.588Z"
+    },
+    {
+      "id": "27e23082-0c48-4dda-b669-7bc3a166bbea",
+      "phase": 0,
+      "category": "requirement",
+      "content": "MÉTRICAS JULGADAS (três, todas com direção 'menor é melhor'): (1) LATÊNCIA p99 DE SUCESSO — percentil 99 apenas das requisições bem-sucedidas; R-01 exige separar latência de sucesso e de falha e usar percentis em vez de média, porque um erro servido rápido melhora a média e mascara o defeito; (2) TAXA DE ERRO — fração de requisições que falham, sinal de ouro 'Errors'; (3) SATURAÇÃO — quão cheio o participante está, sinal de ouro 'Saturation', detecta vazamento de recurso antes de virar erro. Cobre a recomendação explícita de R-05 (latência + erros + saturação). DESCARTADA nesta iteração: latência p99 de falha — o operador não a selecionou; consequência aceita é que o caso 'timeout que degrada a experiência sem alterar a taxa de erro' fica sem cobertura, e isso deve constar como limitação conhecida no Out of Scope. NOTA DE DIREÇÃO: com as três métricas sendo 'menor é melhor', o veredito High reprova e Low aprova — a direção precisa ser explícita no modelo, ou o julgamento inverte o sinal silenciosamente ao se adicionar uma métrica 'maior é melhor' (ex.: vazão) no futuro.",
+      "timestamp": "2026-08-10T17:35:40.943Z"
+    },
+    {
+      "id": "fe913987-36a4-4363-86ca-cc124e9415fe",
+      "phase": 0,
+      "category": "testing",
+      "content": "CENÁRIOS DO SIMULADOR (os quatro selecionados — viram os casos de uso do Nível 4 e o corpus de teste da Fase 6): UC-1 CANÁRIO SAUDÁVEL — canário estatisticamente indistinguível do baseline; esperado: progride por todos os passos até 100% e é promovido a estável. É o caso POSITIVO: sem ele, um sistema que sempre reverte pareceria correto. UC-2 CANÁRIO DEGRADADO — latência/erro sistematicamente piores; esperado: reprovado, peso devolvido a zero, 100% à estável, motivo reportado ao operador. É o requisito central do enunciado. UC-3 RUÍDO COMUM ÀS DUAS — pico de carga degradando canário E baseline igualmente; esperado: NENHUM rollback, pois a comparação concorrente cancela a variação de ambiente. Este cenário é a PROVA da decisão SINAL DE DECISÃO (comparação concorrente em vez de limiar absoluto) — sem ele, a escolha é indemonstrável e um limiar absoluto passaria nos mesmos testes. UC-4 COLETOR INDISPONÍVEL — a fonte de métricas para de responder; esperado: contado como ERRO em sucessão (limite 4, R-06), NÃO como falha, e a recuperação zera o contador. É a prova da distinção falha/erro; sem ele, a queda do coletor derruba canário saudável. NOTA: os quatro exigem RNG semeável e relógio virtual para serem reproduzíveis (decisões STACK e MODELO DE TEMPO).",
+      "timestamp": "2026-08-10T17:35:49.746Z"
+    },
+    {
+      "id": "91d1e17e-3a5f-42f8-a499-67bd0cc6fdee",
+      "phase": 0,
+      "category": "requirement",
+      "content": "CRITÉRIO DE ACERTO OBJETIVO (o da predição selada, §2 do ENUNCIADO — escrito ANTES de codar, é o que torna o retrabalho mensurável): com UMA ÚNICA configuração de limiares, o sistema DEVE reverter o canário degradado (UC-2) E NÃO reverter sob ruído comum às duas versões (UC-3), de forma reproduzível (mesma semente, mesmo desfecho). JUSTIFICATIVA DE POR QUE ESTE CRITÉRIO E NÃO OUTRO: ele é o único que DISCRIMINA a implementação correta da alegada. Um limiar absoluto ingênuo passa em UC-2 (o canário degradado cruza o limiar) mas FALHA em UC-3 (o pico de carga também cruza o limiar, e o sistema reverte um canário inocente). Portanto só o par UC-2+UC-3 sob a MESMA configuração prova que a comparação concorrente canário-vs-baseline foi de fato implementada, e não apenas declarada nas decisões. Testar UC-2 isoladamente não prova nada sobre o mecanismo. CONSEQUÊNCIA PARA A FASE 6: a suíte deve executar UC-2 e UC-3 com a MESMA configuração de limiares — configurações distintas por cenário invalidariam o critério e seriam um falso verde.",
+      "timestamp": "2026-08-10T17:38:28.036Z"
+    },
+    {
+      "id": "6f26854a-27f1-4b87-bfc8-8c7d88539015",
+      "phase": 0,
+      "category": "scope",
+      "content": "PRODUCTION CAPACITY CHECK: CONFIRMADO SEM LACUNA pelo operador. Inventário apresentado (autoria: mensagens de CLI + relatório de decisão + doc, assistida por IA; visual: 0; áudio: 0; dados: 4 cenários determinísticos com séries sintéticas >=50 pontos por métrica, gerados pelo próprio simulador com RNG semeável e depositados em specs/datasets; integrações externas: 0). Nenhuma linha depende de terceiro, conta a criar ou ativo externo. Delivery Target permanece 'Produto completo'. Este check é a defesa contra AP10 (adiamento silencioso de escopo): sem ele o score da Fase 0 seria falsa confiança — desenhar o que não se consegue produzir.",
+      "timestamp": "2026-08-10T17:38:31.770Z"
+    },
+    {
+      "id": "767c0fbe-b6d3-4f66-8ebf-26a24ad56a52",
+      "phase": 0,
+      "category": "scope",
+      "content": "OUT OF SCOPE (YAGNI) — quatro itens confirmados pelo operador, cada um com justificativa de custo/benefício: (1) KUBERNETES / SERVICE MESH / PROMETHEUS REAIS — nenhuma integração com infraestrutura real; decorre de SUBSTRATO DE EXECUÇÃO; incluir tornaria o critério de acerto não-verificável na janela de sessão única de 2-4h. (2) PERSISTÊNCIA ENTRE EXECUÇÕES — sem banco, sem retomada de implantação interrompida, sem histórico; uma execução da CLI é autocontida do início ao desfecho; incluir exigiria módulo de persistência e máquina de estados durável, sem valor para nenhum dos quatro casos de uso. (3) LATÊNCIA p99 DE FALHA — métrica não selecionada; limitação conhecida e declarada: o caso 'timeout que degrada a experiência sem alterar a taxa de erro' (R-01: 'a slow error is even worse than a fast error') fica SEM COBERTURA neste ciclo; candidato natural a v2.0. (4) APROVAÇÃO MANUAL POR PASSO — sem portões de aprovação humana na promoção; decorre de ATORES E AUTONOMIA; o operador apenas inicia, observa e pode abortar. REGRA EM VIGOR: nada nesta lista pode ser adicionado nas Fases 2-3 sem aprovação explícita do operador (AP9 — scope creep silencioso).",
+      "timestamp": "2026-08-10T17:38:37.591Z"
+    },
+    {
+      "id": "81ec9247-32aa-4936-a25a-b7a248c26412",
+      "phase": 1,
+      "category": "pattern",
+      "content": "PADRÕES APROVADOS PELO OPERADOR (2 coletas via AskUserQuestion). ARQUITETURAL: Hexagonal / Portas e Adaptadores — o núcleo de domínio não conhece o exterior; relógio, fonte de métricas, alvo de implantação e CLI entram por portas. Justificativa: as três restrições já fixadas na Fase 0 SÃO portas e adaptadores (substrato simulado, relógio injetado, julgar separado de agir); trocar simulado por real depois é troca de adaptador. TRANSVERSAIS: KISS+YAGNI (8-12 módulos em 2-4h; antídoto direto de AP2 na Fase 3), SOLID com ênfase em SRP e Inversão de Dependência, e FUNÇÕES PURAS NO NÚCLEO DE DECISÃO (julgamento, classificação e score sem efeito colateral — é o que torna VAL-3 e VAL-4 verificáveis por tabela entrada/saída, sem simulador e sem relógio). CONCORRÊNCIA: monothread determinístico, laço único dirigido pelo relógio virtual. Justificativa: determinismo é requisito registrado (VAL-10, mesma semente -> mesmo desfecho) e concorrência real o destruiria. GoF: State (máquina de promoção com estado 'pausado' explícito, sem o qual não se representa 'suspeito, aguardando evidência' e o sistema reverte no primeiro ponto ruim — R-07), Strategy (as duas políticas de decisão e os quatro cenários do simulador), Observer (coordenador emite eventos, CLI observa; mantém print() fora do domínio e preserva a pureza do julgamento). FOWLER DOMÍNIO: Domain Model — objetos com comportamento; em especial 'direção' morando na métrica, pois espalhada como condicional ela inverte o sinal silenciosamente. FOWLER DADOS: N/A, sem persistência (está no Out of Scope da Fase 0; qualquer padrão de acesso a dados aqui seria abstração sem cliente).",
+      "timestamp": "2026-08-10T17:57:09.696Z"
+    },
+    {
+      "id": "ac99a9df-6664-40ab-b16d-8fd96044a059",
+      "phase": 1,
+      "category": "architecture",
+      "content": "FAIXA MARGINAL ELIMINADA — decisão do operador após achado apresentado em chat. ACHADO: com 3 métricas o score só assume {0; 33,3; 66,7; 100}; os limiares de R-03 são marginal=75 e pass=95; nenhum valor alcançável cai na faixa [75, 95). Com um Nodata reduzindo o denominador a 2, o conjunto vira {0; 50; 100} e também não toca a faixa. Só com 4 métricas o score 75 (3 de 4) cairia exatamente na faixa. A incoerência é entre dois parâmetros da MESMA fonte, e só aparece ao multiplicar a granularidade do score pelo limiar. DECISÃO: sem faixa Marginal — um único limiar de aprovação sobre o score. Justificativa: implementar Marginal seria implementar um ramo que nenhum teste consegue exercitar. ALTERNATIVAS DESCARTADAS: (a) manter três faixas ajustando limiares aos valores realmente produzidos (pass=100, marginal=66,7) — abandonaria os números 75/95 de R-03 e assumiria limiares sem fonte; (b) reinstalar a 4ª métrica (latência p99 de falha) para viabilizar a faixa — alteraria escopo já fechado na Fase 0 e exigiria aprovação explícita (AP9); o operador não a concedeu, logo a métrica permanece fora. CONSEQUÊNCIA: com 3 métricas e limiar único, aprovar exige score 100, isto é, as TRÊS métricas com veredito Pass. Uma única métrica reprovada derruba o julgamento. Isso é rigoroso e deve ser confrontado na Fase 2 — é candidato natural a achado da lente Científica.",
+      "timestamp": "2026-08-10T17:57:17.318Z"
+    },
+    {
+      "id": "d3a4a263-dd4a-49c9-8c1e-bb34f37fcabb",
+      "phase": 2,
+      "category": "architecture",
+      "content": "ANÁLISE DE CONCENTRAÇÃO — Iteração 1, V(1). POR MÓDULO: 'coordenador' acumula 8 achados em 7 lentes distintas (Architectural, Implementability, Resilience, Migration/Coexistence, Process/Workflow x2, Governance/Accountability, Observability/Operability, Control Engineering) — o padrão que a metodologia define como 'provavelmente mal concebido, requer REDESENHO e não remendo'. Diagnóstico do porquê: ele absorveu responsabilidades que não têm dono na decomposição — configuração (IMP-03), critério de saída do estado pausado (PRO-01), especificação dos eventos (OBS-01), trilha de auditoria (GOV-01). 'cli' é o segundo com 6 achados em 5 lentes. POR LENTE: nenhuma lente achou defeito em todos os 12 módulos — NÃO há falha sistêmica única. As mais espalhadas são Assumptions (5 achados em 5 módulos) e Scientific (5 achados em 3 módulos, TODOS concentrados no núcleo de decisão julgamento/score/guarda-absoluta) — sinal legítimo de que os parâmetros sem fonte se acumulam no núcleo estatístico, exatamente onde AP7 previa. PADRÃO TRANSVERSAL MAIS IMPORTANTE: cinco achados independentes de CINCO lentes diferentes (ASM-03 mistura regimes de carga, PERF-01 custo superlinear, CTL-02 inércia crescente para reagir, SUS-02 retenção ilimitada, SCI-04 equivalência de amostra não demonstrada) apontam a MESMA raiz — a janela cumulativa. Uma janela DESLIZANTE resolve os cinco de uma vez. É ortogonalidade funcionando: cinco lentes viram cinco consequências distintas de um defeito que nenhuma delas nomeou diretamente. SEGUNDO PADRÃO: REG-01 (tráfego não é julgado) e ASM-02 (pesos de canário e baseline divergem ao longo dos passos) são achados independentes que COMPÕEM — juntos descrevem um canário que recebe pouco ou nenhum tráfego e é promovido exatamente por isso.",
+      "timestamp": "2026-08-10T18:05:53.566Z"
+    },
+    {
+      "id": "b73b1e95-7bfc-47e7-b3e3-87f793abafc3",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(2) — QUATRO MUDANÇAS ESTRUTURAIS, resposta unificada aos 47 achados da iteração 1. Continuam 12 módulos (teto do §2): plano-de-passos foi ABSORVIDO por configuracao, configuracao ENTROU. (1) JANELA DESLIZANTE de tamanho fixo igual à amostra mínima, descartando o mais antigo — resolve de uma vez ASM-03 (deixa de misturar regimes de carga), PERF-01 (custo constante por julgamento em vez de superlinear), CTL-02 (a inércia deixa de crescer), SUS-02 (retenção limitada). É um conceito A MENOS, não a mais — conformidade com AP2. (2) CONFIGURACAO substitui plano-de-passos: a sequência de pesos já ERA um parâmetro e proximo(atual) é busca trivial sobre ela; objeto congelado validado na construção, folha do grafo de dependências — resolve IMP-03 (o CA-0 passa a ser expressável como um perfil nomeado), IMP-02, SEC-01, GOV-02, RES-03 (duração máxima), e dá origem aos parâmetros de histerese e tolerância. (3) ALVO-DE-IMPLANTACAO vira dono único da alocação: aplicar(peso_canario) DERIVA os três pesos com baseline==canario e estavel==100-2*canario — resolve ASM-02 e ARQ-04 (a regra tem dono e virou estrutural, não convencional), SEC-02 e LIN-03 (invariantes verificadas dentro), PRO-03 (promover() existe). CONSEQUÊNCIA: o canário não passa de 50%, pois acima disso a estável ficaria negativa; a promoção final deixa de ser passo de peso e vira TROCA DE PAPÉIS, que é o modelo de R-04 e preserva 'same type and amount of traffic' (R-03) durante toda a análise. (4) MÁQUINA DE 5 ESTADOS com histerese, entrando 'aquecendo' — resolve PRO-02 (a fase inicial existe na máquina), PRO-01 e CTL-01 (sair de pausado exige K sucessos consecutivos, com fonte em consecutiveSuccessLimit de R-06), OBS-02 (aquecendo e progredindo ficam visivelmente distintos).",
+      "timestamp": "2026-08-10T18:13:48.909Z"
+    },
+    {
+      "id": "c58e771a-6f7e-4edd-aa79-3cea0c9b2ca1",
+      "phase": 3,
+      "category": "architecture",
+      "content": "RESOLUÇÃO DOS 9 CRÍTICOS. REG-01 (canário sem tráfego é promovido por estar quebrado) RESOLVIDO por MECANISMO, não por nova métrica: janela.volumes_comparaveis() recusa o julgamento quando a contagem de amostras de canário e baseline diverge além da razão tolerada. Escolhi mecanismo em vez de acrescentar 'tráfego' como quarta métrica julgada porque acrescentar métrica mudaria O QUE o sistema julga, e isso é ESCOPO (regra de fronteira da Fase 2-3, AP9) — a checagem de volume apenas faz cumprir um requisito já documentado em R-03 ('same type and amount of traffic'). MEC-01 (tolerância zero; ~45% de falso positivo em 10 julgamentos) RESOLVIDO retirando a premissa A6 e movendo a tolerância para contadores, com limite de falhas sourceado no 'threshold' de R-07 — que é exatamente como Argo e Flagger tratam o mesmo problema (Tier 2). Um julgamento reprovado leva a 'pausado', não a rollback. IMP-03 RESOLVIDO por configuracao. ASM-02 RESOLVIDO pelo espelhamento baseline==canario em alvo-de-implantacao. ASM-01 RESOLVIDO PARCIALMENTE: modelar idade de instância deixou de ser premissa tácita (A2) e virou CONTRATO de M-11 — em t=0 a série da estável deve diferir mensuravelmente da do baseline; a verificação empírica só ocorre na Fase 6, então permanece parcial. UX-02 RESOLVIDO: aborto vira tratador de sinal com flag verificada a cada iteração do laço; premissa A7 retirada; VAL-12 volta a ser atendível. PRO-01 e CTL-01 (duplicata) RESOLVIDOS por histerese com fonte em R-06. SCI-01 NÃO RESOLVIDO — convertido em RISCO ACEITO EXPLÍCITO: os limiares da guarda-absoluta passam a ser parâmetro OBRIGATÓRIO do operador, sem valor padrão, e o valor informado é impresso na saída. O parâmetro continua sem fonte bibliográfica; a mudança é que deixou de ser invenção escondida e passou a ser decisão declarada, atribuída e auditável. Não inventei uma fonte para ele.",
+      "timestamp": "2026-08-10T18:13:59.305Z"
+    },
+    {
+      "id": "feaaf744-4679-4dc4-b0b5-0d523f53c4d0",
+      "phase": 3,
+      "category": "constraint",
+      "content": "AJUSTES DE CONTRATO EM V(2) (sem mudança estrutural, resolvendo achados 🟡/🟢 por esclarecimento). IMP-01/SCI-03 (julgamento): o teste passa a usar 'alternative' UNICAUDAL derivado da direção da métrica — com direção menor-é-melhor e hipótese 'canário pior', alternative='greater'; isso resolve simultaneamente como converter o retorno do scipy em High/Low/Pass e a ambiguidade bicaudal-vs-unicaudal, que mudam a taxa de falso positivo. RES-01/LIN-01 (fonte-de-metricas): o contrato passa de dois para QUATRO desfechos — Amostra, Indisponivel, Lenta, Invalida — e fixa a cardinalidade em uma chamada = uma amostra (premissa A8 explícita). RES-02 (contadores): os contadores passam a ser POR MÉTRICA e não globais, para que uma única métrica com coleta quebrada não derrube a execução inteira. LIN-02 (relogio): dono único do avanço declarado — apenas o coordenador chama avancar (premissa A9 explícita). OBS-01 (coordenador): os eventos emitidos passam a ser TIPADOS e enumerados no contrato, em vez de 'emite eventos'. Denominador zero (score): três Nodata produzem Indefinido, que não é aprovação nem reprovação — o passo permanece aguardando amostra, porque reprovar por falta de dado transformaria coletor lento em rollback e aprovar promoveria canário não observado. UX-01/OBS-02: o estado 'aquecendo' é impresso, tornando o silêncio inicial distinguível de travamento. MIG-02: duração máxima em configuracao dá término garantido. MANTIDOS SEM RESOLUÇÃO, com aceitação justificada: MIG-01 (requisições em voo durante a troca de peso) — o substrato é simulado e não modela requisições individuais, logo o defeito não é observável neste ciclo; GOV-01 (trilha de julgamentos não retida) — persistência está no Out of Scope aprovado na Fase 0, e retê-la contrariaria decisão do operador; ARQ-01 (coordenador depende de 9 módulos) — é o orquestrador, e quatro responsabilidades órfãs já saíram dele; ARQ-02, ARQ-03, PERF-02, UX-03, SCI-05, IMP-04 e ASM-05 permanecem como sugestões diferíveis.",
+      "timestamp": "2026-08-10T18:14:10.850Z"
+    },
+    {
+      "id": "26b1b20b-f9ee-45a2-b44e-927eeab62580",
+      "phase": 2,
+      "category": "architecture",
+      "content": "ANÁLISE DE CONCENTRAÇÃO — Iteração 2, V(2). POR MÓDULO: alvo-de-implantacao com 4 achados em 4 lentes, agora incluindo um crítico (SUS-03); configuracao, MÓDULO RECÉM-CRIADO, já acumula 4 achados em 4 lentes com um crítico (IMP-05) — nasceu carregando responsabilidades demais, misturando configuração de DECISÃO com configuração de CENÁRIO; coordenador CAIU DE 8 PARA 3 achados, e essa queda é a medida objetiva de que a extração das quatro responsabilidades órfãs na Fase 3 funcionou. POR LENTE: Scientific volta a liderar com 4 achados, todos no núcleo de decisão — o padrão de V(1) PERSISTE e o diagnóstico é o mesmo: os números que sustentam a decisão são o ponto mais frágil do sistema. PADRÃO DOMINANTE DESTA ITERAÇÃO — ACHADOS IATROGÊNICOS: três dos quatro críticos (SUS-03, CTL-03, IMP-05) NÃO sobreviveram de V(1), foram CRIADOS pelas correções da Fase 3. O espelhamento consertou ASM-02 e quebrou a propriedade de segurança da implantação (estável vai a zero no último passo, 100% dos usuários em instâncias frias). A janela deslizante consertou quatro achados e invalidou o pressuposto de independência entre julgamentos que sustenta a tolerância a falhas importada de R-07. Configuracao consertou a FORMA de IMP-03 sem consertar a SUBSTÂNCIA. É precisamente o efeito que AP2 descreve, e é a justificativa empírica de que a segunda passada do laço 2-3 valeu a pena: sem ela os três entrariam na Fase 5 como código. CONVERGÊNCIA: 47 achados em V(1) para 25 em V(2) (-47%); críticos de 9 para 4 (-56%).",
+      "timestamp": "2026-08-10T18:28:44.254Z"
+    },
+    {
+      "id": "a6bcf05b-5f2b-443a-8081-2b489e478c2c",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(3) — CALIBRAÇÃO DAS CORREÇÕES DE V(2). Diagnóstico da iteração 2: três dos quatro críticos eram IATROGÊNICOS, criados pelas correções da Fase 3 anterior. A resposta a defeito iatrogênico não é outra camada (AP2) — é calibrar a correção. Continuam 12 módulos: nenhum entrou, nenhum saiu. (1) TETO DE EXPOSIÇÃO, validação em configuracao: 2*max(sequencia_de_pesos) <= 100 - piso_estavel, com o piso vindo de R-04 ('Production cluster: majority of incoming requests'). Resolve SUS-03 — a estável NUNCA deixa de servir a maioria; a progressão por etapas é preservada e o que se elimina é a rampa ilimitada que levava a estável a zero. Resolve MIG-03 de carona: a estável nunca esfria porque nunca fica sem tráfego. (2) INDEPENDÊNCIA ENTRE JULGAMENTOS, validação em configuracao: intervalo * taxa_de_amostragem >= tamanho_da_janela, de modo que julgamentos consecutivos usem amostras DISJUNTAS. Resolve CTL-03 e restaura o pressuposto de independência sem o qual o threshold de R-07 não transferia — a correção de MEC-01 volta a ser válida. (3) SEPARAÇÃO DECISÃO x CENÁRIO: configuracao perde semente e cenário, que passam a simulador-de-cenario, dono natural da estratégia. Resolve IMP-05 e torna o CA-0 verificável de forma ESTRUTURAL — mesma configuracao, Cenario diferente; alivia ARQ-05 porque configuracao fica menor e monopropósito. (4) EXPIRAÇÃO É ROLLBACK: encerrar por duração máxima sem conclusão mapeia para 'revertido' com motivo 'expirou', em vez de criar um sexto estado. Resolve PRO-05 e SCI-09 — um mecanismo de segurança que não conseguiu concluir deve terminar no lado seguro. AJUSTES 🟡: alfa passa a 0,01 unicaudal, preservando a taxa POR CAUDA dos 98% bicaudais de R-02 (resolve SCI-08 sem falsear a fonte); o veredito Low é REMOVIDO porque o teste unicaudal nunca o produz (resolve MEC-04, eliminando código morto); as quatro validações de configuracao são enumeradas (resolve MEC-03); A2 vira critério verificável com magnitude e persistência nomeadas (resolve ASM-09). CTL-04 (histerese assimétrica) ACEITO COM JUSTIFICATIVA: entrar em pausado com uma falha é correto porque pausar é barato — não altera tráfego — enquanto promover não é; o viés é deliberado e a favor da segurança. A3/SCI-01 permanece risco aceito: os limiares da guarda continuam sem fonte e NÃO inventei uma.",
+      "timestamp": "2026-08-10T18:30:35.713Z"
+    },
+    {
+      "id": "95d3d93a-3958-4b55-b571-0f4f75e46ccf",
+      "phase": 4,
+      "category": "process",
+      "content": "LLM SWITCH POINT: operador escolheu CONTINUAR NESTA SESSÃO para as Fases 5-7, em vez de trocar por um modelo mais barato. A decisão foi apresentada como escolha via AskUserQuestion antes de qualquer código existir — que é o único momento em que ela é gratuita — e não como anúncio seguido de avanço. Justificativa apresentada a favor de continuar: a arquitetura V(3) e as 25 decisões estão vivas neste contexto, o §2 fixa sessão única de 2-4h e a reabertura custaria tempo, e os defeitos IATROGÊNICOS observados nas iterações 1 e 2 do laço 2-3 estão frescos — eles são precisamente a classe de erro que a Fase 5 pode reintroduzir ao implementar.",
+      "timestamp": "2026-08-10T18:33:26.525Z"
+    },
+    {
+      "id": "235d71a9-8360-437a-97d1-d9f34114b4cc",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA RAIZ (UC-4 revertia por falha em vez de tolerar o coletor fora): quando a coleta de um intervalo não produz amostras, a janela deslizante permanece com as amostras ANTIGAS e `pronta()` continua verdadeira, de modo que o coordenador julga novamente exatamente os MESMOS dados. O veredito se repete idêntico e o contador de falhas — que pressupõe julgamentos independentes — soma três reprovações do mesmo julgamento, disparando rollback. É o achado CTL-03 ressurgindo por outra porta: a validação intervalo*taxa_de_amostragem >= tamanho_janela garante amostras novas apenas quando a coleta FUNCIONA; ela não cobre o caso em que a coleta falha. Consequência observada: UC-4 revertia com motivo '3 julgamentos reprovados', quando o comportamento especificado é acumular ERRO consecutivo (limite 4) e prosseguir se o coletor recuperar. CORREÇÃO IMPLICADA: se qualquer métrica teve erro de coleta no intervalo, o coordenador NÃO julga aquele intervalo — a janela não foi renovada, e julgar seria re-julgar. Os erros seguem acumulando no contador de erro consecutivo; se o coletor não recuperar, o rollback ocorre pelo motivo correto (coleta falhou N vezes seguidas) e não por falha inexistente do canário.",
+      "timestamp": "2026-08-10T18:39:31.743Z"
+    },
+    {
+      "id": "aac99543-1aae-4f90-8ad1-f6a0e146416a",
+      "phase": 5,
+      "category": "scope",
+      "content": "REVISÃO ADVERSARIAL DE ESCOPO ORIGINAL (P0 x entrega) — operador escolheu CONTINUAR A FASE 5 E FECHAR AS LACUNAS, em vez de renegociar escopo ou aceitar débito. LACUNAS ENCONTRADAS EM MODO GENERATIVO (procurando falha, sem caridade com o próprio trabalho): (1) specs/datasets estava VAZIO, embora o Production Capacity Check da Fase 0 o listasse como ativo requerido — FECHADO: gerar_datasets.py deposita uc1..uc4.json mais indice.json, cada um com 50 pontos por métrica por participante, determinísticos por semente. (2) VAL-8 (fórmulas de temporização de R-07) não era verificável porque nenhuma saída expunha os valores — FECHADO: a CLI agora imprime a previsão (promoção >= intervalo*n_passos; rollback = intervalo*limite_falhas) e confere contra o observado; UC-2 reverteu em t=30 contra 30 previstos, casamento exato. (3) VAL-6 (latência p99 de sucesso separada da de falha, exigência de R-01) permanece CUMPRIDO APENAS NO NOME: o substrato simulado não modela requisições individuais, logo não há sucesso e falha a separar; a métrica carrega o nome correto mas não é derivada. Fica como LIMITAÇÃO DECLARADA do substrato, consequência direta da decisão SUBSTRATO DE EXECUÇÃO da Fase 0, e não como entrega silenciosamente parcial. VALOR COLATERAL DOS DATASETS: as razões canário/baseline depositadas mostram 1,00 em UC-1, 1,39 em UC-2 e 1,00 em UC-3 — o UC-3 é a prova numérica de que a comparação concorrente cancela o ruído de ambiente que um limiar absoluto interpretaria como degradação.",
+      "timestamp": "2026-08-10T18:44:03.643Z"
+    },
+    {
+      "id": "f7eeb8ca-41f7-4f90-942b-626adbfae680",
+      "phase": 6,
+      "category": "testing",
+      "content": "UI TOOL: pytest + subprocess — escolhido pelo operador. Rationale: pytest já consta no stack aprovado em P1, e a restrição vinculante da Fase 5 exige usar SOMENTE linguagens e frameworks selecionados em P1; bats e expect seriam dependência externa fora do aprovado, mais uma segunda suíte a manter. Com subprocess a CLI é exercida de verdade (código de saída e saída padrão), e domínio e superfície ficam na mesma suíte, rodando no mesmo comando. Também registrado: SESSION RENEWAL não realizada — o operador optou por continuar nesta sessão, com a mitigação de viés de confirmação sendo estrutural e não de contexto: o Test Map deriva de specs/validation e specs/datasets, ambos escritos ANTES do código, e o ground truth está depositado em disco; além disso o teste manual exploratório do Passo 5 é executado pelo humano, que é o antídoto de fato.",
+      "timestamp": "2026-08-10T18:53:53.512Z"
+    },
+    {
+      "id": "b8f77a19-f996-4eca-9b6d-43ca9909e90a",
+      "phase": 6,
+      "category": "diagnosis",
+      "content": "CAUSA RAIZ (teste de mutação revelou falsa cobertura em REG-01): com tamanho_janela == amostra_minima == 50 e a janela implementada como deque(maxlen=50), a contagem por série é limitada superiormente a 50; portanto `pronta()` — que exige >= 50 em canário E baseline — só é verdadeira quando AMBAS as séries têm exatamente 50 pontos, e nesse caso a razão min/max é sempre 1,0. Consequência: `volumes_comparaveis` NUNCA discrimina nada na configuração padrão, e a defesa contra REG-01 (canário sem tráfego promovido por parecer saudável) está de fato sendo prestada por `pronta()`. Isso foi detectado desligando `volumes_comparaveis` (mutação retornando True): apenas o teste unitário do módulo janela falhou, e o teste de ponta a ponta test_reg01_canario_sem_trafego_nao_promove seguiu VERDE — falsa cobertura exatamente da classe que o protocolo da Fase 6 alerta ('um teste verde só valida uma spec se verifica o critério EXATO'). AVALIAÇÃO: o comportamento do sistema está CORRETO (canário mudo nunca é promovido), mas o mecanismo creditado não é o que age. `volumes_comparaveis` só tem efeito quando tamanho_janela > amostra_minima, configuração que `Configuracao` permite (a validação exige apenas tamanho_janela >= amostra_minima). CORREÇÃO IMPLICADA: manter o mecanismo, que é correto para a faixa de configuração em que a janela é maior que a amostra mínima, e acrescentar teste com tamanho_janela > amostra_minima que o exercite de fato — tornando-o código vivo com teste que tem poder, em vez de removê-lo e deixar a garantia dependendo de uma coincidência entre dois parâmetros.",
+      "timestamp": "2026-08-10T18:57:40.512Z"
+    },
+    {
+      "id": "557c73f2-05cb-4b32-80ee-81b4b149d9b5",
+      "phase": 6,
+      "category": "spec-coverage",
+      "content": "SPEC COVERAGE REPORT. COVERED: CA-0 com 3 testes incluindo o contrafactual test_ca0_limiar_absoluto_reverteria_uc3 (sem ele o CA-0 seria vazio, pois se os dados do UC-3 não cruzassem um limiar absoluto o cenário não distinguiria comparação concorrente de limiar fixo); UC-1 (2 testes, incl. o negativo de que falso positivo isolado não reverte); UC-2 (6, com 5 sementes distintas provando que nenhuma promove canário degradado); UC-3 (5 sementes); UC-4 (2, incl. o negativo de que coletor permanentemente fora reverte pelo motivo de ERRO e não de falha); REG-01 (3); VAL-1 baseline pareado verificado contra ground truth depositado, com a asserção de que comparar contra a estável quente REPROVARIA um canário sadio — o que também prova empiricamente a premissa A2 (o simulador modela idade de instância); VAL-2, VAL-3, VAL-4, VAL-5, VAL-7, VAL-8 (igualdade exata com a fórmula de R-07: rollback em t=30 = intervalo 10 x limite_falhas 3), VAL-9 (guarda dispara com ZERO julgamentos), VAL-10 (trilha de eventos idêntica nos 4 cenários), VAL-11, VAL-12; restrições de P1/P3: teto de exposição, independência de julgamentos, invariantes de peso, idempotência de promover/reverter, janela deslizante; superfície de CLI com 11 testes por subprocess. NOT COVERED: VAL-6 (separar latência p99 de sucesso da de falha) — não testável automaticamente porque o substrato simulado não modela requisições individuais, logo não há sucesso e falha a separar; é limitação declarada da decisão SUBSTRATO DE EXECUÇÃO da Fase 0. Ctrl+C real — abortar() é exercido programaticamente, mas o sinal de terminal exige teste manual humano. NEGATIVE TESTS: 24 negativos / 38 positivos, razão 1:1,6, acima do mínimo exigido de 1 para 2. GAPS: UM encontrado e corrigido. test_reg01_canario_sem_trafego_nao_promove passava mesmo com a defesa volumes_comparaveis DESLIGADA — com tamanho_janela == amostra_minima o deque satura em maxlen, pronta() implica contagens iguais e a razão é sempre 1,0, de modo que quem prestava a garantia era pronta() e não o mecanismo creditado. Detectado por TESTE DE MUTAÇÃO, não por leitura de código. Corrigido acrescentando test_reg01_volumes_e_a_unica_defesa_quando_janela_excede_a_amostra, que exercita a faixa tamanho_janela > amostra_minima onde o mecanismo de fato age; a mutação repetida passou a derrubar os dois testes corretos. VERIFICAÇÃO DE PODER DA SUÍTE: duas mutações aplicadas — inverter a cauda do teste estatístico derrubou 14 testes; desligar volumes_comparaveis derruba agora 2. 62 testes, todos verdes com o código restaurado.",
+      "timestamp": "2026-08-10T18:59:00.210Z"
+    },
+    {
+      "id": "7d6177d1-b958-4964-813b-c99de6dd9a0f",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: automated-done\nPASS: 62 testes automatizados verdes (pytest). Cobrem CA-0, UC-1 a UC-4, REG-01, VAL-1 a VAL-5, VAL-7 a VAL-12, restrições de P1/P3 e a superfície de CLI por subprocess. Poder da suíte verificado por teste de mutação: inverter a cauda do Mann-Whitney derruba 14 testes; desligar a checagem de volumes comparáveis derruba 2.\nFAIL: nenhum teste falhando. Duas pendências conhecidas e NÃO mascaradas: VAL-6 (latência de sucesso separada da de falha) não é testável automaticamente porque o substrato simulado não modela requisições individuais — limitação declarada; Ctrl+C real não é exercível por teste automatizado.\nNEXT: teste manual exploratório executado PELO OPERADOR, não simulado por mim. Roteiro: (1) executar uc2 e confirmar REVERTIDO; (2) executar uc3 e confirmar que NÃO reverte, com a mesma configuração de limiares — é o CA-0; (3) executar uc1 e apertar Ctrl+C no meio, confirmando encerramento em REVERTIDO com motivo 'aborto solicitado pelo operador' — fecha VAL-12, hoje a única pendência exercível; (4) executar uc4 e confirmar que a queda do coletor aparece como erro de coleta e não como falha do canário; (5) casos de borda: --guarda-taxa-erro 0.012 deve reverter em t=10 com 0 julgamentos; pesos inválidos via --duracao-maxima 0 devem falhar com mensagem legível e sem traceback; (6) avaliar se as mensagens são compreensíveis para quem não escreveu o sistema — se o operador consegue dizer POR QUE reverteu apenas lendo a saída (VAL-11).",
+      "timestamp": "2026-08-10T18:59:11.056Z"
+    },
+    {
+      "id": "d67b013e-4814-4184-997d-a225f3ff213e",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: manual-done\nPASS: teste manual exploratório executado PELO OPERADOR (não simulado por mim) com resultado 'Tudo conforme o esperado'. Confirmado por ele: Ctrl+C encerrou em REVERTIDO com motivo de aborto do operador, o que fecha VAL-12 — única pendência ainda exercível, que até aqui estava marcada como 🟡 não exercida; UC-4 apresentou a queda do coletor como ERRO de coleta e não como falha do canário; a guarda absoluta reverteu em t=10 com ZERO julgamentos; entradas inválidas produziram mensagem legível sem traceback. Confirmado também o critério semântico VAL-11: o operador consegue dizer POR QUE o sistema decidiu lendo apenas a saída, sem conhecer o código — é o que separa 'autônomo' de 'caixa-preta', e é justamente o tipo de adequação que teste automatizado não verifica (AP5).\nSomado ao ui_runnable da Fase 5, também confirmado por execução dele: UC-2 reverte e UC-3 não reverte sob a MESMA configuração de limiares, satisfazendo empiricamente o critério de acerto objetivo CA-0 da predição selada.\nFAIL: nenhum. Permanece a única não-cobertura declarada e não mascarada: VAL-6 (separar latência p99 de sucesso da de falha) segue cumprido apenas nominalmente, porque o substrato simulado não modela requisições individuais — consequência direta da decisão SUBSTRATO DE EXECUÇÃO da Fase 0, registrada como limitação conhecida e candidata a v2.\nNEXT: ambos os portões da Fase 6 fechados (automatizado + manual). Avançar para a Fase 7.",
+      "timestamp": "2026-08-10T19:00:08.941Z"
+    },
+    {
+      "id": "bc30217a-83ef-4837-b1a8-e79b05868ca8",
+      "phase": 7,
+      "category": "requirement",
+      "content": "AVALIAÇÃO DO PRODUTO PELO OPERADOR: 'Atende — CA-0 satisfeito'. O critério de acerto objetivo da predição selada (§2 do ENUNCIADO, escrito ANTES de codar) foi cumprido e verificado por mão humana: com a MESMA configuração de limiares, UC-2 reverte e UC-3 não reverte. As limitações permanecem registradas como dívida conhecida e nunca foram mascaradas: VAL-6 (separar latência p99 de sucesso da de falha) cumprido apenas nominalmente porque o substrato simulado não modela requisições individuais; limiares da guarda-absoluta sem fonte bibliográfica, hoje parâmetro obrigatório e impresso do operador. META-ITERAÇÃO: operador escolheu ENCERRAR o projeto — não haverá ciclo v2.0. Conhecimento preservado em specs/ (9 documentos mais 5 arquivos de dataset) e em .versus/state.json (30 decisões); specs/references/lessons.md é o artefato que um post-mortem ou um v2 futuro lê no lugar do chat. ENTREGA FINAL: 12 módulos, 1433 linhas, 62 testes verdes, arquitetura em três versões preservadas V(1)/V(2)/V(3), matriz de cobertura com 72 achados em duas iterações do laço 2-3.",
+      "timestamp": "2026-08-10T19:03:56.707Z"
+    }
+  ],
+  "activatedLenses": [
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Migration / Coexistence",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Observability / Operability",
+        "Control Engineering",
+        "Linguistics / Grammar",
+        "Mechanical Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "O sistema decide sobre versões de software, não sobre pessoas: não há pontuação, classificação nem moderação de indivíduos, e nenhuma decisão recai sobre um sujeito que precise de recurso."
+        },
+        {
+          "lens": "Game Theory",
+          "reason": "Um único ator (o operador), sem API pública, sem integrações externas e sem atores independentes com incentivos próprios que possam desertar estrategicamente."
+        }
+      ],
+      "iteration": 1,
+      "againstVersion": 1,
+      "recordedAt": "2026-08-10T18:03:38.934Z"
+    },
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Migration / Coexistence",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Observability / Operability",
+        "Control Engineering",
+        "Linguistics / Grammar",
+        "Mechanical Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "V(2) não mudou o sujeito da decisão: continua decidindo sobre versões de software, sem pontuação, classificação ou moderação de indivíduos."
+        },
+        {
+          "lens": "Game Theory",
+          "reason": "V(2) não introduziu atores: segue com um único operador, sem API pública e sem participantes independentes com incentivos próprios."
+        }
+      ],
+      "iteration": 2,
+      "againstVersion": 2,
+      "recordedAt": "2026-08-10T18:26:30.337Z"
+    }
+  ],
+  "stateVersion": 1,
+  "exitCriteria": [
+    {
+      "phase": 0,
+      "criterion": "score_90",
+      "met": true,
+      "details": "Score 94/100, breakdown exibido em chat: clareza 10/10, casos de uso 14/15, vocabulário 10/10, ambiguidades 13/15, fora de escopo 10/10, critérios de sucesso 10/10, premissas 8/10, documentação 5/5, usuário confirmou 10/10, IA confiante 4/5. Os 6 pontos ausentes concentram-se em premissas não verificadas (A2: simulador modela aquecimento; A3: limiares da guarda absoluta sem fonte) — ambas atacáveis apenas na Fase 2, não por mais iteração da Fase 0 (AP8)."
+    },
+    {
+      "phase": 0,
+      "criterion": "user_confirmed",
+      "met": true,
+      "details": "Operador avaliou a síntese teach-back COMPLETA (template de 5 níveis exibido integralmente em chat, não resumido) via AskUserQuestion e respondeu \"Correto — pode pontuar e avançar\". Conformidade com AP1: o humano avaliou o texto ESCRITO; não foi perguntado à IA se o design é bom."
+    },
+    {
+      "phase": 0,
+      "criterion": "ambiguities_zero",
+      "met": true,
+      "details": "ACEITAS, não zeradas. Os dois termos vagos do enunciado foram resolvidos por decisão do operador: \"convivendo com a versão estável\" -> tráfego real dividido entre três participantes (decisões COEXISTÊNCIA + BASELINE PAREADO); \"rollback automático por métrica\" -> comparação concorrente canário vs. baseline (decisão SINAL DE DECISÃO + MÉTODO DE JULGAMENTO). Restam 5 ambiguidades, TODAS de granularidade arquitetural e nenhuma bloqueante, exibidas na síntese: (1) número e pesos dos passos; (2) o que a faixa Marginal 75-95 deve causar (R-02 define a categoria, nenhuma fonte diz o efeito); (3) limiares da guarda absoluta; (4) denominador zero quando todas as métricas dão Nodata; (5) se A2 (simulador modela aquecimento) é verificável. Todas cabem na Fase 1, onde módulos e contratos são definidos; levá-las a outra iteração da Fase 0 seria AP8."
+    },
+    {
+      "phase": 0,
+      "criterion": "use_cases_complete",
+      "met": true,
+      "details": "4 casos de uso com ator, objetivo, fluxo e desfecho esperado, persistidos em specs/validation/acceptance-criteria.md: UC-1 canário saudável -> promove (caso positivo); UC-2 canário degradado -> reverte (requisito central); UC-3 ruído comum às duas -> NÃO reverte (prova da comparação concorrente); UC-4 coletor indisponível -> erro em sucessão, não falha (prova da distinção falha/erro). Casos de borda identificados: abortar manual concorrente com julgamento em curso; menos de 50 pontos -> Nodata e não Pass; todas as métricas Nodata -> denominador zero. Cobertura: UC-2 e UC-3 juntos formam o critério de acerto objetivo CA-0, que é discriminante — um limiar absoluto ingênuo passa em UC-2 e falha em UC-3."
+    },
+    {
+      "phase": 0,
+      "criterion": "vocabulary_agreed",
+      "met": true,
+      "details": "14 termos definidos em specs/domain/glossary.md, cada um com sinônimo PROIBIDO explícito, e exibidos na síntese validada pelo operador. Distinção crítica fixada: BASELINE != ESTÁVEL — 'estável' é a versão em produção de vida longa (destino do rollback), 'baseline' é a versão da estável recém-implantada no mesmo instante que o canário (ponto de comparação do julgamento). Confundir os dois é exatamente o viés que R-03/R-04/R-05 alertam. Também fixadas as distinções falha/erro (total vs. sucessão) e janela/intervalo (amostras de um julgamento vs. espaçamento entre julgamentos), e a propriedade 'direção' por métrica (menor-é-melhor vs. maior-é-melhor) que determina se High ou Low reprova. Estes nomes são a chave estável entre fases: a Fase 1 nomeia módulos com eles, a Fase 2 usa os mesmos na coluna module da matriz, a Fase 5 implementa com eles."
+    },
+    {
+      "phase": 0,
+      "criterion": "out_of_scope_clear",
+      "met": true,
+      "details": "4 itens confirmados pelo operador via AskUserQuestion, cada um com justificativa de custo/benefício, registrados em decisão OUT OF SCOPE (YAGNI) e persistidos em specs/validation/acceptance-criteria.md: (1) Kubernetes/service mesh/Prometheus reais — inviabilizaria verificar o CA-0 na janela de 2-4h; (2) persistência entre execuções — custaria módulo de persistência e máquina de estados durável sem servir a nenhum dos 4 UCs; (3) latência p99 de falha — limitação CONHECIDA E DECLARADA: o caso 'timeout que degrada a experiência sem alterar a taxa de erro' (R-01) fica descoberto neste ciclo, candidato a v2.0; (4) aprovação manual por passo — contradiz o 'rollback automático' do enunciado. Nada nesta lista pode ser adicionado nas Fases 2-3 sem aprovação explícita do operador (AP9)."
+    },
+    {
+      "phase": 0,
+      "criterion": "tech_feasibility",
+      "met": true,
+      "details": "VERIFICADA por busca em fontes, NÃO assumida — tabela requisitos x tecnologias exibida em chat. Mecanismos ESSENCIAIS: (a) teste Mann-Whitney U em biblioteca madura; (b) relógio injetável; (c) RNG semeável para determinismo; (d) CLI com transmissão de progresso. RESULTADO DA VERIFICAÇÃO: Python 3.12 + scipy atende TODOS — scipy.stats.mannwhitneyu(x, y, use_continuity=True, alternative='two-sided', method='auto', nan_policy='propagate'), com method='auto' escolhendo exato quando uma amostra tem <=8 pontos sem empates. ALTERNATIVAS DESCARTADAS COM EVIDÊNCIA: Go — gonum NÃO tem o teste (issue #320 aberta), golang.org/x/perf tem porém em pacote 'internal', não importável; TypeScript/Node — nenhuma lib madura E sem RNG semeável nativo; Rust — não verificado, provavelmente ausente. CORROBORAÇÃO EMPÍRICA: o PipeCD, coordenador de entrega progressiva real em Go, precisou vendorizar sua própria implementação de Mann-Whitney. NENHUMA CAPACIDADE ESSENCIAL AUSENTE em nenhuma candidata — não há BLOQUEADOR; a diferença é de custo (~150-250 LOC de port Tier 2 fora do Python, dentro de janela de 2-4h). Escopo NÃO foi cortado para caber na tecnologia."
+    },
+    {
+      "phase": 0,
+      "criterion": "implementation_feasibility",
+      "met": true,
+      "details": "Avaliação Tier 1/2/3 por componente, exibida em tabela no chat. TIER 1 (lib madura, usar): teste Mann-Whitney U (scipy.stats.mannwhitneyu), percentil p99 (statistics.quantiles/numpy), RNG semeável (random.Random(seed)), CLI (argparse/stdlib). TIER 2 (algoritmo documentado com referência, portar literalmente): classificação e score Pass/High/Low/Nodata com (Pass/Total)*100 excluindo Nodata (R-02/R-04); contadores falha-total vs. erro-consecutivo com limite 4 (R-06, do código-fonte do Argo); laço de promoção por peso com fórmulas literais interval*(maxWeight/stepWeight) e interval*threshold (R-07); relógio virtual (padrão de injeção de dependência). TIER 3 (sem referência): simulador de cenário com efeito de aquecimento, e guarda absoluta. PoC NÃO EXIGIDA: nenhum dos dois Tier 3 é domínio complexo — gerar séries sintéticas com distribuição parametrizada é aritmética, e a guarda absoluta é uma regra de comparação simples. O risco em ambos é de JUSTIFICATIVA (limiares sem fonte, fidelidade do simulador), não de execução; por isso ambos já estão nomeados como alvo da lente Científica e da lente Premissas na Fase 2, que é onde esse risco pode de fato ser atacado."
+    },
+    {
+      "phase": 0,
+      "criterion": "specs_populated",
+      "met": true,
+      "details": "5 de 9 diretórios populados, verificado via check_specs_status. specs/references/canary-analysis-sources.md — 7 fontes primárias com URL (R-01 Google SRE Book cap.6 quatro sinais de ouro; R-02 Spinnaker canary judgment; R-03 Spinnaker best practices; R-04 Netflix TechBlog Kayenta; R-05 Google Cloud Blog lessons from Google and Waze; R-06 Argo Rollouts analysis + código-fonte analysis_types.go; R-07 Flagger deployment strategies). specs/technical/canary-decision-parameters.md — TODO parâmetro numérico com fonte citável: Mann-Whitney U, confiança 98%, amostra mínima >=50 pontos por métrica, outlierFactor 3.0, marginalThreshold 75, passThreshold 95, comparação inclusiva >=, failureLimit 0, inconclusiveLimit 0, consecutiveErrorLimit 4, e as fórmulas de temporização de R-07. specs/domain/glossary.md — 14 termos com sinônimos proibidos. specs/competitors/progressive-delivery-tools.md — Argo Rollouts, Flagger, Spinnaker+Kayenta comparados. specs/validation/acceptance-criteria.md — CA-0 mais 12 critérios VAL. VAZIOS por design nesta fase: examples, design, models (alimentados pela Fase 1) e datasets (alimentado pela Fase 5/6). REGRA EM VIGOR: VAL-9 (limiares da guarda absoluta) está marcado EXPLICITAMENTE como sem fonte bibliográfica — é decisão de projeto do operador, não parâmetro de literatura, e está declarado assim de propósito."
+    },
+    {
+      "phase": 0,
+      "criterion": "technical_scientific_research",
+      "met": true,
+      "details": "Domínio especializado (inferência estatística não paramétrica aplicada a decisão automática de implantação) — pesquisa CIENTÍFICA e TÉCNICA concluída e depositada, com autorização explícita do operador (modo 'pesquisar e depositar'). CIENTÍFICA: fundamento teórico é o teste de Mann-Whitney U (Wilcoxon rank-sum), escolhido na literatura de referência por ser NÃO PARAMÉTRICO — 'doesn't assume your data follows any particular pattern (like a bell curve)' (R-02); a justificativa importa porque distribuições de latência são assimétricas com cauda longa e testes paramétricos assumiriam normalidade inexistente. Nível de confiança 98% (R-02). Amostra mínima >=50 pontos de série temporal por métrica (R-03 e R-05, duas fontes independentes). Modelo de agregação: score = (Pass/Total)*100 excluindo Nodata do denominador (R-02, R-04). TÉCNICA: três implementações de referência analisadas e comparadas em specs/competitors/progressive-delivery-tools.md (Argo Rollouts, Flagger, Spinnaker+Kayenta), com os trade-offs entre a escola baseada em regra e a escola baseada em estatística. Benchmark publicado: Waze estima que canário previne ~25% dos incidentes (R-05). Código-fonte consultado diretamente para valores autoritativos: argo-rollouts/pkg/apis/rollouts/v1alpha1/analysis_types.go (failureLimit 0, inconclusiveLimit 0, consecutiveErrorLimit 4, consecutiveSuccessLimit 0). CADA PARÂMETRO NUMÉRICO EM specs/technical/canary-decision-parameters.md TEM FONTE CITADA COM URL. Única exceção, declarada explicitamente e não escondida: os limiares da guarda absoluta (VAL-9) não têm fonte — são decisão de projeto do operador e estão marcados como tal, alvo nomeado da lente Científica na Fase 2. Regra em vigor para a Fase 5: não implementar algoritmo sem referência bibliográfica verificável (AP7)."
+    },
+    {
+      "phase": 1,
+      "criterion": "patterns_defined",
+      "met": true,
+      "details": "Duas coletas via AskUserQuestion, tabela-resumo exibida em chat e confirmada pelo operador. Hexagonal/Portas e Adaptadores; KISS+YAGNI, SOLID (SRP+DIP), funções puras no núcleo de decisão; monothread determinístico; GoF State/Strategy/Observer; Fowler Domain Model; Fowler dados N/A por ausência de persistência. Registrado em decisão PADRÕES APROVADOS PELO OPERADOR e persistido em projectSpec.patterns."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_responsibility",
+      "met": true,
+      "details": "12 módulos (dentro do teto de 8-12 do ENUNCIADO §2), cada um com responsabilidade única declarada na tabela de specs/technical/architecture.md: janela (acumular amostras e saber se atingiu a mínima), julgamento (séries -> veredito via Mann-Whitney), score (vereditos -> score e aprova/reprova), guarda-absoluta (rollback imediato sem aguardar amostra), contadores (falha total vs erro consecutivo), plano-de-passos (sequência de pesos), coordenador (máquina de estados e laço), relogio (porta de tempo), fonte-de-metricas (porta de coleta), alvo-de-implantacao (porta de peso e distribuição), simulador-de-cenario (adaptador gerador), cli (superfície do operador). AUSÊNCIA DELIBERADA: não há módulo 'modelo' compartilhado — os objetos de valor moram nos donos naturais, porque um modelo do qual todos dependem seria hub de acoplamento."
+    },
+    {
+      "phase": 1,
+      "criterion": "interfaces_defined",
+      "met": true,
+      "details": "Assinatura com tipos de entrada e saída para os 12 módulos, na coluna 'interface' da tabela de architecture.md. Exemplos: julgar(serie_canario, serie_baseline, metrica) -> Veredito; pontuar([Veredito]) -> Score; dispara(series_canario) -> Motivo|None; coletar(participante, metrica) -> Amostra|Indisponivel; aplicar(pesos) e distribuicao() -> {papel: peso}; agora() -> int e avancar(delta). Três PORTAS isolam o exterior (relogio, fonte-de-metricas, alvo-de-implantacao). Contratos e invariantes detalhados em specs/models/domain-model.md, incluindo o tratamento do denominador zero no score — caso não coberto por nenhuma fonte, resolvido como ausência de julgamento (nem aprova nem reprova) porque reprovar por falta de dado transformaria coletor lento em rollback e aprovar promoveria canário não observado."
+    },
+    {
+      "phase": 1,
+      "criterion": "dependencies_explicit",
+      "met": true,
+      "details": "Coluna 'depends-on' preenchida para os 12 módulos em architecture.md. Grafo sem ciclos: janela, contadores, plano-de-passos, relogio, fonte-de-metricas e alvo-de-implantacao não dependem de ninguém; julgamento e guarda-absoluta dependem de janela; score depende de julgamento; simulador-de-cenario implementa fonte-de-metricas e usa relogio; cli depende de coordenador, simulador-de-cenario, relogio e alvo-de-implantacao (montagem). PONTO DE CONCENTRAÇÃO DECLARADO: coordenador depende de 9 módulos. Está registrado como premissa A5 explicitamente — 'é ponto de concentração, declarado de propósito como alvo da lente Arquitetural na Fase 2'. Ele conhece apenas as INTERFACES, nunca implementações."
+    },
+    {
+      "phase": 1,
+      "criterion": "assumptions_listed",
+      "met": true,
+      "details": "7 premissas listadas com a consequência de cada uma ser falsa, em architecture.md e exibidas em chat. A1 fidelidade do simulador (se falsa, o sistema está correto contra um mundo que não existe). A2 o simulador modela idade de instância/aquecimento (se falsa, baseline e estável ficam indistinguíveis e a decisão BASELINE PAREADO vira código morto não demonstrável). A3 os limiares da guarda-absoluta são defensáveis (é o ÚNICO parâmetro do sistema sem fonte bibliográfica). A4 50 pontos bastam no regime sintético. A5 coordenador depender de 9 módulos é aceitável por ser o orquestrador (ponto de concentração declarado de propósito). A6 exigir score 100 para aprovar, isto é 3 de 3 Pass, não é rigoroso demais (se falsa, uma métrica ruidosa reprova canários sadios e UC-1 fica instável). A7 o laço monothread representa adequadamente o abortar manual (se falsa, uma corrida real entre aborto e julgamento não é modelada). Conformidade com AP4: premissas implícitas são a fonte de falha mais comum, e estas estão declaradas ANTES da Fase 2 justamente para que a lente Premissas as ataque."
+    },
+    {
+      "phase": 1,
+      "criterion": "architecture_doc",
+      "met": true,
+      "details": "Escrito em specs/technical/architecture.md, com seção '## V(1) — Decomposição' contendo a TABELA DE MÓDULOS no formato exigido (id M-01..M-12 | module | responsibility | interface | depends-on), seguida da lista de premissas e do escopo negativo. Os nomes da coluna 'module' são a chave estável entre fases: janela, julgamento, score, guarda-absoluta, contadores, plano-de-passos, coordenador, relogio, fonte-de-metricas, alvo-de-implantacao, simulador-de-cenario, cli. A matriz de cobertura da Fase 2 e a implementação da Fase 5 DEVEM usar exatamente estes nomes. Complementado por specs/models/domain-model.md com entidades, objetos de valor, invariantes e a máquina de estados."
+    },
+    {
+      "phase": 1,
+      "criterion": "tech_100_scope",
+      "met": true,
+      "details": "Python 3.12 + scipy cobre 100% do escopo, sem redução. Verificação por evidência e não por suposição (AP4): teste Mann-Whitney U -> scipy.stats.mannwhitneyu (Tier 1, verificado contra 3 alternativas na Fase 0); percentil p99 -> statistics.quantiles/numpy (Tier 1); RNG semeável para determinismo -> random.Random(seed) nativo (Tier 1); CLI com transmissão -> argparse/stdlib (Tier 1); relógio virtual, máquina de estados, contadores e laço de peso -> Tier 2 com algoritmo documentado em R-02/R-04/R-06/R-07. NENHUM item do escopo ficou sem tecnologia, e NENHUM item de escopo foi cortado para caber na tecnologia — a regra 'se a tecnologia força redução de escopo, a tecnologia está errada' foi respeitada. ESCOPO PROGRESSIVO NÃO OFERECIDO: Delivery Target é 'Produto completo' e não há bloqueador técnico; fatiar seria redução por preferência, o que a metodologia proíbe."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_adherent_patterns",
+      "met": true,
+      "details": "Aderência verificada padrão a padrão. HEXAGONAL: três portas explícitas (relogio M-08, fonte-de-metricas M-09, alvo-de-implantacao M-10) isolam todo o exterior; simulador-de-cenario M-11 é adaptador de M-09; trocar simulado por real é troca de adaptador sem tocar o núcleo. FUNÇÕES PURAS NO NÚCLEO: M-02 julgamento, M-03 score e M-04 guarda-absoluta recebem listas de números e devolvem vereditos/score, sem relógio, rede ou terminal — é o que torna VAL-3 e VAL-4 verificáveis por tabela entrada/saída sem simulador. SRP: cada módulo tem uma responsabilidade; julgar, pontuar, contar, agir e imprimir estão separados. DIP: coordenador depende de interfaces das três portas, nunca de implementações. STATE: máquina de promoção com quatro estados em M-07, incluindo 'pausado' explícito, sem o qual não se distingue deter o avanço de reverter (R-07). STRATEGY: duas políticas de decisão (M-03 estatística, M-04 guarda) e os quatro cenários de M-11 intercambiáveis. OBSERVER: M-07 emite eventos, M-12 cli observa — nenhum print dentro do domínio. DOMAIN MODEL: 'direcao' mora em metrica dentro de M-02 e em nenhum outro lugar; invariante soma(pesos)==100 mora em M-10. SEM PERSISTÊNCIA: nenhum módulo de acesso a dados, coerente com o Out of Scope."
+    },
+    {
+      "phase": 2,
+      "criterion": "activated_lenses_recorded",
+      "met": true,
+      "details": "Re-declarado para a ITERAÇÃO 2 via record_activated_lenses, carimbado contra V(2) pelo motor. Mesmas 10 condicionais ativadas (Resilience, UI/UX, Migration / Coexistence, Sustainability / Proportionality, Process / Workflow, Governance / Accountability, Observability / Operability, Control Engineering, Linguistics / Grammar, Mechanical Engineering) e as mesmas 2 não ativadas, com razões REEXAMINADAS contra a arquitetura nova e não herdadas: Ethical / Human Impact porque V(2) não mudou o sujeito da decisão, que segue sendo versões de software e não pessoas; Game Theory porque V(2) não introduziu atores, seguindo com um único operador, sem API pública e sem participantes independentes com incentivos próprios. As quatro mudanças estruturais de V(2) foram avaliadas quanto a alterar sinais de ativação e nenhuma alterou."
+    },
+    {
+      "phase": 2,
+      "criterion": "lenses_applied",
+      "met": true,
+      "details": "Iteração 2: as mesmas 17 lentes (7 universais + 10 condicionais re-declaradas contra V(2)) aplicadas aos 12 módulos de V(2), em modo generativo. O conjunto condicional foi REEXAMINADO e não herdado — Ethical/Human Impact e Game Theory seguem não ativadas porque V(2) não mudou o sujeito da decisão nem introduziu novos atores. 25 achados, contra 47 na iteração 1."
+    },
+    {
+      "phase": 2,
+      "criterion": "coverage_matrix",
+      "met": true,
+      "details": "Seção '## Iteração 2 — V(2)' APENDADA a specs/design/coverage-matrix.md, preservando integralmente a seção da iteração 1. 25 linhas no formato uma-linha-por-achado, ids únicos continuando a numeração do projeto (IMP-05, CTL-03, SUS-03, PRO-05, ARQ-05, SCI-06 a SCI-09, MEC-03, MEC-04, ASM-07 a ASM-09, PRO-04, CTL-04, MIG-03, RES-04, LIN-04, LIN-05, OBS-03, UX-04, GOV-03, PERF-03, SEC-03), mesmos prefixos por lente da iteração 1. Uma duplicata marcada: SCI-07 duplica SCI-01."
+    },
+    {
+      "phase": 2,
+      "criterion": "criticals_identified",
+      "met": true,
+      "details": "4 críticos na iteração 2, contra 9 na iteração 1. SUS-03 (alvo-de-implantacao) — com espelhamento, canário a 50% implica baseline a 50% e ESTÁVEL A ZERO; no último passo 100% dos usuários estão em instâncias frias recém-implantadas, negando a propriedade de segurança que a implantação canário existe para oferecer. CTL-03 (janela) — a janela deslizante faz julgamentos consecutivos compartilharem amostras, logo eles não são independentes, mas contadores soma falhas como se fossem; o threshold de R-07 importado para resolver MEC-01 pressupõe independência e não transfere. IMP-05 (configuracao) — o objeto congelado mistura limiares de decisão com semente e cenário, então UC-2 e UC-3 necessariamente recebem configuracao diferentes e 'a mesma configuração' do CA-0 volta a ser inverificável. PRO-05 (coordenador) — com coletor irregular a duração máxima pode encerrar a execução ainda em 'aquecendo', desfecho que não é promovido nem revertido: há um quinto término não nomeado. TRÊS DOS QUATRO SÃO IATROGÊNICOS — criados pelas correções da Fase 3, não sobreviventes de V(1)."
+    },
+    {
+      "phase": 2,
+      "criterion": "concentration_analyzed",
+      "met": true,
+      "details": "Exibida em chat e registrada em decisão. Por módulo: configuracao (novo) já com 4 achados em 4 lentes e 1 crítico; alvo-de-implantacao com 4 em 4 e 1 crítico; coordenador caiu de 8 para 3, medida objetiva de que a extração de responsabilidades órfãs funcionou. Por lente: Scientific lidera de novo com 4, todos no núcleo de decisão — padrão de V(1) persistente. Padrão dominante: 3 dos 4 críticos são IATROGÊNICOS, criados pelas correções da Fase 3 (AP2 observado empiricamente). Convergência: -47% no total de achados, -56% nos críticos."
+    },
+    {
+      "phase": 3,
+      "criterion": "criticals_addressed",
+      "met": true,
+      "details": "Iteração 2: os 4 críticos de V(2) TODOS RESOLVIDOS, tabela exibida em chat. SUS-03 pelo teto de exposição (2*max(pesos) <= 100 - piso_estavel, piso vindo de R-04) — a estável nunca deixa de servir a maioria; resolve MIG-03 de carona porque a estável nunca esfria. CTL-03 pela regra intervalo*taxa_de_amostragem >= tamanho_da_janela, tornando disjuntas as amostras de julgamentos consecutivos e restaurando o pressuposto de independência sem o qual o threshold de R-07 não transferia. IMP-05 pela separação decisão x cenário — semente e cenário saem de configuracao para simulador-de-cenario, tornando o CA-0 verificável de forma estrutural (mesma configuracao, Cenario diferente). PRO-05 mapeando expiração por duração máxima para 'revertido' com motivo 'expirou', sem criar sexto estado, porque mecanismo de segurança que não concluiu deve terminar do lado seguro; resolve SCI-09 junto. RESTAM ZERO CRÍTICOS. SCI-01/SCI-07 permanece como 🟡 e risco aceito registrado: os limiares da guarda-absoluta seguem sem fonte bibliográfica e não inventei uma — são parâmetro obrigatório do operador, sem padrão, impressos na saída."
+    },
+    {
+      "phase": 3,
+      "criterion": "important_decided",
+      "met": true,
+      "details": "Os 18 achados 🟡 da iteração 2 têm decisão. RESOLVIDOS (14): SCI-08 com alfa passando a 0,01 UNICAUDAL, que preserva a taxa POR CAUDA dos 98% bicaudais de R-02 — corrige sem falsear a fonte, em vez de manter o número e mudar seu significado; MEC-04 removendo o veredito Low, que o teste unicaudal nunca produz, eliminando código morto do modelo de domínio; MEC-03 enumerando as quatro validações de configuracao; ASM-09 tornando A2 critério verificável com magnitude e persistência do aquecimento nomeadas; ARQ-05 aliviado porque configuracao ficou menor e monopropósito; SCI-06 resolvido junto com CTL-03, já que a regra de independência desacopla tamanho de janela de amostra mínima; SCI-09, MIG-03, ASM-07, ASM-08, PRO-04, LIN-04, RES-04 e OBS-03 por enumeração de contrato. ACEITOS COM JUSTIFICATIVA (3): CTL-04 histerese assimétrica — entrar em pausado com uma falha é correto porque pausar não altera tráfego e é barato, enquanto promover não é; o viés é deliberado e a favor da segurança. GOV-03 vínculo entre configuração impressa e usada — mitigado, não eliminado, pois persistência está no Out of Scope. UX-04 limiar obrigatório da guarda transferindo a decisão ao operador — é consequência direta de SCI-01 e do risco já aceito. PERMANECE (1): SCI-07, duplicata de SCI-01."
+    },
+    {
+      "phase": 3,
+      "criterion": "scope_preserved",
+      "met": true,
+      "details": "Checklist anti-scope-creep da iteração 2 exibido com os quatro itens ✅. Nenhum módulo entrou ou saiu — o teto de exposição e a regra de independência são REGRAS DE VALIDAÇÃO dentro de configuracao, não componentes novos. REGISTRO EXPLÍCITO SOBRE O TETO DE EXPOSIÇÃO: ele RESTAURA um requisito que V(2) havia comprometido, em vez de reduzi-lo. Na Fase 0 o operador aprovou 'fatias controladas evoluindo por etapas'; V(2) interpretou como rampa até 50%, que zerava a estável e negava a propriedade de segurança da implantação canário; V(3) mantém as etapas E preserva a estável majoritária, que é o modelo de três clusters de R-04. Foi apresentado ao operador em chat como tal e ele avançou."
+    },
+    {
+      "phase": 3,
+      "criterion": "architecture_simplified",
+      "met": true,
+      "details": "V(3) é mais simples que V(2). Contagem de módulos inalterada em 12, sem adição nem remoção. Cada correção REMOVE algo: o teto de exposição substitui uma rampa sem fronteira por uma desigualdade verificável; a regra de independência substitui um pressuposto tácito e falso por uma restrição explícita entre dois parâmetros que já existiam; a separação decisão x cenário TIRA responsabilidade de configuracao em vez de acrescentar; a expiração mapeada para 'revertido' evita criar um sexto estado, mantendo a máquina em 5; a remoção do veredito Low elimina um valor de domínio que nunca seria produzido. As quatro validações enumeradas transformam 'validado na construção' de promessa em lista verificável. Nenhuma camada, nenhum componente, nenhum padrão novo foi introduzido — conformidade com AP2 em uma iteração cujo diagnóstico foi justamente que a iteração anterior havia produzido defeitos iatrogênicos. SEM COMPARAÇÃO DE LOC: nenhum código escrito; a restrição das Fases 0-4 foi respeitada em todo o laço."
+    },
+    {
+      "phase": 4,
+      "criterion": "exit_criteria_p2p3",
+      "met": true,
+      "details": "Verificados via get_exit_criteria e exibidos em relatório no chat. FASE 2 (5/5, cumpridos em DUAS iterações): activated_lenses_recorded — 10 condicionais ativadas e 2 não ativadas com razão, re-declaradas contra V(2) na iteração 2; lenses_applied — 17 lentes sobre 12 módulos, duas passadas completas; coverage_matrix — 72 achados em duas seções datadas por versão de arquitetura; criticals_identified — 9 na primeira passada e 4 na segunda; concentration_analyzed — por módulo e por lente nas duas. FASE 3 (4/4, duas iterações): criticals_addressed — 13 críticos tratados por id, ZERO remanescentes; important_decided — 46 achados 🟡 com decisão explícita de resolver, aceitar com justificativa ou diferir; scope_preserved — checklist de quatro itens ✅ nas duas iterações, com o teste real sendo a recusa deliberada de acrescentar 'tráfego' como quarta métrica para resolver REG-01, por ser escopo; architecture_simplified — 12 módulos em V(1), V(2) e V(3), sem camada, componente ou padrão novo. AS 4 PERGUNTAS DA FASE 1 seguem respondidas: decomposição, interfaces, premissas (A6 e A7 RETIRADAS por demonstração, A2 convertida em critério verificável, A8/A9/A10 acrescentadas explicitamente) e escopo negativo com 8 itens em projectSpec. CONCENTRAÇÃO SEM FALHA SISTÊMICA PENDENTE: coordenador caiu de 8 achados para 3 após a extração das responsabilidades órfãs; a concentração de Scientific no núcleo de decisão está resolvida exceto por SCI-01, que é risco aceito declarado e atribuído ao operador, não lacuna silenciosa."
+    },
+    {
+      "phase": 4,
+      "criterion": "safeguards_s1_s5",
+      "met": true,
+      "details": "check_all_safeguards retorna 0 violações e 0 avisos. S1 rastreabilidade — 25 decisões em state.json e todo parâmetro numérico com fonte em specs/technical/canary-decision-parameters.md, com a única exceção declarada explicitamente (limiares da guarda-absoluta). S2 critério de parada é do USUÁRIO — o operador decidiu o Delivery Target, validou a síntese teach-back, e tomou as DUAS decisões pós-ciclo do laço 2-3; eu computei a mudança estrutural e recomendei, ele decidiu, inclusive contrariando a linha da tabela na segunda vez com pleno conhecimento do cálculo. S3 escopo é do operador — 4 itens de escopo negativo confirmados por ele; AP9 respeitado no momento decisivo, ao recusar acrescentar uma quarta métrica para resolver REG-01. S4 Human-AV em cada portão — P0 o operador validou a síntese escrita, P2-P3 arbitrou os trade-offs, P4 confirmou a convergência e o ponto de troca de modelo; FICA REGISTRADO que P6 exigirá teste manual exploratório executado pelo humano, não simulado por mim. S5 escopo não reduzido pela IA — nenhuma redução em nenhuma iteração; o teto de exposição de V(3) RESTAUROU um requisito que V(2) havia comprometido, em vez de cortá-lo. ESPECIFICAÇÃO PRONTA PARA A FASE 5: specs/ com 7 de 9 diretórios populados; examples vazio porque nenhum port Tier 2 literal é exigido (os algoritmos estão em technical com fonte) e datasets vazio porque é a Fase 5/6 que o alimenta com as séries sintéticas dos quatro cenários. LLM SWITCH POINT apresentado como DECISÃO via AskUserQuestion e não como aviso: o operador escolheu continuar nesta sessão."
+    },
+    {
+      "phase": 5,
+      "criterion": "all_modules",
+      "met": true,
+      "details": "12 de 12 módulos de V(3) implementados, com os nomes canônicos da tabela de arquitetura (arquivo .py com underscore mapeando 1:1 o nome com hífen). 1433 linhas: janela 74, julgamento 94, score 59, guarda-absoluta 48, contadores 89, configuracao 155, coordenador 357, relogio 36, fonte-de-metricas 68, alvo-de-implantacao 128, simulador-de-cenario 142, cli 183. Nenhum módulo fora da lista, nenhum módulo da lista ausente. Restrições vinculantes de P1/P3 respeitadas e verificadas: nenhum print fora de cli.py, nenhuma leitura do relógio do sistema em módulo algum, núcleo de decisão (julgamento, score, guarda-absoluta) composto de funções puras sem relógio, rede ou terminal, laço monothread determinístico. Também entregue gerar_datasets.py, que popula specs/datasets — prometido no Production Capacity Check da Fase 0."
+    },
+    {
+      "phase": 5,
+      "criterion": "specs_consulted",
+      "met": true,
+      "details": "specs/ consultado antes de cada módulo e a rastreabilidade está NO PRÓPRIO CÓDIGO: cada constante numérica carrega sua fonte em docstring. configuracao.py cita R-03/R-05 para AMOSTRA_MINIMA=50, R-02 para ALFA=0.01 (com a justificativa de por que 0,01 e não 0,02 ao migrar de bicaudal para unicaudal), R-06 para LIMITE_ERROS_CONSECUTIVOS=4 e HISTERESE_K, R-07 para LIMITE_FALHAS, R-04 para PISO_ESTAVEL, R-03 para RAZAO_VOLUME_MINIMA. julgamento.py cita R-02 para o teste e R-05 para a regra de não comparar contra produção. contadores.py cita o comentário literal do código-fonte do Argo (R-06) sobre por que erro é consecutivo e falha é total. score.py cita R-02/R-04 para a exclusão de Nodata do denominador e R-03 para a comparação inclusiva. simulador-de-cenario cita R-05 para o efeito de aquecimento. ÚNICA EXCEÇÃO, DECLARADA NO PRÓPRIO MÓDULO EM CAIXA ALTA: guarda_absoluta.py abre com o aviso de que é o único módulo cujos números não têm fonte bibliográfica, e por isso seus limiares são parâmetro obrigatório do operador sem valor padrão."
+    },
+    {
+      "phase": 5,
+      "criterion": "s6_applied",
+      "met": true,
+      "details": "TIER 1 (lib madura aprovada em P1, usada): scipy.stats.mannwhitneyu em julgamento.py — zero LOC de estatística escrita à mão; random.Random(semente) para determinismo; argparse para a CLI; collections.deque com maxlen para a janela deslizante O(1). TIER 2 (algoritmo documentado, portado literalmente com a fonte no código): classificação e score (R-02/R-04), semântica falha-total vs erro-consecutivo com limite 4 (R-06, do código-fonte do Argo), laço de promoção e fórmulas de temporização (R-07), relógio virtual por injeção de dependência. TIER 3 (sem referência, como previsto na Fase 0): simulador-de-cenario e guarda-absoluta — nenhum dos dois é domínio complexo, o simulador é aritmética sobre distribuições parametrizadas e a guarda é comparação de limiar. S7 (micro-verificação adversarial após os módulos) EXECUTADA e produziu resultado: a pergunta 'onde a implementação DIVERGE de specs/' encontrou uma divergência real em UC-4 — o coordenador julgava sobre janela não renovada durante queda do coletor, repetindo o mesmo veredito e revertendo por falha inexistente. A causa raiz foi registrada em decisão de categoria diagnosis ANTES da correção, e a correção foi verificada: UC-4 passou a promover em t=90 após recuperação do coletor."
+    },
+    {
+      "phase": 5,
+      "criterion": "ui_runnable",
+      "met": true,
+      "details": "CONFIRMAÇÃO LITERAL DO OPERADOR via AskUserQuestion: \"Sim, UC-2 reverteu e UC-3 não\" — ele executou os dois comandos no próprio terminal e o comportamento foi o esperado, com uc2 terminando em REVERTIDO e uc3 em PROMOVIDO, sob a MESMA configuração de limiares (--guarda-taxa-erro 0.10 --guarda-latencia-p99 400). Isso satisfaz empiricamente o critério de acerto objetivo CA-0 da predição selada, que é o único critério discriminante do projeto: um limiar absoluto ingênuo passaria em UC-2 e falharia em UC-3. Não marquei este critério com base na minha própria execução — a execução do humano é o que o critério exige, e ela ocorreu. PENDENTE E NÃO MASCARADO: VAL-12 (aborto manual por Ctrl+C) continua implementado mas NÃO exercido pelo operador; segue como 🟡 e vai para o teste manual da Fase 6, em vez de ser marcado como atendido por prosa."
+    },
+    {
+      "phase": 6,
+      "criterion": "tests_passing",
+      "met": true,
+      "details": "62 testes verdes, executados nesta sessão e com a saída lida — conformidade com S4, que proíbe assumir que testes passaram. Comando: python3 -m pytest testes/ (pytest consta no stack aprovado em P1). Distribuição: test_criterio_de_acerto.py (CA-0 e o contrafactual do limiar absoluto), test_casos_de_uso.py (UC-1 a UC-4 e REG-01), test_criterios_val.py (VAL-1 a VAL-12 e restrições de P1/P3), test_cli.py (superfície por subprocess). PODER DA SUÍTE VERIFICADO POR MUTAÇÃO, não presumido: inverter a cauda do teste de Mann-Whitney derruba 14 testes; desligar a checagem de volumes comparáveis derruba 2 (derrubava apenas 1 antes da correção do gap de falsa cobertura). Testes contra as SPECS e não contra a implementação: o Test Map deriva de specs/validation/acceptance-criteria.md e o ground truth vem de specs/datasets/, ambos escritos antes do código."
+    },
+    {
+      "phase": 6,
+      "criterion": "manual_testing",
+      "met": true,
+      "details": "Executado PELO OPERADOR, não simulado por mim (AP5). Resposta literal via AskUserQuestion: 'Tudo conforme o esperado' — Ctrl+C encerrou em REVERTIDO com o motivo de aborto, UC-4 mostrou erro de coleta e não falha, a guarda reverteu em t=10 com 0 julgamentos, os casos inválidos deram mensagem legível, e ele consegue dizer POR QUE o sistema decidiu lendo apenas a saída. Isso fecha VAL-12 (aborto manual, até então 🟡 não exercido) e VAL-11 (adequação semântica da saída), este último sendo exatamente o tipo de critério que teste automatizado não consegue verificar. Somado ao ui_runnable da Fase 5, também por execução dele: UC-2 reverte e UC-3 não reverte sob a MESMA configuração — o critério de acerto CA-0 da predição selada está empiricamente satisfeito por mão humana, e não por asserção minha."
+    },
+    {
+      "phase": 6,
+      "criterion": "edge_cases",
+      "met": true,
+      "details": "Bordas cobertas por teste automatizado E por execução manual do operador. AUTOMATIZADAS: amostra exatamente no mínimo (50) julga, 49 dá Nodata; score exatamente igual ao limiar APROVA (comparação inclusiva >=, R-03); denominador zero com as três métricas em Nodata produz Indefinido, que nem aprova nem reprova; erro consecutivo reseta ao recuperar mas falha acumulada nunca reseta; erros por métrica e não globais, com uma métrica estourando sem que as outras interfiram; promover e reverter idempotentes e chamados fora de ordem; peso que levaria a estável abaixo do piso é recusado com InvarianteViolada; configuração com julgamentos dependentes é recusada na construção; configuração sem os limiares obrigatórios da guarda falha com TypeError; cenário inexistente na CLI é recusado; coletor permanentemente fora reverte pelo motivo de ERRO e não de falha; canário completamente mudo não é promovido; janela deslizante descarta o mais antigo ao saturar; determinismo verificado nos 4 cenários e também byte a byte pela saída da CLI; 5 sementes distintas para UC-2 e UC-3. MANUAIS confirmadas pelo operador: Ctrl+C no meio da execução, guarda com limiar baixo revertendo em t=10 com 0 julgamentos, --duracao-maxima 0 e ausência dos argumentos obrigatórios produzindo mensagem legível sem traceback."
+    },
+    {
+      "phase": 7,
+      "criterion": "specs_updated",
+      "met": true,
+      "details": "specs/validation/acceptance-criteria.md ganhou a seção RESULTADOS com a tabela esperado x obtido para os 4 casos de uso e os 12 critérios VAL, incluindo os números reais (UC-2 revertendo em t=30 contra os 30 previstos pela fórmula de R-07 — igualdade exata; VAL-9 revertendo com ZERO julgamentos; VAL-1 mostrando que o mesmo canário sadio recebe Pass contra o baseline e High contra a estável quente). Também depositados ali o poder da suíte medido por mutação (14 testes derrubados ao inverter a cauda do Mann-Whitney; 2 ao desligar volumes_comparaveis, contra 1 antes da correção do gap) e as razões canário/baseline do ground truth, em que UC-3 exibe valores absolutos inflados em 60% com razão 1,00 — a evidência numérica de que a comparação concorrente cancela o ruído de ambiente. specs/technical/architecture.md preserva as três versões V(1), V(2) e V(3), cada uma com sua tabela de módulos, de modo que achados da iteração 1 continuam apontando para módulos que existiam quando foram levantados. specs/design/coverage-matrix.md tem as duas seções de iteração com 72 achados. specs/datasets foi populado com uc1..uc4.json mais indice.json. VAL-6 permanece marcado como cumprido apenas nominalmente, com a razão declarada, e não foi convertido em ✅."
+    },
+    {
+      "phase": 7,
+      "criterion": "lessons_documented",
+      "met": true,
+      "details": "specs/references/lessons.md escrito com 8 lições sobre ESTE projeto (não sobre a metodologia), mais a tabela de dívida conhecida. L1 o baseline pareado é o mecanismo e não preciosismo, com a medição que prova o viés de aquecimento. L2 separar contadores falha/erro não basta, é preciso impedir julgamento sem insumo novo — aprendido por dois caminhos independentes, desenho e implementação. L3 parâmetro emprestado carrega semântica e não só valor, com os dois casos concretos (faixa Marginal inalcançável, alfa bicaudal virando unicaudal). L4 tolerância zero mais comparações múltiplas produz falso positivo garantido, observado de fato no UC-1. L5 a correção de um defeito é a fonte mais provável do próximo — três dos quatro críticos da segunda passada foram iatrogênicos, com a tabela de qual correção gerou qual defeito. L6 ler o próprio código não encontra falsa cobertura; só o teste de mutação encontrou. L7 a verificação Tier 1 decidiu a linguagem e a evidência mais forte veio de um concorrente (PipeCD vendorizando Mann-Whitney em Go). L8 as duas premissas que se revelaram erradas, A6 e A7, ambas retidas apenas porque foram escritas e numeradas. DÍVIDA CONHECIDA registrada com razão por item: VAL-6, latência p99 de falha, trilha persistida, requisições em voo, limiares da guarda sem fonte."
+    },
+    {
+      "phase": 7,
+      "criterion": "human_feedback",
+      "met": true,
+      "details": "Coletado via AskUserQuestion na Fase 7. Avaliação do produto: 'Atende — CA-0 satisfeito'; o operador confirma que o critério de acerto objetivo da predição selada foi cumprido e que as limitações declaradas (VAL-6 nominal, limiares da guarda sem fonte) estão registradas como dívida conhecida e não como surpresa. Meta-iteração: 'Projeto completo — encerrar', sem ciclo v2.0. Este feedback soma-se ao Human-AV exercido em todos os portões anteriores: validação da síntese teach-back na Fase 0, arbitragem dos trade-offs e das duas decisões pós-ciclo do laço 2-3, decisão do LLM Switch Point na Fase 4, execução do ui_runnable na Fase 5 e teste manual exploratório na Fase 6 — este último tendo fechado VAL-11 e VAL-12, que nenhum teste automatizado verificaria."
+    }
+  ],
+  "safeguards": [
+    {
+      "id": "S0",
+      "status": "ok"
+    },
+    {
+      "id": "S1",
+      "status": "ok"
+    },
+    {
+      "id": "S2",
+      "status": "ok",
+      "details": "Stopping Criterion: behavioral check — requires agent attention. Stopping criterion belongs to the USER, not the AI.",
+      "lastChecked": "2026-08-10T18:32:17.909Z"
+    },
+    {
+      "id": "S3",
+      "status": "ok"
+    },
+    {
+      "id": "S4",
+      "status": "ok",
+      "details": "Explicit Verification (mandatory human-AV): behavioral check — requires agent attention. Human-AV is irreplaceable at each gate. Automated tests verify formalizable properties. Semantic adequacy, usability, and domain correctness REQUIRE human judgment. P0: human validates synthesis. P2: human arbitrated trade-offs. P4: human confirms convergence. P6: NEVER assume tests passed — execute and verify + mandatory manual exploratory testing.",
+      "lastChecked": "2026-08-10T18:32:17.909Z"
+    },
+    {
+      "id": "S5",
+      "status": "ok"
+    },
+    {
+      "id": "S6",
+      "status": "ok"
+    },
+    {
+      "id": "S7",
+      "status": "ok"
+    }
+  ],
+  "loopCounter": {
+    "pattern": "",
+    "count": 0,
+    "firstSeen": "",
+    "lastSeen": "",
+    "lastDiagnosis": "2026-08-10T18:57:40.512Z"
+  },
+  "createdAt": "2026-08-10T17:10:41.634Z",
+  "updatedAt": "2026-08-10T19:04:19.855Z",
+  "history": [
+    {
+      "from": 0,
+      "to": 1,
+      "timestamp": "2026-08-10T17:45:46.540Z",
+      "criteriaMet": [
+        "score_90",
+        "user_confirmed",
+        "ambiguities_zero",
+        "use_cases_complete",
+        "vocabulary_agreed",
+        "out_of_scope_clear",
+        "tech_feasibility",
+        "implementation_feasibility",
+        "specs_populated",
+        "technical_scientific_research"
+      ]
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "timestamp": "2026-08-10T18:01:08.402Z",
+      "criteriaMet": [
+        "patterns_defined",
+        "modules_responsibility",
+        "interfaces_defined",
+        "dependencies_explicit",
+        "assumptions_listed",
+        "architecture_doc",
+        "tech_100_scope",
+        "modules_adherent_patterns"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-10T18:06:38.610Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 2,
+      "timestamp": "2026-08-10T18:26:12.066Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-10T18:29:15.078Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "timestamp": "2026-08-10T18:32:11.623Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "timestamp": "2026-08-10T18:33:28.791Z",
+      "criteriaMet": [
+        "exit_criteria_p2p3",
+        "safeguards_s1_s5"
+      ]
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "timestamp": "2026-08-10T18:44:36.385Z",
+      "criteriaMet": [
+        "all_modules",
+        "specs_consulted",
+        "s6_applied",
+        "ui_runnable"
+      ]
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "timestamp": "2026-08-10T19:00:47.083Z",
+      "criteriaMet": [
+        "tests_passing",
+        "manual_testing",
+        "edge_cases"
+      ]
+    }
+  ],
+  "lastPhaseStateCheck": "2026-08-10T18:26:17.186Z",
+  "lastTestOutcome": {
+    "outcome": "pass",
+    "phase": 6,
+    "at": "2026-08-10T18:58:31.926Z"
+  }
+}

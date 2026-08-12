@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A premissa P-A7 declara explicitamente que o disco não corrompe bytes e que a arquitetura não possui checksum, definindo o limite de tolerância a falhas de armazenamento."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "O módulo M-12 (cli) expõe uma interface de linha de comando para operadores humanos, exigindo avaliação da clareza dos comandos e feedbacks."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O módulo M-10 (migrator) e a política de `precheck`/`allow-lossy` tratam explicitamente da transição entre formatos F1 e F2, incluindo riscos de perda e consentimento."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema lida com alto volume de dados (séries temporais), onde a eficiência do codec Gorilla, a política de retenção e o uso de streaming/iteradores impactam diretamente o consumo de recursos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema processa métricas técnicas (gauge, counter, temp) sem tomar decisões automatizadas sobre pessoas ou classificar indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define fluxos de estado explícitos para retenção (downsampling/expiração) e migração, com validações de invariante (I2, I3-I7) e tratamento de exceções (rejeição de escrita fora da ordem ou incompatível)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O contrato `WriteReport` e `MigrationReport` registram explicitamente rejeições, razões e perda de dados (lossless/lossy), criando um rastreamento auditável das ações do sistema."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Os módulos retornam relatórios detalhados (`WriteReport`, `MigrationReport`) e o CLI possui um comando `report` dedicado para diagnóstico e medição do estado do acervo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema não possui loops de feedback em tempo real nem mecanismos de auto-correção dinâmica; a retenção é um plano executado por script sem ajuste contínuo baseado em erro residual."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos conflitantes; assume-se um único escritor confiável (P-A2) e não existe mercado ou interação estratégica entre usuários."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "O módulo M-07 (store-port) define um protocolo rigoroso com capacidades declaradas (`capabilities`) e interfaces de bitstream precisas, garantindo que implementações distintas não violem o contrato implícito."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura lida com tolerâncias físicas de representação (quantização F1 vs precisão F2), limites de blocos (2h-4h) e degradação controlada na migração lossy, tratando variações nos dados de entrada."
+    }
+  ]
+}

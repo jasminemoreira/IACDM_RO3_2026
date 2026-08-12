@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas (SMTP, HTTP, SQLite) possuem tratamento explícito de falhas com retry, backoff, dead-letter e distinção entre erro transitório e permanente."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo M-02 define uma superfície operacional em CLI para operadores, ativando a lente por ser interface direta com pessoa."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a substituição de legado, plano de migração de dados ou estratégia de coexistência com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Arquitetura é deliberadamente limitada (worker único, SQLite, supressão em vez de digest) e não gerencia alocação de recursos escaláveis ou custos variáveis com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Sistema toma decisões automatizadas sobre interrupção de pessoas (quiet hours, rate limit, opt-out) e oferece transparência (motivos enumerados) e correção (CLI explain/retry)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Pipeline de dois estágios, máquina de estados agregada (delivered/suppressed/deferred/failed) e caminhos de exceção (dead-letter, retry) são explicitamente modelados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações são atribuíveis via API key do emissor, chave de idempotência e registro de motivos de supressão e resultados de entrega para auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "CLI operacional, rastreamento de pendentes, dead-letter, agregação de estados e comandos de reprocesso permitem diagnóstico e intervenção em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Token bucket, backoff com Full Jitter e reavaliação bifásica geram sinais de erro e corrigem o timing das entregas, com mitigação explícita de oscilação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Projeto assume cooperação de emissores (chave de dedup externa) e consumidores de webhook (idempotência do destino), criando risco de defeição estratégica não controlada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contrato ChannelPort define explicitamente o campo permanent para evitar ambiguidade entre falhas transitórias e definitivas, impactando comportamentos de retry."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema incorpora tolerâncias explícitas para variação de relógio (300s), cruzamento de meia-noite, timeouts de rede e limitações do SQLite."
+    }
+  ]
+}

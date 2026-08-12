@@ -1,0 +1,5 @@
+# Stack aprovada na Fase 1 (decisao de ProjectSpec). Nada alem disto.
+starlette>=0.35        # servidor ASGI
+uvicorn>=0.30          # execucao
+anthropic>=0.40        # SDK oficial do provedor (upstream real)
+# sqlite3 vem na biblioteca padrao — zero dependencia para persistencia.

@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: provedor Anthropic via upstream e banco SQLite usado na decisão crítica."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: painel-web SPA e painel-api para operador configurar tetos e consultar consumo."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente nem de transição/convivência com solução legada em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema mede, reserva e corta consumo em moeda de chamadas a LLM, um recurso cujo custo cresce com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas como scoring, moderação ou classificação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiestado explícito de reserva → envio → reconciliação/liberação, com exceções e atores distintos operador/cliente/provedor."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra consumo, tetos e chaves por entidade, e essas ações/valores precisarão de atribuição e auditoria posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com requisito operacional de detectar corte, saldo, consumo e diagnosticar falhas sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O comportamento em runtime é governado por feedback entre reserva, custo real, reconciliação e reset de janela para manter o teto."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes e possibilidade de defecção estratégica: apps podem contornar o gateway se tiverem a chave real do provedor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre módulos e com o provedor, como formato de usage, exceções de preço e interfaces de reservar/reconciliar."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo com premissas operacionais e pontos sensíveis de manutenção, como esquema SQLite, contratos e política futura de reservas órfãs."
+    }
+  ]
+}

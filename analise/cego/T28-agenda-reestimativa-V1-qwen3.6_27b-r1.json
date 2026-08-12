@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema lida com dependências externas (provedores simulados M-04/M-05) que podem invalidar tokens ou retornar estados inesperados, exigindo lógica de tratamento como full resync e neutralização de eco."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma interface de linha de comando (M-12) operada por humanos para listar conflitos, resolver disputas e visualizar sobreposições, exigindo clareza na saída tabular e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O sistema é uma construção verde (greenfield) sem menção a migração de dados legados ou coexistência com versões anteriores do software."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O processamento é limitado a ~1.000 eventos em ciclo único e single-threaded, sem alocação dinâmica de recursos pesados ou custos escaláveis como IA/ML."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema sincroniza dados calendários pessoais e escala conflitos para decisão humana, sem realizar classificação automatizada de pessoas, scoring ou moderação de conteúdo sensível."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Define fluxos complexos de estado (ciclo de vida do conflito em M-08), transições de decisão (matriz 3-vias em M-06) e exceções (escalação para fila humana)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema mantém um registro persistente de decisões e conflitos resolvidos/escalados (M-08, M-11), permitindo auditoria de quem resolveu qual conflito e quando."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O sistema não roda como daemon em produção contínua nem expõe métricas operacionais; a visibilidade é restrita à saída de comandos pontuais da CLI."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de sincronização de estado com loop de feedback (pull-reconcile-apply), lidando explicitamente com deriva de estado, neutralização de eco e oscilações via tokens e ancestral."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores são provedores técnicos passivos (simulados) sem incentivos estratégicos ou comportamento competitivo; não há marketplace nem interação entre agentes racionais independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Define contratos formais rigorosos (Design by Contract) para portas Provider e Repository, tratando ambiguidades de parsing ICS, tipos de dados opacos e semântica de remoção."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura prioriza pureza funcional e imutabilidade (M-01, M-06) com baixo acoplamento, sem evidência de tolerância a desgaste gradual ou dívida técnica acumulada em componentes físicos."
+    }
+  ]
+}

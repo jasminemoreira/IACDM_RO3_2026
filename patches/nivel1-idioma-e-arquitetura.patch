@@ -1,0 +1,37 @@
+diff -ruN a/src/hooks/inject-context.ts b/src/hooks/inject-context.ts
+--- a/src/hooks/inject-context.ts	2026-07-14 12:42:49.000000000 -0300
++++ b/src/hooks/inject-context.ts	2026-08-05 22:18:37.602425932 -0300
+@@ -63,7 +63,14 @@
+ 
+   // P2: warn if ACTIVATED LENSES decision is missing (Step 1 not yet executed)
+   if (phase === 2) {
+-    const hasLensDecision = state.decisions.some((d) => d.content.includes("ACTIVATED LENSES"));
++    // The methodology is operated in whatever language the session speaks, but this
++    // check grepped for the English literal — so a Portuguese session saw
++    // "P2 STEP 1 MISSING" for the whole of Phase 2 while the decision was in fact on
++    // record. Found in the T01 pilot run.
++    const hasLensDecision = state.decisions.some((d) => {
++      const up = d.content.toUpperCase();
++      return up.includes("ACTIVATED LENSES") || up.includes("LENTES ATIVADAS");
++    });
+     if (!hasLensDecision) {
+       lines.push("⚠ P2 STEP 1 MISSING: No lens activation decision found. Call record_decision(category='architecture', content='ACTIVATED LENSES: [list]. NOT ACTIVATED: [lens — reason]') BEFORE applying any lens.");
+     }
+diff -ruN a/src/rules/full-guidance.ts b/src/rules/full-guidance.ts
+--- a/src/rules/full-guidance.ts	2026-08-05 13:58:56.000000000 -0300
++++ b/src/rules/full-guidance.ts	2026-08-05 22:18:37.602765634 -0300
+@@ -460,6 +460,14 @@
+ ### Step 0 — Read the persisted coverage matrix (MANDATORY, before addressing anything):
+ Read \`specs/design/coverage-matrix.md\` — the findings table Phase 2 wrote. Do NOT work from memory of the chat. Address the 🔴 criticals and 🟡 important findings **by id**, row by row: when you resolve P-01, say so and how. Findings marked \`duplica:\` are the same defect seen twice — resolve the defect once. This is the asset being acted on, not just stored, and referencing findings by id is what keeps the audit trail honest (a later post-mortem can check whether P-01 was actually addressed).
+ 
++### Updating the architecture doc: APPEND V(N+1), never overwrite V(N).
++When this phase produces a new version, add a new \`## V(N+1)\` section to
++\`specs/technical/architecture.md\` with its own module table — do NOT replace the previous
++one. The Phase 2↔3 loop critiques a DIFFERENT architecture each round, and a finding from
++iteration 1 may name a module that V(2) removed. Overwriting leaves that finding pointing at
++a module no artifact records, and the per-module traceability the coverage matrix exists for
++breaks exactly where the design changed most. Keep every version; the last section is current.
++
+ ### Purpose: Simplify V(N) → V(N+1), eliminating complexity.
+ **CAUTION AP2 (Complexity as false solution):** Each iteration must SIMPLIFY, not complexify.
+ 

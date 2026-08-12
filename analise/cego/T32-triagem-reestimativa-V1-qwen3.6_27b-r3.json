@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas (APIs, filas ou serviços de terceiros); a persistência é local via SQLite no mesmo processo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo M-12 define 6 telas server-side para interação humana direta com o sistema (abrir, fila, triar, recorrer, julgar)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a substituição de sistema legado, coexistência ou caminho de rollback; é um projeto novo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema roda em thread única com SQLite local e não aloca recursos escaláveis (como IA ou infraestrutura elástica) cujos custos cresçam exponencialmente com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O módulo M-03 deriva automaticamente a Prioridade que afeta o tratamento do chamado, e M-06 lida com recursos/julgamentos, constituindo decisões automatizadas sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existem fluxos multi-ator com transições de estado definidas (abrir, triar, reclassificar, recorrer, julgar) e regras de ciclo de vida nos módulos M-05 e M-06."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O módulo M-07 registra uma trilha de eventos somente-inserção para auditoria histórica, e M-08 verifica autorização e legitimidade das ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há mecanismos declarados para diagnóstico de degradação em produção (logs estruturados, métricas, traces) além da trilha de negócios; o foco é correção lógica, não operabilidade do serviço."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback que ajustem dinamicamente a configuração ou o comportamento do sistema em tempo de execução com base em sinais de erro; as regras são estáticas."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A7 assume 'boa-fé' do solicitante sem punição por abuso, e a prioridade é automática (M-03), criando risco de incentivo estratégico para inflar impacto/urgência."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Todas as interfaces são entre módulos do mesmo repositório em TypeScript, com tipos compartilhados e contratos verificados pelo compilador, sem comunicação inter-processo ou entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "O design busca rigidez via tipos imutáveis (M-03) e transações atômicas (M-09), não tolerância a variações ou acumulação controlada de dívida técnica para evolução gradual."
+    }
+  ]
+}

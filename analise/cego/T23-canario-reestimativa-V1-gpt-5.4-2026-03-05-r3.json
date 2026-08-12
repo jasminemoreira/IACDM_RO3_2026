@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas explicitamente isoladas por portas: relogio, fonte-de-metricas e alvo-de-implantacao."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o módulo cli é entrada do operador e imprime progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema e a arquitetura tratam de canário convivendo com a versão estável, com promoção por passos e rollback para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca recurso operacional escasso: distribuição de peso de tráfego entre canário e estável ao longo dos passos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; participante é versão/papel de implantação, não indivíduo humano avaliado."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há máquina de estados explícita no coordenador e um fluxo operacional com progressão, pausa, promoção, reversão e aborto."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O coordenador emite eventos e o sistema toma decisões de promoção/rollback que precisarão ser atribuídas e explicadas depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção/implantação com eventos operacionais, coleta de métricas e decisão final que exigem operação e diagnóstico."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação: métricas geram veredito/score e corrigem a distribuição de tráfego via progressão ou rollback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos próprios; os adaptadores externos não configuram marketplace, plataforma ou API pública estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre componentes por interfaces/portas e tipos de retorno distintos como Amostra|Indisponivel e Veredito."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo, com tolerâncias e manutenção explícitas em limiares, amostra mínima, sequência de passos e portas/adaptadores."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e pontos de falha/variabilidade: ofxtools, arquivos OFX/CSV e persistência SQLite no repository."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI de import, reconcile, review e report."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve substituição de sistema existente, operação em paralelo, transição produtiva nem rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume de dados e a carga/custo cresce com uso; há matching, deduplicação e fixture de 50k com risco de O(n²) se o blocking degenerar."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; a classificação recai sobre transações/lançamentos, não sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo multi-etapas com estados e exceções: importação, deduplicação L0-L5, conciliação com 5 estados terminais e revisão humana de pendências."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema precisa auditabilidade e atribuição: DecisaoDedup registra camada e evidência, há resoluções humanas persistidas e estados de conciliação que alguém precisará explicar depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de produção com importação, conciliação, revisão e relatórios, exigindo detectar degradação e diagnosticar incidentes."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há sincronização/correção de estado entre extrato e livro, com feedback humano via review-queue alimentando a L0 e comportamento dependente de janela/tolerância configuráveis."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos estratégicos, API pública, marketplace ou mecanismo sujeito a defecção estratégica descritos na arquitetura."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos entre componentes independentes: portas FonteDeExtrato/Repositorios, perfis CSV declarativos e parsing de OFX v1/v2 sujeitos a ambiguidade de interface."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura explicita tolerâncias e variação aceitável: janela de data, tolerância de valor, normalização canônica e premissas frágeis sobre formatos/fontes em sistema evolutivo."
+    }
+  ]
+}

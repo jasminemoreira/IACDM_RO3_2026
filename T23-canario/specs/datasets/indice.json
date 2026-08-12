@@ -1,0 +1,38 @@
+[
+  {
+    "arquivo": "uc1.json",
+    "cenario": "UC-1 canário saudável",
+    "semente": 42,
+    "indisponiveis": 0,
+    "latencia_p99_sucesso_canario/baseline": 0.9967,
+    "taxa_de_erro_canario/baseline": 0.9997,
+    "saturacao_canario/baseline": 0.9843
+  },
+  {
+    "arquivo": "uc2.json",
+    "cenario": "UC-2 canário degradado",
+    "semente": 42,
+    "indisponiveis": 0,
+    "latencia_p99_sucesso_canario/baseline": 1.3926,
+    "taxa_de_erro_canario/baseline": 1.3973,
+    "saturacao_canario/baseline": 1.3826
+  },
+  {
+    "arquivo": "uc3.json",
+    "cenario": "UC-3 ruído comum às duas",
+    "semente": 42,
+    "indisponiveis": 0,
+    "latencia_p99_sucesso_canario/baseline": 0.9979,
+    "taxa_de_erro_canario/baseline": 0.9998,
+    "saturacao_canario/baseline": 0.9902
+  },
+  {
+    "arquivo": "uc4.json",
+    "cenario": "UC-4 coletor indisponível",
+    "semente": 42,
+    "indisponiveis": 0,
+    "latencia_p99_sucesso_canario/baseline": 0.9967,
+    "taxa_de_erro_canario/baseline": 0.9997,
+    "saturacao_canario/baseline": 0.9843
+  }
+]

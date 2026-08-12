@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa de arquivos CSV/OFX e SQLite com risco de corrupção ou formato inesperado nos adapters M-03 e M-04."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de uma superfície operacional via CLI (M-11) para importação, revisão e geração de relatórios."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a substituição de sistema legado ou necessidade de coexistência com versão anterior durante a transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de carga alta (50k itens) e algoritmos de matching O(n²) potencial em blocos degenerados (Premissa A4), exigindo avaliação de custo computacional."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas afetam registros financeiros internos e não envolvem classificação, scoring ou moderação direta sobre pessoas físicas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Presença de máquina de estados explícita (5 estados terminais), fluxo de deduplicação em camadas L0-L5 e fila de pendências para intervenção humana."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Requisito explícito de auditoria: registro da camada decisória e evidência em DecisaoDedup (M-07) e persistência de resoluções humanas (M-09)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Necessidade de diagnósticos em produção via relatórios de contagem por estado e sub-rotulação de órfãos (M-10) para detectar degradação no processo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sincronização de estado entre extratos externos e livro interno com janela de data/tolerância configurável e feedback humano na fila de revisão para correção de divergências."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores externos independentes com incentivos conflitantes ou risco de defeição estratégica; as fontes são sistemas de terceiros passivos (bancos/ERP)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre módulos de domínio e adapters (M-02, M-03, M-04) com normalização de dados heterogêneos e definição de hash canônico."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Definição explícita de tolerâncias (janela de data, diferença de valor) e tratamento de ruído na similaridade de descrições entre fontes distintas."
+    }
+  ]
+}

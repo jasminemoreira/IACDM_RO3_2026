@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas em runtime: sem APIs, bancos, filas ou serviços de terceiros (escopo negativo explicita 'sem rede'); PyYAML e NetworkX são bibliotecas locais, e a única entrada é um diretório de arquivos YAML locais."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI (M-11) com subcomandos `validar`/`impacto`/`procedencia`, flag `--json`, códigos de saída e mensagens de erro 'acionáveis' desenhadas em M-02 (ciclo nomeado, referência pendente, domínio sem dono)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sistema de produção preexistente sendo substituído ou modificado; o texto não menciona transição, dados legados ou caminho de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso cujo custo cresça com o uso alocado pelo sistema: execução CLI manual, single-threaded, grafo declarado à mão que cabe em memória (A7, dezenas a centenas de datasets), sem IA, elasticidade ou processamento de alto volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não toma decisões automatizadas sobre pessoas: donos e linhagem são declarados manualmente por humanos em YAML; a CLI apenas lê, valida e consulta, sem scoring, classificação ou moderação."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Não há fluxo multi-ator nem máquina de estados: o sistema é stateless (sem persistência, recarrega a cada execução), com um único ator e um caminho linear carregar → validar → consultar."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio objeto do sistema é atribuição e prestação de contas: domínios com donos declarados (INV-2/INV-3), resolução de dono por herança com sobrescrita (M-03) e linhagem que alguém precisará auditar ou responder por — propriedade do sistema, independente de ser operado por uma pessoa só."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é um sistema de produção contínuo: CLI que executa e termina, sem servidor, sem modo watch, sem requisitos operacionais — degradação se manifesta como erro agregado na própria execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há realimentação, sincronização de estado nem configuração em runtime que altere comportamento: escopo negativo exclui cache, carregamento incremental e arquivo de configuração."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores independentes interagindo através do sistema: sem API pública, marketplace ou plataforma; os donos de domínio atuam fora do sistema, escrevendo YAML, e a CLI só lê."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos de interface com risco real de ambiguidade: o formato YAML como protocolo entre autores humanos e o sistema, a semântica invertida de `alimentado_por: X` produzindo aresta `X -> eu` (M-08), a gramática da identidade `dominio.nome` com a restrição A10 (ponto como separador) e a exclusão da origem em `impact(X)` (A6) — exatamente pontos onde duas leituras corretas do contrato divergem."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura é desenhada explicitamente em torno de manutenção e evolução de módulos: tabela de módulos com `depends-on`, fronteira núcleo/borda com regra de dependência unidirecional, porta hexagonal (M-09) e Data Mapper isolando conversões — sinais de sistema pensado para variar por partes, não só na especificação exata."
+    }
+  ]
+}

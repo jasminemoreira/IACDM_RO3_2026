@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência explícita de API externa (`upstream`/Anthropic) e banco embutido (`persistencia`), com estratégia real/simulado mas sem detalhes de fallback ou tratamento de falha de rede."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença de `painel-web` (SPA) e `painel-api` com autenticação de operador para monitoramento de consumo, saldo, teto e configuração."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descreve iterações internas (Fase 0 → 1) sem sinal de substituição de sistema legado em produção ou necessidade de rollback/coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Gestão explícita de custo de tokens de IA (`precificador`, `escrow`, `rate-card`) com teto em moeda e corte automático, onde o recurso consumido tem custo direto e variável."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automatizadas referem-se a limites de orçamento e uso de API, sem impacto direto, classificação ou moderação sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo orquestrado com etapas sequenciais explícitas e transições de estado na conta do escrow (reservado → confirmado/reconciliado), envolvendo cliente, gateway e operador."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registro de eventos de uso, atribuição de consumo a entidades via `identidade`, decisão centralizada de corte em `escrow` e painel de auditoria de saldo/tetos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Requisitos operacionais explícitos (premissas A3-A7), dashboard de consumo/saldo/estado de corte e dependência de configuração externa de tetos e relógio do host."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de controle explícito com leitura de consumo, comparação contra setpoint (teto), ação de corte/sinal 402, sincronização de contadores e atualização em runtime via `painel-api`."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Interface pública para apps consumidores com chaves virtuais, onde a premissa A5 reconhece risco de contornar o gateway se os apps possuírem credenciais diretas do provedor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos de interface são definidos internamente para um monolito modular único, sem indicação de comunicação entre times independentes ou definição de protocolos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Documentação explícita de evolução por fases, decisão deliberada de adiar políticas (expiração de reservas órfãs) e listagem de premissas não verificadas (A4, A6, A7) como dívida técnica a ser gerenciada."
+    }
+  ]
+}

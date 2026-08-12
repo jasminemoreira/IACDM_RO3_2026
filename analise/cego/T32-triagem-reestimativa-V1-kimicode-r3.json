@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Persistência em banco externo ao processo (better-sqlite3/SQLite em disco, M-09) com transações atômicas — falha/lentidão/dado inesperado do banco afeta toda escrita."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Seis telas server-side operadas por pessoas (M-12: abrir, fila, triar, chamado, recorrer, julgar) — superfície de usuário explícita."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield) com seed próprio; nenhum sistema legado sendo substituído ou coexistindo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Trilha somente-inserção (M-07) cresce sem limite a cada evento — recurso consumido cujo custo cresce com o uso; custo a 10× não avaliado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão automatizada sobre pessoas: prioridade do chamado do solicitante derivada por matriz (M-03), com mecanismos de correção (reclassificação, recurso) e premissa A6 (pesos iguais) sem evidência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multi-ator com máquina de estados: ciclo de vida do Chamado (M-05), rito de admissibilidade/julgamento do Recurso (M-06), papéis solicitante/triador/gestor."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha de auditoria imutável (M-07), permissão com motivo (M-08) e identidade apenas declarada sem prova (A8) — ações precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção (Fastify + SQLite) com SLAs a cumprir e violações a detectar, e nenhum mecanismo de diagnóstico/monitoramento mencionado."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há realimentação automática nem configuração em runtime que altere comportamento; correções (reclassificação, recurso) são acionadas por atores humanos, não por sinal de erro do sistema."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com incentivos divergentes (solicitante quer prioridade alta) e premissa A7 assume boa-fé sem evidência — desenho assume cooperação onde pode haver defecção estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes: API HTTP com validação e rejeição de `prioridade` como entrada (M-11), contratos tipados entre os 12 módulos — ambiguidade de contrato gera comportamentos incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema interno de vida longa com regras parametrizadas como dado (matriz, SLAs, prazos em M-02) e premissas não validadas (A6, A7) — tolerância à variação e evolução dos módulos em questão."
+    }
+  ]
+}

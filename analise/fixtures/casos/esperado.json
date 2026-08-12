@@ -1,0 +1,71 @@
+{
+  "00-valido": {
+    "aceita": true
+  },
+  "01-achado-sem-id": {
+    "aceita": false,
+    "mensagem": "sem id na primeira coluna"
+  },
+  "02-ids-duplicados": {
+    "aceita": false,
+    "mensagem": "repetido"
+  },
+  "03-duplica-inexistente": {
+    "aceita": false,
+    "mensagem": "não existe neste projeto"
+  },
+  "04-lente-nao-declarada": {
+    "aceita": false,
+    "mensagem": "nem foi declarada ativa"
+  },
+  "05-modulo-inexistente": {
+    "aceita": false,
+    "mensagem": "ausente da tabela de módulos"
+  },
+  "06-severidade-invalida": {
+    "aceita": false,
+    "mensagem": "fora das três do método"
+  },
+  "07-campo-faltando": {
+    "aceita": false,
+    "mensagem": "o formato exige 5"
+  },
+  "08-prefixo-reservado": {
+    "aceita": false,
+    "mensagem": "prefixo reservado 'M-'"
+  },
+  "09-sigla-em-vez-de-nome": {
+    "aceita": false,
+    "mensagem": "Use o nome canônico"
+  },
+  "10-grade-so-severidade": {
+    "aceita": false,
+    "mensagem": "nenhuma tabela de achados"
+  },
+  "11-eco-de-modulos": {
+    "aceita": false,
+    "mensagem": "nenhuma tabela de achados"
+  },
+  "12-lente-de-outra-iteracao": {
+    "aceita": false,
+    "mensagem": "nem foi declarada ativa na iteração 1"
+  },
+  "13-iteracao-sem-declaracao": {
+    "aceita": false,
+    "mensagem": "não há declaração de lentes para essa iteração"
+  },
+  "14-duas-iteracoes-validas": {
+    "aceita": true
+  },
+  "16-lente-abreviada": {
+    "aceita": false,
+    "mensagem": "lente desconhecida"
+  },
+  "17-estruturado-valido": {
+    "aceita": true
+  },
+  "18-v14-sem-declaracao": {
+    "aceita": false,
+    "mensagem": "declaração estruturada é obrigatória"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Escopo negativo declara ausência de dependência de rede em runtime; SQLite e assets são locais, isolando o sistema de falhas ou lentidão externas."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 define superfície web com 4 telas operacionais, simulador e campo de data visível e editável, exigindo avaliação de usabilidade humana."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Problema explicita substituição de tabela legada; M-08 (importador) e M-09 (prova de paridade) são dedicados à transição e validação de compatibilidade."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Arquitetura é single-user/threaded com SQLite local e sem processamento massivo ou infraestrutura elástica, não gerando consumo proporcional ao uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O motor decide preços de produtos (SKUs) e não classifica, pontua ou moderada pessoas, não acionando impactos humanos diretos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Define ciclo de vida explícito de regras (rascunho → validação → publicação atômica → versão imutável) com caminhos de exceção (empates, rejeições nomeadas)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Núcleo registra trace exaustivo, logs de decisão e versões imutáveis, garantindo rastreabilidade e auditoria de cada precificação e publicação."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Sistema local e single-user sem menção a métricas, health checks ou ambiente de produção, não exigindo diagnóstico operacional em runtime."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-05 (validação) e M-09 (paridade) geram sinais de erro/aviso antes da publicação, formando loop de feedback para configuração de regras."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Arquitetura é single-user e local, sem marketplace, API pública ou múltiplos atores independentes com incentivos potencialmente conflituosos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Uso de portas DIP, contratos de API rígidos (data obrigatória) e normalização explícita de formatos (moeda BR, SKU, datas) exige desambiguação nos contratos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Define tolerância explícita de R$ 0,01 na paridade, regras estritas de arredondamento e tratamento de bordas para absorver variações da entrada legada."
+    }
+  ]
+}

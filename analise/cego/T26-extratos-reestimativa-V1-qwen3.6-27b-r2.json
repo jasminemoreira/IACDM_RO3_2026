@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema opera com arquivos locais (OFX/CSV) e SQLite, sem chamadas a APIs, filas ou serviços remotos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo M-11 (cli) atua como superfície operacional para comandos de import, conciliação e revisão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descreve sistema novo/autônomo, sem menção a substituição de legado, coexistência ou caminhos de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Módulo M-06 (matcher) e premissa A4 alertam para degradação para O(n²) em blocos degenerados, impactando consumo em escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema classifica transações financeiras e não toma decisões automatizadas sobre pessoas ou perfis."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Módulo M-01 define 5 estados de conciliação e M-07 implementa chain L0→L5 com fluxo de pendências e revisão humana (M-09)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "DecisaoDedup registra obrigatoriamente camada e evidência da decisão, e M-09/M-10 persistem resoluções humanas para auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Arquitetura foca em ferramenta CLI/batch com persistência local, sem menção a logs, métricas ou instrumentação para produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sistema opera em batch sem loops de controle automático, sincronização de estado contínua ou auto-correção baseada em feedback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Fontes externas são arquivos passivos (CSV/OFX) e não há múltiplos atores estratégicos, API pública ou dinâmica de mercado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Módulos são internos a uma única base de código com portas bem definidas, sem comunicação entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias configuráveis (M-08), canonização (M-02) e perfis CSV (M-04) projetam o sistema para tolerar variação de dados e layout."
+    }
+  ]
+}

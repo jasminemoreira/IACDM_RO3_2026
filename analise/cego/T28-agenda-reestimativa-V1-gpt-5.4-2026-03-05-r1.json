@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas via Provider e persistência SQLite, com falhas previstas como invalidated, paginação, tombstones e janela de observação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em M-12 cli, com comandos de sync, status, conflicts e dry-run."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve substituição de sistema em produção nem convivência entre versão antiga e nova."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e expande recorrências de até ~1.000 eventos por lado por ciclo, com custo que cresce com volume e meta de tempo explícita."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; conflitos apenas escalam para decisão humana e a CLI é operacional."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiestado explícito: pull, normalizar, reconciliar, aplicar, persistir, além do ciclo de vida da conflict-queue de aberto para resolvido."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema persiste conflitos, ancestrais, tokens e resoluções; decisões como conflicts resolve <id> --take a|b|merge precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sincronizador com operação contínua por ciclos e modos como status, dry-run e tratamento de full resync, exigindo diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O núcleo é de sincronização de estado entre dois calendários, com feedback corretivo via ancestral, reconciliação 3-vias e neutralização de eco."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há integrações com provedores externos independentes, com semânticas próprias e não cooperativas entre si, como itens repetidos, tokens opacos e janelas obrigatórias."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos formais entre módulos e portas, além de tradução de .ics, TZID, DATE versus DATE-TIME e semânticas de delta que exigem interpretação inequívoca."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura é modular e voltada a evolução longa, com tolerâncias explícitas para variações de provedores, recorrência, janelas e regras como R-A1 a R-A3."
+    }
+  ]
+}

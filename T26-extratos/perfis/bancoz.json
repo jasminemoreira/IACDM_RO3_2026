@@ -1,0 +1,4 @@
+{"nome":"bancoz","versao":"1","alvo":"extrato","delimitador":";","encoding":"cp1252",
+ "formato_data":"%d/%m/%Y","separador_decimal":",","separador_milhar":".",
+ "sinal":"coluna_indicadora","conta":"55555-1","instrumento_padrao":"desconhecido",
+ "colunas":{"data":"DT","valor":"VLR","indicador":"DC","descricao":"DESCR"}}

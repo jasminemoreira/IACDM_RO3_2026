@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Portas/adaptadores isolam dependências externas e o sistema trata explicitamente indisponibilidade, falhas e erros com rollback automático."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo cli atua como superfície operacional para o operador acompanhar progresso, motivos e decisões finais."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Problema central define coexistência canário/estável com mudança progressiva de pesos e caminho de rollback explícito."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Arquitetura é um orquestrador de decisão leve, sem alocação de recursos escaláveis ou processamento de alto volume destacado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automatizadas dirigem-se a versões de software e distribuição de tráfego, não a classificação ou impacto em pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Coordenador implementa máquina de estados explícita com transições, passos sequenciais e caminhos de exceção/aborto."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Objetos de valor têm donos explícitos por módulo, definindo responsabilidade e evitando hubs de acoplamento compartilhado."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Coleta contínua de métricas, contadores de falha/erro e emissão de eventos permitem diagnóstico da decisão em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de controle fechado coleta métricas, calcula desvio estatístico e corrige a distribuição de peso automaticamente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Todos os atores são componentes automatizados sob controle único, sem incentivos divergentes ou superfície pública estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Interfaces são funções puras ou portas/adaptadores tipados, sem contratos de mensagem ambíguos ou comunicação entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Uso de teste estatístico com confiança de 98%, amostra mínima e guardas absolutas para tolerar ruído e variação nas métricas."
+    }
+  ]
+}

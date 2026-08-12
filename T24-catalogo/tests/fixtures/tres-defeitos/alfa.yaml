@@ -1,0 +1,9 @@
+# Forma valida. Defeito semantico 1: aresta pendente.
+dominio: alfa
+dono:
+  nome: Alguem
+  contato: alguem@empresa.com
+datasets:
+  - nome: x
+    alimentado_por:
+      - beta.nao_existe

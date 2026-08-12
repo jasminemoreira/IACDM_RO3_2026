@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: SMTP (M-10), webhooks de terceiros (M-11), SQLite (M-12) — com timeout, distinção falha permanente/transitória, retry com Full Jitter e dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-02 é uma CLI operada por uma pessoa (operador): explain, pending, retry, serve — superfície humana com tarefas de diagnóstico e reprocessamento."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield); nenhum sistema de produção existente é substituído ou modificado — a menção a 'cadastros antigos/importados' é risco de dado, não plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca e consome um recurso que cresce com o uso: envios externos por pessoa (token bucket M-07), fila durável e throughput do worker único (PRE-1) — custo proporcional ao volume de notificações."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas sobre pessoas: suprimir/adiar/entregar notificações a um destinatário (M-04), com mecanismo de transparência/correção (explain, opt-out, List-Unsubscribe)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados multi-etapa: estados de Notificação/Entrega, pipeline de supressão em 2 estágios, ciclo outbox → claim → retry → dead-letter, com atores distintos (emissor, worker, operador)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões pelas quais alguém prestará contas: decisão de supressão nomeada com motivo de enum fechado, chave de idempotência do emissor, identificação do emissor por API key (PRE-8) e trilha de resultados na outbox."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com requisitos operacionais explícitos: dead-letter, reprocessamento via CLI, tick com contadores (claimed/delivered/failed) e diagnóstico de supressão sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Malhas de realimentação e autocorreção: token bucket consumido na entrega, backoff exponencial com jitter, adiamento até abertura da janela — com risco de oscilação já admitido (20 adiadas → rajada suprimida às 08:00)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com cooperação assumida: API pública a emissores sem autorização por recurso (PRE-8), dedup depende de o emissor fornecer chave (PRE-3), consumidor de webhook precisa ser idempotente (PRE-7)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes: ChannelPort com semântica sensível de 'permanent', formato de assinatura HMAC sobre id.timestamp.payload, enum fechado de motivos — ambiguidade gera implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa com tolerâncias explícitas (PAR-06: 300 s de relógio) e evolução prevista: node:sqlite experimental isolado atrás de M-12, regras de supressão extraídas ou não conforme manutenibilidade."
+    }
+  ]
+}

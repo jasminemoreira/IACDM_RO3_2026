@@ -1,0 +1,22 @@
+[project]
+name = "t28agenda"
+version = "1.0.0"
+description = "Sincronizador bidirecional entre dois calendarios externos, com deteccao e resolucao de conflito"
+requires-python = ">=3.12"
+dependencies = [
+    "icalendar==7.2.2",
+    "recurring-ical-events",
+    "python-dateutil==2.9.0.post0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+t28 = "t28agenda.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["t28agenda*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

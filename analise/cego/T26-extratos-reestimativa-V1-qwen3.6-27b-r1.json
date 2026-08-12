@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "O sistema consome apenas arquivos locais (OFX/CSV) e persiste em SQLite local, sem APIs, filas ou serviços externos sujeitos a indisponibilidade ou falhas de rede."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "A arquitetura expõe uma superfície CLI (M-11) para operação direta do operador humano (import, reconcile, review, report), exigindo avaliação de usabilidade e fluxo de tarefas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Trata-se de um sistema novo (greenfield) sem menção a substituição de legado, fase de transição paralela ou mecanismo de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "É uma ferramenta de execução local em lote sem alocação dinâmica, infra elástica ou consumo de recursos computacionais que escale com custo variável."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A classificação automatizada de transações financeiras inclui rastreio obrigatório de evidência (DecisaoDedup), fila de revisão humana (M-09) e proibição de sobrescrita, exigindo análise de transparência e impacto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define máquinas de estado explícitas (5 estados de conciliação), Chain of Responsibility (L0→L5) e fluxo de exceção para revisão humana, mapeando responsabilidades e transições."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O registro obrigatório de camada e evidência em cada decisão, a persistência de resoluções humanas e a exigência explícita de auditabilidade ativam a necessidade de atribuição e governança dos dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Trata-se de uma ferramenta CLI local sem menção a logging estruturado, métricas, rastreamento distribuído ou requisitos de diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Parâmetros configuráveis (janela de data, tolerância de valor, pesos de similaridade) afetam diretamente o comportamento do matcher, e a revisão humana retroalimenta a camada L0, formando um loop de correção passível de análise de estabilidade."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O sistema atua como consumidor passivo de formatos de terceiros e dados internos, sem modelar incentivos, concorrência ou comportamento estratégico entre atores independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "A comunicação é interna via portas bem definidas (FonteDeExtrato, Repositórios) e canonicalização centralizada, sem contratos compartilhados entre equipes independentes ou protocolos externos negociados."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura projeta explicitamente tolerâncias configuráveis e camadas de fallback para lidar com variações nos dados, divergências de valor e degradação de precisão ao longo do tempo."
+    }
+  ]
+}

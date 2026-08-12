@@ -1,0 +1,7 @@
+# Achado ASM-01. Sem isso, vendas.br.pedidos resolveria o dono errado em silencio.
+dominio: vendas.br
+dono:
+  nome: Maria Silva
+  contato: maria.silva@empresa.com
+datasets:
+  - nome: pedidos

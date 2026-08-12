@@ -1,0 +1,66 @@
+{
+  "projeto": "Serviço de notificação",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Canais externos (SMTP/HTTP) e banco SQLite exigem tratamento explícito de falhas transitórias, permanentes e timeouts."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Superfície CLI (M-02) para operadores exige avaliação de usabilidade para diagnósticos, listagem e reprocessamento."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descreve sistema verdefield sem indicação de substituição, migração ou convivência com legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Worker único e fila local sem mecanismos de escalabilidade elástica ou alocação de recursos de custo crescente com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Supressão baseada em preferências explícitas e limites técnicos, não em scoring, classificação ou moderação automatizada."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Pipeline de duas etapas, máquina de estados da notificação e caminhos de exceção definem fluxo de negócio a ser validado."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Rastreamento de motivos de supressão, registro de entregas no outbox e CLI operacional exigem atribuição e capacidade de auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com fila, dead-letter, worker único e comandos de operação requer monitoramento e diagnóstico ativo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Lógica de retry e token bucket são estáticas, sem loops de feedback dinâmico ou ajuste de parâmetros que arrisquem oscilação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "API externa e webhooks assumem emissores confiáveis e destinos idempotentes, criando risco de abuso ou defeição estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos explícitos entre módulos (ex: ChannelPort.send e campo permanent) exigem ambiguidade zero para interoperabilidade segura."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias definidas (relógio, timeouts, deduplicação) e isolamento de dependências indicam foco em variação e evolução do sistema."
+    }
+  ]
+}

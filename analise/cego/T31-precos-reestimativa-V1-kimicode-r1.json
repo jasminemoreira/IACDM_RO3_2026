@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência de infraestrutura externa ao núcleo: banco SQLite (M-07) com publicação atômica e transação, além do CSV legado que pode devolver dados inesperados (M-08)"
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: 4 telas HTML (M-12) com comportamento explícito de preencher 'hoje' de forma visível e editável, e o explicador (M-06) gera frases para usuário"
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada: importador-csv (M-08) e prova-paridade (M-09) existem para validar a transição do legado com tolerância de R$ 0,01 (CS-1)"
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema local, single-threaded, SQLite de arquivo único, sem elasticidade, IA/ML ou volume de dados cujo custo cresça com o uso; escopo negativo até exclui precificação em lote"
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões são sobre preços de produtos, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos"
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há máquina de estados de negócio: ciclo rascunho → validação → publicação atômica → versão vigente, com caminhos de exceção (rejeitadas com motivo, empate insolúvel)"
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões auditáveis: trace exaustivo (I-3), LogDeDecisoes, versões imutáveis (A-12), motivo da derrota de cada regra perdedora e recalcular(decisao_id)"
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Premissa A-06/A-08: processo single-user, UI e API no mesmo processo, sem exposição em rede — não há requisito operacional de produção distribuída a diagnosticar"
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há sincronização de estado, configuração em runtime que altere comportamento nem laço de feedback autocorretivo; o motor é determinístico e sem relógio (A-04)"
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único (single-user, sem auth nem multiusuário), sem API pública nem atores independentes com incentivos conflitantes"
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Arquitetura centrada em contratos formais entre módulos independentes: portas DIP, interfaces tipadas por módulo, contrato de máquina da API e parsing de formatos ambíguos (moeda BR, 'Ate' textual)"
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa substituindo legado, com tolerâncias explícitas (R$ 0,01 na paridade, intervalos fechados, arredondamento half-up) e premissas que admitem variação de entrada (SKU com espaço/caixa)"
+    }
+  ]
+}

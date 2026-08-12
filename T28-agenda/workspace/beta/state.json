@@ -1,0 +1,21 @@
+{
+ "pulls": 0,
+ "resources": {
+  "beta-feriado_t28-2": {
+   "deleted": false,
+   "seq": 2,
+   "version": "v2"
+  },
+  "beta-reuniao-sp_t28-3": {
+   "deleted": false,
+   "seq": 3,
+   "version": "v3"
+  },
+  "beta-so-em-b_t28-1": {
+   "deleted": false,
+   "seq": 1,
+   "version": "v1"
+  }
+ },
+ "seq": 3
+}

@@ -1,0 +1,15 @@
+dominio: logistica
+dono:
+  nome: Ana Costa
+  contato: ana.costa@empresa.com
+
+datasets:
+  - nome: envios
+    descricao: Envios despachados por pedido
+    alimentado_por:
+      - vendas.pedidos
+
+  - nome: rastreio
+    descricao: Eventos de rastreio por envio
+    alimentado_por:
+      - logistica.envios

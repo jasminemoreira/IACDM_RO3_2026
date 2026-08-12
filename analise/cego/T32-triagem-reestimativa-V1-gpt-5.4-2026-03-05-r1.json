@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de persistência SQLite em `repositorio` e servidor HTTP em `api-http`."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: 6 telas em `ui-web` e rotas HTTP usadas por usuários."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo elástico/crescente de recurso decidido pelo sistema além da carga transacional comum."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisão automática sobre pessoas ao classificar prioridade e permitir reclassificação/recurso de solicitante."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiator com estados e exceções: abrir, triar, reclassificar, recorrer, julgar e encerrar."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "As ações precisam autoria e auditoria: `trilha` somente-inserção, `autorizacao` com motivo e julgamento por gestor."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com servidor HTTP, banco e requisitos operacionais de diagnóstico em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de correção explícito: reclassificação e recurso corrigem classificação anterior e recalculam prazos."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes com incentivos potencialmente divergentes: solicitante pode recorrer e a arquitetura assume boa-fé em A7."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos intermodulares com regra embutida em assinaturas e interfaces (`derivar`, `prazos`, `pode`, rotas HTTP)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É sistema modular e evolutivo com 12 módulos, contratos rígidos e manutenção futura sujeita a variações e dívida técnica."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Portas abstratas (M-08, M-09, M-10) isolam o núcleo de falhas externas; a ausência de persistência evita dependência de banco de dados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo CLI (M-12) é a única superfície de operação humana, exibindo progresso e decisões para o operador."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema explícito é 'convivendo com a versão estável' e M-10 gerencia pesos de distribuição entre canário e estável com rollback automático."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há alocação dinâmica de recursos computacionais nem processamento de dados em escala elástica; o custo é fixo e local."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões afetam disponibilidade de serviço técnico, não há scoring, classificação ou moderação envolvendo pessoas diretamente."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 implementa uma máquina de estados explícita (progredindo/pausado/revertido/promovido) com transições e laço de execução definidos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "Escopo negativo declara 'persiste nada entre execuções'; sem histórico auditável ou atribuição de ações a longo prazo, não há governança de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "M-07 emite eventos observáveis e M-12 os consome para diagnóstico; o sistema é projetado para detectar degradação via métricas e rollback."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sistema de controle em malha fechada: coleta métricas -> julga estatisticamente -> ajusta pesos (ação corretiva) com risco de oscilação ou drift."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos conflitantes nem mercado; é um sistema unidirecional de orquestração técnica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Interfaces são contratos internos rigorosos (funções puras, tipos fortes); não há protocolo externo ambíguo ou comunicação entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Tolerâncias são fixas por parâmetros estáticos (limiares, amostras mínimas); não há mecanismo de adaptação automática a deriva técnica ou manutenção evolutiva."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Escopo negativo declara explicitamente 'qualquer dependência de rede em runtime' e a persistência é SQLite local em arquivo único."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (ui-web) é adapter de entrada HTML com 4 telas diretas para o operador, incluindo simulador, importação e preenchimento visível/editável de data."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Problema declara 'substituindo uma tabela legada' e a arquitetura inclui M-08 (importador-csv) e M-09 (prova-paridade) para migração e validação contra o legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema local single-user/single-threaded sem processamento massivo, IA, alocação dinâmica ou infraestrutura elástica que escalaría custos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Motor precifica produtos e não toma decisões automatizadas sobre pessoas, pontuação, classificação ou moderação de comportamento humano."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo explícito de rascunho → validação → publicação atômica → precificação, com estados de versão, transições e exceções nomeadas (empate insolúvel, sobreposição, lacuna)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Geração de Trace exaustivo, LogDeDecisoes e histórico com opção de recálculo, garantindo rastreabilidade e auditoria das regras aplicadas e motivos da decisão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Aplicação local sem requisitos de monitoramento distribuído, métricas de saúde, logs operacionais ou pipelines de deploy que exijam diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Regras estáticas por versão imutável com validação prévia e prova de paridade; não há loop de feedback em tempo real, ajuste automático ou risco de oscilação/drift de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Escopo negativo exclui multiusuário, autenticação e dependências de rede; sistema é local e single-user, sem atores externos, marketplace ou incentivos conflitantes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Monólito entregue em ciclo único por uma mesma equipe, com contratos tipados estritos (dataclasses Python) e sem protocolos de mensagem negociados entre times independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Definição explícita de tolerâncias (arredondamento só no final, paridade com tolerância de R$ 0,01, normalização de SKU) e versionamento imutável para manutenção e evolução."
+    }
+  ]
+}

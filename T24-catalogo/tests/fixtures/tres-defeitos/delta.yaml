@@ -1,0 +1,7 @@
+# Forma valida. Defeito semantico 3: contato ambiguo com alfa (GOV-04).
+dominio: delta
+dono:
+  nome: Nome Diferente
+  contato: alguem@empresa.com
+datasets:
+  - nome: z

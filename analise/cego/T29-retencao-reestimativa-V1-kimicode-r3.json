@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de bytes lidos do disco e a própria premissa P-A7 declara que um bit corrompido em F2 perde o resto do bloco inteiro — cenário explicitamente apontado no texto como alvo desta lente; não há checksum nem detecção de corrupção."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI `tsz` (M-12) com 7 subcomandos, flags como `--allow-lossy` e mensagens de erro de validação (I3/I6/I7, fora de ordem) que o operador precisa entender para agir."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O coração do sistema é a transição entre formatos de armazenamento: M-10 migrator com precheck, LossRisk, `--allow-lossy` e coexistência F1↔F2 via capabilities — pergunta de rollback e perda durante a transição está posta pela própria arquitetura."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e aloca um recurso cujo custo cresce com o uso — armazenamento de séries temporais: política de retenção expira dados, downsampling reduz resolução, e P-A10 registra que a razão de compressão varia por perfil sem limiar prometido."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas — o sistema comprime, retém e migra pontos (ts, valor) de séries temporais, sem scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Fluxo monoator: um operador único dispara Transaction Scripts lineares (ingest, retain, migrate); não há múltiplos atores, máquina de estados de processo de negócio nem handoffs de responsabilidade — o plano de retenção é computação batch determinística."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema toma decisões destrutivas que alguém terá de explicar depois: expiração por retenção e rejeições/perdas em migração — e já nasce com artefatos de prestação de contas (WriteReport.rejected/reasons, MigrationReport.lossless, aborta-por-padrão vs. consentimento explícito)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é um sistema em produção contínua: é uma ferramenta CLI batch, single-threaded declarada (P-A2), e o escopo negativo exclui servidor/API; não há requisito operacional de detectar degradação ou diagnosticar incidentes em runtime."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há malha de feedback nem autocorreção: configuração de tiers é validada estaticamente (validate) e aplicada em batch (plan), sem sinal de erro, sincronização de estado em runtime ou risco de oscilação — o estado do codec é interno ao stream, não um laço de controle."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único com incentivos triviais: escritor único (P-A2), sem API pública, sem integrações externas, sem marketplace — nenhum ponto onde o design assuma cooperação de atores independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes independentes são o eixo central: a porta Store (M-07) com capabilities declaradas, e dois formatos binários com gramática exata (F1 byte-a-byte big-endian, bitstream Gorilla §4.1) — duas implementações corretas do contrato podem divergir (ex.: o que conta como `rejected`)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de longa vida com tolerâncias explícitas e evolução prevista: quantização de timestamp de F1, teto de 2106 (ts_bits=32), MAX_BLOCK_SECONDS para falhar alto, xFilesFactor como tolerância de dados faltantes, e migração entre formatos como evolução planejada do acervo."
+    }
+  ]
+}

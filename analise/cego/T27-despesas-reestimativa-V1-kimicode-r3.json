@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa concreta: persistência em SQLite via M-09 (transações leitura-para-atualização, migração, seed) — falha/lentidão do banco afeta todos os casos de uso."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-rendered operadas por pessoas (bandeja, nova despesa, delegações), além da API HTTP de M-11 consumida diretamente."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo com seed inicial (M-09 semear); nenhum sistema legado em produção sendo substituído ou modificado, nem caminho de rollback em questão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 fixa volume pequeno (dezenas a centenas de despesas), SQLite local, sem IA, sem infraestrutura elástica nem recurso cujo custo cresça com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas (sem scoring, classificação ou moderação): aprovar/rejeitar é ato humano; o sistema apenas valida autoridade."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multi-ator com máquina de estados explícita (M-01: transições válidas, rejeição terminal INV-11), cadeias de alçada por valor e delegação temporária com vigência e revogação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-06 trilha append-only (INV-8) registrando ator efetivo, em-nome-de, instante e limite exercido (INV-7) — auditoria e atribuição são requisitos centrais do domínio."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Nenhum requisito operacional de produção declarado: sem métricas, logs estruturados ou alertas; sistema de baixo volume com relógio controlável de demo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sem realimentação ou sincronização de estado: expiração de delegação é computada sob demanda contra o relógio (sem scheduler), e o único knob de runtime é o relógio de teste/demo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores com incentivos divergentes: INV-2/INV-4 existem contra auto-aprovação e decisão dupla, e A5 declara explicitamente que o sistema impõe SoD 'contra engano' (defecção estratégica)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes independentes: portas de repositório (M-08), interfaces tipadas com erros nomeados (ErroSoD, ErroMotivoAusente) e API HTTP pública (M-11) — ambiguidade geraria implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas nas fronteiras: INV-1 limite inclusivo, dinheiro em inteiro de centavos (INV-12), A6 UTC monotônico para fronteiras de vigência, e regra de granularidade E=I₀/C voltada à manutenção/evolução modular."
+    }
+  ]
+}

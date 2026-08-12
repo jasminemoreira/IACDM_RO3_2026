@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas concretas: arquivos OFX/CSV de múltiplas fontes (formatos v1 SGML/v2 XML, perfis de banco), biblioteca ofxtools e SQLite — todas podem falhar, mudar layout ou retornar dados inesperados (ex.: premissa A1 sobre FITID instável)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: o módulo cli (M-11) com comandos import/reconcile/review/report e a fila de revisão humana (M-09), onde o operador resolve pendências."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nenhum sinal de substituição ou modificação de sistema em produção — é um importador novo que lê fontes externas, sem sistema legado a coexistir ou migrar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de volume cujo custo cresce com o uso: carga de 50k no fixture-generator e a premissa A4 — bloco degenerado reintroduz O(n²), tornando o custo de cómputo função direta do volume e da qualidade do blocking."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas recaem sobre transações financeiras (duplicata/casamento), não sobre pessoas — não há scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita com 5 estados terminais de conciliação (M-01/M-08), fluxo multi-ator: motor decide ou escalona, e humano resolve pendências via review-queue (M-09), com exceções (1:N vira pendência) definidas no escopo."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões auditáveis: DecisaoDedup carrega obrigatoriamente camada (L0-L5) e evidência, resoluções humanas são persistidas e nunca sobrescritas (escopo negativo), e VAL-2 exige rastreabilidade de falsos positivos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema operado em produção com requisitos de diagnóstico: reporter (M-10) com contagem por estado cuja soma deve fechar o total, e evidência persistida por decisão permitem diagnosticar degradação (ex.: camada que decide, sub-rotulação de órfãos) sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Malha de realimentação explícita: resoluções humanas persistidas (M-09) alimentam a camada L0 do dedup-engine (M-07), corrigindo decisões futuras — um sinal de erro humano retroalimentando o classificador automático."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores independentes com incentivos estratégicos: as fontes externas (bancos, ERP) são passivas e o único ator é o operador; sem API pública, marketplace ou plataforma."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes com ambiguidade potencial: perfis CSV declarativos (M-04), porta FonteDeExtrato implementada por dois adapters, hash canônico como identidade (A2) e parsing de OFX em duas gramáticas — duas implementações corretas podem divergir (ex.: A6, descrições não comparáveis entre fontes)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas no design: janela de data e tolerância de valor configuráveis (M-08), thresholds de similaridade com pesos (M-06) e cadeia L0→L5 que degrada graciosamente em vez de exigir especificação exata — sistema de vida longa sujeito a variação dos formatos de entrada."
+    }
+  ]
+}

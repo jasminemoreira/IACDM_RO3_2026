@@ -1,0 +1,66 @@
+{
+  "projeto": "Compactador de séries temporais",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas (APIs, filas, serviços remotos); o disco é tratado como premissa local infalível (P-A7) e não como dependência externa com falha."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença do módulo M-12 (cli) que expõe comandos (ingest, read, etc.) como superfície de operação direta para o usuário humano."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Existência do módulo M-10 (migrator) e lógica explícita para migração entre formatos de armazenamento (F1/F2) com detecção de risco de perda e estratégias de coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Foco da arquitetura está em integridade de dados e correção de formatos; não há sinal de gestão de custo, escalabilidade de recursos ou análise de proporção consumo/valor."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Domínio do sistema é técnico (métricas de séries temporais); não envolve decisões automatizadas sobre pessoas, classificação social ou impacto humano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Ferramenta operada por um único ator via CLI; não há fluxos multi-ator, máquinas de estado de negócio complexas ou responsabilidades distribuídas entre agentes."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "Relatórios (WriteReport, MigrationReport) focam em integridade técnica e estatísticas de escrita; não há trilhas de auditoria, atribuição de autorias ou definição de donos de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Sistema é uma ferramenta CLI de execução batch (não um serviço de produção long-running); não possui requisitos de monitoramento contínuo ou diagnóstico em tempo real."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura baseada em transformações batch puras e planos pré-computados; não há loops de feedback, correção autônoma ou sincronização de estado em tempo de execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Contexto de operador único e ferramentas locais; não há atores independentes, mercado, ou incentivos estratégicos a serem alinhados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Definição explícita da porta `store-port` (M-07) com método `capabilities()` para declarar diferenças de contrato e evitar ambiguidade entre implementações assimétricas (F1/F2)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura favorece estrito contrato e falha rápida (aborto padrão, sem checksum); tolerâncias presentes (ex: xFilesFactor) são parâmetros de domínio, não mecanismos arquiteturais para evolução ou desvio."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "Compactador de séries temporais",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Ausência de dependências externas (APIs, filas, serviços de terceiros); sistema opera apenas com arquivos locais e disco."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo `cli` expõe 6 comandos e sinalização (--allow-lossy) que exigem avaliação de usabilidade, clareza de erros e fluxo operacional."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Módulo `migrator` dedicado com `precheck`, suporte a coexistência de F1/F2 e lógica explícita de transição e consentimento para migração lossy."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de alto volume de séries temporais com compressão, downsampling e políticas de retenção que impactam diretamente consumo de CPU, memória e armazenamento."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Dados são métricas técnicas sem classificação, pontuação ou decisões automatizadas que impactem indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxos multi-etapa (ingestão → retenção → downsampling → migração) com transições de estado explícitas, planos de retenção e tratamento de exceções (rejeição de escrita)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Relatórios de escrita e migração com contagem de rejeitados, motivos explícitos e flag de consentimento lossy criam trilha de auditoria para transformações de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ferramenta CLI batch sem infraestrutura de monitoramento, métricas de saúde ou detecção automática de degradação em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Configuração aplicada staticamente por execução; sem loops de feedback, ajuste dinâmico ou sincronização de estado em tempo de execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operador único e arquivo local; sem APIs públicas, atores externos ou dinâmicas de incentivo/marketplace."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Protocolo `store-port` com declaração explícita de `capabilities`, retorno estruturado de rejeição em `write()` e validação rigorosa antes da migração para evitar incompatibilidades."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tratamento explícito de tolerâncias (quantização de timestamp, limites de bloco, `xFilesFactor`) e previsão de evolução via migração de formato e acumulação de retenção."
+    }
+  ]
+}

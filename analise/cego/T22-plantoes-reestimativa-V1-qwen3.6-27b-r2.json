@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência do solver ortools (M-06) e persistência em JSON local (M-08), com premissas explícitas sobre tempo de resposta (A4) e risco de sobrescrita em execução simultânea (A7)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo CLI (M-11) atua como única superfície operacional para os 5 casos de uso, explicitado no escopo negativo como alternativa à interface gráfica."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a legado, fase de transição paralela ou caminho de rollback; a leitura da escala anterior (M-05) é apenas entrada de contexto para contadores."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Uso do solver CP-SAT (M-06) cuja complexidade computacional escala com o número de pessoas/dias, e premissa A4 que limita o horizonte de resolução a ≤ 60s."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Alocação automatizada de turnos e validação de trocas que impactam direitos laborais e qualidade de vida, com ponderação de restrições legais (H1-H4, L1-L8) e critérios de equidade."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 implementa máquina de estados para trocas, e os fluxos UC-3/UC-4 definem sequência multiator com transições explícitas, aprovação e revalidação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registro persistente de escalas e trocas (M-08) que exige auditoria posterior, contrastando com o escopo negativo que omite autenticação, autoria e papel de gestor (A5)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de módulos de telemetria, logs ou saúde do sistema; M-07 oferece diagnóstico estático pré-execução, não monitoramento contínuo ou diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de feedback entre aceitação de troca (M-04) e reavaliação de custo/violações (M-03), com derivação de estado anterior para contadores de fronteira (M-05)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Mecanismo de trocas voluntárias entre pessoas com preferências individuais, e premissa A5 que permite atuação estratégica ou impersonação por falta de autenticação."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos de interface definidos internamente no mesmo repositório, sem protocolos externos, mensageria ou interoperabilidade entre times independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Invariante explícita de evolução (M-02 como único dono das regras) e avaliador com custo por violação (M-03) que permitem tolerância graduada a mudanças de restrição ao longo do tempo."
+    }
+  ]
+}

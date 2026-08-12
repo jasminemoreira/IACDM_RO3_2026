@@ -1,0 +1,12 @@
+{
+  "projectName": "FIXTURE",
+  "projectDescription": "fixture sintético",
+  "currentPhase": 2,
+  "createdAt": "2026-08-05T00:00:00.000Z",
+  "updatedAt": "2026-08-05T00:00:00.000Z",
+  "decisions": [],
+  "exitCriteria": [],
+  "safeguards": [],
+  "history": [],
+  "stateVersion": 1
+}

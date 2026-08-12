@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: rede/TLS em `sonda-tls` e banco em `repositorio`."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: `web-ui` com login, painel, trilha e ações de pedidos/varredura."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, transição produtiva ou convivência com legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A varredura consome recursos de rede/tempo por alvo e o próprio texto traz hipótese de escala em A7."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; as classificações recaem sobre certificados/alvos técnicos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiator e máquina de estados explícita em `pedido` e orquestração em `casos-de-uso`."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra aprovações e mantém trilha append-only encadeada para auditoria e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de produção com varredura, falhas de sonda, integridade de trilha e necessidade de diagnóstico em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação: observar certificado, classificar por limiar, abrir/aprovar pedido e reconciliar nova observação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes com papéis distintos (`solicitante`, `aprovador`, `auditor`) e pressuposto de cooperação humana nas aprovações."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos intermodulares explícitos (`Ok|Erro`, `Decisao[]`, estados e interfaces) que precisam interpretação unívoca."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É arquitetura modular e evolutiva com fronteiras, premissas e dependências isoladas, sujeita a manutenção e mudança ao longo do tempo."
+    }
+  ]
+}

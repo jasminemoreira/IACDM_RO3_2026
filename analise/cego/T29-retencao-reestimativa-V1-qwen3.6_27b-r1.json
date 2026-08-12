@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A arquitetura declara explicitamente a premissa P-A7 de que o disco não corrompe bytes e a ausência de checksums, identificando a corrupção de blocos como um risco conhecido a ser auditado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo `cli` (M-12) que atua como adaptador de entrada para operadores humanos, exigindo avaliação da usabilidade dos comandos e feedbacks."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O módulo `migrator` (M-10) e a lógica de `precheck` existem especificamente para gerenciar a transição entre formatos F1 e F2, lidando com perdas potenciais e consentimento do operador."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa grandes volumes de dados (séries temporais) onde a eficiência de armazenamento e CPU é crítica, evidenciado pela escolha de codecs compactos (Gorilla), políticas de retenção agressivas e geração de perfis de teste determinísticos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema manipula dados numéricos brutos e metadados técnicos sem tomar decisões automatizadas sobre indivíduos ou classificar pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define fluxos de estado complexos para retenção (downsampling, expiração) e migração (precheck, escrita condicional), com invariantes de domínio claros (I2-I7) que governam as transições."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "O sistema opera sob a premissa P-A2 de escritor único e não possui mecanismos de auditoria de autoria, rastreabilidade de quem alterou o que ou propriedade definida dos dados além da identificação da série."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Os módulos `store-port` e `migrator` retornam relatórios detalhados (`WriteReport`, `MigrationReport`) com contagens de rejeição e motivos, permitindo diagnóstico operacional sem inspeção interna do código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema é uma ferramenta batch/stateless por invocação; não há loops de feedback em tempo real, controle automático de parâmetros ou correção de desvio de estado durante a operação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos conflitantes; o sistema assume cooperação total do operador e não expõe API pública para terceiros estratégicos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A porta `Store` (M-07) define um contrato explícito com capacidades declaradas (`capabilities`) e comportamentos assimétricos entre implementações (F1 vs F2), exigindo rigor na semântica da interface para evitar ambiguidades de uso."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura lida com tolerâncias numéricas críticas (precisão de floats, quantização de timestamps, limites de blocos) e degradação gradual (acúmulo de blocos, retenção), onde pequenas variações afetam a integridade dos dados."
+    }
+  ]
+}

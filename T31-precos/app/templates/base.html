@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titulo %}Motor de preços{% endblock %}</title>
+<style>
+/* Sem CDN: escopo negativo proíbe dependência de rede em runtime. */
+:root { --texto:#16202b; --fundo:#fff; --borda:#c9d3de; --suave:#f3f6f9;
+        --erro:#a3121f; --aviso:#8a5a00; --ok:#14622f; --link:#0b4f8a; }
+@media (prefers-color-scheme: dark) {
+  :root { --texto:#e8edf2; --fundo:#141a20; --borda:#33414f; --suave:#1c242c;
+          --erro:#ff8f8f; --aviso:#ffc266; --ok:#7fd9a0; --link:#7fb6ff; }
+}
+* { box-sizing:border-box }
+body { margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+       color:var(--texto); background:var(--fundo) }
+nav { display:flex; gap:.25rem; padding:.6rem 1rem; border-bottom:1px solid var(--borda);
+      background:var(--suave); flex-wrap:wrap }
+nav a { padding:.4rem .8rem; border-radius:.4rem; color:var(--link); text-decoration:none }
+nav a:hover, nav a:focus-visible { background:var(--fundo); outline:2px solid var(--link) }
+nav a[aria-current="page"] { font-weight:700; background:var(--fundo) }
+main { max-width:min(100%, 68rem); margin:0 auto; padding:1.25rem 1rem 4rem }
+h1 { font-size:1.35rem; margin:.4rem 0 1rem }
+h2 { font-size:1.05rem; margin:1.6rem 0 .5rem }
+label { display:block; font-weight:600; margin:.7rem 0 .2rem }
+input, select, textarea, button { font:inherit; color:inherit }
+input, select, textarea { padding:.45rem .5rem; border:1px solid var(--borda);
+       border-radius:.35rem; background:var(--fundo); max-width:100% }
+button { padding:.5rem 1rem; border:1px solid var(--link); border-radius:.35rem;
+         background:var(--link); color:#fff; cursor:pointer }
+button.secundario { background:transparent; color:var(--link) }
+button:focus-visible, input:focus-visible, a:focus-visible { outline:3px solid var(--link);
+         outline-offset:2px }
+.linha { display:flex; gap:1rem; flex-wrap:wrap; align-items:flex-end }
+.caixa { border:1px solid var(--borda); border-radius:.5rem; padding:.9rem 1rem; margin:1rem 0 }
+.rolar { overflow-x:auto }
+table { border-collapse:collapse; width:100%; font-size:.92rem }
+th, td { text-align:left; padding:.35rem .55rem; border-bottom:1px solid var(--borda);
+         vertical-align:top }
+th { background:var(--suave) }
+.erro { color:var(--erro); font-weight:600 }
+.aviso { color:var(--aviso) }
+.ok { color:var(--ok) }
+.discreto { color:var(--texto); opacity:.72; font-size:.88rem }
+.preco { font-size:1.6rem; font-weight:700 }
+code { background:var(--suave); padding:.1rem .3rem; border-radius:.25rem }
+</style>
+</head>
+<body>
+<nav aria-label="Seções">
+  <a href="/simular" {% if secao=='simular' %}aria-current="page"{% endif %}>Simulador</a>
+  <a href="/regras" {% if secao=='regras' %}aria-current="page"{% endif %}>Regras</a>
+  <a href="/importar" {% if secao=='importar' %}aria-current="page"{% endif %}>Importação</a>
+  <a href="/historico" {% if secao=='historico' %}aria-current="page"{% endif %}>Histórico</a>
+</nav>
+<main>{% block conteudo %}{% endblock %}</main>
+</body>
+</html>

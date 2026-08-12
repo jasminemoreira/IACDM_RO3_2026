@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Portas isolam dependências externas e os módulos M-09 e M-05 preveem e tratam explicitamente falhas e indisponibilidade."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (cli) é a única superfície de operação humana, com entrada do operador e impressão de progresso/decisão no terminal."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Arquitetura gerencia explicitamente coexistência canário/estável, distribuição de peso (M-10) e rollback automático para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema é um coordenador de decisão leve com funções puras e não gerencia alocação de infraestrutura ou recursos com custo variável escalável."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automatizadas referem-se exclusivamente a versões de software e roteamento de tráfego, não a pessoas ou classificações humanas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é explicitamente uma máquina de estados com transições definidas, orquestração de passos (M-06) e caminhos de exceção (aborto/rollback)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "Escopo negativo declara explicitamente que o sistema não persiste nada entre execuções, sem trilha de auditoria ou atribuição histórica."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema operacional que coleta métricas, emite eventos do coordenador, rastreia falhas/erros (M-05) e fornece CLI para diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de controle fechado que coleta métricas, gera veredito/score e ajusta pesos ou dispara rollback (M-04/M-07), com risco de oscilação em métricas ruidosas (A6)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes ou incentivos conflitantes; o fluxo é unilateralmente orquestrado por um único operador e componentes automatizados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Interfaces são tipadas e documentadas internamente por equipe única, sem contrato de protocolo aberto ou risco de implementação ambígua por times independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Define tolerâncias estatísticas explícitas (Mann-Whitney a 98%, amostra mínima ≥50, guarda-absoluta) para operar com variação e ruído de métricas."
+    }
+  ]
+}

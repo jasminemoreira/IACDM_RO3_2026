@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-07 upstream chama API externa (Anthropic) fora da transação; premissas A2 (usage ausente) e A6 (count_tokens) e o item deferido 'reserva órfã' são exatamente falha/lentidão/dado inesperado de dependência externa."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-09/M-10 expõem painel (SPA + login de operador) operado por pessoa, com superfícies de configuração de tetos e leitura de consumo/estado de corte."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (gateway, banco embutido, instância única); nenhum sistema de produção existente é substituído ou modificado, logo não há transição nem rollback a proteger."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O próprio objeto do sistema é alocar e cortar um recurso cujo custo cresce com o uso (tokens cobrados em moeda); a reserva de pior caso e o critério de acerto são decisões de alocação desse recurso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O corte automático decide sobre entidades de consumo de API e orçamento, não há scoring, classificação ou moderação de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Ciclo de vida da reserva (reservar → reconciliar/liberar, com órfãs possíveis) é uma máquina de estados com múltiplos atores (app cliente, operador, provedor) e caminhos de exceção explícitos (402/429, ModeloSemPreco)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade (M-08), atribui ações via chaves virtuais emitidas/revogadas (M-02) e guarda configuração de tetos feita por operador — tudo auditável e com dono definido."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Gateway em produção no caminho da requisição com premissas operacionais (A3, A5: processo único escritor, chave real protegida) e painel que expõe estado de corte e próximo reset — exige detecção de degradação sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de realimentação reserva→custo real→reconciliação corrige o erro entre estimativa e consumo; virada de janela mensal e PUT /api/tetos são mudanças de estado/configuração em runtime que afetam o comportamento do portão."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes (apps consumidores com chaves virtuais) sobre API pública; A5 (contornar o gateway) e o retry storm citado no escopo negativo são exatamente defeção estratégica assumida como cooperação."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos entre componentes independentes: Adapter traduz o formato `usage` da Anthropic para o modelo interno (M-07), `POST /v1/messages` replica contrato externo, e o contrato de `escrow.reservar/reconciliar` (par confirmado/reservado, idempotência) admite implementações incompatíveis se ambíguo."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema projetado para evoluir: rate-card com vigência (M-05), migrações de schema (M-08), escopo negativo com decisões deferidas à Fase 2 e porte congelado — tolerâncias de manutenção e dívida técnica futura estão explícitas."
+    }
+  ]
+}

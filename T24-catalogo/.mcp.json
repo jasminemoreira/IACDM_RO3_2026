@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "versus-claude": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jasmine/INDT/RO3/T24-catalogo/.versus/server.js"
+      ],
+      "env": {}
+    }
+  }
+}

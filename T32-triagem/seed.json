@@ -1,0 +1,11 @@
+{
+  "_nota": "Dado de ARRANQUE, nao de politica. MOV-7 (V3) tirou o seed de configuracao: dado que popula a base e coisa diferente de dado que muda o comportamento. Lido por M-09 repositorio na migracao inicial, nunca por M-02 configuracao.",
+  "_fonte": "specs/datasets/ground-truth-matriz.md, secao GT-5. Dois solicitantes (para testar B-5), dois agentes (para que quem triou nao seja quem julga) e uma gestora.",
+  "usuarios": [
+    { "id": "u-ana",   "nome": "Ana",   "papel": "SOLICITANTE" },
+    { "id": "u-bruno", "nome": "Bruno", "papel": "SOLICITANTE" },
+    { "id": "u-carla", "nome": "Carla", "papel": "AGENTE" },
+    { "id": "u-diego", "nome": "Diego", "papel": "AGENTE" },
+    { "id": "u-elena", "nome": "Elena", "papel": "GESTOR" }
+  ]
+}

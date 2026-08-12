@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A presença de adaptadores de saída (M-08 sonda-tls, M-09 repositorio) que interagem com rede e disco exige tratamento de falhas externas e timeouts."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo web-ui (M-11) com telas HTML renderizadas e sessões para interação humana direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve um sistema novo sem indicação de substituição de legado ou necessidade de coexistência com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O escopo negativo cita volume pequeno e varredura sequencial, indicando que o consumo de recursos (CPU/rede) em escala é uma preocupação explícita do design."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema classifica certificados técnicos e processos internos, não toma decisões automatizadas que afetem direitos ou评分 de pessoas físicas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Módulos M-03 (pedido com máquina de estados) e M-04 (reconciliacao) implementam fluxos multi-ator e transições de estado definidas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Módulo M-05 (trilha append-only encadeada por hash) e M-06 (autorizacao) são projetados para auditoria, atribuição de ações e integridade de registro."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Módulo M-10 expõe caso de uso 'verificarIntegridade' e M-05 permite listar trilha, fornecendo mecanismos para diagnóstico sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Módulo M-04 realiza reconciliação comparando observação atual com anterior e pedidos, gerando sinais de erro (troca não autorizada/escalação) para corrigir o estado do sistema."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores são internos ao domínio do sistema (solicitante/aprovador/auditor) sem mercado aberto, API pública ou incentivos estratégicos entre entidades independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são definidas internamente dentro de um único repositório/codebase, sem contrato de protocolo público entre equipes ou sistemas independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura define fronteiras rígidas (domínio puro vs portas) e invariante `limiar < vidaTotal`, estruturada para tolerância a deriva de estado e evolução modular."
+    }
+  ]
+}

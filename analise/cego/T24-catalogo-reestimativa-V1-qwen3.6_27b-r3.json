@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas de rede ou serviços distribuídos; as únicas dependências são bibliotecas locais (NetworkX, PyYAML) e arquivos no sistema de arquivos local."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo CLI (M-11) que serve como superfície de interação direta com o usuário humano para execução de comandos e visualização de resultados."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve um sistema novo sem menção a substituição de legado ou necessidade de coexistência com versões anteriores em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo é limitado a carregamento em memória de pequenos conjuntos de dados (dezenas/centenas) sem processamento intensivo ou consumo elástico de recursos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema realiza validação técnica e consulta de linhagem de dados, não tomando decisões automatizadas sobre pessoas (scoring, classificação ou moderação)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo definido de estado: carregamento bruto -> mapeamento -> validação estrita (que bloqueia se falhar) -> consulta, com tratamento explícito de invariantes e erros agregados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O domínio central do problema é a governança de dados: definição explícita de donos (owners), resolução de herança de domínio e rastreamento de linhagem para auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O sistema é uma ferramenta de linha de comando stateless sem persistência, cache ou operação contínua em produção que requeira monitoramento de saúde ou diagnóstico de incidentes."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback, sincronização de estado distribuído ou correção automática baseada em sinais de erro; a validação é um filtro unidirecional pré-execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos conflitantes nem mercado aberto; os dados são declarados manualmente por humanos em um contexto controlado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "A comunicação ocorre via chamadas diretas de função tipadas dentro de um único repositório Python, sem protocolos de rede ou contratos entre times independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura aplica princípios rígidos de tolerância (imutabilidade, validação estrita de invariantes, separação clara de núcleos puros e adaptadores) para garantir evolução segura do sistema."
+    }
+  ]
+}

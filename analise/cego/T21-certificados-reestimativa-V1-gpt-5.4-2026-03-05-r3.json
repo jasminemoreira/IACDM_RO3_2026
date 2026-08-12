@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: TLS remoto em sonda-tls e banco via repositorio, com timeout/erros explícitos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: web-ui com login, painel, alvo, trilha e ações de varrer e aprovar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos que crescem com uso: varreduras TLS por alvo, persistência e trilha append-only; a própria premissa A7 cita escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; as classificações recaem sobre certificados/alvos técnicos, não sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiator e máquina de estados explícita em pedido, com abrir/aprovar/fechar e exceções como escalação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra aprovações e trilha append-only encadeada por hash, com necessidade explícita de atribuir quem aprovou cada emissão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de produção que faz varredura, persiste histórico e precisa diagnosticar degradação e incidentes em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de feedback entre observar certificado, classificar por limiares e reconciliar ações; o comportamento depende de tempo e estado sincronizado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há múltiplos atores com papéis distintos e a arquitetura assume cooperação humana para aprovar dentro da janela, com risco de inação ou troca não autorizada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos intermodulares formais com tipos e convenções de retorno (Ok|Erro), além de formatos como DER, Decisao e interfaces de portas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura é modular e de longa vida, com tolerâncias e evolução relevantes em limiares, cadeia de hash, APIs isoladas e premissa A8 sobre mudança do sqlite."
+    }
+  ]
+}

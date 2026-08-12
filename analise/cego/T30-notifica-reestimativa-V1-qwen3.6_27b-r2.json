@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Presença de dependências externas (SMTP, Webhooks) com contrato explícito de falha transitória vs permanente e estratégias de retry/backoff."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de superfície operacional via CLI (M-02) para administração do sistema por operadores humanos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há indícios de substituição de sistema legado ou necessidade de rodar versões antigas e novas simultaneamente."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema gerencia recursos limitados (limite de taxa/token bucket) e decide suprimir ou adiar entregas com base em custo/ruído para o usuário."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões são operacionais (enviar ou não notificação) e não envolvem classificação, pontuação de risco ou moderação comportamental automática sobre as pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo complexo com estados definidos (delivered, suppressed, deferred), transações duráveis e cadeia de responsabilidades entre ingestão e entrega."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema mantém rastreabilidade completa das decisões de supressão (motivo, enum fechado) e resultados de entrega para auditoria posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Requisito explícito de diagnóstico operacional via CLI (listar pendentes, explicar supressão) e logs de decisão estruturados no banco."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema possui loops de feedback para retry, mas não há mecanismo de auto-ajuste dinâmico de parâmetros ou correção de deriva de estado em tempo real."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "A arquitetura assume emissores confiáveis autenticados por API key sem incentivos conflitantes ou comportamentos estratégicos modelados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Definição rigorosa de contratos entre módulos (ChannelPort, interfaces de supressão) e formatos externos (assinatura HMAC, headers de unsub)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "O design é estático e determinístico, sem menção a tolerâncias de evolução, degradação gradual ou acoplamento variável entre componentes."
+    }
+  ]
+}

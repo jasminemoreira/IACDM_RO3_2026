@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Existência de portas abstratas (M-09, M-10) e adaptadores simulados (M-11) indicando que o sistema depende de fontes externas mutáveis em produção"
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença do módulo CLI (M-12) como superfície operacional para o humano interagir e observar o progresso"
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema define explicitamente a convivência entre versão canário e estável com mecanismo de rollback automático"
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Ausência de indicadores de custo computacional ou financeiro escalável na decomposição; o foco é lógica de decisão, não alocação de recursos pesados"
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas afetam a disponibilidade técnica do serviço, não indivíduos ou grupos sociais diretamente"
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O Coordenador (M-07) implementa uma máquina de estados explícita com transições definidas e laço de execução orquestrado"
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "Escopo negativo declara explicitamente ausência de persistência, histórico ou auditoria entre execuções"
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema coleta métricas (M-09), calcula vereditos e emite eventos para o observador CLI (M-12) para diagnóstico da decisão"
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de feedback fechado onde métricas coletadas determinam mudanças na distribuição de peso (ação corretiva/rollback)"
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores independentes com incentivos divergentes ou interações estratégicas; o sistema controla tanto a coleta quanto a ação"
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Interfaces são definidas internamente dentro de um único bounded context sem contratos externos entre equipes independentes"
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Ausência de mecanismos declarados para tolerância a deriva de estado, manutenção incremental ou acumulação controlada de débito técnico"
+    }
+  ]
+}

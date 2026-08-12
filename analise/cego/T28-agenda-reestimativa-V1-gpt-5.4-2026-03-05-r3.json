@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas explícitas nos módulos provider-alpha/provider-beta e persistência em repository, com falha, invalidação e dados inesperados previstos em contrato."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa no módulo cli, com comandos, dry-run, listagem e resolução manual de conflitos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve substituição de sistema existente, convivência com legado nem plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome processamento proporcional ao volume de eventos e recorrências, com meta explícita de desempenho para ~1.000 eventos por lado e custo que cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; o sistema sincroniza calendários e escala conflitos para decisão humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiestado explícito: pull→normalizar→reconciliar→planejar→aplicar→persistir, além do ciclo de vida da conflict-queue e caminhos de exceção como full resync e ESCALATE."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra conflitos, resoluções humanas e alterações persistidas que depois precisam ser atribuíveis e auditáveis por evento e decisão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de sincronização com requisitos de diagnóstico em execução, exposto por status, reports e tratamento de incidentes como invalidação de token e resync."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O núcleo é um sincronizador com realimentação de estado entre dois provedores e ancestral, incluindo neutralização de eco, correção de desvio e risco de drift."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há integração entre atores independentes externos (dois provedores) cujos contratos e comportamentos não são controlados pelo sistema e podem divergir estrategicamente do esperado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Existem contratos formais entre componentes independentes, com semânticas sutis de token, tombstone, janela temporal, DATE vs DATE-TIME e identidade canônica."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema é evolutivo e sensível a variações de provedores, formatos iCalendar, recorrência e tolerâncias de contrato; a arquitetura explicita regras para absorver essas variações."
+    }
+  ]
+}

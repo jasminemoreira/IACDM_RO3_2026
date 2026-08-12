@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: parsing OFX via ofxtools, persistência SQLite e ingestão de arquivos OFX/CSV potencialmente malformados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: o módulo cli é a interface do operador para importar, conciliar, revisar e reportar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não indica substituição de sistema existente, convivência com legado em produção nem plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume de dados e custo cresce com uso: matching/deduplicação, carga de 50k e risco explícito de O(n²) com blocos degenerados."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; a classificação recai sobre transações/lancamentos, não sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multi-etapa com estados e exceções: importação, deduplicação L0-L5, conciliação com 5 estados terminais e fila de revisão humana."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura exige auditabilidade e autoria de decisões: DecisaoDedup registra camada e evidência, e resoluções humanas são persistidas e não sobrescritas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de produção com import, reconcile, review e report, cujo comportamento precisará ser diagnosticado em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há sincronização/correção de estado com laço de feedback humano: review-queue alimenta a camada L0 do dedup-engine e parâmetros de janela/tolerância afetam o comportamento."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há múltiplos atores independentes e integrações externas cujos incentivos não são controlados: bancos/ERP/fontes externas podem fornecer IDs e descrições inconsistentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Existem contratos e formatos intercomponentes potencialmente ambíguos: porta FonteDeExtrato, perfis CSV declarativos e suporte a OFX v1 SGML/v2 XML."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende explicitamente de tolerâncias e variação aceitável: janela de data, tolerância de valor, normalização canônica e manutenção evolutiva de perfis/regras."
+    }
+  ]
+}

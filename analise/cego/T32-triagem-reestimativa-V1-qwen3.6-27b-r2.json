@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema embedded com SQLite e sem chamadas a APIs externas ou filas, operando em nó único."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (ui-web) define 6 telas server-side para operação direta por pessoas (solicitante e gestor)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Descrição trata projeto como novo desenho sem menção a substituição de legado ou convivência com versões anteriores."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Arquitetura deliberadamente leve (thread única, SQLite, KISS+YAGNI) sem processamento elástico ou consumo escalável de recursos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Classificação automática de prioridade e mecanismo de recurso que afetam o fluxo de atendimento, com trilha e justificativas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Módulos de ciclo de vida (chamado, recurso) e casos de uso definem transições de estado, atores e fluxos de triagem/recorrência."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha somente-inserção (M-07), autorização com motivo (M-08) e fundamentação obrigatória no julgamento garantem atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de menção a métricas, logs estruturados, health checks ou mecanismos de alerta para diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sistema determinístico com configuração estática e recalculo transacional, sem loops de feedback ou ajuste em tempo real."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Premissa A7 declara explicitamente a possibilidade de comportamento estratégico/abuso do solicitante ('visível, não punido')."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos são internos a um único repositório/stack (TypeScript), com garantias estáticas, sem protocolos entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Uso explícito de Clean Architecture, DDD tático e padrão Adapter para isolamento de dependências e evolução de módulos."
+    }
+  ]
+}

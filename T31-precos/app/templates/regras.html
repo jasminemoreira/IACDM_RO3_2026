@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% set secao = 'regras' %}
+{% block titulo %}Regras — Motor de preços{% endblock %}
+{% block conteudo %}
+<h1>Regras de preço (rascunho)</h1>
+
+{% if mensagem %}
+<p class="{{ 'erro' if mensagem[0]=='erro' else ('aviso' if mensagem[0]=='aviso' else 'ok') }}"
+   role="{{ 'alert' if mensagem[0]!='ok' else 'status' }}">{{ mensagem[1] }}</p>
+{% endif %}
+
+<form method="post" action="/regras" id="f">
+<p class="discreto">
+  Cole um bloco copiado da planilha (<kbd>Ctrl+V</kbd>) com o cursor numa célula —
+  linhas e colunas são preenchidas a partir dali, criando linhas novas se preciso.
+  Cada célula colada passa pela mesma validação da digitação.
+</p>
+
+<div class="rolar">
+<table id="grade">
+  <thead>
+    <tr>
+      <th scope="col"><span class="discreto">sel.</span></th>
+      <th scope="col">Escopo (SKU ou <code>*</code>)</th>
+      <th scope="col">Qtd de</th><th scope="col">Qtd até</th>
+      <th scope="col">Tipo</th><th scope="col">Valor</th>
+      <th scope="col">Prioridade</th>
+      <th scope="col">Vigência de</th><th scope="col">Vigência até</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for ln in linhas %}
+    <tr>
+      <td><input type="checkbox" class="sel" aria-label="selecionar linha {{ loop.index }}"></td>
+      <td><input name="escopo" value="{{ ln.escopo }}" aria-label="escopo linha {{ loop.index }}" size="12"></td>
+      <td><input name="de" value="{{ ln.de }}" inputmode="numeric" size="5" aria-label="quantidade inicial linha {{ loop.index }}"></td>
+      <td><input name="ate" value="{{ ln.ate }}" inputmode="numeric" size="5" aria-label="quantidade final linha {{ loop.index }}"></td>
+      <td><select name="tipo" aria-label="tipo de efeito linha {{ loop.index }}">
+            <option value="PRECO_UNITARIO" {% if ln.tipo=='PRECO_UNITARIO' %}selected{% endif %}>preço</option>
+            <option value="DESCONTO_PCT" {% if ln.tipo=='DESCONTO_PCT' %}selected{% endif %}>desconto %</option>
+          </select></td>
+      <td><input name="valor" value="{{ ln.valor }}" size="10" aria-label="valor linha {{ loop.index }}"
+                 {% if erros.get(loop.index0) %}aria-invalid="true" aria-describedby="e{{ loop.index0 }}"{% endif %}></td>
+      <td><input name="prioridade" value="{{ ln.prioridade }}" inputmode="numeric" size="4" aria-label="prioridade linha {{ loop.index }}"></td>
+      <td><input name="vig_de" value="{{ ln.vig_de }}" type="date" aria-label="vigência inicial linha {{ loop.index }}"></td>
+      <td><input name="vig_ate" value="{{ ln.vig_ate }}" type="date" aria-label="vigência final linha {{ loop.index }}"></td>
+      <td>{% if erros.get(loop.index0) %}
+            <span class="erro" id="e{{ loop.index0 }}">{{ erros[loop.index0] }}</span>
+          {% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<p>
+  <button type="button" class="secundario" onclick="addLinha()">Adicionar linha</button>
+  <button type="button" class="secundario" onclick="excluirSel()">Excluir selecionadas</button>
+  <button type="button" class="secundario" onclick="desfazer()">Desfazer</button>
+  <button type="submit" name="acao" value="salvar">Salvar rascunho</button>
+  <button type="submit" name="acao" value="validar">Validar</button>
+</p>
+
+<div class="caixa">
+  <h2 style="margin-top:0">Publicar</h2>
+  <div class="linha">
+    <div><label for="autor">Autor</label>
+      <input id="autor" name="autor" aria-describedby="ajuda-autor">
+      <p id="ajuda-autor" class="discreto">Identidade declarada, não autenticada.</p></div>
+    <div style="flex:1"><label for="justificativa">Justificativa</label>
+      <input id="justificativa" name="justificativa" style="width:100%"
+             aria-describedby="ajuda-just">
+      <p id="ajuda-just" class="discreto">Obrigatória em toda publicação.</p></div>
+  </div>
+  {% if relatorio and relatorio.avisos %}
+  <label style="font-weight:400">
+    <input type="checkbox" name="reconheco_avisos" value="1">
+    li e reconheço os avisos de cobertura abaixo
+  </label>
+  {% endif %}
+  <p><button type="submit" name="acao" value="publicar">Publicar versão</button></p>
+</div>
+</form>
+
+{% if relatorio %}
+<h2>Validação</h2>
+{% if relatorio.erros %}
+<p class="erro" role="alert">Publicação bloqueada:</p>
+<ul>{% for e in relatorio.erros %}<li class="erro">{{ e.descricao }}</li>{% endfor %}</ul>
+{% else %}<p class="ok">Nenhum erro de coerência.</p>{% endif %}
+{% if relatorio.avisos %}
+<ul>{% for a in relatorio.avisos %}<li class="aviso">{{ a.descricao }}</li>{% endfor %}</ul>
+{% endif %}
+{% endif %}
+
+<script>
+// Sem CDN e sem framework — escopo negativo proíbe dependência de rede.
+const corpo = () => document.querySelector('#grade tbody');
+const pilha = [];
+function snapshot() { pilha.push(corpo().innerHTML); if (pilha.length > 50) pilha.shift(); }
+function desfazer() { if (pilha.length) corpo().innerHTML = pilha.pop(); }
+
+function novaLinha() {
+  const tr = corpo().rows[0];
+  const nova = tr ? tr.cloneNode(true) : null;
+  if (!nova) return null;
+  nova.querySelectorAll('input').forEach(i => {
+    if (i.type === 'checkbox') i.checked = false;
+    else if (i.name === 'vig_de') i.value = '{{ hoje }}';
+    else if (i.name === 'prioridade') i.value = '0';
+    else i.value = '';
+  });
+  nova.querySelectorAll('.erro').forEach(e => e.remove());
+  return nova;
+}
+function addLinha() { snapshot(); const n = novaLinha(); if (n) corpo().appendChild(n); }
+function excluirSel() {
+  snapshot();
+  [...corpo().querySelectorAll('.sel')].filter(c => c.checked)
+    .forEach(c => c.closest('tr').remove());
+}
+
+// Colagem de TSV vinda da planilha — o requisito que responde UX-01.
+const ORDEM = ['escopo','de','ate','tipo','valor','prioridade','vig_de','vig_ate'];
+document.addEventListener('paste', ev => {
+  const alvo = ev.target;
+  if (!alvo.name || !ORDEM.includes(alvo.name)) return;
+  const txt = (ev.clipboardData || window.clipboardData).getData('text');
+  if (!txt.includes('\t') && !txt.includes('\n')) return;
+  ev.preventDefault();
+  snapshot();
+  const linhas = txt.replace(/\r/g, '').split('\n').filter(l => l.trim() !== '');
+  let tr = alvo.closest('tr');
+  const col0 = ORDEM.indexOf(alvo.name);
+  for (const linha of linhas) {
+    if (!tr) { tr = novaLinha(); if (!tr) break; corpo().appendChild(tr); }
+    linha.split('\t').forEach((cel, i) => {
+      const nome = ORDEM[col0 + i];
+      if (!nome) return;                       // colunas em excesso: ignoradas
+      const campo = tr.querySelector('[name="' + nome + '"]');
+      if (campo) campo.value = cel.trim();
+    });
+    tr = tr.nextElementSibling;
+  }
+});
+
+// Navegação por teclado entre células (UX-04).
+document.addEventListener('keydown', ev => {
+  if (ev.key !== 'Enter' || !ev.target.name || !ORDEM.includes(ev.target.name)) return;
+  ev.preventDefault();
+  const tr = ev.target.closest('tr').nextElementSibling;
+  if (tr) { const c = tr.querySelector('[name="' + ev.target.name + '"]'); if (c) c.focus(); }
+});
+</script>
+{% endblock %}

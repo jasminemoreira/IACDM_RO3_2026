@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de provedores externos (M-04, M-05) com contratos que incluem invalidação de tokens e falhas de rede, exigindo tratamento de estados inconsistentes e full resync."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operacional CLI (M-12) que a pessoa opera para sincronizar, listar conflitos e resolver disputas manualmente."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O projeto é um novo sistema isolado sem substituição de um sistema legado em produção nem necessidade de rollback migratório."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O processamento é single-threaded e limitado a ~1000 eventos sem alocação elástica ou consumo de recursos proporcional ao uso em escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema gerencia dados de calendário, não toma decisões automatizadas sobre pessoas que possam causar dano direto ou viés classificatório."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um ciclo de vida explícito de conflitos (M-08) com transições de estado 'aberto' para 'resolvido' e decisões multi-ator (pessoa resolve via CLI)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema persiste ancestrais, tokens e decisões de resolução (M-11, M-08) permitindo auditar a origem das mudanças e quem resolveu o conflito."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "O sistema não roda como daemon nem em produção contínua; é uma ferramenta CLI pontual sem requisitos de diagnóstico em tempo real ou monitoramento persistente."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de sincronização com loop de feedback (pull-reconcile-apply), risco de oscilação por eco e necessidade de neutralização de estado (M-10)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os 'atores' são provedores simulados com comportamento determinístico definido pelo projeto, não entidades independentes com incentivos estratégicos divergentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há portas bem definidas (Provider, Repository) e contratos de dados complexos (ICS, Delta, EventKey) entre módulos independentes que exigem precisão semântica."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema lida com tolerâncias de tempo (UTC vs TZID), variações nos provedores (paginação repetida, tokens opacos) e evolução do estado persistente a longo prazo."
+    }
+  ]
+}

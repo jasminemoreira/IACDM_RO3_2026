@@ -1,0 +1,1041 @@
+{
+  "agent": "claude",
+  "projectName": "T26",
+  "projectDescription": "T26",
+  "projectSpec": {
+    "stack": [
+      {
+        "value": "Python 3.12",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "SQLite (sqlite3 stdlib)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "ofxtools 1.1.x",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "rapidfuzz 3.x",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "decimal.Decimal para valores monetários",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "CLI local (sem rede)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      }
+    ],
+    "outOfScope": [
+      {
+        "value": "Categorização/classificação contábil automática de transações",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Casamento automático 1:N e N:1 (pagamento parcial, lote) — viram pendência de revisão humana",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Multi-moeda e conversão cambial",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "UI web",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Multiusuário e autenticação",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Formato CAMT.053 (ISO 20022)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "API de agregadora (Open Finance/Pluggy/Belvo)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Fusão de duplicatas sob evidência fraca",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Sobrescrever decisão humana registrada",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      }
+    ],
+    "patterns": [
+      {
+        "value": "Hexagonal (Ports & Adapters)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "KISS + YAGNI",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "SOLID com ênfase em DIP e OCP",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "DDD tático (linguagem ubíqua, invariantes)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Strategy",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Chain of Responsibility (camadas de identidade L0-L5)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Adapter",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Domain Model (Fowler)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Repository + Data Mapper (Fowler)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Single-threaded",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      }
+    ],
+    "constraints": [
+      {
+        "value": "Dinheiro sempre em Decimal com 2 casas — float proibido em caminho monetário (I1)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Núcleo (domain-model, canonicalizer, matcher, dedup-engine, reconcile-engine) não importa ofxtools, sqlite3 nem csv",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Apenas 2 dependências externas: ofxtools e rapidfuzz",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Dados não saem da máquina local",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Moeda única BRL",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "8 a 12 módulos, sessão única de 2-4h (§2 congelado)",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Determinismo obrigatório: seed fixa no gerador, execução single-threaded",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Nenhum parâmetro numérico no código sem fonte em specs/technical/parametros-matching.md",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Casamento 1:1 — nunca 1:N nem N:1 automático",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      },
+      {
+        "value": "Zero falso-positivo em dedup é requisito duro (VAL-2), acima de taxa de automação",
+        "phase": 1,
+        "at": "2026-08-11T01:05:49.995Z"
+      }
+    ]
+  },
+  "currentPhase": 7,
+  "currentIteration": 1,
+  "phase0Score": 95,
+  "phase0Breakdown": {
+    "clarezaProblema": 10,
+    "casosDeUso": 14,
+    "vocabulario": 10,
+    "ambiguidades": 13,
+    "foraDeEscopo": 10,
+    "criteriosSucesso": 10,
+    "premissas": 8,
+    "documentacao": 5,
+    "usuarioConfirmou": 10,
+    "iaConfiante": 5
+  },
+  "decisions": [
+    {
+      "id": "11fe955b-4f52-4dd3-b031-fb6dacf2a7a6",
+      "phase": 0,
+      "category": "scope",
+      "content": "DELIVERY TARGET: Produto completo — todos os requisitos entregues em um único ciclo. Sem divisão v1.0/v2.0 salvo bloqueio técnico documentado. Enquadramento §2 congelado: 8-12 módulos, sessão única 2-4h, critério de acerto objetivo definido na Fase 0 antes de codar.",
+      "timestamp": "2026-08-11T00:30:43.109Z"
+    },
+    {
+      "id": "2bdb2ac9-745a-42f3-a1fc-6f157900b129",
+      "phase": 0,
+      "category": "requirement",
+      "content": "FONTES EXTERNAS (N1-Domínio): suporte a (1) OFX/OFC — possui FITID como identificador nativo de transação; (2) CSV por banco — layouts heterogêneos (colunas, ordem, formato de data, sinal do valor), tipicamente SEM ID nativo. CAMT.053 e JSON de agregadora ficam FORA de escopo neste ciclo.",
+      "timestamp": "2026-08-11T00:31:59.128Z"
+    },
+    {
+      "id": "6e933a97-5556-4da9-9db6-12b97d9a8672",
+      "phase": 0,
+      "category": "requirement",
+      "content": "CONCILIAÇÃO (N1-Domínio): casar linhas do extrato importado contra um LIVRO INTERNO de lançamentos esperados (contas a pagar / a receber). Estados de saída: casado, casado-com-divergência, órfão-no-extrato, órfão-no-livro. Não é cross-source puro.",
+      "timestamp": "2026-08-11T00:32:01.719Z"
+    },
+    {
+      "id": "55a9885f-2f32-40b7-9f4c-8965884625e6",
+      "phase": 0,
+      "category": "requirement",
+      "content": "DEDUPLICAÇÃO (N1-Domínio): duplicata = (a) reimportação com janelas de período sobrepostas na MESMA fonte (idempotência) E (b) mesma transação chegando por DUAS fontes distintas (ex.: OFX do banco + CSV de outro export). Identidade em camadas: ID nativo (FITID) → hash canônico → match por (data ± tolerância, valor, contraparte). Duplicata legítima (duas transações realmente distintas com mesmo valor/data) NÃO foi incluída como requisito explícito nesta rodada — verificar se vira premissa de precisão.",
+      "timestamp": "2026-08-11T00:32:05.006Z"
+    },
+    {
+      "id": "ef540a07-0b06-4e5f-b5c5-5f85f1da357a",
+      "phase": 0,
+      "category": "requirement",
+      "content": "CONTEXTO/ATORES (N1-Domínio): backoffice financeiro de PME. Analista importa extratos de várias contas, revisa o que não casou e resolve pendências. Volume: milhares a dezenas de milhares de transações/mês. Revisão humana das ambiguidades é parte do fluxo — o sistema NÃO decide sozinho os casos ambíguos.",
+      "timestamp": "2026-08-11T00:32:06.173Z"
+    },
+    {
+      "id": "b3c8d99b-c2da-445c-a2a4-a338c331dfc8",
+      "phase": 0,
+      "category": "constraint",
+      "content": "PLATAFORMA (N2-Where): Python 3, CLI local, execução na máquina do analista (dados não saem do local). Dinheiro em Decimal — float é proibido para valores monetários. Persistência local. Comparação técnica formal a ser apresentada na Fase 1.",
+      "timestamp": "2026-08-11T00:33:03.507Z"
+    },
+    {
+      "id": "df3d52e0-c59b-419d-8ff4-bd605895778e",
+      "phase": 0,
+      "category": "requirement",
+      "content": "SUPERFÍCIE (N2-How): CLI com subcomandos (import, reconcile, review, report). Casos ambíguos de dedup/conciliação vão para uma FILA DE PENDÊNCIAS persistida; o analista resolve por comando (aceitar/rejeitar/casar manualmente) e a decisão humana fica gravada e é reaproveitada em execuções futuras. Sem UI web neste ciclo.",
+      "timestamp": "2026-08-11T00:33:04.958Z"
+    },
+    {
+      "id": "cb9d00a5-ed96-450b-937f-9dc5d970fa15",
+      "phase": 0,
+      "category": "requirement",
+      "content": "CRITÉRIO DE ACERTO OBJETIVO (N2-When, escrito ANTES de codar, exigência §2): (1) DEDUP: zero falsos-negativos e zero falsos-positivos sobre dataset de referência com duplicatas plantadas (specs/datasets). (2) CONCILIAÇÃO: 100% das transações classificadas em exatamente um estado (casado | casado-com-divergência | órfão-no-extrato | órfão-no-livro | pendente-de-revisão). (3) DESEMPENHO: 50.000 transações processadas em < 60s. (4) IDEMPOTÊNCIA: reimportar o mesmo arquivo N vezes produz estado idêntico.",
+      "timestamp": "2026-08-11T00:33:08.840Z"
+    },
+    {
+      "id": "dbdbca0d-19d6-4010-be23-13a40e9e5b80",
+      "phase": 0,
+      "category": "process",
+      "content": "PESQUISA AUTORIZADA (transversal N0): usuário autorizou pesquisar na web e depositar em specs/ com URL citada. Alvos: especificação OFX (semântica de FITID/DTPOSTED/TRNAMT/TRNTYPE), práticas de conciliação bancária contábil, algoritmos de record linkage / match difuso para dedup. Regra: nenhum parâmetro numérico sem fonte verificável (antídoto AP7).",
+      "timestamp": "2026-08-11T00:33:11.527Z"
+    },
+    {
+      "id": "ad376785-7b1a-4e42-94a9-92d289db206e",
+      "phase": 0,
+      "category": "technology",
+      "content": "PERSISTÊNCIA (N3-Elementos): SQLite via sqlite3 da stdlib. Justificativa: UNIQUE constraint sobre a chave de identidade transforma a idempotência (I8) em garantia do banco e não do código; transação atômica evita estado meio-importado; suporta 50k transações folgadamente. Estado persistido: transações importadas, lançamentos do livro, casamentos, fila de pendências e resoluções humanas.",
+      "timestamp": "2026-08-11T00:51:11.404Z"
+    },
+    {
+      "id": "2757003d-a75a-4591-b1c9-5ac57c9e5e8f",
+      "phase": 0,
+      "category": "requirement",
+      "content": "LIVRO INTERNO (N3-Elementos): alimentado por importação de CSV de lançamentos esperados (contas a pagar/receber exportadas do ERP), com layout declarado. Reusa a infraestrutura de parsing/normalização do extrato. Sem cadastro manual item a item neste ciclo.",
+      "timestamp": "2026-08-11T00:51:13.251Z"
+    },
+    {
+      "id": "65742afe-3423-4135-96a9-0d76928091e7",
+      "phase": 0,
+      "category": "technology",
+      "content": "DEPENDÊNCIAS (N4-Viabilidade, S6 Tier 1): permitidas duas libs externas — ofxtools (parsing OFXv1 SGML/OFXv2 XML, requer Python >=3.10, só stdlib como dependência, entrega Decimal e datetime nativos, 10+ anos de dados reais validados) e rapidfuzz (Jaro-Winkler/Levenshtein em C, para o score de similaridade de contraparte). Escrever parser de OFX SGML à mão foi rejeitado como AP7 (codar sem referência) e como risco de corretude nos desvios reais dos bancos.",
+      "timestamp": "2026-08-11T00:51:17.135Z"
+    },
+    {
+      "id": "126340c5-a6e7-40b0-9ba8-f48233e54ffd",
+      "phase": 0,
+      "category": "scope",
+      "content": "CAPACITY CHECK RESOLVIDO (N5): gerador sintético determinístico com seed fixa produz todos os ativos de dados — fixtures OFX, fixtures CSV nos 3 perfis, CSV do livro, carga de 50.000 transações e o GROUND TRUTH ROTULADO (duplicatas de reimportação plantadas, duplicatas cross-source plantadas, colisões legítimas plantadas). Depositado em specs/datasets. Sem isso o critério \"0 falso-positivo / 0 falso-negativo\" seria não verificável. Custo: ~1 módulo do orçamento de 8-12. Nenhuma linha do inventário de produção ficou sem plano — CAPACITY BLOCKER encerrado.",
+      "timestamp": "2026-08-11T00:53:32.751Z"
+    },
+    {
+      "id": "ce50a78a-89bb-4a65-9788-ead73ac20695",
+      "phase": 0,
+      "category": "requirement",
+      "content": "PARSING CSV (N3/N4): parser único dirigido por PERFIL DECLARATIVO (mapeamento de colunas, formato de data, separador decimal, convenção de sinal, encoding). Adicionar banco = adicionar perfil, não código. Três perfis obrigatórios neste ciclo: (a) valor único assinado; (b) colunas débito/crédito separadas; (c) data DD/MM/AAAA com vírgula decimal. Detecção automática de layout por heurística foi REJEITADA (S6: heurística para problema com solução determinística conhecida).",
+      "timestamp": "2026-08-11T00:53:35.330Z"
+    },
+    {
+      "id": "4f819107-b6cd-43a8-a4df-c52475fc2049",
+      "phase": 0,
+      "category": "scope",
+      "content": "FORA DE ESCOPO (N5-YAGNI), confirmado pelo operador: (1) categorização/classificação contábil automática de transações — todos os concorrentes fazem, é o vetor mais provável de scope creep na Fase 3 (AP9); (2) casamento AUTOMÁTICO 1:N e N:1 (pagamento parcial, lote) — esses casos NÃO são ignorados, viram pendência de revisão humana; (3) multi-moeda e conversão cambial — moeda única BRL; (4) UI web, multiusuário/autenticação, formato CAMT.053 e API de agregadora.",
+      "timestamp": "2026-08-11T00:53:37.478Z"
+    },
+    {
+      "id": "076b8f94-44e8-402a-b839-4083455a586c",
+      "phase": 0,
+      "category": "requirement",
+      "content": "DIVERGÊNCIA DE VALOR (ambiguidade 2 resolvida): default casa valor EXATO (tolerância = Decimal 0.00). Tolerância de valor é configurável por execução (ex.: R$ 0,50); par casado sob tolerância recebe estado 'casado-com-divergência' com o delta registrado. Ligar tolerância por default foi rejeitado: casar valores diferentes sem o operador pedir esconde erro contábil. Atualiza P2 em specs/technical/parametros-matching.md.",
+      "timestamp": "2026-08-11T00:55:43.891Z"
+    },
+    {
+      "id": "8198fdab-f583-4a74-aab9-0509b20f8313",
+      "phase": 0,
+      "category": "requirement",
+      "content": "ÓRFÃOS ESPERADO vs ANÔMALO (ambiguidade 3 resolvida): o relatório sub-rotula órfãos por idade do item — dentro da janela de compensação = 'esperado' (diferença de tempo, 40-60% dos não-casados segundo a literatura); fora dela = 'anômalo'. É SUB-ROTULAÇÃO DE RELATÓRIO, não um sexto estado: os 5 estados terminais e o critério VAL-3 permanecem intactos.",
+      "timestamp": "2026-08-11T00:55:46.030Z"
+    },
+    {
+      "id": "c79267df-bcbb-478d-a400-ea0d6785b89a",
+      "phase": 0,
+      "category": "process",
+      "content": "TEACH-BACK VALIDADO (Iteração 1): operador avaliou a síntese escrita dos 5 níveis da HSA e respondeu 'Correto — avançar'. Ambiguidades 1 (FITID instável, premissa A1) e 4 (estorno lido como duplicata pelo blocking por abs(valor)) permanecem ABERTAS por decisão deliberada — são alvo das lentes Premissas e Arquitetural na Fase 2, não lacunas de compreensão.",
+      "timestamp": "2026-08-11T00:55:49.154Z"
+    },
+    {
+      "id": "3ca3ac9c-23d8-4365-81c0-bd6f1e7f8d1e",
+      "phase": 1,
+      "category": "architecture",
+      "content": "DECOMPOSIÇÃO V(1) — 12 módulos (dentro do teto 8-12 do §2): domain-model, canonicalizer, ofx-adapter, csv-adapter, repository, matcher, dedup-engine, reconcile-engine, review-queue, reporter, cli, fixture-generator. Persistido em specs/technical/architecture.md com tabela de módulos, contratos e premissas. Fronteira dura: o núcleo (domain-model, canonicalizer, matcher, dedup-engine, reconcile-engine) não importa ofxtools, sqlite3 nem csv — só adapters e o composition root tocam o mundo externo. Estes nomes são a chave estável entre fases: Fase 2 e Fase 5 devem usá-los literalmente.",
+      "timestamp": "2026-08-11T01:05:55.378Z"
+    },
+    {
+      "id": "8e895359-cc2c-4999-b2ee-117aaed60429",
+      "phase": 1,
+      "category": "pattern",
+      "content": "PADRÕES APROVADOS PELO OPERADOR: Hexagonal (Ports & Adapters) como padrão arquitetural — as múltiplas fontes externas do enunciado SÃO os adapters, o núcleo fica puro. Princípios: KISS+YAGNI, SOLID com ênfase em DIP/OCP, DDD tático. Concorrência: single-threaded (determinismo é requisito de VAL-5; orçamento 50k/60s fecha com blocking + rapidfuzz em C). GoF: Strategy (camadas e algoritmos de score intercambiáveis), Chain of Responsibility (precedência de identidade L0→L5 explícita no código), Adapter. Fowler: Domain Model (regra rica: 8 invariantes, 5 estados, 6 camadas) + Repository/Data Mapper (portas de saída do Hexagonal; permite testar o núcleo com repositório em memória).",
+      "timestamp": "2026-08-11T01:05:59.955Z"
+    },
+    {
+      "id": "fff87455-5f24-44fb-b382-fa642fdd086a",
+      "phase": 1,
+      "category": "architecture",
+      "content": "PREMISSAS DECLARADAS V(1) (antídoto AP4): A1 FITID estável entre downloads (fragilidade ALTA, contra-evidência documentada); A2 CSV de banco sem ID nativo; A3 layout do CSV do livro estável; A4 blocking mantém blocos pequenos b<=50 (ALTA — tarifas de valor redondo geram bloco degenerado e reintroduzem O(n²)); A5 todo par tem resposta certa e o humano a conhece; A6 descrição da contraparte é comparável entre fontes (ALTA — banco escreve 'PIX ENVIADO JOAO', ERP escreve 'João da Silva ME'); A7 abs(valor) como chave de bloco não confunde estorno com duplicata (ALTA — ambiguidade 4 herdada da Fase 0). Quatro premissas de fragilidade ALTA são alvo prioritário da lente Premissas na Fase 2.",
+      "timestamp": "2026-08-11T01:06:04.486Z"
+    },
+    {
+      "id": "e632264e-3b27-4f9d-9605-f0257f68c9a5",
+      "phase": 1,
+      "category": "technology",
+      "content": "VALIDAÇÃO TECNOLÓGICA (tabela comparativa exibida em chat): Python 3.12 CLI vs Node+TypeScript vs serviço HTTP, avaliados contra os requisitos da Fase 0 — parsing OFXv1 SGML, dinheiro sem float, idempotência, similaridade de string, dados locais, nº de dependências, custo de contexto LLM e orçamento de 2-4h/8-12 módulos. Python vence em todos; Node perde no ecossistema OFX (levaria a parser à mão = AP7) e no float como default; serviço HTTP estoura o orçamento e adiciona superfície de rede/auth desnecessária. Nenhum requisito da Fase 0 é cortado pela tecnologia escolhida. SEM divisão de escopo progressivo: DELIVERY TARGET é 'Produto completo' e não há bloqueio técnico — todos os componentes são Tier 1 ou Tier 2.",
+      "timestamp": "2026-08-11T01:06:11.474Z"
+    },
+    {
+      "id": "d3947df4-fcaa-4027-9229-290730b149ca",
+      "phase": 2,
+      "category": "architecture",
+      "content": "CONCENTRAÇÃO POR MÓDULO (Iteração 1, V(1)): 'repository' concentra 13 achados em 10 lentes distintas (Assumptions, Implementability, Security, Performance, Regulatory, Resilience, Sustainability/Proportionality, Governance/Accountability, Observability/Operability, Mechanical Engineering). Módulo atingido por quase todas as lentes = concepção errada, não defeito pontual: hoje ele acumula esquema, garantia de idempotência via UNIQUE, política de retenção, fronteira transacional, proveniência e índice de busca — responsabilidades que a Fase 3 deve separar. Segundo: 'matcher' com 11 achados em 8 lentes, causa-raiz apontada por ARC-02 (um único contrato score(par)->float servindo dedup transação×transação e conciliação transação×lançamento). AMBOS EXIGEM REDESENHO NA FASE 3, não remendo.",
+      "timestamp": "2026-08-11T01:13:19.133Z"
+    },
+    {
+      "id": "65d4d736-0a89-4b93-bd76-1286eda821e2",
+      "phase": 2,
+      "category": "architecture",
+      "content": "CONCENTRAÇÃO POR LENTE (Iteração 1, V(1)): a lente Assumptions produziu achados em 8 dos 12 módulos — FALHA SISTÊMICA. A Fase 1 declarou 7 premissas (A1-A7) e mesmo assim quatro premissas críticas estavam ocultas: ASM-01 (escala decimal fixa vs TRNAMT com mais casas), ASM-02 (hash canônico assume descrição estável entre exports), ASM-03 (escopo de 'existentes' no dedup nunca declarado), ASM-04 (UNIQUE sobre hash garante I8 e viola I6 — contradição entre invariantes gravada no esquema). Segunda concentração: Architectural em 6 módulos. SINAL CONTRÁRIO relevante para o estudo: nenhuma lente voltou vazia e apenas 4 dos 76 achados são duplicata; seis achados críticos foram exclusivos de uma única lente (PRC-01, PRC-02, CTL-01, GOV-01, LIN-01, UX-01), evidência de ortogonalidade e não de redundância entre lentes.",
+      "timestamp": "2026-08-11T01:13:22.902Z"
+    },
+    {
+      "id": "6894b2fa-b5f0-4d4a-9b5c-0ed5c8088e24",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(2) — RESPOSTA UNIFICADA À ITERAÇÃO 1, persistida em specs/technical/architecture.md (seção V(2) anexada, V(1) preservada). Três causas-raiz tratadas em vez de 76 sintomas: R1 — identidade da OBSERVAÇÃO (fonte, arquivo_hash, indice_linha; é sobre ela que o UNIQUE garante idempotência) separada da identidade do EVENTO (evidência probabilística avaliada pelo dedup, nunca constraint de banco); isso ELIMINA a contradição I6 vs I8 em vez de acomodá-la. R2 — repository e matcher devolvidos a um eixo cada: repository vira 'store' (só persistência: esquema versionado, índices, transação por lote, proveniência) e matcher ganha perfil de comparação explícito ('dedup' vs 'conciliacao') mais teto de bloco. R3 — eixo de registro ausente materializado em 'audit-log' append-only (decisão com camada e evidência, resolução com autor e instante, parâmetros efetivos por execução) — sem ele VAL-2 é inverificável. BALANÇO 12 -> 12 módulos: canonicalizer absorvido por domain-model (a forma canônica é a construção do value object), audit-log entrou no lugar. Os 20 críticos foram endereçados por id. Premissas A1 (FITID estável) e A4 (bloco pequeno) DEIXARAM de ser premissas — o design agora funciona com A1 falsa (L0 chaveado por evento) e o teto de bloco torna A4 propriedade garantida. A7 (estorno vs abs(valor)) PERMANECE ABERTA.",
+      "timestamp": "2026-08-11T01:18:43.617Z"
+    },
+    {
+      "id": "cac06dc8-811b-402c-91d1-26ad29aa4588",
+      "phase": 3,
+      "category": "scope",
+      "content": "DECISÃO DE ESCOPO DO OPERADOR (S5, antídoto AP9) sobre as quatro capacidades sugeridas pela crítica: APROVADA apenas 'desfazer resolução' (comandos desfazer e desfazer_duplicata — resolve UX-03 e CTL-03; é caminho de correção de mecanismo já no escopo). REJEITADAS e aceitas como DÍVIDA DOCUMENTADA: (1) '--dry-run' no import — UX-02 não resolvido; (2) 'fechar_periodo' — PRC-03 não resolvido, era a mais próxima de AP9 por acrescentar passo de processo que a Fase 0 nunca pediu; (3) quarentena de linhas rejeitadas — RES-02 e RES-03 não resolvidos, com mitigação parcial mantida: linha inválida aborta o lote com erro nomeando arquivo e linha, sem perda silenciosa. Arquitetura V(2) já ajustada em specs/technical/architecture.md para refletir estas exclusões.",
+      "timestamp": "2026-08-11T01:18:49.038Z"
+    },
+    {
+      "id": "4664969c-bd2b-4bcb-87fb-eec257f3b4ef",
+      "phase": 3,
+      "category": "constraint",
+      "content": "SUGESTÕES 🟢 ACEITAS COMO DÍVIDA CONSCIENTE, com justificativa: SEC-06 (sem criptografia em repouso) — os dados já não saem da máquina e a proteção fica delegada ao sistema de arquivos; SUS-03 (regerar o dataset de 50k a cada suíte em vez de cachear) — custo de teste, não de produto. As demais 🟢 são tratadas junto do módulo correspondente na Fase 5, sem módulo ou capacidade adicional. POST-CYCLE COMPUTADO E CONFIRMADO PELO OPERADOR: mudança estrutural 83% (10 de 12 módulos alterados), 0 críticos remanescentes; ação acordada = 1 iteração a mais do laço 2-3, porque 83% de mudança significa que V(2) nunca passou por crítica adversarial alguma. LOC não aplicável (não há código).",
+      "timestamp": "2026-08-11T01:18:53.358Z"
+    },
+    {
+      "id": "7ce5d4fb-0611-42a9-bce7-203ec7dfb02b",
+      "phase": 2,
+      "category": "architecture",
+      "content": "CONCENTRAÇÃO — ITERAÇÃO 2 (contra a seção V(2) de architecture.md, carimbada V(3) pelo engine). POR MÓDULO: matcher 7 e audit-log 7 lideram; store 6; domain-model 5. audit-log é o módulo NOVO e já concentra achados em 7 lentes — sinal de que a solução da causa-raiz R3 entrou sem contrato de falha (fronteira transacional, retenção, custo no caminho crítico, conflito LGPD vs guarda contábil), não de que era desnecessária. POR LENTE: distribuição muito mais plana que na iteração 1 — Assumptions caiu de 8 módulos para 3, e nenhuma lente domina. MUDANÇA QUALITATIVA DO PADRÃO: de 'premissas ocultas' (iteração 1) para 'correção que desloca o problema' (iteração 2) — ASM-09 (a saída da contradição I6 vs I8 custou a idempotência do UC-2), ASM-10 (a correção de CTL-01 herdou a fragilidade de ASM-02), PRF-06 (o teto de bloco protege VAL-4 sacrificando VAL-1), PRC-06 (separar Resultado de Situacao quebrou a verificabilidade de VAL-3) e ARC-08 (cortar a dependência do gerador trocou acoplamento por deriva). Volume caiu 53% (76 para 36) e críticos 50% (20 para 10). ACHADO DE PROCESSO: IMP-10 mostra correção escrita sem verificação — mandou-se desabilitar entidades externas no ofxtools sem checar se a biblioteca expõe esse controle.",
+      "timestamp": "2026-08-11T01:23:24.045Z"
+    },
+    {
+      "id": "3e165af1-9de5-4c6a-beff-00c68a10dce7",
+      "phase": 3,
+      "category": "architecture",
+      "content": "V(3) — RESPOSTA UNIFICADA À ITERAÇÃO 2, anexada a specs/technical/architecture.md (V(1) e V(2) preservadas). Três causas-raiz mais uma remoção. R4 — a identidade da observação estava forte demais: (fonte, arquivo_hash, indice_linha) identifica o ARQUIVO e não a OBSERVAÇÃO, então reimportar janela sobreposta gerava identidade nova e o UNIQUE não impedia nada (ASM-09). Substituída por ChaveNatural com ordinal: (fonte, conta, FITID) quando há FITID, senão (fonte, conta, data, valor, descricao_bruta, ordinal), onde o ordinal distingue linhas legitimamente idênticas do mesmo dia (preserva I6) e se reproduz igual na reimportação (restaura I8 no UC-2). R5 — critérios de aceitação em conflito sem árbitro: declarada a precedência CORRETUDE (VAL-1, VAL-2) SOBRE DESEMPENHO (VAL-4); o excedente do teto de bloco vira PENDÊNCIA em vez de ser separado por refino silencioso; e VAL-3 volta a ser verificável como escrito na Fase 0 pela projeção estado_val3 = pendente-de-revisao se Situacao==pendente, senão Resultado. R6 — audit-log passa a receber a unidade de trabalho do store e gravar na mesma transação, em lote por importação, resolvendo a divergência estado/trilha e tirando 50k appends do caminho crítico. REMOÇÃO (simplificação principal): a estimação probabilística de pesos m/u foi ELIMINADA porque calibrá-la contra ground truth sintético desenhado pelo próprio projeto é validação circular (SCI-06); substituída por rubrica determinística de pontos por campo, declarada e auditável. Fellegi-Sunter permanece em specs/references como fundamentação, não como algoritmo implementado. Balanço 12 -> 12 módulos.",
+      "timestamp": "2026-08-11T01:27:10.168Z"
+    },
+    {
+      "id": "5b6830ac-a59c-4559-808b-4ceb0650ebbd",
+      "phase": 3,
+      "category": "constraint",
+      "content": "VERIFICAÇÃO EMPÍRICA DE IMP-10 (correção escrita sem verificação, o achado de processo da Iteração 2): executado teste real com xml.etree.ElementTree, que é o que o ofxtools usa. RESULTADO: entidade externa SYSTEM 'file:///etc/passwd' é RECUSADA pela plataforma (ParseError: undefined entity) — a metade XXE de SEC-02 já estava fechada sem precisar de mecanismo. Porém entidades INTERNAS SÃO expandidas — o vetor de expansão exponencial (billion laughs) é real e não estava tratado. V(3) fecha essa metade no ofx-adapter com recusa de payload contendo <!DOCTYPE ou <!ENTITY mais teto de tamanho. Lição registrada: 'a correção foi escrita, não verificada' é uma classe de defeito que só a rodada seguinte de crítica pega.",
+      "timestamp": "2026-08-11T01:27:18.091Z"
+    },
+    {
+      "id": "086f6d64-5edf-4edd-b09e-48e9a4440801",
+      "phase": 3,
+      "category": "constraint",
+      "content": "POST-CYCLE ITERAÇÃO 2, computado e confirmado pelo operador: mudança estrutural 33% (4 de 12 módulos reestruturados — domain-model, store, matcher, audit-log), 0 críticos remanescentes. TRAJETÓRIA DO LAÇO: achados 76 -> 36 (-53%), críticos 20 -> 10 (-50%), mudança estrutural da resposta 83% -> 33% (-60%); padrão dominante migrou de 'premissas ocultas' para 'correção que desloca o problema'. Ação acordada: AVANÇAR PARA A FASE 4. Justificativa registrada: a linha '>25%' da tabela de referência pressupõe 2+ críticos abertos e há zero; as mudanças de V(3) são majoritariamente de especificação e não de fronteira; AP8 adverte contra ciclos infinitos. LIMITAÇÃO CONHECIDA CARREGADA CONSCIENTEMENTE: a premissa A7 (estorno confundido com duplicata pelo bloco em abs(valor)) segue ABERTA desde a Fase 0; mitigação é o sinal entrar na rubrica com peso alto, e a verificação fica para a Fase 6 contra o dataset. LOC não aplicável (ainda não há código).",
+      "timestamp": "2026-08-11T01:27:23.545Z"
+    },
+    {
+      "id": "be85c5c8-b5fc-418d-9246-63a69f88a2c1",
+      "phase": 4,
+      "category": "process",
+      "content": "LLM SWITCH POINT: apresentado ao operador como DECISÃO e não como aviso, no único momento em que é gratuito (nenhum arquivo de código existe). Operador escolheu CONTINUAR NESTE CHAT para a Fase 5. Risco declarado e aceito: AP3 (sessão monolítica) — design, código e teste na mesma conversa degradam o contexto; mitigado pelo fato de todas as decisões estarem persistidas em state.json e specs/, de modo que o risco é de saturação de contexto e não de perda de informação. Se a qualidade cair na Fase 5, o remédio é fechar e digitar 'retomar Versus' num chat novo.",
+      "timestamp": "2026-08-11T01:31:02.264Z"
+    },
+    {
+      "id": "29d9e964-19ae-4361-b0a7-2501589affc1",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ: o arquivo OFX de teste que escrevi à mão omite o bloco SIGNONMSGSRSV1, obrigatório pela especificação OFX; ofxtools valida contra a spec e levanta OFXSpecError. O adapter (M-02 ofx-adapter) está correto — o comportamento observado é precisamente o que o achado MEC-01 previu: a biblioteca recusa arquivos não conformes. CORREÇÃO IMPLICADA: (1) corrigir o fixture de teste incluindo SIGNONMSGSRSV1 com STATUS e DTSERVER; (2) requisito propagado ao M-12 fixture-generator — todo OFX sintético emitido deve incluir o bloco de signon, sob pena de o dataset inteiro ser irrelevante por ser rejeitado no parsing; (3) o gerador deve emitir SEPARADAMENTE arquivos não conformes deliberados, para exercitar o caminho de erro.",
+      "timestamp": "2026-08-11T01:34:32.209Z"
+    },
+    {
+      "id": "eca31c71-513a-4be0-87a9-b57b02b46474",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ (achada pela micro-verificação S7, não por teste): a mitigação de ASM-07 que escrevi no csv-adapter não funciona na direção que importa. Confiar em UnicodeDecodeError só detecta o caso raro; cp1252 e latin-1 são codecs de byte único que aceitam praticamente qualquer sequência, então ler um arquivo UTF-8 declarando cp1252 TEM SUCESSO e produz mojibake silencioso — a descrição muda, o hash canônico muda e a dedup de reimportação falha sem qualquer sinal. A docstring afirmava proteção que o código não oferecia. CORREÇÃO IMPLICADA, determinística e não heurística: quando o perfil declara um codec de byte único e os bytes do arquivo são UTF-8 VÁLIDO contendo sequências multibyte não-ASCII, recusar a leitura nomeando o conflito. 'Os bytes são UTF-8 válido' é um teste determinístico, não um palpite — evita o sinal de alarme do S6 contra heurística para problema com solução conhecida.",
+      "timestamp": "2026-08-11T01:36:56.151Z"
+    },
+    {
+      "id": "325c49c8-605d-4c38-87bd-098f3cc5cb12",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ (duas violações de critério de aceitação, encontradas executando a rubrica do M-06 matcher, não por teste formal): (1) FALSO POSITIVO, viola VAL-2 — duas transações legitimamente distintas do MESMO arquivo (os dois cafés de R$12,00 no mesmo dia) são idênticas em todos os campos que a rubrica compara e pontuam 100, logo seriam fundidas. Nenhuma rubrica sobre atributos pode distingui-las, porque a diferença não está nos atributos: está no fato de a fonte ter REPORTADO DUAS LINHAS. (2) FALSO NEGATIVO, viola VAL-1 — par cross-source com valor e data idênticos mas descrição divergente (premissa A6) pontua 65, abaixo do corte de revisão 70, e é declarado distinto sem revisão humana. CORREÇÕES IMPLICADAS, ambas determinísticas e derivadas de invariante e não de ajuste de peso: (a) VETO DE MESMA ORIGEM — duas observações com mesmo (fonte, conta, arquivo) e ChaveNatural distinta são por construção eventos distintos, porque a instituição as reportou separadamente; reimportação da mesma linha tem ChaveNatural IDÊNTICA e é capturada em L2, nunca chegando ao score. Isto realiza I6 no lugar certo. (b) PISO DE EVIDÊNCIA FORTE — valor idêntico e mesma data garantem score mínimo igual ao corte de revisão, de modo que o par vira PENDÊNCIA em vez de ser descartado; coerente com a precedência declarada em V(3) de que corretude (VAL-1, VAL-2) vence desempenho (VAL-4). Atualizar specs/technical/rubrica-score.md junto com o código: a spec é a fonte de verdade e não pode divergir da implementação.",
+      "timestamp": "2026-08-11T01:44:26.316Z"
+    },
+    {
+      "id": "0a15ac0b-bf4e-46a3-97f6-e79b83c20a9d",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ: chave_bloco() inclui a conta, logo duas observações do mesmo evento em contas distintas caem em blocos diferentes e o par NUNCA é gerado. O Escopo do dedup-engine declara cross_source=True e o blocking o anula em silêncio — falso negativo estrutural que viola VAL-1 e mata o requisito de duplicata cross-source definido na Fase 0. Faltou aplicar o que a própria pesquisa já depositara: specs/references/fontes-externas.md §2.2 descreve INDEXAÇÃO POR DISJUNÇÃO — a união de múltiplos blocos —, e eu implementei uma chave única. CORREÇÃO IMPLICADA: candidatos() passa a receber uma LISTA de funções de chave de bloco e a unir os pares gerados por cada uma, deduplicando pares repetidos por identidade. Duas chaves neste projeto: (conta, valor absoluto) para reimportação na mesma conta e (*, valor absoluto) para cross-source entre contas. O teto de bloco continua valendo por chave, e o excedente segue virando pendência. Lição: o material depositado em specs/ na Fase 0 só tem valor se for CONSULTADO na Fase 5 — R4 existe exatamente para isso e eu passei por cima dele.",
+      "timestamp": "2026-08-11T01:47:28.685Z"
+    },
+    {
+      "id": "51386208-a0dd-4480-9534-28ad5f2e9682",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ: o campo `ordinal` da ChaveNatural — a peça central da correção R4, que distingue colisão legítima (I6) e reproduz a idempotência na reimportação sobreposta (I8) — está DECLARADO no tipo e não é CALCULADO por componente nenhum. Os adapters devolvem RegistroBruto sem ordinal e nada entre eles e o store o atribui, então duas linhas legitimamente idênticas do mesmo arquivo recebem a mesma ChaveNatural, uma sobrescreve a outra e a contagem de VAL-3 não fecha (8 classificados para 9 itens). O sintoma apareceu num fixture de conciliação, mas o defeito atinge todo o pipeline. CORREÇÃO IMPLICADA: a construção Transacao/Lancamento a partir de RegistroBruto passa a ser função do domain-model — construir_transacoes(registros) — que atribui o ordinal por ORDEM DE APARIÇÃO dentro do grupo (conta, data, valor, descricao_bruta) de cada arquivo. Ordem de aparição é o que torna o ordinal reproduzível: o mesmo arquivo, ou uma janela sobreposta com as mesmas linhas na mesma ordem, gera os mesmos ordinais, que é precisamente o que I8 exige. Registro de ordem de aparição vem do campo `linha`, já preenchido pelos dois adapters.",
+      "timestamp": "2026-08-11T01:49:45.205Z"
+    },
+    {
+      "id": "a0c6b7e8-8bee-4f8c-a09f-30dbc025dc83",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ: serialização ambígua. ChaveNatural.texto() usa '|' como separador interno de campos, e eu serializei a LISTA de chaves candidatas de uma pendência juntando-as também com '|'. O split de leitura parte as chaves individuais ao meio e a reconstrução falha com IndexError. É exatamente a classe de defeito que a lente Linguistics / Grammar cobre — dois níveis de estrutura compartilhando o mesmo delimitador, sem escape. CORREÇÃO IMPLICADA: serializar as listas de candidatos e de scores como JSON nas colunas de pendencia, tanto no dedup-engine quanto no reconcile-engine, e desserializar com json no review-queue. JSON tem escape definido, então o separador interno da chave deixa de colidir com o separador da lista. Vale também como lição para o formato de persistência de qualquer coleção de chaves: concatenar com delimitador é seguro só enquanto o delimitador não aparece no conteúdo, e neste projeto ele aparece por construção.",
+      "timestamp": "2026-08-11T01:51:45.176Z"
+    },
+    {
+      "id": "22d743db-b23a-42df-be65-e3302e79090b",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ: ao implementar a indexação por disjunção em M.candidatos, deduplicei os PARES gerados por chaves de bloco diferentes (via conjunto `vistos`) mas NÃO os EXCEDENTES. Como o bloco degenerado de tarifas aparece nas duas chaves — (conta, valor) e (*, valor) — cada item excedente é emitido duas vezes e vira duas pendências para o mesmo item: 56 itens produziram 112 pendências no teste fim-a-fim. Não é falso positivo nem falso negativo de classificação, mas infla a fila de revisão em 100% exatamente no caso que UX-01 identificou como o de maior risco de tornar a tarefa do analista inexecutável. CORREÇÃO IMPLICADA: aplicar ao acumulador de excedentes a mesma deduplicação por identidade que já protege os pares — um conjunto de ChaveNatural já emitida, verificado antes de anexar, e a contagem de metricas.excedentes derivada da lista final em vez de incrementada por chave.",
+      "timestamp": "2026-08-11T01:55:58.829Z"
+    },
+    {
+      "id": "5283fe5a-3729-4eac-ba44-bb9bbc49344b",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ: _execucao_id() na cli deriva o identificador da execução do hash de (comando, arquivos, instante), e o instante vem de _agora() com timespec='seconds'. Duas execuções do mesmo comando sobre o mesmo arquivo dentro do MESMO SEGUNDO produzem material idêntico, logo o mesmo id, e o INSERT em execucao viola o UNIQUE — foi o que ocorreu ao reimportar o mesmo arquivo pela terceira vez em sequência. Note a distinção que importa: o id de execução é METADADO de proveniência, não faz parte do estado conciliado (digest_estado já exclui a coluna execucao justamente por isso), então dar-lhe resolução mais fina não compromete o determinismo que VAL-5 mede. CORREÇÃO IMPLICADA: compor o material do id com instante em microssegundos mais o pid do processo, mantendo o hash. O instante gravado na trilha continua em segundos, que é a granularidade útil para auditoria.",
+      "timestamp": "2026-08-11T01:56:33.896Z"
+    },
+    {
+      "id": "64edd1e3-3b2b-4afa-a058-4934a0cd893a",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ de VAL-4 (50.000 transações em menos de 60s) falhando com estouro de 120s: TRÊS padrões quadráticos ou N+1 introduzidos por mim depois que a arquitetura os havia eliminado. (1) O pior: DedupEngine._filtrar tem `mesma = any(e.conta == n.conta for n in novas)` DENTRO do laço sobre `existentes` — 36 mil × 36 mil, mais de 1e9 comparações. É exatamente o O(n²) acidental que PRF-01 e PRF-02 mandaram erradicar, reintroduzido na função de filtro de escopo. (2) cli.importar monta `existentes` com uma chamada store.carregar_bloco por bloco distinto das novas transações, o que é uma consulta SQL por bloco — o padrão N+1 que PRF-02 eliminou do contrato do dedup-engine, ressurgido uma camada acima, no composition root. (3) store.gravar_lote executa um SELECT de existência por item antes de cada INSERT, em vez de uma verificação em lote. CORREÇÕES IMPLICADAS: (1) pré-computar o conjunto de contas das novas UMA vez fora do laço e testar pertinência em O(1); (2) carregar os existentes com uma única consulta usando IN sobre os blocos, em blocos de parâmetros para respeitar o limite do SQLite; (3) trocar o SELECT por item por um único SELECT das chaves já presentes, seguido de executemany para os INSERTs. LIÇÃO REGISTRADA: a arquitetura tinha razão e eu implementei contra ela — a lente Performance encontrou o defeito no DESENHO em V(1), e a mesma classe de defeito reapareceu no CÓDIGO, o que confirma que corrigir o desenho não imuniza a implementação.",
+      "timestamp": "2026-08-11T02:00:15.662Z"
+    },
+    {
+      "id": "3975c9a8-0204-4f36-bd1e-67bd7dfcd7c7",
+      "phase": 5,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ do estouro de VAL-4, encontrada por MEDIÇÃO e não por palpite (as duas correções anteriores eram reais mas não eram o gargalo): a linha `novas = [t for t in transacoes if t.chave in set(res.chaves_novas)]` em cli.importar reconstrói o conjunto a CADA iteração da compreensão de lista — 36 mil construções de um set de 36 mil elementos, O(n²) puro. A profilagem por estágio mostrou parse OFX 1,3s, construção 0,1s, candidatos 0,0s, gravar_lote 0,2s e classificar_lote 0,1s: tudo somado menos de 2 segundos, o que localizou o custo fora de qualquer estágio medido. CORREÇÃO IMPLICADA: construir o conjunto UMA vez antes da compreensão. Registro metodológico: as três causas encontradas nesta rodada (any dentro de laço, N+1 por bloco, set reconstruído) são todas do mesmo tipo — trabalho O(n) escondido dentro de um laço O(n) — e nenhuma delas era visível no desenho; a lente Performance da Fase 2 previu a CLASSE do defeito no nível arquitetural, e mesmo assim a implementação a reintroduziu três vezes. É evidência direta de que o gate de desenho não substitui medição na Fase 6.",
+      "timestamp": "2026-08-11T02:04:18.195Z"
+    },
+    {
+      "id": "efafc36b-5780-4ac4-ad1a-dbf3e9fc0f8a",
+      "phase": 5,
+      "category": "constraint",
+      "content": "REVISÃO ADVERSARIAL DO ESCOPO ORIGINAL na saída da Fase 5, tabela Promessa × Entrega exibida em chat. MEDIDO CONTRA O GROUND TRUTH, não afirmado: VAL-1 zero falso negativo (53/53 duplicatas de reimportação detectadas; 10/10 cross-source tratadas — 7 fundidas e 3 escaladas, nenhuma descartada); VAL-2 zero falso positivo (4/4 colisões legítimas preservadas); VAL-3 100% (399/399 no dataset pequeno e 61.872/61.872 no de 50k); VAL-4 4,9s contra limiar de 60s; VAL-5 digest idêntico após 3 rodadas completas; A7 2/2 estornos não fundidos. LACUNAS ADMITIDAS E DECISÃO DO OPERADOR = 'Avançar à Fase 6, as lacunas são dela': (1) perfis bancoy (colunas débito/crédito) e bancoz (coluna indicadora) existem, validam e foram lidos com arquivos reais em teste isolado, mas o fixture-generator só emite o formato bancox, logo não são exercitados fim-a-fim — DEVE entrar no mapa de testes da Fase 6; (2) VAL-6 (1:1 via UNIQUE nos dois lados), VAL-7 (resolução reaplicada) e VAL-8 (zero float) têm mecanismo implementado e verificação formal pendente — trabalho da Fase 6 DENTRO deste ciclo, não adiamento para fora dele; (3) suíte de testes automatizados inexistente, que é o próprio objeto da Fase 6. As três capacidades rejeitadas pelo operador na Fase 3 (--dry-run, fechar_periodo, quarentena) seguem como dívida já registrada. Nenhuma lacuna foi marcada como atendida por prosa (antídoto AP10).",
+      "timestamp": "2026-08-11T02:12:27.535Z"
+    },
+    {
+      "id": "900d2042-56d3-4f74-aabf-062c665e9233",
+      "phase": 6,
+      "category": "testing",
+      "content": "RENOVAÇÃO DE SESSÃO: oferecida ao operador com a recomendação de nova sessão (desacoplar implementador de testador, espírito do S4; e a conversa já é longa, o que é o próprio AP3). Operador escolheu CONTINUAR AQUI. RISCO DECLARADO E ACEITO: viés de confirmação — quem escreveu o código tende a escrever testes que confirmam o que construiu em vez de atacar o que assumiu. MITIGAÇÃO ADOTADA: o mapa de testes será derivado das SPECS (casos de uso da Fase 0, VAL-1..VAL-8 de specs/validation, parâmetros de specs/technical) e não da leitura do código, e cada teste declara qual critério EXATO verifica, para não cair nas falsas coberturas que specs/validation/criterios-aceitacao.md lista explicitamente. A razão de peso do risco: nesta mesma sessão a Fase 5 revelou sete defeitos meus, três deles padrões O(n²) que eu havia acabado de escrever depois de a arquitetura tê-los eliminado.",
+      "timestamp": "2026-08-11T02:20:01.655Z"
+    },
+    {
+      "id": "c005748b-2208-4d15-8bc7-c9c86596e670",
+      "phase": 6,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ das 5 falhas, e as duas causas são diferentes. (1) Quatro falhas em test_janela_por_instrumento: a EXPECTATIVA do teste estava errada, não a implementação. Eu assertei que valor exato mais data dentro da janela deveria produzir CASAMENTO automático (score >= 95), mas a rubrica de specs/technical/rubrica-score.md §1 tabela 2 atribui 50 pontos ao valor, 30 à data dentro da janela e 20 à contraparte com similaridade >= 70 — e no meu cenário as descrições são deliberadamente diferentes ('PIX ENVIADO JOAO' contra 'FORNEC X'), então o par soma 80 e vira PENDÊNCIA. Esse é o comportamento ESPECIFICADO e conservador; o teste é que estava medindo a coisa errada. Correção: o teste deve verificar o efeito da JANELA, que é o que ele se propõe a testar — dentro da janela o par permanece candidato (score >= corte de revisão), fora dela cai abaixo. (2) test_uc5_resolucao_reaplicada_em_execucao_posterior falha porque o cenário depende do dataset produzir uma pendência de dedup COM candidato, e as pendências geradas naquele ponto vieram todas do bloco degenerado, que por construção não tem candidatos. Correção: montar o cenário de forma controlada, com duas transações cujo score cai deliberadamente na faixa de revisão, em vez de depender de um subproduto do dataset. OBSERVAÇÃO DE PRODUTO, para a Fase 7: a conciliação automática EXIGE similaridade de contraparte >= 70, logo todo par em que o ERP e o banco nomeiam a contraparte de formas diferentes cai em revisão humana. É consequência direta da premissa A6 e do peso de 20 pontos na rubrica, e merece ser levada ao operador como decisão de produto, não corrigida silenciosamente por mim.",
+      "timestamp": "2026-08-11T02:23:47.523Z"
+    },
+    {
+      "id": "de001171-4ccb-4d37-bb86-6a239486414d",
+      "phase": 6,
+      "category": "diagnosis",
+      "content": "CAUSA-RAIZ, e desta vez é DEFEITO DE IMPLEMENTAÇÃO e não expectativa errada de teste — VAL-7 falhando de verdade: DedupEngine._resolucoes_gravadas() constrói o dicionário de resoluções vigentes indexado por pendencia_id e por alvo isoladamente, mas a consulta em classificar_lote usa _chave_par(nova.chave, outra.chave), que é a concatenação ordenada das DUAS chaves do par. As duas formas de chave nunca coincidem, então a busca sempre devolve None e a camada L0 NUNCA dispara: o par volta a ser pontuado e reaparece como pendência a cada execução. Isto quebra o invariante I7 (resolução humana é soberana e persistente) e o critério VAL-7, e é precisamente o defeito que o achado CTL-01 da Iteração 2 mandou corrigir — a correção foi projetada em V(3) e implementada errada, o que só a Fase 6 poderia pegar. CORREÇÃO IMPLICADA: _resolucoes_gravadas passa a fazer JOIN de resolucao com pendencia para recuperar o lado ESQUERDO do par, e indexa por _chave_par(esquerda, alvo) — a mesma função usada na consulta, de modo que as duas formas de chave sejam a mesma por construção. Resoluções anuladas por um desfazer continuam sendo excluídas.",
+      "timestamp": "2026-08-11T02:24:52.078Z"
+    },
+    {
+      "id": "d7855975-315e-479d-a7fb-71eb90a8054e",
+      "phase": 6,
+      "category": "spec-coverage",
+      "content": "SPEC COVERAGE REPORT — 41 testes, 41 verdes, execução real verificada (S4).\n\nCOVERED — casos de uso da Fase 0: UC-1 test_uc1_importa_ofx_e_reporta_por_classe (classes somam o total) + test_uc1_ofx_malformado_aborta_nomeando_arquivo; UC-2 test_uc2_janela_sobreposta_nao_duplica (confere contra o ground truth) + test_uc2_reimportar_n_vezes_digest_identico; UC-3 test_uc3_cross_source_nunca_descarta + test_uc3_colisao_legitima_nao_funde; UC-4 test_uc4_todo_item_em_exatamente_um_estado + test_uc4_sem_livro_recusa_com_codigo_3; UC-5 test_uc5_resolucao_sai_da_fila + test_uc5_acao_de_familia_errada_recusada + test_uc5_resolucao_reaplicada_em_execucao_posterior.\nCOVERED — critérios de specs/validation: VAL-1 zero falso negativo (test_val1, contra ground-truth.json); VAL-2 zero falso positivo (test_val2, colisões plantadas); VAL-3 as DUAS metades — soma bate e nenhum item em dois estados (test_val3 + test_uc4); VAL-4 CRONOMETRADO com 50k reais (test_val4, marcador lento); VAL-5 digest do conteúdo após 3 rodadas (test_val5); VAL-6 consulta procurando violação do 1:1 (test_val6); VAL-7 heurística não sobrescreve humano (test_val7 + test_uc5_reaplicada); VAL-8 Dinheiro recusa float e str (test_val8).\nCOVERED — parâmetros de specs/technical: janelas por instrumento parametrizadas em 7 casos (PIX D+0, TED D+1, cartão D+32, default D+3, cada uma com o caso fora da janela); teto de bloco e excedente virando pendência; piso de evidência forte; veto de mesma origem; disjunção de blocos entre contas; os TRÊS perfis CSV lendo dados reais, o que fecha a lacuna amarela declarada na saída da Fase 5.\nCOVERED — achados da Fase 2 com teste próprio: SEC-01, SEC-02, RES-06, MIG-03, GOV-01, LIN-08, ASM-07, PRF-06, CTL-01, A7.\n\nNEGATIVE TESTS: 22 positivos / 19 negativos = 0,86 negativo por positivo, contra o mínimo exigido de 0,5.\n\nGAPS — declarados, não escondidos: (1) A7 (estorno) tem teste que AFIRMA A LIMITAÇÃO — test_a7_estorno_ainda_cai_no_mesmo_bloco verifica que o bloco por valor absoluto segue juntando estorno e original; a fusão é vetada, o inchaço de bloco não; se um dia isso mudar o teste falha e obriga a rever a premissa. (2) Teste manual exploratório humano AINDA NÃO REALIZADO — gate obrigatório e independente (AP5). (3) OBSERVAÇÃO DE PRODUTO descoberta pelos testes, a levar ao operador na Fase 7: a conciliação automática exige similaridade de contraparte >= 70, logo todo par em que o ERP e o banco nomeiam a contraparte de formas diferentes vai para revisão humana — consequência direta da premissa A6 e do peso de 20 pontos na rubrica.\n\nDEFEITO REAL ENCONTRADO PELA SUÍTE: VAL-7 falhava de verdade. DedupEngine._resolucoes_gravadas indexava por pendencia_id e alvo isoladamente enquanto a consulta usava a chave do PAR, então L0 nunca disparava e a mesma pendência reapareceria a cada importação — exatamente o defeito CTL-01, projetado corretamente em V(3) e implementado errado. Corrigido com JOIN entre resolucao e pendencia para recuperar o lado esquerdo do par.",
+      "timestamp": "2026-08-11T02:26:08.253Z"
+    },
+    {
+      "id": "ba753bda-d638-41fa-b589-12f841b79fb3",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: automated-done\nPASS: 41 de 41 testes verdes em 7,0s, execução real verificada e não presumida (S4). Cobertos: UC-1 a UC-5 com positivo e negativo cada; VAL-1 a VAL-8 cada um verificando o critério exato e não um proxy (VAL-4 cronometra 50k reais, VAL-5 compara digest de conteúdo, VAL-3 verifica as duas metades); janelas por instrumento em 7 casos parametrizados; os três perfis CSV lendo dados reais, fechando a lacuna amarela da Fase 5; e testes próprios para os achados SEC-01, SEC-02, RES-06, MIG-03, GOV-01, LIN-08, ASM-07, PRF-06, CTL-01 e A7. Proporção 22 positivos / 19 negativos.\nFAIL: nenhum pendente. Um defeito real foi encontrado e CORRIGIDO durante esta fase — VAL-7 falhava porque DedupEngine._resolucoes_gravadas indexava por pendencia_id isolado enquanto a consulta usava a chave do par, de modo que a camada L0 nunca disparava e a mesma pendência retornaria à fila a cada importação (o defeito CTL-01, projetado certo em V(3) e implementado errado). Corrigido com JOIN entre resolucao e pendencia.\nNEXT: TESTE MANUAL EXPLORATÓRIO PELO OPERADOR — gate obrigatório e ainda não realizado. Roteiro em EXECUTAR.md. Executar UC-1 a UC-5; forçar os casos de borda (conciliar antes do livro, arquivo inexistente, CSV com perfil errado, Ctrl-C no meio da importação seguido de reimportação, id de pendência inventado, abrir o CSV exportado no Excel para conferir o saneamento de fórmula); e julgar o que nenhum teste automatizado julga — se as mensagens de erro são compreensíveis para um analista financeiro e não técnicas demais, se a fila dá contexto suficiente para decidir, se o relatório é acionável e se o volume de pendências é administrável na prática.",
+      "timestamp": "2026-08-11T02:26:36.207Z"
+    },
+    {
+      "id": "9760f09a-96cb-47ef-9bd0-b1fce3bc7ce5",
+      "phase": 6,
+      "category": "testing",
+      "content": "TESTING STATUS: manual-done\nPASS: operador executou os casos de uso pela CLI e reportou, literalmente, 'Executei e funcionou' (critério ui_runnable, Fase 5) e 'parece ok para mim, podemos fechar' (gate manual, Fase 6). Aceitação do produto confirmada pelo humano.\nFAIL: nenhum defeito reportado pelo operador.\nNEXT: Fase 7.\nCARACTERIZAÇÃO HONESTA DO GATE, para não superestimar a evidência num post-mortem: o que houve foi VALIDAÇÃO DE ACEITAÇÃO — o operador rodou os casos de uso e considerou o resultado adequado — e NÃO uma varredura exploratória exaustiva da lista de casos de borda que lhe foi apresentada (conciliar antes do livro, arquivo inexistente, CSV com perfil errado, Ctrl-C no meio da importação seguido de reimportação, id de pendência inventado, abrir o CSV exportado no Excel). Vários desses casos TÊM cobertura automatizada — código de saída por classe, perfil errado, saneamento de fórmula, esquema incompatível —, mas os que dependem de julgamento humano seguem sem avaliação registrada: se as mensagens de erro são compreensíveis para um analista financeiro, se a fila dá contexto suficiente para decidir, se o volume de pendências é administrável na prática. Registrado como limitação da evidência, não como criério não atendido: a decisão de encerrar é do operador (S2).",
+      "timestamp": "2026-08-11T02:30:23.026Z"
+    },
+    {
+      "id": "86618d8e-0cea-4634-8566-f34f0a079dd9",
+      "phase": 7,
+      "category": "requirement",
+      "content": "AVALIAÇÃO DO PRODUTO pelo operador: 'Atende — fecho o ciclo'. Os 8 critérios numéricos foram medidos e batem (VAL-1 e VAL-2 zerados contra o ground truth, VAL-3 100%, VAL-4 4,9s contra limiar de 60s, VAL-5 digest idêntico, VAL-6 sem violação, VAL-7 corrigido e verificado, VAL-8 sem float) e os 5 casos de uso são executáveis pela CLI. Nenhum requisito da Fase 0 foi considerado não entregue. DECISÃO DE PRODUTO sobre a rubrica de conciliação: o operador escolheu MANTER o comportamento conservador — a conciliação automática exige similaridade de contraparte >= 70, logo pares com valor e data exatos mas contrapartes nomeadas de formas diferentes (premissa A6) vão para revisão humana em vez de casar. Coerente com a prioridade de zero falso positivo e com a decisão da Fase 0 de que a revisão humana é parte do fluxo. Elevar os pesos de valor e data para dispensar a contraparte foi explicitamente considerado e rejeitado neste ciclo: seria mudança de rubrica e entra como escopo de um eventual v2.0, idealmente medida contra extratos reais.",
+      "timestamp": "2026-08-11T02:37:08.160Z"
+    },
+    {
+      "id": "73e91b24-7b06-4d40-a8a8-effeea3e7329",
+      "phase": 7,
+      "category": "process",
+      "content": "CICLO v1.0 ENCERRADO por decisão do operador: 'Projeto completo — encerrar'. start_new_cycle() NÃO foi chamado. Justificativa registrada: o §2 congelado enquadrou T26 como sessão única de 2-4 horas com critério de acerto objetivo escrito antes de codar, e esse critério foi atingido e medido; um v2.0 abriria escopo novo, fora do enquadramento do estudo. O conhecimento fica preservado para quem retomar: 8 fases completas com todos os critérios de saída atendidos, 2 iterações do laço 2-3, 112 achados adversariais em specs/design/coverage-matrix.md com id por achado, 3 versões de arquitetura preservadas em specs/technical/architecture.md, 41 testes verdes, e specs/references/lessons.md com as cinco lições e os quatro alvos de medição de um eventual próximo ciclo. Se um v2.0 for aberto no futuro, começa de specs/ como baseline e não do zero.",
+      "timestamp": "2026-08-11T02:38:13.093Z"
+    }
+  ],
+  "activatedLenses": [
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Observability / Operability",
+        "Control Engineering",
+        "Linguistics / Grammar",
+        "Mechanical Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Migration / Coexistence",
+          "reason": "Greenfield: não substitui nem modifica sistema em produção algum, não há base legada a migrar nem caminho de rollback contra versão anterior — o processo atual do analista é manual, sem dados de sistema a transportar."
+        },
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "O sistema decide sobre REGISTROS de transação, não sobre pessoas: não pontua, classifica nem modera indivíduos, e nenhuma decisão automatizada determina acesso, crédito ou tratamento de uma pessoa."
+        },
+        {
+          "lens": "Game Theory",
+          "reason": "Operador único, sem API pública e sem atores independentes com incentivos conflitantes — os bancos fornecem arquivo, não jogam estrategicamente contra o importador."
+        }
+      ],
+      "iteration": 1,
+      "againstVersion": 1,
+      "recordedAt": "2026-08-11T01:09:27.307Z"
+    },
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "UI/UX",
+        "Migration / Coexistence",
+        "Sustainability / Proportionality",
+        "Process / Workflow",
+        "Governance / Accountability",
+        "Observability / Operability",
+        "Control Engineering",
+        "Linguistics / Grammar",
+        "Mechanical Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Ethical / Human Impact",
+          "reason": "Segue decidindo sobre REGISTROS de transação e não sobre pessoas: V(2) não introduziu pontuação, classificação nem moderação de indivíduos, e nenhuma decisão automatizada determina acesso, crédito ou tratamento de alguém."
+        },
+        {
+          "lens": "Game Theory",
+          "reason": "Operador único, sem API pública e sem atores independentes com incentivos conflitantes — V(2) não abriu nenhuma superfície compartilhada nem multiusuário."
+        }
+      ],
+      "iteration": 2,
+      "againstVersion": 3,
+      "recordedAt": "2026-08-11T01:20:28.333Z"
+    }
+  ],
+  "stateVersion": 1,
+  "exitCriteria": [
+    {
+      "phase": 0,
+      "criterion": "score_90",
+      "met": true,
+      "details": "Score 95/100 registrado via update_score com breakdown dos 10 critérios exibido em chat."
+    },
+    {
+      "phase": 0,
+      "criterion": "user_confirmed",
+      "met": true,
+      "details": "Operador avaliou o teach-back escrito (template completo dos 5 níveis exibido em chat) e respondeu 'Correto — avançar' via AskUserQuestion."
+    },
+    {
+      "phase": 0,
+      "criterion": "ambiguities_zero",
+      "met": true,
+      "details": "4 ambiguidades identificadas. RESOLVIDAS: (2) divergência de valor — tolerância configurável com default exato; (3) órfão esperado vs anômalo — sub-rotulação por idade no relatório. ACEITAS EXPLICITAMENTE pelo operador como alvo da Fase 2, não como lacuna de compreensão: (1) premissa A1, FITID instável entre downloads, com contra-evidência documentada em specs/references — alvo da lente Premissas; (4) estorno (mesmo valor, sinal oposto) potencialmente agrupado pelo blocking por abs(valor) — alvo da lente Arquitetural/Performance."
+    },
+    {
+      "phase": 0,
+      "criterion": "use_cases_complete",
+      "met": true,
+      "details": "5 casos de uso com ator/objetivo/fluxo/exemplo concreto: UC-1 importar fonte nova; UC-2 reimportar arquivo sobreposto (idempotência); UC-3 duplicata cross-source vira pendência e não fusão; UC-4 conciliar contra o livro com os 5 estados; UC-5 resolver pendência e ter a decisão respeitada na reexecução. Mais 7 casos de borda: arquivo vazio, OFX malformado, CSV com encoding errado, valor zero, estorno, colisão legítima no mesmo arquivo, bloco degenerado de tarifas iguais."
+    },
+    {
+      "phase": 0,
+      "criterion": "vocabulary_agreed",
+      "met": true,
+      "details": "13 termos com definição operacional, exemplo e sinônimo PROIBIDO, persistidos em specs/domain/glossario.md. Distinção crítica fixada: 'transação' (extrato) vs 'lançamento' (livro interno) — usar um pelo outro é proibido. 8 invariantes de domínio (I1-I8) declarados. Termos vagos do enunciado mapeados para forma concreta."
+    },
+    {
+      "phase": 0,
+      "criterion": "out_of_scope_clear",
+      "met": true,
+      "details": "5 exclusões confirmadas pelo operador via AskUserQuestion, cada uma com razão: categorização contábil automática (vetor de scope creep — todos os concorrentes têm); casamento automático 1:N/N:1 (viram pendência, não são ignorados); multi-moeda/câmbio (contamina comparação exata de valor); UI web/multiusuário/auth (superfície é CLI local monousuário); CAMT.053 e API de agregadora (não agregam classe nova de problema)."
+    },
+    {
+      "phase": 0,
+      "criterion": "tech_feasibility",
+      "met": true,
+      "details": "VERIFICADO EMPIRICAMENTE, não assumido, com execução real na máquina alvo: Python 3.12.1 (ofxtools exige >=3.10) OK; sqlite3/decimal/csv/hashlib/difflib presentes na stdlib, SQLite 3.41.2 OK; pip install --dry-run resolveu ofxtools-1.1.1 e rapidfuzz-3.14.5 (wheel manylinux cp312) OK. Mecanismo de maior risco (parsing OFXv1 SGML, não-XML) coberto por lib madura em vez de parser à mão. NENHUMA capacidade essencial ausente — sem BLOCKER. Orçamento de desempenho verificado analiticamente: comparação O(n²) de 50k = 1,25e9 pares é inviável, logo blocking é REQUISITO e não otimização (documentado em specs/technical/parametros-matching.md)."
+    },
+    {
+      "phase": 0,
+      "criterion": "implementation_feasibility",
+      "met": true,
+      "details": "Avaliação por componente: TIER 1 — parsing OFX (ofxtools, 10+ anos de dados reais validados, entrega Decimal/datetime) e similaridade de string (rapidfuzz, Jaro-Winkler/Levenshtein em C). TIER 2 — blocking e scoring probabilístico (Fellegi-Sunter 1969, formulação matemática completa depositada em specs/references/fontes-externas.md; padrão de identidade de origem persistida portado de ledger-autosync/beancount-import). Código próprio sobre spec depositada — perfis CSV declarativos, dedup em camadas L0-L5, motor de conciliação, fila de pendências, gerador de dataset. NENHUM componente Tier 3 → nenhum PoC obrigatório antes da Fase 1."
+    },
+    {
+      "phase": 0,
+      "criterion": "specs_populated",
+      "met": true,
+      "details": "5 de 9 diretórios populados: domain/glossario.md (13 termos, 8 invariantes); references/fontes-externas.md (spec OFX com escopo de unicidade do FITID e contra-evidência de instabilidade, Fellegi-Sunter com fórmulas, blocking, taxonomia de exceções de conciliação — todos com URL); technical/parametros-matching.md (P1-P9 com fonte por parâmetro, orçamento de desempenho, camadas de precedência L0-L5); competitors/analise.md (ledger-autosync, beancount-import, rustledger, ledger-importer, ferramentas de mercado); validation/criterios-aceitacao.md (VAL-1..VAL-8 e ACC-1..ACC-6 + seção anti-falsa-cobertura). Vazios: examples, design, models, datasets — os três primeiros são alvo da Fase 1, datasets é produzido pelo gerador sintético na Fase 5."
+    },
+    {
+      "phase": 0,
+      "criterion": "technical_scientific_research",
+      "met": true,
+      "details": "CIENTÍFICO: modelo de Fellegi-Sunter (1969) para record linkage — probabilidades m/u, fator de Bayes K=m/u, peso parcial ω=log2(K), fórmula posterior completa, com a advertência do autor de operar sobre match weight e não sobre probabilidade convertida; blocking/indexação por disjunção (arXiv:1603.07816, Journal of Privacy and Confidentiality; R Journal 2026). TÉCNICO: especificação OFX — campos obrigatórios de STMTTRN, enum de TRNTYPE, formato de DTPOSTED, e o ponto decisivo: FITID é único DENTRO DA CONTA e NÃO entre instituições, logo a chave é (FI, conta, FITID); contra-evidência documentada de FITIDs instáveis entre downloads (blog Quinthar/D. Barrett, Akretion/LCL, bug HomeBank #1942379). Benchmarks/maturidade: ofxtools (10+ anos de dados reais, OFXv1 SGML e OFXv2 XML, só stdlib). COMPETITIVO: ledger-autosync (metatags ofxid/csvid), beancount-import (ofx_fitid, semi-automático com humano no laço), rustledger, ledger-importer, ferramentas de conciliação de mercado (faixas 95/85/70, blocking antes do fuzzy, taxonomia de 5 exceções, 40-60% dos não-casados são diferença de tempo). Todo parâmetro numérico tem fonte citada com URL em specs/technical/parametros-matching.md — regra 'não implementar algoritmo sem referência bibliográfica verificável' satisfeita."
+    },
+    {
+      "phase": 1,
+      "criterion": "patterns_defined",
+      "met": true,
+      "details": "Coletados em 2 chamadas AskUserQuestion e confirmados pelo operador em tabela-resumo exibida em chat: Hexagonal (Ports & Adapters); KISS+YAGNI, SOLID (DIP/OCP), DDD tático; single-threaded; Strategy, Chain of Responsibility, Adapter; Domain Model; Repository + Data Mapper. Persistidos no ProjectSpec estruturado via update_project_spec."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_responsibility",
+      "met": true,
+      "details": "12 módulos, cada um com uma responsabilidade única declarada na tabela de specs/technical/architecture.md: domain-model (entidades e invariantes), canonicalizer (normalização e hash), ofx-adapter, csv-adapter (perfis declarativos), repository (persistência), matcher (blocking + score), dedup-engine (cadeia L0-L5), reconcile-engine (casamento 1:1 e 5 estados), review-queue (pendências e resoluções), reporter (relatórios e sub-rotulação de órfãos), cli (composition root), fixture-generator (dataset sintético + ground truth). Granularidade E=I0/C verificada: cada módulo é implementável em uma interação isolada tendo apenas os contratos das dependências."
+    },
+    {
+      "phase": 1,
+      "criterion": "interfaces_defined",
+      "met": true,
+      "details": "Assinaturas com tipos de entrada/saída na coluna 'interface' da tabela de módulos. Portas de entrada: FonteDeExtrato (implementada por ofx-adapter e csv-adapter). Portas de saída: RepositorioTransacoes, RepositorioCasamentos, RepositorioResolucoes (implementadas por repository e por dublês em memória nos testes). Contrato crítico: DecisaoDedup sempre carrega a camada que decidiu (L0-L5) e a evidência — sem isso não há auditoria de falso positivo, e VAL-2 exige zero."
+    },
+    {
+      "phase": 1,
+      "criterion": "dependencies_explicit",
+      "met": true,
+      "details": "Coluna 'depends-on' preenchida para os 12 módulos. Grafo acíclico: domain-model é folha (sem dependências); canonicalizer/ofx-adapter/csv-adapter/repository/matcher dependem só de domain-model; dedup-engine e reconcile-engine dependem de domain-model+matcher+repository; review-queue e reporter de domain-model+repository; cli depende de todos (composition root); fixture-generator de domain-model+csv-adapter. Fronteira dura declarada: o núcleo não importa ofxtools, sqlite3 nem csv."
+    },
+    {
+      "phase": 1,
+      "criterion": "assumptions_listed",
+      "met": true,
+      "details": "7 premissas A1-A7 listadas em specs/technical/architecture.md com grau de fragilidade e origem. Quatro classificadas como fragilidade ALTA e explicitamente entregues como alvo da Fase 2: A1 (FITID estável — contra-evidência bibliográfica), A4 (blocking mantém b<=50 — bloco degenerado de tarifas reintroduz O(n²)), A6 (descrição da contraparte comparável entre fontes), A7 (abs(valor) como chave de bloco confundindo estorno com duplicata)."
+    },
+    {
+      "phase": 1,
+      "criterion": "architecture_doc",
+      "met": true,
+      "details": "specs/technical/architecture.md escrito, com seção '## V(1) — Módulos' contendo a tabela de 12 linhas no formato (id M-01..M-12 | module | responsibility | interface | depends-on), seguida das fronteiras, das interfaces por contrato, da lista de premissas A1-A7 e do escopo negativo. Nomes da coluna module são a chave estável para a matriz de cobertura da Fase 2 e para a implementação da Fase 5."
+    },
+    {
+      "phase": 1,
+      "criterion": "tech_100_scope",
+      "met": true,
+      "details": "Tabela comparativa (Python 3.12 CLI × Node+TypeScript × serviço HTTP) exibida em chat contra os requisitos da Fase 0. Python cobre 100% do escopo sem cortar nenhum requisito — critério 'se a tecnologia força redução de escopo, a tecnologia está errada' satisfeito. Premissas tecnológicas VERIFICADAS com evidência e não assumidas: Python 3.12.1 executado na máquina alvo, sqlite3/decimal/csv presentes, pip install --dry-run resolveu ofxtools-1.1.1 e rapidfuzz-3.14.5. Nenhuma divisão de escopo progressivo — DELIVERY TARGET é 'Produto completo' e não existe bloqueio técnico (zero componentes Tier 3)."
+    },
+    {
+      "phase": 1,
+      "criterion": "modules_adherent_patterns",
+      "met": true,
+      "details": "Aderência módulo a padrão: Hexagonal — ofx-adapter/csv-adapter implementam a porta de entrada FonteDeExtrato, repository implementa as portas de saída, cli é o composition root, núcleo puro sem I/O. DIP — dedup-engine e reconcile-engine dependem de portas, não de ofxtools/sqlite3. OCP — novo banco = novo perfil declarativo no csv-adapter, sem alterar código. Chain of Responsibility — dedup-engine materializa a precedência L0→L5. Strategy — algoritmos de score no matcher e camadas intercambiáveis. Adapter — os três adaptadores. Domain Model — invariantes I1-I8 garantidos na construção em domain-model. Repository + Data Mapper — repository traduz objeto de domínio para linha SQLite e permite dublê em memória. Single-threaded — nenhum módulo introduz concorrência."
+    },
+    {
+      "phase": 2,
+      "criterion": "activated_lenses_recorded",
+      "met": true,
+      "details": "Redeclaradas para a Iteração 2 contra a nova arquitetura, não herdadas: 10 condicionais ativadas. MUDANÇA em relação à Iteração 1: 'Migration / Coexistence' passou a ser ATIVADA porque V(2) introduziu sinal que V(1) não tinha — esquema versionado com migrar() sobre base contábil acumulada e audit-log append-only, ou seja, uma transição real de antigo para novo com pergunta de rollback em aberto. Seguem não ativadas por ausência de sinal: Ethical / Human Impact (decide sobre registros de transação, não sobre pessoas) e Game Theory (operador único, sem API pública nem atores com incentivos conflitantes)."
+    },
+    {
+      "phase": 2,
+      "criterion": "lenses_applied",
+      "met": true,
+      "details": "17 lentes (7 universais + 10 condicionais) aplicadas aos 12 módulos de V(2), em passagens independentes e modo generativo. Achados por módulo: matcher 7, audit-log 7, store 6, domain-model 5, cli 1, csv-adapter 1, dedup-engine 1, fixture-generator 1, ofx-adapter 1, reconcile-engine 1, reporter 1, review-queue 2. Nenhuma lente ficou sem achado."
+    },
+    {
+      "phase": 2,
+      "criterion": "coverage_matrix",
+      "met": true,
+      "details": "Seção '## Iteração 2 — V(3)' ANEXADA a specs/design/coverage-matrix.md sem sobrescrever a Iteração 1, com 36 achados em uma linha por achado e ids únicos continuando a numeração do projeto (ASM-09..12, ARC-07..08, IMP-06..10, SCI-06..07, SEC-07..08, PRF-06..07, REG-04, RES-06..07, UX-06..07, MIG-01..03, SUS-04, PRC-06..07, GOV-05..06, OBS-05, CTL-04, LIN-06..08, MEC-05). Inclui nota de rastreabilidade explicando que V(3) é o carimbo do contador do engine e corresponde à seção '# V(2)' de architecture.md."
+    },
+    {
+      "phase": 2,
+      "criterion": "criticals_identified",
+      "met": true,
+      "details": "10 críticos, 24 importantes, 2 sugestões (contra 20/41/15 na Iteração 1). Os 10 críticos: ASM-09 (idempotência de VAL-5 reduzida ao arquivo byte-idêntico; UC-2 caiu no dedup probabilístico), ASM-10 (ChaveEvento depende da descrição instável que ASM-02 já denunciou), IMP-06 (mudar a regra de normalização invalida toda ChaveEvento gravada, sem reindexação), IMP-09 (desempate por id não determinístico entre execuções, quebra VAL-5), IMP-10 (mitigação de XXE escrita sem verificar se ofxtools expõe o controle), SCI-06 (calibrar m/u contra ground truth sintético é validação circular), PRF-06 (teto de bloco protege VAL-4 sacrificando VAL-1, sem regra de arbitragem), RES-06 (fronteira transacional audit-log vs store indeclarada, auditabilidade falha justamente na falha), MIG-01 (migrar() só avança sobre registro contábil, e a trilha append-only impede corrigir o que a migração errar), PRC-06 (Resultado × Situacao quebrou a verificabilidade de VAL-3 conforme escrito na Fase 0)."
+    },
+    {
+      "phase": 2,
+      "criterion": "concentration_analyzed",
+      "met": true,
+      "details": "Feita e exibida em chat, registrada em decisão. Por módulo: matcher 7 e audit-log 7, store 6, domain-model 5 — audit-log, o módulo novo, já concentra 7 lentes. Por lente: distribuição plana, Assumptions caiu de 8 para 3 módulos e nenhuma lente domina. Padrão dominante mudou de 'premissas ocultas' para 'correção que desloca o problema', com cinco casos nomeados (ASM-09, ASM-10, PRF-06, PRC-06, ARC-08)."
+    },
+    {
+      "phase": 3,
+      "criterion": "criticals_addressed",
+      "met": true,
+      "details": "Os 10 críticos da Iteração 2 endereçados por id em V(3): ASM-09 e IMP-09 e LIN-07 pela ChaveNatural com ordinal (R4) e pela separação de ja_presentes_por_chave vs ja_presentes_por_dedup; ASM-10 e IMP-06 porque ChaveEvento deixou de ser armazenada e L0 passou a ser chaveado por ChaveNatural, que não depende da descrição normalizada; IMP-10 verificado empiricamente (entidades externas já recusadas pela plataforma; expansão de entidades internas ganha mecanismo próprio no ofx-adapter); SCI-06 pela remoção da estimação m/u em favor de rubrica determinística; PRF-06 e PRC-06 pela precedência corretude sobre desempenho, excedente de bloco virando pendência e projeção estado_val3; RES-06 pela unidade de trabalho compartilhada; MIG-01 por cópia de segurança antes de migrar e recusa de esquema mais novo que o binário."
+    },
+    {
+      "phase": 3,
+      "criterion": "important_decided",
+      "met": true,
+      "details": "Os 24 importantes da Iteração 2 têm decisão por id em V(3): 23 resolvidos e 1 mantido como consequência de dívida já aceita pelo operador (UX-07, efeito combinado da ausência de --dry-run e de quarentena, agora registrado explicitamente em vez de implícito). Dois com execução pendente ANTES da Fase 5 e não depois: ASM-12 e SCI-07 exigem depositar em specs/technical, com fonte, a rubrica de pontos por campo e as janelas de compensação por instrumento (PIX, TED, cartão) — sem isso a Fase 5 cairia em AP7. As 2 sugestões (SEC-08, GOV-06) foram resolvidas."
+    },
+    {
+      "phase": 3,
+      "criterion": "scope_preserved",
+      "met": true,
+      "details": "Checklist exibido em chat com os 4 itens ✅. (1) Requisitos da Fase 0 cobertos — e VAL-3 voltou a ser verificável COMO ESCRITO, via projeção estado_val3, revertendo a quebra de rastreabilidade que V(2) tinha introduzido. (2) Nenhuma feature acrescentada nesta rodada; ao contrário, um aparato algorítmico foi removido. (3) O que o sistema faz não mudou — a rubrica substitui o modelo probabilístico sem alterar comportamento externo. (4) UC-1 a UC-5 válidos, e o UC-2 voltou a ser atendido de fato: a ChaveNatural com ordinal restaura a idempotência na reimportação sobreposta que V(2) havia perdido."
+    },
+    {
+      "phase": 3,
+      "criterion": "architecture_simplified",
+      "met": true,
+      "details": "Simplificou por REMOÇÃO, o caso mais forte de antídoto ao AP2 em todo o ciclo: a estimação probabilística de pesos m/u saiu da implementação e foi substituída por uma rubrica determinística declarada — menos maquinário, mais auditabilidade, e sem a validação circular que SCI-06 apontou. Outras três simplificações: ChaveEvento derivada sob demanda em vez de armazenada (elimina o problema de reindexação em vez de criar um mecanismo de reindexação); excedente de bloco virando pendência em vez de refino de chave (torna a especificação do refino desnecessária, IMP-07 deixa de existir); gerador e parser lendo o MESMO arquivo de perfil (elimina a deriva sem reintroduzir a dependência). Contagem de módulos constante: 12 -> 12, nenhum acrescentado."
+    },
+    {
+      "phase": 4,
+      "criterion": "exit_criteria_p2p3",
+      "met": true,
+      "details": "Verificado via get_exit_criteria: Fase 2 com 5/5 met e Fase 3 com 4/4 met, ambos após DUAS iterações completas do laço 2-3. Relatório de convergência exibido em chat com os 6 itens. Item 3: as 4 perguntas da Fase 1 seguem respondidas em V(3) — decomposição de 12 módulos com fronteira declarada, contratos tipados com portas e unidade de trabalho explícita, premissas A2/A3/A5 válidas e A1/A4/A6 neutralizadas por desenho com A7 aberta e declarada, escopo negativo com 9 itens no ProjectSpec. Item 4: nenhuma falha sistêmica não resolvida — a concentração de Assumptions caiu de 8/12 módulos na iteração 1 para 3/12 na iteração 2, e as duas concentrações de módulo (repository/matcher, depois matcher/audit-log) foram tratadas por causa-raiz."
+    },
+    {
+      "phase": 4,
+      "criterion": "safeguards_s1_s5",
+      "met": true,
+      "details": "check_all_safeguards: 2 aplicáveis, 0 violados, 0 avisos. S2 (o critério de parada pertence ao operador) honrado em três decisões reais e não simbólicas: alvo de entrega na Fase 0, retorno ao laço 2-3 na iteração 1, avanço à Fase 4 na iteração 2 — em todas o operador podia sobrepor a recomendação. S4 (human-AV em cada gate) honrado: o operador validou o teach-back escrito da Fase 0, a arquitetura V(1), a decisão de escopo sobre as quatro capacidades sugeridas pela crítica (rejeitando três) e as duas recomendações pós-ciclo. S1, S3 e S5 não retornados como aplicáveis a esta fase pelo engine. specs/ com 6 de 9 diretórios populados, incluindo os quatro que a Fase 5 consome; datasets fica vazio por ser SAÍDA do fixture-generator na Fase 5, não insumo."
+    },
+    {
+      "phase": 5,
+      "criterion": "all_modules",
+      "met": true,
+      "details": "Os 12 módulos de V(3) presentes no código, com os NOMES da tabela de arquitetura: domain-model (t26/domain/model.py), ofx-adapter (t26/adapters/ofx.py), csv-adapter (t26/adapters/csv_fonte.py + perfil.py), store (t26/persistence/store.py), audit-log (t26/persistence/auditoria.py), matcher (t26/matching/matcher.py), dedup-engine (t26/engines/dedup.py), reconcile-engine (t26/engines/reconcile.py), review-queue (t26/review/fila.py), reporter (t26/report/reporter.py), cli (t26/cli.py), fixture-generator (t26/fixtures/gerador.py). Todo requisito de specs/validation tem pelo menos um módulo responsável, verificado item a item e exibido em chat."
+    },
+    {
+      "phase": 5,
+      "criterion": "specs_consulted",
+      "met": true,
+      "details": "R4 aplicado, com duas evidências de que a consulta foi real e não ritual. (1) Todo parâmetro numérico do matcher cita a linha de origem em specs/technical: TETO_BLOCO, CORTE_FUSAO/CORTE_REVISAO (P3/P5 de parametros-matching.md), SIM_ALTA/SIM_MEDIA e a rubrica de pontos por campo (rubrica-score.md §1), JANELA_POR_INSTRUMENTO (rubrica-score.md §2, com fonte citada por instrumento). Nenhuma constante entrou sem linha na spec. (2) A correção do defeito mais grave da rodada veio de specs/references/fontes-externas.md §2.2 — indexação por DISJUNÇÃO —, que eu havia depositado na Fase 0 e ignorado ao implementar chave de bloco única, o que anulava silenciosamente a detecção cross-source entre contas. Duas specs foram ATUALIZADAS para não divergir do código: a cadeia L0-L5 de parametros-matching.md (L1 e L2 colapsaram após o redesenho R4) e as duas regras de precedência da rubrica (veto de mesma origem e piso de evidência forte)."
+    },
+    {
+      "phase": 5,
+      "criterion": "s6_applied",
+      "met": true,
+      "details": "TIER 1 (lib madura aprovada na Fase 1, usada em vez de código próprio): ofxtools no ofx-adapter — parser de OFXv1 SGML à mão foi rejeitado como AP7 e a decisão se provou certa quando a lib recusou meu próprio fixture não conforme por falta de SIGNONMSGSRSV1; rapidfuzz no matcher para Jaro-Winkler. TIER 2 (algoritmo documentado, portado da referência): blocking por disjunção de arXiv:1603.07816 via specs/references §2.2; guloso estável com desempate declarado no reconcile-engine, com o ótimo húngaro rejeitado por custo O(n³) documentado em PRF-04. TIER 3: NENHUM — a estimação probabilística de m/u, que seria o único candidato, foi REMOVIDA em V(3) por validação circular (SCI-06) e substituída pela rubrica determinística. S7 (micro-verificação adversarial após cada módulo) rodou e produziu resultado: derrubou a primeira mitigação de encoding do csv-adapter, que eu havia afirmado funcionar e não funcionava, e encontrou duas violações de critério de aceitação na rubrica (falso positivo em colisão legítima e falso negativo em cross-source) ANTES da Fase 6. Sete diagnósticos de causa-raiz registrados durante a fase, cada um nomeando a causa antes da correção."
+    },
+    {
+      "phase": 5,
+      "criterion": "ui_runnable",
+      "met": true,
+      "details": "CONFIRMAÇÃO LITERAL DO OPERADOR via AskUserQuestion, após lhe ser entregue o roteiro EXECUTAR.md com os casos UC-1 a UC-5: 'Executei e funcionou' — o operador rodou ao menos um caso de uso da Fase 0 fim a fim pela CLI e a ferramenta se comportou como o roteiro descreve. Não marcado com base nas execuções do próprio agente, que existem mas não substituem human-AV (AP5)."
+    },
+    {
+      "phase": 6,
+      "criterion": "tests_passing",
+      "met": true,
+      "details": "41 de 41 testes verdes, executados nesta sessão com `python3 -m pytest` e saída lida (S4: executar e verificar, não presumir). Inclui o teste de carga com 50.000 transações reais, cronometrado. Durante a fase a suíte esteve VERMELHA duas vezes e as duas causas foram nomeadas antes da correção: quatro falhas por expectativa errada minha sobre a rubrica de conciliação, e uma falha por DEFEITO REAL de implementação em VAL-7 (a camada L0 nunca disparava porque _resolucoes_gravadas indexava por pendencia_id enquanto a consulta usava a chave do par)."
+    },
+    {
+      "phase": 6,
+      "criterion": "manual_testing",
+      "met": true,
+      "details": "Realizado pelo OPERADOR, não simulado pelo agente. Relato literal: 'Executei e funcionou' (execução dos casos de uso pela CLI, registrada como ui_runnable na Fase 5) e 'parece ok para mim, podemos fechar' (aceitação do produto, Fase 6). Caracterização honesta da evidência: foi validação de aceitação e não varredura exploratória exaustiva — ver a decisão de testing 'manual-done' para a lista do que ficou sem avaliação humana registrada. A decisão de encerrar é do operador (S2)."
+    },
+    {
+      "phase": 6,
+      "criterion": "edge_cases",
+      "met": true,
+      "details": "Casos de borda cobertos por teste automatizado executado e verde, com o critério exato de cada um: OFX malformado abortando e nomeando o arquivo; conciliar antes de importar o livro devolvendo código de saída 3 e não 0 nem 1; arquivo inexistente devolvendo código 2, medido via subprocess porque é o valor que um script veria; CSV com débito e crédito ambos preenchidos e ambos vazios (os dois casos degenerados de LIN-08); arquivo UTF-8 declarado como cp1252 recusado em vez de virar mojibake silencioso; OFX com DOCTYPE recusado; ação da família errada na fila de revisão; lote de resolução sem confirmação do tamanho; base de esquema mais novo que o binário recusada; falha no meio de um lote revertendo trilha e estado juntos; desfazer que não apaga o registro anterior; bloco degenerado acima do teto virando pendência e não item descartado; estorno com sinal oposto vetado; colisão legítima de duas linhas do mesmo arquivo preservada; campo de fórmula saneado na exportação CSV. Fora dessa cobertura, e declarado: interrupção por Ctrl-C no meio da importação seguida de reimportação não foi exercitada — a atomicidade por lote do store torna o resultado previsível em teoria, mas isso é raciocínio e não medição."
+    },
+    {
+      "phase": 7,
+      "criterion": "specs_updated",
+      "met": true,
+      "details": "specs/validation/criterios-aceitacao.md ganhou a seção 'Resultados medidos — Fase 7' com esperado × obtido para VAL-1..VAL-8 e a evidência de cada linha, mais a seção 'O que o número não diz', que registra as duas limitações da medição: o dataset é sintético e de distribuição escolhida por nós, e VAL-4 foi medido em banco vazio enquanto SUS-01 aponta crescimento de custo com a história. specs/technical/parametros-matching.md ganhou 'Decisões finais e o que foi descartado', com seis alternativas rejeitadas e o porquê de cada uma (estimação m/u por validação circular, húngaro por O(n³), refino de chave por trocar falso negativo por desempenho, detecção automática de layout por heurística, hash canônico como identidade, chave de bloco única por impedir cross-source), mais os valores efetivos ao fim do ciclo. A cadeia L0-L5 e a rubrica já haviam sido realinhadas ao código durante a Fase 5, quando divergiram. specs/references/fontes-externas.md permanece válido: nenhuma referência nova foi descoberta na implementação além do comportamento de xml.etree, que está registrado nas lições."
+    },
+    {
+      "phase": 7,
+      "criterion": "lessons_documented",
+      "met": true,
+      "details": "specs/references/lessons.md escrito, 121 linhas, cinco lições sobre ESTE projeto e não sobre a metodologia: (1) identidade da observação não é identidade do evento, com a contradição I6 vs I8 e o fracasso da primeira tentativa de separá-las; (2) critério de zero-defeito só é verificável se o dataset puder produzir o defeito, o que justifica o fixture-generator como módulo; (3) calibrar contra o próprio dataset sintético é validação circular, e a resposta foi remover o aparato probabilístico; (4) peculiaridades da stack — ofxtools recusa não conformes, xml.etree recusa entidades externas mas expande internas, codecs de byte único não sinalizam encoding errado, delimitador colide com o conteúdo; (5) corrigir a classe de defeito no desenho não imuniza a implementação, com os três O(n²) reintroduzidos e o CTL-01 projetado certo e implementado errado. Inclui a tabela de desfecho das sete premissas (A1 e A4 neutralizadas por desenho, A6 confirmada como problema real, A7 SEGUE ABERTA, A2/A3/A5 mantidas) e quatro itens do que medir primeiro num v2.0."
+    },
+    {
+      "phase": 7,
+      "criterion": "human_feedback",
+      "met": true,
+      "details": "Coletado via AskUserQuestion na Fase 7. Avaliação do produto: 'Atende — fecho o ciclo'. Decisão de produto sobre a rubrica: manter o comportamento conservador que exige similaridade de contraparte para conciliação automática. Somam-se aos retornos humanos das fases anteriores: validação do teach-back na Fase 0, aprovação da arquitetura V(1) na Fase 1, a decisão de escopo que rejeitou três das quatro capacidades sugeridas pela crítica na Fase 3, as duas decisões pós-ciclo do laço 2-3, a escolha de continuar na mesma sessão nas Fases 4 e 6, e a confirmação empírica de execução ('Executei e funcionou') mais a aceitação final ('parece ok para mim, podemos fechar')."
+    }
+  ],
+  "safeguards": [
+    {
+      "id": "S0",
+      "status": "ok"
+    },
+    {
+      "id": "S1",
+      "status": "ok"
+    },
+    {
+      "id": "S2",
+      "status": "ok",
+      "details": "Stopping Criterion: behavioral check — requires agent attention. Stopping criterion belongs to the USER, not the AI.",
+      "lastChecked": "2026-08-11T01:29:18.679Z"
+    },
+    {
+      "id": "S3",
+      "status": "ok"
+    },
+    {
+      "id": "S4",
+      "status": "ok",
+      "details": "Explicit Verification (mandatory human-AV): behavioral check — requires agent attention. Human-AV is irreplaceable at each gate. Automated tests verify formalizable properties. Semantic adequacy, usability, and domain correctness REQUIRE human judgment. P0: human validates synthesis. P2: human arbitrated trade-offs. P4: human confirms convergence. P6: NEVER assume tests passed — execute and verify + mandatory manual exploratory testing.",
+      "lastChecked": "2026-08-11T01:29:18.679Z"
+    },
+    {
+      "id": "S5",
+      "status": "ok"
+    },
+    {
+      "id": "S6",
+      "status": "ok"
+    },
+    {
+      "id": "S7",
+      "status": "ok"
+    }
+  ],
+  "loopCounter": {
+    "pattern": "",
+    "count": 0,
+    "firstSeen": "",
+    "lastSeen": "",
+    "lastDiagnosis": "2026-08-11T02:24:52.080Z"
+  },
+  "createdAt": "2026-08-10T23:55:13.809Z",
+  "updatedAt": "2026-08-11T02:38:13.093Z",
+  "history": [
+    {
+      "from": 0,
+      "to": 1,
+      "timestamp": "2026-08-11T00:56:55.732Z",
+      "criteriaMet": [
+        "score_90",
+        "user_confirmed",
+        "ambiguities_zero",
+        "use_cases_complete",
+        "vocabulary_agreed",
+        "out_of_scope_clear",
+        "tech_feasibility",
+        "implementation_feasibility",
+        "specs_populated",
+        "technical_scientific_research"
+      ]
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "timestamp": "2026-08-11T01:06:48.673Z",
+      "criteriaMet": [
+        "patterns_defined",
+        "modules_responsibility",
+        "interfaces_defined",
+        "dependencies_explicit",
+        "assumptions_listed",
+        "architecture_doc",
+        "tech_100_scope",
+        "modules_adherent_patterns"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-11T01:13:52.758Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 2,
+      "timestamp": "2026-08-11T01:19:40.468Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "timestamp": "2026-08-11T01:23:45.384Z",
+      "criteriaMet": [
+        "activated_lenses_recorded",
+        "lenses_applied",
+        "coverage_matrix",
+        "criticals_identified",
+        "concentration_analyzed"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "timestamp": "2026-08-11T01:27:59.286Z",
+      "criteriaMet": [
+        "criticals_addressed",
+        "important_decided",
+        "scope_preserved",
+        "architecture_simplified"
+      ]
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "timestamp": "2026-08-11T01:31:15.880Z",
+      "criteriaMet": [
+        "exit_criteria_p2p3",
+        "safeguards_s1_s5"
+      ]
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "timestamp": "2026-08-11T02:18:35.990Z",
+      "criteriaMet": [
+        "all_modules",
+        "specs_consulted",
+        "s6_applied",
+        "ui_runnable"
+      ]
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "timestamp": "2026-08-11T02:31:05.924Z",
+      "criteriaMet": [
+        "tests_passing",
+        "manual_testing",
+        "edge_cases"
+      ]
+    }
+  ],
+  "lastPhaseStateCheck": "2026-08-10T23:55:31.611Z",
+  "lastTestOutcome": {
+    "outcome": "pass",
+    "phase": 6,
+    "at": "2026-08-11T02:31:00.609Z"
+  }
+}

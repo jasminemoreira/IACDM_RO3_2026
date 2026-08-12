@@ -1,0 +1,4 @@
+# Viola INV-2. Esperado: erro nomeando o dominio financeiro.
+dominio: financeiro
+datasets:
+  - nome: receita

@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa à API Anthropic (módulo upstream) com chamadas longas e premissa não verificada sobre presença obrigatória de usage."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Superfície operacional para pessoa via SPA (M-10) e endpoints de configuração protegidos por senha de operador (M-09)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema em fase inicial (V1) sem indicação de substituição ou migração de sistema produtivo legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide, aloca e consome recursos de IA (tokens/custo) cujo gasto cresce com o uso, exigindo controle de teto e estimativa de pior caso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Decisões automatizadas referem-se a alocação de orçamento e corte técnico de requisições, não a pontuação, classificação ou moderação de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multi-etapa com transições de estado explícitas (reserva → reconciliação), caminhos de exceção definidos e política de reservas órfãs diferida para Fase 2."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registro de eventos de uso, rastreamento de consumo por entidade, autenticação de operador e reconciliação idempotente exigem atribuição e auditoria das ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Ambiente de produção com requisitos operacionais explícitos (painel de consumo, controle de tetos, premissas não verificadas sobre relógio e concorrência) que exigem diagnóstico em tempo real."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de correção entre estado provisório (reservar) e custo real (reconciliar), com risco de desvio de estado por falhas de reconciliação ou deriva de relógio (A4)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Pressuposto de cooperação dos clientes consumidores (A5 e escopo negativo sobre retries) e risco estratégico de contornamento do gateway se possuírem a chave real do provedor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Interfaces são internas a um monolito modular presumidamente desenvolvido por única equipe, sem contratos entre times independentes ou protocolos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias críticas definidas na seção crítica sem await, premissas de relógio e concorrência do SQLite, e políticas diferidas que impactam manutenção e evolução de longo prazo."
+    }
+  ]
+}

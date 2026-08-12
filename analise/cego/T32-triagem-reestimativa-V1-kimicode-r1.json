@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa concreta: better-sqlite3/SQLite como persistência (M-09) — falha de disco, corrupção ou timeout de lock afetam todas as escritas transacionais."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 define 6 telas server-side operadas por pessoas (abrir, fila, triar, chamado, recorrer, julgar) — superfície humana explícita."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema greenfield: o texto não menciona nenhum sistema legado sendo substituído nem coexistência com produção anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso cujo custo cresça com o uso: nó único, SQLite local, sem IA, sem processamento de alto volume nem infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão automatizada sobre pessoas: P = matriz(impacto, urgência) classifica chamados de solicitantes sem veto humano na triagem automática, com recurso como mecanismo de correção."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multi-ator com máquina de estados explícita (abrir→triar→reclassificar→reconhecer→encerrar) e rito de recurso com prazos, atores distintos (solicitante, triador, gestor) e caminhos de exceção (inadmissibilidade B-3/B-5)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Sistema registra o que depois será auditado: trilha somente-inserção (M-07), permissão com motivo (M-08) e premissa A4 sustentando atribuição de autoria de cada ação."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema web em produção com requisito operacional tempo-dependente (violação de SLA em horas corridas) e nenhum mecanismo de detecção de degradação declarado na arquitetura."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sem sincronização de estado, sem configuração dinâmica em runtime (matriz é dado estático carregado) e nenhum laço de feedback autocorrretivo — reclassificação é ação humana, não sinal de erro do sistema."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Atores independentes com incentivos potencialmente desalinhados: o solicitante declara impacto/urgência que definem sua própria prioridade, e a premissa A7 ('boa-fé; abuso é visível, não punido') é exatamente a hipótese de cooperação que a lente interroga."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface explícitos e carregados de regra entre componentes (12 módulos com interfaces declaradas) e uma API HTTP pública com validação e rejeição de campos — ambiguidade de contrato é falha possível."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema desenhado para evolução e manutenção de longa vida: matriz, metas de SLA e prazos do rito carregados como dado (M-02) indicam variação esperada das regras sem mudança de código — as tolerâncias do desenho são verificáveis."
+    }
+  ]
+}

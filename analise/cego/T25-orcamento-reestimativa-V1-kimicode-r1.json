@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa explícita: API Anthropic via M-07 upstream, com premissas sobre presença de `usage` (A2) e chamada longa fora da transação — falha, lentidão ou dado inesperado do provedor estão no caminho crítico."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a SPA do painel (M-10) e a painel-api com login de operador (M-09), onde o operador lê consumo/saldo/corte e configura tetos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield); nada na arquitetura substitui ou modifica um sistema de produção existente, nem há caminho de transição descrito."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema existe exatamente para decidir e alocar um recurso cujo custo cresce com o uso: orçamento em moeda para chamadas de LLM, com reserva de pior caso e teto global/por entidade."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas (scoring, classificação, moderação); o corte incide sobre consumo de API de aplicações, não sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multi-etapa com estados e transições explícitas: reservar → enviar → reconciliar/liberar, contador como par (confirmado, reservado), reserva órfã e caminhos de exceção (402/429, modelo sem preço)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso (M-08), mantém tetos por entidade e aceita configuração de tetos por operador autenticado (M-09) — ações e dados que alguém precisará auditar, atribuir e responder depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com requisito operacional explícito: o painel (M-09/M-10) existe para mostrar consumo, saldo, estado de corte e próximo reset sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sistema com realimentação e autocorreção: a reserva de pior caso gera um sinal de erro contra o custo real e a reconciliação o corrige; virada de janela (M-06) e reserva órfã são riscos clássicos de drift de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com incentivos divergentes: apps consumidores com chaves virtuais vs. operador; a premissa A5 reconhece que o gateway é contornável se o app tiver a chave real — o design assume cooperação que pode virar deserção estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface formais entre componentes independentes: assinaturas de `escrow.reservar/reconciliar`, o Adapter que traduz o formato `usage` da API Anthropic para o modelo interno, e os endpoints HTTP do gateway e da painel-api."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema modular concebido para evoluir (monolito modular, Strategy real/simulado, rate-card com vigência), com tolerância explícita entre estimativa de pior caso e custo real — variação é esperada, não apenas especificação exata."
+    }
+  ]
+}

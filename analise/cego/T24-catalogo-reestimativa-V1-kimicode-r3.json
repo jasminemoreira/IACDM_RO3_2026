@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependências externas de serviço (APIs, bancos, filas); o sistema só lê arquivos YAML locais e usa bibliotecas em processo, com escopo negativo explícito de rede e servidor."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI (M-11) com subcomandos, flag --json e códigos de saída; M-02 redige mensagens acionáveis e A9 agrega erros explicitamente para reduzir atrito do dono de domínio."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo construído do zero; nenhum sistema de produção existente é substituído ou modificado, e não há caminho de transição ou rollback em questão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema não aloca nem consome recurso cujo custo cresce com o uso: A7 limita o grafo a dezenas/centenas de datasets em memória, execução única por invocação, sem infraestrutura elástica nem processamento de alto volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisões automatizadas sobre pessoas (scoring, classificação, moderação); o sistema opera apenas sobre metadados técnicos de datasets e seus donos declarados."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Não há fluxos multi-ator, máquinas de estado ou processos de negócio: o carregamento é um pipeline linear e atômico (A3, contrato 1) sem transições de estado persistentes."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O objeto central do sistema é dados com donos distintos: resolve_owner por herança de domínio (M-03), INV-2/INV-3 exigem dono para todo domínio e dataset — é exatamente o que alguém precisará auditar e atribuir depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é um sistema em produção contínua: é uma CLI batch que recarrega tudo a cada execução (sem cache, sem watch, sem servidor), sem requisitos operacionais de detecção de degradação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há sincronização de estado, configuração em runtime que altere comportamento, nem laço de feedback/auto-correção: a validação (A8) é um portão de entrada, não um sinal de erro que o sistema corrige."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos donos de domínio independentes declaram arestas que referenciam datasets de outros domínios, e A1 assume como custo consciente que a mudança feita por um dono invalida arestas declaradas por outro — o design pressupõe cooperação entre atores independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos de interface suscetíveis a interpretação divergente: o formato YAML escrito por humanos de domínios distintos, a identidade `dominio.nome` com restrição de ambiguidade (A10) e a semântica exata de impacto (A5/A6) sobre a qual o critério de igualdade de conjuntos é medido."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Arquitetura modular explícita voltada a manutenção e evolução de longo prazo: tabela de módulos com depends-on, regra de dependência unidirecional borda→núcleo e Ports & Adapters justamente para tolerar variação nas bordas sem tocar o núcleo."
+    }
+  ]
+}

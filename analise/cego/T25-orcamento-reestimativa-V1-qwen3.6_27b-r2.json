@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência crítica síncrona do provedor Anthropic (M-07) e banco SQLite (M-08), com fluxo que exige fallback de reserva/reconciliação em caso de falha ou timeout na chamada upstream."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença de um painel web SPA (M-10) e interface de operador (M-09) que exige usabilidade para monitoramento de saldo, tetos e estado de corte."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Trata-se de um sistema novo (Fase 1) sem indicação de substituição ou coexistência com sistemas legados em produção."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca recursos financeiros (orçamento/teto) e computacionais (tokens de LLM) onde o custo escala diretamente com o uso, exigindo controle rigoroso de proporcionalidade."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas referem-se a limites técnicos e financeiros (corte de requisições), não a classificação, scoring ou moderação que impacte diretamente direitos ou status humanos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existência de um fluxo complexo de estados (reserva → envio → reconciliação) com transações atômicas e caminhos de exceção definidos para garantir a integridade do invariante do teto."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso (M-08) e atribui consumo a entidades específicas via identidade (M-02), criando trilha de auditoria para quem gastou e quanto."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Necessidade operacional de detectar degradação (ex: relógio desajustado, perdas de reserva) e diagnosticar incidentes via painel de consumo/saldo e logs de eventos em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de feedback fechado entre reserva (antes do gasto), execução e reconciliação (após o gasto) para corrigir desvios entre estimativa de pior caso e custo real, mantendo o estado sincronizado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Premissa A5 reconhece que atores externos (apps consumidores) podem tentar contornar o gateway se possuírem chaves reais, indicando risco de defeição estratégica frente a incentivos não alinhados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Definição rigorosa de contratos entre módulos (ex: M-03 escrow, M-04 precificador) e adaptação de formatos (`usage` → modelo interno) para evitar ambiguidades na interpretação de custos e decisões."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Dependência precisa de tolerâncias temporais (virada de janela UTC, M-06) e integridade transacional (SQLite, M-08), onde variações ou falhas de precisão comprometem o invariante do sistema."
+    }
+  ]
+}

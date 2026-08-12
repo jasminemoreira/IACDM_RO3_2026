@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Porta Provider e sync-engine modelam explicitamente invalidação de tokens, paginação e recovery via full resync."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 CLI expõe superfície operacional dedicada com comandos de resolução, dry-run e saída tabular para uso humano."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo e isolado, sem menção a legado, migração de dados ou coexistência com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Execução single-threaded local com SQLite e ciclo limitado a ~1.000 eventos, sem alocação dinâmica ou custos escaláveis."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Domínio é sincronização de agenda e sobreposição temporal, sem classificação ou decisão automatizada sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-08 gerencia ciclo de vida explícito de conflitos e M-10 orquestra fluxo rígido de pull, reconciliação e persistência."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Decisões de política e escalonamento são persistidas em M-08, e M-11 garante commit atômico com rastreamento de ancestral para auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Escopo negativo declara explicitamente ausência de daemon, polling, webhooks ou requisitos de operação contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Reconciliador 3-vias com neutralização de eco, verificação de janela temporal e commits atômicos formam loop de feedback para convergência de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Integração privada entre adaptadores simulados, sem marketplace, API pública ou modelagem de incentivos conflitantes entre atores."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de porta Provider e Repository são especificados com rigor (tokens opacos, paginação exclusiva, transações atômicas) para evitar ambiguidade entre implementações."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura privilegia conformidade exata com RFC 5545 e campos escalares, sem mecanismos de tolerância a deriva ou evolução incremental."
+    }
+  ]
+}

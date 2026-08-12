@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência de solver de terceiros (ortools/M-06) e persistência em disco (M-08) com premissas rígidas de tempo e integridade (A4, A6) e sem mecanismos de fallback ou retry."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Presença do módulo CLI (M-11) como única superfície de operação humana para os cinco casos de uso definidos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Ausência de indicação de substituição de sistema legado ou período de convivência; leitura da escala anterior serve apenas como entrada operacional, não migratória."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Execução local pontual com horizonte e tamanho de instância fixos, sem alocação elástica ou consumo de recursos que escale com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Geração automática de escalas e validação de trocas que impactam diretamente jornadas, descanso e direitos contratuais de pessoas, com critérios de custo/peso que definem distribuição de carga."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita no módulo troca (M-04) com fluxos multiator (solicitar/responder/revalidar) e caminhos de exceção mapeados nos casos de uso."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Omissão deliberada de autenticação e permissões (A5 e escopo negativo) em ações que alteram compromissos contratuais, exigindo mecanismo de autoria e auditoria não previsto."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ferramenta CLI executada localmente por operador único (A7), sem requisitos de monitoramento contínuo, logs estruturados ou diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de revalidação no aceite de trocas (M-04) e derivação de contadores de fronteira a partir da escala anterior (M-05) formam ciclos de feedback que exigem verificação de convergência e consistência de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Fluxo de trocas entre atores independentes (p1/p2) assume cooperação e veracidade de identidade (A5), sem incentivos alinhados ou prevenção contra comportamento estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface tipados entre módulos e invariante de que `catalogo-restricoes` é o único dono das regras, compartilhado por solver e avaliador, exigindo precisão semântica nas assinaturas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Decomposição com núcleo puro desacoplado (M-01–M-05), módulo de geração sintética para testes (M-10) e detector de conflitos estruturais (M-07) projetam tolerância a variações e facilitam evolução controlada."
+    }
+  ]
+}

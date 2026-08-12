@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema opera apenas com arquivos YAML locais e bibliotecas em memória, sem dependências de rede, filas ou serviços externos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Arquitetura inclui módulo CLI (M-11) com subcomandos e flags para operação direta por humanos, definindo a superfície de interação."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto descrito como verde e autônomo, sem menção a substituição de sistema legado, dual-run ou caminho de rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Arquitetura assume escala reduzida (dezenas a centenas de datasets) e carregamento total em memória, consumindo recursos triviais e fixos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Sistema gerencia metadados técnicos e linhagem de dados, sem realizar decisões automatizadas sobre pessoas, perfis ou conduta."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "Arquitetura implementa ferramenta de consulta e validação estática, sem fluxos multi-ator, máquinas de estado ou orquestração de processos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Núcleo do domínio exige e valida explicitamente dono para todo domínio e dataset (INV-2 e INV-3), centralizando a responsabilidade pelos dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Execução é pontual via CLI com saída direta de violações ou resultados, sem serviço em produção, logs estruturados ou métricas de operação contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Fluxo é puramente carregamento-validação-consulta sem loops de feedback, auto-correção ou sincronização de estado em tempo de execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Contexto é de ferramenta interna com entrada controlada por humanos no mesmo diretório, sem atores independentes ou incentivos estratégicos em jogo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos são definidos internamente entre módulos do mesmo repositório, sem integração entre equipes independentes ou protocolos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Arquitetura prioriza validação estrita e igualdade exata de conjuntos, operando em especificação precisa sem mecanismos explícitos de tolerância a variações."
+    }
+  ]
+}

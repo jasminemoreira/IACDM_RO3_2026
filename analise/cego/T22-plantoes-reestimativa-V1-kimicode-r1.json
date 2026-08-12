@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há APIs, bancos, filas ou serviços remotos: o solver é biblioteca em processo (ortools) e a persistência é arquivo JSON local."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 expõe os 5 casos de uso como comandos CLI operados por uma pessoa — superfície humana explícita, incluída pelo critério da lente."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nada indica substituição de sistema em produção; a dependência da escala do mês anterior (A3) é insumo de dados, não migração de sistema legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O consumo de recurso é limitado e fixo: solve mensal com teto de 60 s (A4), sem custo que cresça com o volume de uso, sem infra elástica nem processamento de alto volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente a alocação de plantões de pessoas (horas, noites, preferências) — decisão automatizada sobre pessoas, com mecanismos de auditoria (avaliador, diagnostico) já presentes."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é uma máquina de estados da troca (PENDENTE → aceite/recusa) com múltiplos atores (solicitante, destinatário) e revalidação no aceite — fluxo multi-ator com transições e caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra trocas, escalas publicadas e relatórios de conformidade pelos quais alguém terá de responder; A5 explicita que a identidade não é verificada, ou seja, ações hoje não são atribuíveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema destinado a produção com requisito operacional (SC-2/A4); M-07 (diagnostico) e o campo status/otimalidade_provada de ResultadoGeracao existem para diagnosticar inviabilidade e degradação do solve sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-05 sincroniza estado entre execuções mensais (contadores S6/S7 derivados da escala anterior); A3/PR-4 mostram risco de drift se a escala anterior estiver incompleta ou não publicada."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes (pessoas) com incentivos próprios negociando trocas; o design assume cooperação e identidade honesta (A5: qualquer um pode aceitar troca em nome de qualquer um)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "catalogo-restricoes tem contrato de dois modos (aplicar no solver vs. verificar no avaliador) que precisam produzir semântica idêntica — o invariante central da arquitetura é exatamente a ausência de ambiguidade entre duas leituras do mesmo contrato."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema longevo com evolução prevista de regras (catálogo único, regras internas parametrizadas, pesos publicados e questionados em A8) — tolerâncias à variação de requisitos e manutenção de módulos são parte explícita do desenho."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de persistência SQLite em M-09 e servidor HTTP em M-11, sujeitos a falha ou lentidão."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoas: 6 telas HTML em M-12 e rotas HTTP em M-11 para abrir, triar, recorrer e julgar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura não indica consumo elástico, processamento intensivo ou alocação de recurso cujo custo cresça materialmente com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza classificação/prioridade de chamados e permite reclassificação e recurso, afetando pessoas por decisão automática."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multiator com estados e exceções: abrir, triar, reclassificar, recorrer, julgar e encerrar em M-05, M-06 e M-10."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Há trilha somente-inserção, autoria por autor/gestor e decisões que precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com API, UI e banco; operação e diagnóstico em produção são relevantes mesmo sem mecanismos descritos."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há realimentação no comportamento via reclassificação, julgamento de recurso e configuração de matriz/SLA que corrige estado do chamado ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há múltiplos atores independentes (solicitante, triador, gestor) e a arquitetura explicita premissa de boa-fé do solicitante em A7."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos intermodulares com semântica forte e interfaces HTTP; ambiguidades de contrato entre módulos/importantes integrações são relevantes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular de longa manutenção com 12 módulos, contratos rígidos e evolução futura sob dívida e mudanças de regra."
+    }
+  ]
+}

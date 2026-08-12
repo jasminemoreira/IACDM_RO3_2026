@@ -1,0 +1,26 @@
+{
+  "name": "t30-notifica",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Serviço de notificação com preferências por pessoa, supressão e canais externos",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "serve": "node src/cli/index.ts serve",
+    "t30": "node src/cli/index.ts",
+    "test": "node --test --disable-warning=ExperimentalWarning test/*.test.ts && echo 'All tests passed'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "nodemailer": "^9.0.5",
+    "smtp-server": "^3.19.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/nodemailer": "^8.0.1",
+    "@types/smtp-server": "^3.5.13",
+    "typescript": "^5.7.0"
+  }
+}

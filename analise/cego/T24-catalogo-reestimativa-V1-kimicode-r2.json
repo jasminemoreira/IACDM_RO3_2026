@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há dependência externa: sem rede, servidor, banco, fila ou serviço de terceiros — NetworkX e PyYAML são bibliotecas in-process, e o escopo negativo exclui rede explicitamente."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI (M-11) com subcomandos, flag --json e códigos de saída, e as mensagens de erro acionáveis redigidas em M-02 (ciclo nomeado, referência pendente) — A9 existe justamente para reduzir atrito do dono de domínio."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sistema legado sendo substituído nem transição de produção; é um sistema novo sem caminho de rollback em questão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresce com o uso é alocado ou decidido pelo sistema: A7 fixa a escala em dezenas a centenas de datasets, tudo em memória, carga única por execução, sem infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não toma decisões automatizadas sobre pessoas — não há scoring, classificação ou moderação; trata-se de metadados de datasets."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": false,
+      "sinal": "O fluxo é linear e mono-ator (carregar → validar → consultar, sem estados intermediários: 'não existe estado carregado mas inválido'); não há máquina de estados nem fluxo multi-ator dentro do sistema — quem escreve o YAML é humano, fora dele."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A propriedade central do sistema é atribuição: todo dataset tem dono resolvido por herança de domínio (M-03), INV-2/INV-3 exigem dono para todo domínio e dataset, e as consultas de impacto/procedência existem para responder 'quem é afetado e quem responde'."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não é sistema em produção contínua: é uma CLI que executa, reporta erro agregado e sai com código de saída; não há degradação em serviço a detectar nem incidentes a diagnosticar."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sem estado sincronizado, sem configuração em runtime (escopo negativo: sem arquivo de configuração), sem realimentação — o sistema é stateless e recarrega tudo a cada execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores (donos de domínio) são internos e colaborativos por definição de escopo; não há API pública, marketplace, plataforma ou integração externa onde defeção estratégica seja possível."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos de formato entre produtores e consumidores independentes: a gramática de DatasetId 'dominio.nome' (M-01, com A10 proibindo ponto nos nomes por ambiguidade), o formato YAML dos documentos de domínio validado em forma por M-07, e a inversão de aresta 'alimentado_por: X' definida em M-08 — dois autores podem interpretar o mesmo contrato de forma incompatível."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura é explícita sobre tolerância à variação e evolução: Strategy (M-10) admite novos formatadores, a porta/adaptador de M-09 admite trocar a fonte de dados, e a regra borda→núcleo existe para que o núcleo sobreviva a mudanças nas bordas — sinal de manutenção e evolução de módulos."
+    }
+  ]
+}

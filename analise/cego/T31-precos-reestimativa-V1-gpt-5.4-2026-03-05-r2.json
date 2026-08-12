@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de SQLite no `repositorio-sqlite` e entrada externa via importação CSV."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa na `ui-web` com 4 telas e fluxo de simulação/importação/histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema declara substituição de uma tabela legada e existe `importador-csv` + `prova-paridade` para convivência/transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo elástico relevante nem alocação de recurso de custo crescente; sistema local e sem dependência de rede em runtime."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema automatiza decisão de preço sobre produtos/SKUs, não decisão sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo de rascunho → validação → publicação → histórico/recalcular, com estados e exceções de coerência/publicação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões, histórico, versões publicadas imutáveis e trace explicável para auditoria e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com `registrar(decisao)`, histórico e necessidade de diagnosticar divergências e incidentes operacionais."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço explícito de correção na `prova-paridade`, que recalcula linhas importadas e compara com o original para detectar desvio."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Premissas A-06 e A-08 indicam processo single-user, single-threaded, sem auth e sem atores independentes em interação estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre módulos e adapters com formatos potencialmente ambíguos: moeda BR, CSV legado, DTOs HTTP e regra de data obrigatória."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo, com tolerâncias explícitas como R$ 0,01 na paridade e várias premissas de borda/manutenção de longo prazo."
+    }
+  ]
+}

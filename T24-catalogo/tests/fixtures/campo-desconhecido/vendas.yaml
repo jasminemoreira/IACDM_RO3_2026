@@ -1,0 +1,9 @@
+# Achado MEC-01. Erro de digitacao que faria a aresta sumir em silencio.
+dominio: vendas
+dono:
+  nome: Maria Silva
+  contato: maria.silva@empresa.com
+datasets:
+  - nome: pedidos
+    alimentado_pro:
+      - vendas.outro

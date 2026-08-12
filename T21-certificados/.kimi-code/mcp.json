@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "versus-kimi": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jasmine/INDT/RO3/T21-certificados/.versus/kimi/server.js"
+      ],
+      "env": {}
+    },
+    "versus-claude": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/jasmine/INDT/RO3/T21-certificados/.versus/server.js"
+      ],
+      "env": {},
+      "enabled": false
+    }
+  }
+}

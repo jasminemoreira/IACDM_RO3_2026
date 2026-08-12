@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O módulo M-06 depende do solver CP-SAT (ortools) e o M-08 de leitura/escrita em disco; a premissa A4 assume tempo de resposta determinístico sem tratar falhas ou lentidão externa."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "O módulo M-11 é um adaptador CLI que serve operadores humanos; a ausência de validação amigável ou feedback visual exige avaliação da usabilidade dos comandos e mensagens de erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve um sistema novo sem menção a substituir um legado existente ou necessidade de rollback; é um projeto verde."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O módulo M-06 executa otimização CP-SAT (custo computacional alto) para instâncias mensais; a premissa A4 expõe risco de escalabilidade se o tamanho do problema ou complexidade das restrições crescer."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre horários e turnos de pessoas (M-01, M-03), impactando sua vida pessoal; a equidade é tratada como termo flexível (escopo negativo) e falta auditoria explícita de viés."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O módulo M-04 implementa uma máquina de estados para trocas (PENDENTE -> ACEITE/RECUSA) e o fluxo UC-1 a UC-5 envolve múltiplos passos sequenciais com dependências de estado."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "As trocas (M-04) e a geração de escalas geram dados históricos (M-08); embora não haja autenticação (premissa A5), a arquitetura precisa atribuir autoria às ações para fins de auditoria futura."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema opera em produção com solver externo e arquivos locais; não há mecanismos declarados de log, métricas ou alertas para diagnosticar falhas do solver ou corrupção de dados JSON."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O módulo M-05 deriva contadores de fronteira da escala anterior e o M-03 avalia violações; há um loop de feedback onde a saída de um mês afeta as restrições do próximo, exigindo estabilidade para evitar oscilações."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O módulo M-04 permite solicitações e respostas de trocas entre pessoas independentes; sem autenticação (A5) ou incentivos alinhados, há risco de comportamento estratégico ou fraudulento na aceitação/recusa."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Todas as interfaces são internas ao mesmo sistema (Python), com tipos definidos em M-01 e contratos explícitos; não há comunicação entre times independentes ou protocolos externos ambíguos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O catálogo de restrições (M-02) é o único dono das regras e a arquitetura proíbe duplicação; qualquer mudança futura em regras exige evolução rigorosa desse módulo central para evitar débito técnico."
+    }
+  ]
+}

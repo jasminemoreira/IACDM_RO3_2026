@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas de biblioteca e parsing na borda: PyYAML e NetworkX, além de entrada de arquivos/YAML que pode vir malformada ou inesperada."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI com subcomandos, flag --json, mensagens acionáveis e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso computacional proporcional ao tamanho do catálogo e do grafo, com carga completa em memória e impacto transitivo completo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; o sistema trata catálogo, donos declarados e linhagem de datasets."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com atores e exceções: humanos declaram YAML, repositório carrega/valida, consultas só ocorrem após validação e erros são agregados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema exige donos por domínio/dataset e invariantes de responsabilização como 'todo domínio tem dono' e 'nenhum dataset é órfão de dono'."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há sinal de requisitos operacionais de produção; é uma CLI sem servidor, sem rede, sem modo watch e sem operação contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loop de controle, sincronização de estado em runtime nem mecanismo de autocorreção; a execução é batch e sem feedback automático."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes por domínio declarando dados e dependências; o desenho assume cooperação correta desses donos humanos ao editar o YAML."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e gramática que precisam ser inequívocos: DatasetId em forma dominio.nome, restrição de ponto, YAML de entrada e inversão semântica de arestas no mapper."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias arquiteturais explícitas e restrições exatas de contrato, com manutenção/evolução sujeitas a acumular rigidez em módulos e invariantes."
+    }
+  ]
+}

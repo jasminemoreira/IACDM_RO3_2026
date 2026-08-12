@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Existem dependências externas explícitas (SQLite via M-07 e arquivos CSV via M-08) cujas falhas ou lentidão afetam o sistema."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma interface gráfica web (M-12) com telas de regras, simulador e histórico operada por pessoas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema declara substituição de tabela legada e existe um módulo dedicado (M-08) para importação de dados antigos com validação de paridade."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema opera localmente em arquivo único (SQLite), sem processamento massivo distribuído, IA ou custos variáveis significativos com escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas referem-se a preços de produtos (mercadorias), não a avaliações, classificações ou moderações que afetem diretamente pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo definido com estados e transições: rascunho -> validação -> publicação atômica -> vigência, além de recalculação de decisões."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema gera um 'trace exaustivo' (I-3) e persiste a decisão (M-07) para auditoria posterior, permitindo rastrear o motivo da derrota de cada regra candidata."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção que requer diagnóstico; o núcleo registra traces e o repositório armazena histórico de decisões para consulta."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Existe um ciclo de feedback explícito: a prova de paridade (M-09) compara o novo motor com os dados legados para detectar divergências antes da publicação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O escopo negativo exclui marketplace, API pública externa ou múltiplos atores independentes; é um sistema monousuário/single-threaded."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há interfaces rigorosas entre módulos (DIP) e um contrato de API HTTP (M-11) com DTOs específicos que exigem semântica clara para evitar ambiguidade."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema lida com tolerâncias numéricas críticas (arredondamento half-up, centavos) e regras de negócio sensíveis a bordas (faixas fechadas, desempate de precedência)."
+    }
+  ]
+}

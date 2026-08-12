@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de SQLite no `repositorio-sqlite` e entrada externa via importação CSV."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa na `ui-web`, com 4 telas, simulador, importação e histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e inclui `importador-csv` e `prova-paridade` para transição e comparação com o legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso que cresce com uso: reconsulta linha a linha na `prova-paridade` e armazenamento de histórico/trace exaustivo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas são sobre preço de produto, não sobre pessoas ou classificação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de rascunho → validação → publicação → vigência → histórico/recalcular, com transições e exceções."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões, histórico, versões publicadas imutáveis e explicação/auditoria posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com persistência, API, UI e necessidade de diagnosticar falhas em operação e histórico de decisões."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há sincronização entre rascunho, versão vigente e recalcular decisão, com validação/paridade como sinais de correção contra deriva."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes, marketplace, API pública aberta ou incentivos estratégicos entre partes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos explícitos entre módulos e interfaces externas: portas DIP, DTOs HTTP, CSV legado e regras de parsing/intervalo."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema evolutivo com muitos invariantes e tolerâncias explícitas de domínio, como arredondamento, intervalos fechados e tolerância de R$ 0,01."
+    }
+  ]
+}

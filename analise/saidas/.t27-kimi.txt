@@ -1,0 +1,19 @@
+T27-despesas · V1 (75 linhas de arquitetura) · kimicode · temp/seed não expostos pelo CLI · 3 rodadas
+
+lente                              estimado V1    Fase 2 declarou
+RES Resilience                     sim            SIM
+UX UI/UX                           sim            SIM
+MIG Migration / Coexistence        não            não
+SUS Sustainability / Proportionality não            SIM   ← DIVERGE
+ETI Ethical / Human Impact         não            não
+PRO Process / Workflow             sim            SIM
+GOV Governance / Accountability    sim            SIM
+OBS Observability / Operability    não            não
+CTR Control Engineering            não            SIM   ← DIVERGE
+JOG Game Theory                    sim            SIM
+LIN Linguistics / Grammar          sim            SIM
+MEC Mechanical Engineering         sim            não   ← DIVERGE
+
+decisões estáveis: 9 coincidem, 3 divergem
+conjunto declarado : CTR, GOV, JOG, LIN, PRO, RES, SUS, UX
+conjunto estimado  : GOV, JOG, LIN, MEC, PRO, RES, UX

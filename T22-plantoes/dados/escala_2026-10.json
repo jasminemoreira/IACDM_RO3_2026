@@ -1,0 +1,613 @@
+{
+  "id": "2026-10",
+  "inicio": "2026-10-01",
+  "fim": "2026-10-30",
+  "estado_escala": "rascunho",
+  "status_solver": "OPTIMAL",
+  "otimalidade_provada": true,
+  "custo": 0,
+  "custo_por_restricao": {},
+  "snapshot_publicado": [
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s032"
+    },
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s142"
+    },
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s162"
+    },
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s192"
+    },
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s231"
+    },
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s252"
+    },
+    {
+      "pessoa_id": "p00",
+      "plantao_id": "s282"
+    },
+    {
+      "pessoa_id": "p01",
+      "plantao_id": "s111"
+    },
+    {
+      "pessoa_id": "p01",
+      "plantao_id": "s150"
+    },
+    {
+      "pessoa_id": "p01",
+      "plantao_id": "s190"
+    },
+    {
+      "pessoa_id": "p01",
+      "plantao_id": "s211"
+    },
+    {
+      "pessoa_id": "p02",
+      "plantao_id": "s010"
+    },
+    {
+      "pessoa_id": "p02",
+      "plantao_id": "s051"
+    },
+    {
+      "pessoa_id": "p02",
+      "plantao_id": "s121"
+    },
+    {
+      "pessoa_id": "p02",
+      "plantao_id": "s150"
+    },
+    {
+      "pessoa_id": "p02",
+      "plantao_id": "s231"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s002"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s052"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s070"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s100"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s122"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s202"
+    },
+    {
+      "pessoa_id": "p03",
+      "plantao_id": "s242"
+    },
+    {
+      "pessoa_id": "p04",
+      "plantao_id": "s091"
+    },
+    {
+      "pessoa_id": "p04",
+      "plantao_id": "s191"
+    },
+    {
+      "pessoa_id": "p04",
+      "plantao_id": "s220"
+    },
+    {
+      "pessoa_id": "p04",
+      "plantao_id": "s260"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s040"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s091"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s140"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s170"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s191"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s241"
+    },
+    {
+      "pessoa_id": "p05",
+      "plantao_id": "s261"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s012"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s042"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s072"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s112"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s141"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s240"
+    },
+    {
+      "pessoa_id": "p06",
+      "plantao_id": "s290"
+    },
+    {
+      "pessoa_id": "p07",
+      "plantao_id": "s001"
+    },
+    {
+      "pessoa_id": "p07",
+      "plantao_id": "s090"
+    },
+    {
+      "pessoa_id": "p07",
+      "plantao_id": "s121"
+    },
+    {
+      "pessoa_id": "p07",
+      "plantao_id": "s210"
+    },
+    {
+      "pessoa_id": "p08",
+      "plantao_id": "s090"
+    },
+    {
+      "pessoa_id": "p08",
+      "plantao_id": "s141"
+    },
+    {
+      "pessoa_id": "p08",
+      "plantao_id": "s161"
+    },
+    {
+      "pessoa_id": "p08",
+      "plantao_id": "s200"
+    },
+    {
+      "pessoa_id": "p09",
+      "plantao_id": "s001"
+    },
+    {
+      "pessoa_id": "p09",
+      "plantao_id": "s102"
+    },
+    {
+      "pessoa_id": "p09",
+      "plantao_id": "s201"
+    },
+    {
+      "pessoa_id": "p09",
+      "plantao_id": "s251"
+    },
+    {
+      "pessoa_id": "p09",
+      "plantao_id": "s272"
+    },
+    {
+      "pessoa_id": "p10",
+      "plantao_id": "s050"
+    },
+    {
+      "pessoa_id": "p10",
+      "plantao_id": "s170"
+    },
+    {
+      "pessoa_id": "p10",
+      "plantao_id": "s220"
+    },
+    {
+      "pessoa_id": "p10",
+      "plantao_id": "s280"
+    },
+    {
+      "pessoa_id": "p11",
+      "plantao_id": "s020"
+    },
+    {
+      "pessoa_id": "p11",
+      "plantao_id": "s110"
+    },
+    {
+      "pessoa_id": "p11",
+      "plantao_id": "s181"
+    },
+    {
+      "pessoa_id": "p11",
+      "plantao_id": "s281"
+    },
+    {
+      "pessoa_id": "p12",
+      "plantao_id": "s022"
+    },
+    {
+      "pessoa_id": "p12",
+      "plantao_id": "s160"
+    },
+    {
+      "pessoa_id": "p12",
+      "plantao_id": "s230"
+    },
+    {
+      "pessoa_id": "p12",
+      "plantao_id": "s271"
+    },
+    {
+      "pessoa_id": "p13",
+      "plantao_id": "s020"
+    },
+    {
+      "pessoa_id": "p13",
+      "plantao_id": "s071"
+    },
+    {
+      "pessoa_id": "p13",
+      "plantao_id": "s171"
+    },
+    {
+      "pessoa_id": "p13",
+      "plantao_id": "s250"
+    },
+    {
+      "pessoa_id": "p14",
+      "plantao_id": "s030"
+    },
+    {
+      "pessoa_id": "p14",
+      "plantao_id": "s110"
+    },
+    {
+      "pessoa_id": "p14",
+      "plantao_id": "s140"
+    },
+    {
+      "pessoa_id": "p14",
+      "plantao_id": "s161"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s062"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s092"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s111"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s132"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s172"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s212"
+    },
+    {
+      "pessoa_id": "p15",
+      "plantao_id": "s232"
+    },
+    {
+      "pessoa_id": "p16",
+      "plantao_id": "s040"
+    },
+    {
+      "pessoa_id": "p16",
+      "plantao_id": "s171"
+    },
+    {
+      "pessoa_id": "p16",
+      "plantao_id": "s210"
+    },
+    {
+      "pessoa_id": "p16",
+      "plantao_id": "s271"
+    },
+    {
+      "pessoa_id": "p17",
+      "plantao_id": "s130"
+    },
+    {
+      "pessoa_id": "p17",
+      "plantao_id": "s160"
+    },
+    {
+      "pessoa_id": "p17",
+      "plantao_id": "s200"
+    },
+    {
+      "pessoa_id": "p17",
+      "plantao_id": "s290"
+    },
+    {
+      "pessoa_id": "p18",
+      "plantao_id": "s000"
+    },
+    {
+      "pessoa_id": "p18",
+      "plantao_id": "s021"
+    },
+    {
+      "pessoa_id": "p18",
+      "plantao_id": "s262"
+    },
+    {
+      "pessoa_id": "p18",
+      "plantao_id": "s292"
+    },
+    {
+      "pessoa_id": "p19",
+      "plantao_id": "s011"
+    },
+    {
+      "pessoa_id": "p19",
+      "plantao_id": "s100"
+    },
+    {
+      "pessoa_id": "p19",
+      "plantao_id": "s131"
+    },
+    {
+      "pessoa_id": "p19",
+      "plantao_id": "s280"
+    },
+    {
+      "pessoa_id": "p20",
+      "plantao_id": "s021"
+    },
+    {
+      "pessoa_id": "p20",
+      "plantao_id": "s131"
+    },
+    {
+      "pessoa_id": "p20",
+      "plantao_id": "s251"
+    },
+    {
+      "pessoa_id": "p20",
+      "plantao_id": "s291"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s051"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s082"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s130"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s182"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s222"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s241"
+    },
+    {
+      "pessoa_id": "p21",
+      "plantao_id": "s261"
+    },
+    {
+      "pessoa_id": "p22",
+      "plantao_id": "s041"
+    },
+    {
+      "pessoa_id": "p22",
+      "plantao_id": "s101"
+    },
+    {
+      "pessoa_id": "p22",
+      "plantao_id": "s120"
+    },
+    {
+      "pessoa_id": "p22",
+      "plantao_id": "s201"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s000"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s030"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s061"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s080"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s230"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s270"
+    },
+    {
+      "pessoa_id": "p23",
+      "plantao_id": "s291"
+    },
+    {
+      "pessoa_id": "p24",
+      "plantao_id": "s041"
+    },
+    {
+      "pessoa_id": "p24",
+      "plantao_id": "s081"
+    },
+    {
+      "pessoa_id": "p24",
+      "plantao_id": "s152"
+    },
+    {
+      "pessoa_id": "p24",
+      "plantao_id": "s260"
+    },
+    {
+      "pessoa_id": "p25",
+      "plantao_id": "s011"
+    },
+    {
+      "pessoa_id": "p25",
+      "plantao_id": "s050"
+    },
+    {
+      "pessoa_id": "p25",
+      "plantao_id": "s070"
+    },
+    {
+      "pessoa_id": "p25",
+      "plantao_id": "s221"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s060"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s101"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s120"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s151"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s180"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s240"
+    },
+    {
+      "pessoa_id": "p26",
+      "plantao_id": "s270"
+    },
+    {
+      "pessoa_id": "p27",
+      "plantao_id": "s031"
+    },
+    {
+      "pessoa_id": "p27",
+      "plantao_id": "s060"
+    },
+    {
+      "pessoa_id": "p27",
+      "plantao_id": "s081"
+    },
+    {
+      "pessoa_id": "p27",
+      "plantao_id": "s181"
+    },
+    {
+      "pessoa_id": "p27",
+      "plantao_id": "s221"
+    },
+    {
+      "pessoa_id": "p28",
+      "plantao_id": "s010"
+    },
+    {
+      "pessoa_id": "p28",
+      "plantao_id": "s071"
+    },
+    {
+      "pessoa_id": "p28",
+      "plantao_id": "s190"
+    },
+    {
+      "pessoa_id": "p28",
+      "plantao_id": "s211"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s031"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s061"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s080"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s151"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s180"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s250"
+    },
+    {
+      "pessoa_id": "p29",
+      "plantao_id": "s281"
+    }
+  ],
+  "eventos": []
+}

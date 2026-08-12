@@ -1,0 +1,12 @@
+# Viola INV-4. Esperado: erro NOMEANDO financeiro.receita e financeiro.previsao.
+dominio: financeiro
+dono:
+  nome: Joao Souza
+  contato: joao.souza@empresa.com
+datasets:
+  - nome: receita
+    alimentado_por:
+      - financeiro.previsao
+  - nome: previsao
+    alimentado_por:
+      - financeiro.receita

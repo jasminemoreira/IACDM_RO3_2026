@@ -1,0 +1,13 @@
+dominio: vendas
+dono:
+  nome: Maria Silva
+  contato: maria.silva@empresa.com
+
+datasets:
+  - nome: pedidos
+    descricao: Pedidos brutos capturados no checkout
+
+  - nome: itens_pedido
+    descricao: Linhas de item explodidas por pedido
+    alimentado_por:
+      - vendas.pedidos

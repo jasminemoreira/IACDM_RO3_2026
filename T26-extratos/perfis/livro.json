@@ -1,0 +1,4 @@
+{"nome":"livro-erp","versao":"1","alvo":"livro","delimitador":";","encoding":"utf-8",
+ "formato_data":"%d/%m/%Y","separador_decimal":",","separador_milhar":".",
+ "sinal":"valor_assinado","conta":"12345-6","instrumento_padrao":"desconhecido",
+ "colunas":{"data":"vencimento","valor":"valor","descricao":"contraparte","documento":"doc"}}

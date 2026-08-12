@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: API Anthropic via upstream e banco SQLite/persistencia no caminho crítico."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: painel-web SPA, painel-api e login/senha de operador."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema em produção, convivência com legado ou plano de rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e controla consumo de recurso com custo variável por uso: chamadas ao provedor e gasto monetário por tokens."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas como scoring, classificação, moderação ou elegibilidade humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo multi-etapas com estados e exceções: reservar, negar, enviar ao provedor, reconciliar, liberar e reset mensal."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra consumo, aplica tetos por entidade e expõe ações/configuração que depois precisam de atribuição e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com requisito operacional explícito de manter o invariante do teto e diagnosticar falhas sob concorrência."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de controle sobre gasto: reserva de pior caso antes da chamada e reconciliação posterior corrigindo estado dos contadores."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes e possibilidade de deserção estratégica: apps consumidores podem contornar o gateway se tiverem a chave real do provedor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre módulos e com provedor: usage adaptado, exceções de preço, idempotência por id_reserva e interfaces HTTP/API."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É sistema modular e evolutivo com premissas operacionais e tolerâncias apertadas de concorrência, tempo e esquema ao longo da manutenção."
+    }
+  ]
+}

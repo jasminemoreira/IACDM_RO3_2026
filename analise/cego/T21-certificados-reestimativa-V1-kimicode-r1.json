@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: sonda TLS contra host:porta com modos de falha tipados (timeout/recusado/dns/tls) e banco node:sqlite atrás do repositório."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "web-ui com 5 telas em HTML, login/sessão e rotas operadas por pessoas (painel, trilha, aprovação de pedidos)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (V(1)): nenhum sistema legado sendo substituído ou modificado e nenhuma transição de dados mencionada."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O custo da varredura sequencial cresce com o número de alvos — a própria premissa A7 limita o volume a dezenas e admite degradação sem paginação."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas que afetam pessoas: reconciliacao emite 'troca-nao-autorizada' e 'escalar por inação', eventos que responsabilizam operadores e aprovadores."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados multi-ator: Pedido pendente->aprovado->fechado com papéis solicitante/aprovador/auditor e caminhos de exceção (ErroTransicao, escalação)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O propósito central é atribuição: registrar quem aprovou cada emissão, com trilha append-only encadeada por hash e verificação de integridade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com requisitos operacionais: relatório de varredura, endpoint de auditoria e verificação de integridade da trilha em tempo de operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de realimentação: reconciliacao compara observação nova com estado registrado e emite decisões corretivas (fechar pedido, sinalizar troca, escalar), com classificação por limiares."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Atores independentes com incentivos não garantidos: operadores dos alvos podem trocar certificados sem aprovação (motivo de existir 'troca-nao-autorizada') e aprovadores podem não agir (A4)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre 11 módulos com convenções formais: tipos união (Decisao), erros como valores (Ok|Erro) e formato Observacao compartilhado entre domínio e portas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa com tolerâncias explícitas: premissa A8 (API experimental do node:sqlite pode mudar), isolamento via Repository e limiares configuráveis com invariante."
+    }
+  ]
+}

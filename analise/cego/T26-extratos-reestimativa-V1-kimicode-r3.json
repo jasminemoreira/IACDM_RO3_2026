@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas concretas: arquivos OFX/CSV de bancos (dados inesperados, FITID instável em A1), biblioteca ofxtools e SQLite no repository — todas podem falhar, atrasar ou devolver dados fora do esperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI (M-11) com comandos import/reconcile/review/report e a review-queue (M-09), onde um operador humano resolve pendências."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nenhum sistema de produção existente sendo substituído ou modificado; o texto descreve um sistema novo, sem transição, coexistência ou rollback de legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de volume cujo custo cresce com o uso: carga de 50k no fixture-generator, blocking com orçamento b ≤ 50 (A4) e risco explícito de bloco degenerado reintroduzir O(n²)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas (deduplicação, casamento, classificação em 5 estados) recaem sobre registros financeiros, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita (5 estados terminais de conciliação), fluxo multi-ator com fila de pendências e resolução humana (M-09), e caminhos de exceção deliberados (1:N/N:1 viram pendência)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Auditabilidade é propriedade central: DecisaoDedup sempre carrega camada L0-L5 e evidência, resoluções humanas são persistidas e não sobrescritas, e VAL-2 exige rastreabilidade de falsos positivos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ferramenta CLI batch local, sem serviço em produção contínua, rede ou requisito declarado de detecção de degradação/diagnóstico de incidentes sem mudança de código; o reporter produz relatórios sob demanda, não telemetria operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de retroalimentação: resoluções humanas persistidas alimentam a camada L0 do dedup-engine, e configuração em runtime (janela de data, tolerância de valor, pesos do score) altera o comportamento do casamento."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos em jogo: as integrações externas são arquivos estáticos de bancos/ERP, sem API pública, marketplace ou agente estratégico que possa desertar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes independentes: porta FonteDeExtrato implementada por dois adapters, perfis CSV declarativos com validação, formato RegistroBruto e contrato do hash canônico — ambiguidade neles gera implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas em vez de especificação exata: janela de data e tolerância de valor configuráveis, score de similaridade com pesos Fellegi-Sunter, e sistema longevo sujeito a evolução de perfis de banco e dívidas (A1-A7)."
+    }
+  ]
+}

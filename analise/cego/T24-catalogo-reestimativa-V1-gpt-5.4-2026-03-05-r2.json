@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas de biblioteca e parsing na borda: PyYAML e NetworkX, além de leitura de arquivos do diretório."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI M-11 com subcomandos, flag --json e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituição de sistema existente, convivência com legado ou plano de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso computacional que cresce com o tamanho do grafo, com carregamento inteiro em memória e impacto transitivo completo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; o sistema cataloga datasets e linhagem."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de carregamento, validação obrigatória e consulta, com responsabilidades separadas e caminho de exceção por violações agregadas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema modela donos por domínio/dataset e invariantes de ownership e atribuição auditável."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há sinal de requisitos operacionais de produção; é uma CLI local sem servidor, rede, watch, cache ou operação contínua."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há sincronização de estado em runtime, configuração dinâmica nem laço de autocorreção; o sistema só carrega, valida e consulta."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há atores independentes por domínio declarando YAML e dependências entre datasets, assumindo cooperação correta na manutenção dos metadados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e gramática explícitos entre módulos e no identificador dominio.nome, incluindo restrição do ponto e inversão semântica de arestas no mapper."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo com múltiplas fronteiras e contratos onde pequenas variações de manutenção podem quebrar invariantes e acoplamentos ao longo do tempo."
+    }
+  ]
+}

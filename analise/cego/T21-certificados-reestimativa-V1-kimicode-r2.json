@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Duas dependências externas com modos de falha explícitos: sonda-tls (timeout/recusado/dns/tls, certificado inválido) e node:sqlite atrás do repositorio; A8 registra risco de mudança de API do sqlite experimental."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "web-ui expõe 5 telas HTML operadas por pessoas (login, painel, alvo, trilha, aprovação de pedidos) — aprovar dentro da janela de alerta (A4) é tarefa humana sujeita a frustração e erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (V(1)); nada na decomposição indica substituição ou coexistência com um sistema de produção existente nem caminho de rollback de transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O consumo cresce com o uso: varredura sequencial por alvo (A7 já admite lentidão em escala) e trilha append-only que só cresce, sem paginação no painel nem política de retenção."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "A classificação automatizada recai sobre certificados (ok/aviso/critico/expirado), não sobre pessoas; não há scoring, moderação ou decisão automatizada sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita em pedido (pendente -> aprovado -> fechado) com três papéis (solicitante/aprovador/auditor) e caminhos de exceção (troca-nao-autorizada, escalar por inação)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema exige 'registro de quem aprovou cada emissão': trilha encadeada por hash, atribuição de aprovador em aprovar() e função auditar() tornam atribuição e auditabilidade propriedades centrais do sistema."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de monitoramento rodando em produção com requisitos operacionais: falhas de sonda, pedidos pendentes até vencer (A4) e integridade da trilha (verificarIntegridade) precisam ser detectáveis e diagnosticáveis sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de realimentação explícito: reconciliacao compara observação nova com a anterior e com pedidos abertos, gera sinal de erro (troca-nao-autorizada, escalar) e corrige estado (fechar-pedido); risco de drift entre estado observado e persistido."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Atores são usuários internos com papéis definidos, sem API pública, marketplace ou atores independentes com incentivos estratégicos; o design não assume cooperação de parte alguma externa."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre 11 módulos com convenções próprias (Ok|Erro como valor, Decisao como união discriminada, formato DER, cadeia de hash) — ambiguidade de contrato entre componentes é uma classe de falha real aqui."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema longevo com sinais de evolução e dívida: A8 (API experimental do sqlite pode mudar), trilha reescrevível (A5) e ausência deliberada de itens do escopo negativo indicam tolerâncias e manutenção futura de módulos."
+    }
+  ]
+}

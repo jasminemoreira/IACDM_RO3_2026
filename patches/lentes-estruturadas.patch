@@ -1,0 +1,578 @@
+diff -ruN a/src/hooks/inject-context.ts b/src/hooks/inject-context.ts
+--- a/src/hooks/inject-context.ts	2026-07-14 12:42:49.000000000 -0300
++++ b/src/hooks/inject-context.ts	2026-08-05 21:38:33.000000000 -0300
+@@ -63,9 +63,19 @@
+ 
+   // P2: warn if ACTIVATED LENSES decision is missing (Step 1 not yet executed)
+   if (phase === 2) {
+-    const hasLensDecision = state.decisions.some((d) => d.content.includes("ACTIVATED LENSES"));
++    // Structured field first. The previous check grepped decisions for the literal
++    // "ACTIVATED LENSES", so a session conducted in any other language saw this
++    // warning for the whole of Phase 2 while the decision was in fact on record.
++    // The legacy string is still honoured — for projects started before the tool
++    // existed — with both language markers, since accepting only English was the bug.
++    const hasLensDecision =
++      state.activatedLenses !== undefined ||
++      state.decisions.some((d) => {
++        const up = d.content.toUpperCase();
++        return up.includes("ACTIVATED LENSES") || up.includes("LENTES ATIVADAS");
++      });
+     if (!hasLensDecision) {
+-      lines.push("⚠ P2 STEP 1 MISSING: No lens activation decision found. Call record_decision(category='architecture', content='ACTIVATED LENSES: [list]. NOT ACTIVATED: [lens — reason]') BEFORE applying any lens.");
++      lines.push("⚠ P2 STEP 1 MISSING: No lens activation decision found. Call record_activated_lenses(conditional=[...], notActivated=[{lens, reason}...]) BEFORE applying any lens.");
+     }
+   }
+ 
+diff -ruN a/src/mcp/tools/index.ts b/src/mcp/tools/index.ts
+--- a/src/mcp/tools/index.ts	2026-05-05 10:34:26.000000000 -0300
++++ b/src/mcp/tools/index.ts	2026-08-05 21:38:33.000000000 -0300
+@@ -5,7 +5,7 @@
+ 
+ import { getPhaseStateTool, getDecisionsTool, getExitCriteriaTool, updateProjectSpecTool, handleGetPhaseState, handleGetDecisions, handleGetExitCriteria, handleUpdateProjectSpec } from "./state-tools";
+ import { advancePhaseTool, startIterationTool, startNewCycleTool, handleAdvancePhase, handleStartIteration, handleStartNewCycle } from "./transition-tools";
+-import { recordDecisionTool, updateScoreTool, markExitCriterionTool, handleRecordDecision, handleUpdateScore, handleMarkExitCriterion } from "./record-tools";
++import { recordDecisionTool, updateScoreTool, markExitCriterionTool, recordActivatedLensesTool, handleRecordDecision, handleUpdateScore, handleMarkExitCriterion, handleRecordActivatedLenses } from "./record-tools";
+ import { checkSafeguardTool, checkAllSafeguardsTool, handleCheckSafeguard, handleCheckAllSafeguards } from "./safeguard-tools";
+ import { checkSpecsStatusTool, handleCheckSpecsStatus } from "./specs-tools";
+ import { initProjectTool, handleInitProject } from "./project-tools";
+@@ -18,6 +18,7 @@
+   advancePhaseTool,
+   startIterationTool,
+   recordDecisionTool,
++  recordActivatedLensesTool,
+   updateScoreTool,
+   markExitCriterionTool,
+   checkSafeguardTool,
+@@ -111,6 +112,11 @@
+       return handleStartIteration(engine, args as { phase: number });
+     case "record_decision":
+       return handleRecordDecision(engine, args as { phase: number; category: string; content: string });
++    case "record_activated_lenses":
++      return handleRecordActivatedLenses(
++        engine,
++        args as unknown as { conditional: string[]; notActivated: { lens: string; reason: string }[] }
++      );
+     case "update_score":
+       return handleUpdateScore(engine, args as { score: number; breakdown: any });
+     case "mark_exit_criterion":
+diff -ruN a/src/mcp/tools/record-tools.ts b/src/mcp/tools/record-tools.ts
+--- a/src/mcp/tools/record-tools.ts	2026-08-01 09:24:12.000000000 -0300
++++ b/src/mcp/tools/record-tools.ts	2026-08-05 21:38:16.000000000 -0300
+@@ -3,6 +3,7 @@
+ import { Tool } from "@modelcontextprotocol/sdk/types.js";
+ import { StateEngine, DIAGNOSIS_CATEGORIES } from "../../state/engine";
+ import { ScoreBreakdown } from "../../state/types";
++import { CONDITIONAL_LENSES } from "../../rules/lenses";
+ 
+ export const recordDecisionTool: Tool = {
+   name: "record_decision",
+@@ -173,3 +174,63 @@
+     return JSON.stringify({ success: false, error: String(err) });
+   }
+ }
++
++
++export const recordActivatedLensesTool: Tool = {
++  name: "record_activated_lenses",
++  description:
++    "Phase 2, STEP 1 — records which conditional lenses this project activates, and why each " +
++    "of the others does not. Replaces recording the same thing as free-text prose: names are " +
++    "validated against the canonical 19, so an abbreviation or a translation is rejected at the " +
++    "call instead of silently poisoning a later cross-project analysis. " +
++    "All 12 conditional lenses must be accounted for — activated, or not-activated WITH a reason. " +
++    "Leaving one out is refused: 'I did not activate it' and 'I forgot it' must not look the same. " +
++    "The 7 universal lenses are always active and are not passed here.",
++  inputSchema: {
++    type: "object" as const,
++    properties: {
++      conditional: {
++        type: "array",
++        description: "Conditional lenses ACTIVATED for this project (exact canonical names).",
++        items: { type: "string", enum: [...CONDITIONAL_LENSES] },
++      },
++      notActivated: {
++        type: "array",
++        description:
++          "Every conditional lens NOT activated, each with the reason. Together with " +
++          "`conditional` this must cover all 12.",
++        items: {
++          type: "object",
++          properties: {
++            lens: { type: "string", enum: [...CONDITIONAL_LENSES] },
++            reason: {
++              type: "string",
++              description: "Why this project does not activate it. Concrete, one line.",
++            },
++          },
++          required: ["lens", "reason"],
++        },
++      },
++    },
++    required: ["conditional", "notActivated"],
++  },
++};
++
++export function handleRecordActivatedLenses(
++  engine: StateEngine,
++  args: { conditional: string[]; notActivated: { lens: string; reason: string }[] }
++): string {
++  const r = engine.recordActivatedLenses(args.conditional ?? [], args.notActivated ?? []);
++  if (!r.ok) {
++    return JSON.stringify({ success: false, error: r.error.message });
++  }
++  return JSON.stringify({
++    success: true,
++    activated: r.value.conditional,
++    notActivatedCount: r.value.notActivated.length,
++    recordedAt: r.value.recordedAt,
++    _nextAction:
++      "Lens set on record. Now apply EVERY universal lens plus these conditional ones to EVERY " +
++      "module, then write the findings table to specs/design/coverage-matrix.md.",
++  });
++}
+diff -ruN a/src/rules/full-guidance.ts b/src/rules/full-guidance.ts
+--- a/src/rules/full-guidance.ts	2026-08-05 13:58:56.000000000 -0300
++++ b/src/rules/full-guidance.ts	2026-08-05 21:41:10.000000000 -0300
+@@ -398,7 +398,7 @@
+ | Linguistics / Grammar | Is the interface contract unambiguous? Can two correct implementations of the same contract produce incompatible behaviors? | Protocol ambiguity — two correct implementations that are mutually incompatible | Inter-component communication, protocol definitions, message formats, interface contracts between independent teams |
+ | Mechanical Engineering | Where are the tolerances? Does the system tolerate variation or only work at exact specification? | Rigid coupling disguised as tolerance — failure from small deviations in dependency versions, environment, or load | Module maintenance, system evolution, long-lived systems with technical debt accumulation |
+ 
+-Conditional lens activation: review ProjectSpec (stack, constraints, out-of-scope) and activate applicable lenses. Record activated set with record_decision(category='architecture').
++Conditional lens activation (STEP 1, before applying any lens): review ProjectSpec (stack, constraints, out-of-scope) and decide, for EACH of the 12 conditional lenses, whether this project activates it. Record with \`record_activated_lenses(conditional=[...], notActivated=[{lens, reason}, ...])\` — the structured tool, NOT prose in record_decision. All 12 must be accounted for: activated, or not-activated with a concrete one-line reason. The tool validates names against the canonical set, so an abbreviation or a translation is refused at the call. \`advance_phase()\` to Phase 3 is BLOCKED until this record exists.
+ 
+ ### Protocol per lens:
+ 1. Apply central question to EACH module
+@@ -460,6 +460,14 @@
+ ### Step 0 — Read the persisted coverage matrix (MANDATORY, before addressing anything):
+ Read \`specs/design/coverage-matrix.md\` — the findings table Phase 2 wrote. Do NOT work from memory of the chat. Address the 🔴 criticals and 🟡 important findings **by id**, row by row: when you resolve P-01, say so and how. Findings marked \`duplica:\` are the same defect seen twice — resolve the defect once. This is the asset being acted on, not just stored, and referencing findings by id is what keeps the audit trail honest (a later post-mortem can check whether P-01 was actually addressed).
+ 
++### Updating the architecture doc: APPEND V(N+1), never overwrite V(N).
++When this phase produces a new version, add a new \`## V(N+1)\` section to
++\`specs/technical/architecture.md\` with its own module table — do NOT replace the previous
++one. The Phase 2↔3 loop critiques a DIFFERENT architecture each round, and a finding from
++iteration 1 may name a module that V(2) removed. Overwriting leaves that finding pointing at
++a module no artifact records, and the per-module traceability the matrix exists for breaks
++exactly where the design changed most. Keep every version; the last section is the current one.
++
+ ### Purpose: Simplify V(N) → V(N+1), eliminating complexity.
+ **CAUTION AP2 (Complexity as false solution):** Each iteration must SIMPLIFY, not complexify.
+ 
+diff -ruN a/src/rules/lenses.ts b/src/rules/lenses.ts
+--- a/src/rules/lenses.ts	1969-12-31 21:00:00.000000000 -0300
++++ b/src/rules/lenses.ts	2026-08-05 21:36:47.000000000 -0300
+@@ -0,0 +1,47 @@
++// The 19 lenses, as data.
++//
++// They existed only as prose inside the Phase 2 guidance table, so nothing could
++// validate a lens name: a session could write "Segurança", "SEG" or "Security" and
++// every one of them passed. v0.12.1 addressed that by INSTRUCTING the model to use
++// the canonical name. Instruction is not enforcement — this constant is, once the
++// activation tool validates against it.
++//
++// Single source of truth for: the record_activated_lenses enum, the
++// activated_lenses_recorded evidence gate, and (eventually) the guidance table.
++
++export const UNIVERSAL_LENSES = [
++  "Assumptions",
++  "Architectural",
++  "Implementability",
++  "Scientific",
++  "Security",
++  "Performance",
++  "Regulatory",
++] as const;
++
++export const CONDITIONAL_LENSES = [
++  "Resilience",
++  "UI/UX",
++  "Migration / Coexistence",
++  "Sustainability / Proportionality",
++  "Ethical / Human Impact",
++  "Process / Workflow",
++  "Governance / Accountability",
++  "Observability / Operability",
++  "Control Engineering",
++  "Game Theory",
++  "Linguistics / Grammar",
++  "Mechanical Engineering",
++] as const;
++
++export const ALL_LENSES: readonly string[] = [...UNIVERSAL_LENSES, ...CONDITIONAL_LENSES];
++
++/** Canonical name for `raw`, or null if it is not one of the 19.
++ *  Tolerates case and spacing around "/" — "UI / UX" is the same lens as "UI/UX" —
++ *  but NOT translations or abbreviations, which are what break cross-project
++ *  aggregation. */
++export function canonicalLens(raw: string): string | null {
++  const norm = (s: string) => s.trim().toLowerCase().replace(/\s*\/\s*/g, "/").replace(/\s+/g, " ");
++  const target = norm(raw);
++  return ALL_LENSES.find((l) => norm(l) === target) ?? null;
++}
+diff -ruN a/src/rules/phases.ts b/src/rules/phases.ts
+--- a/src/rules/phases.ts	2026-08-05 13:58:38.000000000 -0300
++++ b/src/rules/phases.ts	2026-08-05 21:37:03.000000000 -0300
+@@ -35,8 +35,11 @@
+    * "test-pass" — the test-outcome hook must have witnessed a passing run in this
+    * phase (S4: never assume tests passed). Like `artifact`, it mechanizes only the
+    * observable fact, not the quality of the tests.
++   * "lenses-recorded" — state.activatedLenses must be present, with every
++   * non-activated conditional lens carrying a reason. Turns a self-attested boolean
++   * into a structured record the engine can actually check.
+    */
+-  verify?: "test-pass";
++  verify?: "test-pass" | "lenses-recorded";
+ }
+ 
+ export const PHASE_DEFINITIONS: PhaseDefinition[] = [
+@@ -122,7 +125,7 @@
+   { phase: 1, criterion: "modules_adherent_patterns", description: "Modules adherent to chosen patterns", required: true },
+ 
+   // Phase 2
+-  { phase: 2, criterion: "activated_lenses_recorded", description: "Activated conditional lenses recorded via record_decision(category='architecture') with justification for each non-activated lens — includes 8 situational lenses and 4 Domain Transfer Lenses (Control Engineering, Game Theory, Linguistics/Grammar, Mechanical Engineering)", required: true },
++  { phase: 2, criterion: "activated_lenses_recorded", description: "Activated conditional lenses recorded via record_activated_lenses() — the structured tool, not free-text prose. Every one of the 12 conditional lenses must appear either as activated or as not-activated WITH a reason; names are validated against the canonical set, so no abbreviation or translation can enter", required: true, verify: "lenses-recorded" },
+   { phase: 2, criterion: "lenses_applied", description: "All 7 universal lenses + all activated conditional lenses applied to each module (no lens skipped — absence of findings is a valid result)", required: true },
+   { phase: 2, criterion: "coverage_matrix", description: "Coverage findings table written to specs/design/coverage-matrix.md — ONE ROW PER FINDING (id | module | lens | severity | description), each with a unique in-project id and 'duplica: <id>' when it is the same defect another lens found. Per-finding ids (not a severity-per-cell grid) are what let overlap be distinguished from orthogonality", required: true, artifact: "design/coverage-matrix.md", artifactRows: { pattern: "\\|\\s*(?!M-)[A-Za-z]{1,4}-\\d+\\s*\\|", count: 1, example: "P-01 | auth | Security | 🔴 | sql-injection in login" } },
+   { phase: 2, criterion: "criticals_identified", description: "Critical findings identified and classified", required: true },
+diff -ruN a/src/state/engine.ts b/src/state/engine.ts
+--- a/src/state/engine.ts	2026-08-05 13:46:54.000000000 -0300
++++ b/src/state/engine.ts	2026-08-05 21:59:16.000000000 -0300
+@@ -14,6 +14,7 @@
+   Result,
+   createDefaultState,
+   SafeguardState,
++  LensActivation,
+ } from "./types";
+ import {
+   isValidTransition,
+@@ -27,6 +28,7 @@
+   LOOP_FAILURE_THRESHOLD,
+   DIAGNOSIS_CATEGORIES,
+ } from "../rules/safeguards";
++import { CONDITIONAL_LENSES, UNIVERSAL_LENSES, canonicalLens } from "../rules/lenses";
+ 
+ export { LOOP_FAILURE_THRESHOLD, DIAGNOSIS_CATEGORIES };
+ 
+@@ -244,6 +246,99 @@
+     }
+   }
+ 
++  /** Records Phase 2 lens activation as structured state.
++   *  Rejects any name outside the canonical 19 and any conditional lens left
++   *  unaccounted for: silence about a lens is exactly what the criterion exists to
++   *  prevent — "I did not activate it" and "I forgot it" must not look the same. */
++  recordActivatedLenses(
++    conditional: string[],
++    notActivated: { lens: string; reason: string }[]
++  ): Result<LensActivation, { message: string }> {
++    if (!this.state) {
++      return { ok: false, error: { message: "Project not initialized." } };
++    }
++
++    // Conditional-only. canonicalLens() spans all 19, so validating with it alone lets a
++    // UNIVERSAL lens land in `conditional` — and the count of activated conditionals is a
++    // measured variable, not a display detail.
++    const paraCondicional = (raw: string): string | null => {
++      const c = canonicalLens(raw);
++      return c && (CONDITIONAL_LENSES as readonly string[]).includes(c) ? c : null;
++    };
++    const foraDeDominio = (raw: string): string =>
++      canonicalLens(raw)
++        ? `"${raw}" is a UNIVERSAL lens. Universals always run and are not passed here — this ` +
++          `field records the CONDITIONAL set, and counting a universal among them corrupts it.`
++        : `"${raw}" is not one of the 12 conditional lenses. Use the exact canonical name — ` +
++          `abbreviations and translations break cross-project analysis, which groups on this value.`;
++
++    const canon: string[] = [];
++    for (const raw of conditional) {
++      const c = paraCondicional(raw);
++      if (!c) {
++        return { ok: false, error: { message: foraDeDominio(raw) } };
++      }
++      if (canon.includes(c)) {
++        return { ok: false, error: { message:
++          `Lens "${c}" is listed twice as activated. A duplicate inflates the activated count ` +
++          `while passing the completeness check unnoticed.` } };
++      }
++      canon.push(c);
++    }
++
++    const nao: { lens: string; reason: string }[] = [];
++    for (const item of notActivated) {
++      const c = paraCondicional(item.lens);
++      if (!c) {
++        return { ok: false, error: { message: foraDeDominio(item.lens) } };
++      }
++      if (canon.includes(c)) {
++        return { ok: false, error: { message:
++          `Lens "${c}" appears as BOTH activated and not-activated. The record would contradict ` +
++          `itself, and a later analysis has no way to tell which was meant.` } };
++      }
++      if (nao.some((x) => x.lens === c)) {
++        return { ok: false, error: { message: `Lens "${c}" is listed twice as not-activated.` } };
++      }
++      if (!item.reason || !item.reason.trim()) {
++        return { ok: false, error: { message:
++          `Lens "${c}" is marked not-activated without a reason. The justification is half the ` +
++          `record: without it there is no way to tell a considered exclusion from an oversight.` } };
++      }
++      nao.push({ lens: c, reason: item.reason.trim() });
++    }
++
++    const contadas = new Set([...canon, ...nao.map((n) => n.lens)]);
++    const faltando = CONDITIONAL_LENSES.filter((l) => !contadas.has(l));
++    if (faltando.length > 0) {
++      return { ok: false, error: { message:
++        `${faltando.length} conditional lens(es) unaccounted for: ${faltando.join(", ")}. ` +
++        `Every one of the 12 must be either activated or explicitly not activated with a reason.` } };
++    }
++
++    const activation: LensActivation = {
++      universal: [...UNIVERSAL_LENSES],
++      conditional: canon,
++      notActivated: nao,
++      recordedAt: new Date().toISOString(),
++    };
++    this.state.activatedLenses = activation;
++    this.save();
++    return { ok: true, value: activation };
++  }
++
++  /** True if Phase 2 lens activation is on record as structured state.
++   *  Falls back to the legacy free-text decision so projects started before this
++   *  version are not retroactively blocked — but the fallback accepts both language
++   *  markers, because accepting only the English one is the defect being fixed. */
++  lensesRecorded(): boolean {
++    if (this.state?.activatedLenses) return true;
++    const marcas = ["ACTIVATED LENSES", "LENTES ATIVADAS"];
++    return (this.state?.decisions ?? []).some((d) =>
++      marcas.some((m) => d.content.toUpperCase().includes(m))
++    );
++  }
++
+   /** True if the test-outcome hook witnessed a passing run in `phase`. Gates
+    *  tests_passing: the engine saw the green run, it was not merely asserted. */
+   witnessedTestPass(phase: number): boolean {
+@@ -274,6 +369,14 @@
+           `A prose or id-less file cannot be machine-read — each row needs its own id.`
+         );
+       }
++      if (def.verify === "lenses-recorded" && !this.lensesRecorded()) {
++        out.push(
++          `[Phase ${phase}] ${def.criterion}: lens activation is not on record. ` +
++          `Call record_activated_lenses(conditional, notActivated) — the structured tool. ` +
++          `Marking the criterion met is not enough: without the record, which lenses were ` +
++          `applied cannot be reconstructed after the session.`
++        );
++      }
+       if (def.verify === "test-pass" && !this.witnessedTestPass(phase)) {
+         out.push(
+           `[Phase ${phase}] ${def.criterion}: the engine did not witness a passing test run in this phase. ` +
+@@ -701,4 +804,4 @@
+ 
+ function dedupe(arr: string[]): string[] {
+   return [...new Set(arr)];
+-}
++}
+\ No newline at end of file
+diff -ruN a/src/state/types.ts b/src/state/types.ts
+--- a/src/state/types.ts	2026-08-04 22:52:12.000000000 -0300
++++ b/src/state/types.ts	2026-08-05 21:37:03.000000000 -0300
+@@ -16,12 +16,27 @@
+   /** Last test run the test-outcome hook actually witnessed. Gates tests_passing:
+    *  the engine must have seen a green run in the phase, not just be told it passed. */
+   lastTestOutcome?: { outcome: "pass" | "fail"; phase: number; at: string };
++  /** Lens activation for Phase 2, recorded STRUCTURALLY by record_activated_lenses.
++   *  Was a free-text decision that consumers had to grep for "ACTIVATED LENSES" —
++   *  which silently failed whenever the session was conducted in another language,
++   *  and could not be validated against the canonical lens set at all. */
++  activatedLenses?: LensActivation;
+   lastPhaseStateCheck?: string;  // ISO timestamp — gateway guard for smaller models
+   createdAt: string;             // ISO timestamp
+   updatedAt: string;
+   history: PhaseTransition[];    // transition log
+ }
+ 
++/** Which lenses Phase 2 activated, and why the others were not.
++ *  Names are validated against rules/lenses.ts on write, so a later analysis can
++ *  group on this field across projects without a normalization table. */
++export interface LensActivation {
++  universal: string[];                                  // the 7, always
++  conditional: string[];                                // the subset activated
++  notActivated: { lens: string; reason: string }[];     // the rest, each with a reason
++  recordedAt: string;                                   // ISO timestamp
++}
++
+ /** Structured technical context — survives model switches */
+ export interface ProjectSpec {
+   stack: string[];               // approved technologies (e.g., "TypeScript", "Node 18+")
+diff -ruN a/src/test/engine.test.ts b/src/test/engine.test.ts
+--- a/src/test/engine.test.ts	2026-08-05 13:59:08.000000000 -0300
++++ b/src/test/engine.test.ts	2026-08-05 22:00:01.000000000 -0300
+@@ -9,6 +9,7 @@
+ import { getCompleteGuidance } from "../rules/full-guidance";
+ import { validateSafeguard } from "../rules/safeguards";
+ import { detectOutcome } from "../hooks/test-outcome";
++import { CONDITIONAL_LENSES } from "../rules/lenses";
+ 
+ function createTempWorkspace(): string {
+   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "versus-test-"));
+@@ -264,11 +265,13 @@
+   for (const c of engine.getExitCriteriaWithDefs(1)) engine.markExitCriterion(1, c.criterion, true);
+   writeArchitectureDoc(workspace);
+   engine.advancePhase(2);
++  recordAllLenses();
+ 
+   assert.strictEqual(engine.getPhaseState()!.currentPhase, 2);
+ 
+   // Phase 2 → 3
+   for (const c of engine.getExitCriteriaWithDefs(2)) engine.markExitCriterion(2, c.criterion, true);
++  recordAllLenses();
+   writeCoverageMatrix(workspace);
+   const to3 = engine.advancePhase(3);
+   assert.strictEqual(to3.ok, true);
+@@ -402,6 +405,21 @@
+ console.log("\n=== Artifact Gate Tests ===\n");
+ 
+ /** Fast-forward a fresh project to Phase 2 with all P2 criteria marked met. */
++/** Phase 2 now requires lens activation on record, so any helper that models a
++ *  COMPLETED Phase 2 has to record it — the same way it already stamps criteria and
++ *  writes the artifact. */
++function recordAllLenses() {
++  const activated = ["Resilience", "Security" as never].filter(
++    (l) => CONDITIONAL_LENSES.includes(l as never)
++  ) as string[];
++  const notActivated = CONDITIONAL_LENSES.filter((l) => !activated.includes(l)).map((l) => ({
++    lens: l as string,
++    reason: "not applicable to this test fixture",
++  }));
++  const r = engine.recordActivatedLenses(activated, notActivated);
++  assert.ok(r.ok, "fixture must be able to record lenses");
++}
++
+ function toPhase2Stamped() {
+   engine.initProject("Test", "Desc");
+   engine.updateScore(95, makeFullBreakdown(95));
+@@ -411,6 +429,7 @@
+   writeArchitectureDoc(workspace);
+   engine.advancePhase(2);
+   for (const c of engine.getExitCriteriaWithDefs(2)) engine.markExitCriterion(2, c.criterion, true);
++  recordAllLenses();
+   assert.strictEqual(engine.getPhaseState()!.currentPhase, 2);
+ }
+ 
+@@ -618,6 +637,7 @@
+   writeCoverageMatrix(workspace); // Phase 2→3 gate requires the persisted artifact
+   for (let p = 0; p <= 4; p++) {
+     for (const c of engine.getExitCriteriaWithDefs(p)) engine.markExitCriterion(p, c.criterion, true);
++    if (p === 2) recordAllLenses(); // Phase 2 exit now needs the structured lens record
+     engine.advancePhase(p + 1);
+   }
+   assert.strictEqual(engine.getPhaseState()!.currentPhase, 5, "should be in Phase 5");
+@@ -754,3 +774,107 @@
+ });
+ 
+ console.log("\n=== All tests completed ===\n");
++
++// --- record_activated_lenses: structured lens activation (replaces free-text grep) ---
++
++test("Phase 2 without lens activation on record BLOCKS advance", () => {
++  engine.initProject("Test", "Desc");
++  engine.updateScore(95, makeFullBreakdown(95));
++  for (const c of engine.getExitCriteriaWithDefs(0)) engine.markExitCriterion(0, c.criterion, true);
++  engine.advancePhase(1);
++  for (const c of engine.getExitCriteriaWithDefs(1)) engine.markExitCriterion(1, c.criterion, true);
++  writeArchitectureDoc(workspace);
++  engine.advancePhase(2);
++  for (const c of engine.getExitCriteriaWithDefs(2)) engine.markExitCriterion(2, c.criterion, true);
++  writeCoverageMatrix(workspace);
++  // Deliberately NOT calling recordAllLenses(): the point is that the stamp alone
++  // must not be enough.
++
++  const r = engine.advancePhase(3);
++  assert.strictEqual(r.ok, false, "stamping the criterion is not the same as recording the lenses");
++  if (r.ok) return;
++  assert.ok(r.error.missingCriteria.some((m) => m.includes("record_activated_lenses")));
++});
++
++test("a translated lens name is rejected", () => {
++  engine.initProject("Test", "Desc");
++  const r = engine.recordActivatedLenses(["Segurança"], []);
++  assert.strictEqual(r.ok, false, "a translation must not enter the record");
++  if (r.ok) return;
++  assert.ok(r.error.message.includes("not one of the 12 conditional lenses"));
++});
++
++test("an unaccounted conditional lens is rejected", () => {
++  engine.initProject("Test", "Desc");
++  const r = engine.recordActivatedLenses(["Resilience"], []);
++  assert.strictEqual(r.ok, false, "silence about a lens must not pass as a decision about it");
++  if (r.ok) return;
++  assert.ok(r.error.message.includes("unaccounted for"));
++});
++
++test("not-activated without a reason is rejected", () => {
++  engine.initProject("Test", "Desc");
++  const notActivated = CONDITIONAL_LENSES.filter((l) => l !== "Resilience").map((l) => ({
++    lens: l as string,
++    reason: "",
++  }));
++  const r = engine.recordActivatedLenses(["Resilience"], notActivated);
++  assert.strictEqual(r.ok, false);
++  if (r.ok) return;
++  assert.ok(r.error.message.includes("without a reason"));
++});
++
++test("recorded lenses unblock the advance, and survive as structured state", () => {
++  toPhase2Stamped();
++  writeCoverageMatrix(workspace);
++  assert.strictEqual(engine.advancePhase(3).ok, true);
++
++  const act = engine.getPhaseState()!.activatedLenses!;
++  assert.ok(act, "activation must persist as a field, not as prose to be grepped");
++  assert.strictEqual(act.universal.length, 7);
++  assert.strictEqual(
++    act.conditional.length + act.notActivated.length,
++    CONDITIONAL_LENSES.length,
++    "all 12 conditional lenses accounted for"
++  );
++});
++
++test("a legacy Portuguese decision still satisfies the gate", () => {
++  engine.initProject("Test", "Desc");
++  engine.recordDecision(2, "architecture", "LENTES ATIVADAS na Fase 2: Resilience. NÃO ATIVADAS: ...");
++  assert.strictEqual(
++    engine.lensesRecorded(),
++    true,
++    "the old free-text record must not be retroactively invalidated — and not only in English"
++  );
++});
++
++
++test("a universal lens passed as conditional is rejected", () => {
++  engine.initProject("Test", "Desc");
++  const outros = CONDITIONAL_LENSES.map((l) => ({ lens: l as string, reason: "n/a" }));
++  const r = engine.recordActivatedLenses(["Security"], outros);
++  assert.strictEqual(r.ok, false, "the conditional count is a measured variable — a universal must not enter it");
++  if (r.ok) return;
++  assert.ok(r.error.message.includes("UNIVERSAL"));
++});
++
++test("the same lens as activated AND not-activated is rejected", () => {
++  engine.initProject("Test", "Desc");
++  const todos = CONDITIONAL_LENSES.map((l) => ({ lens: l as string, reason: "n/a" }));
++  const r = engine.recordActivatedLenses(["Resilience"], todos);
++  assert.strictEqual(r.ok, false, "the record would contradict itself");
++  if (r.ok) return;
++  assert.ok(r.error.message.includes("BOTH activated and not-activated"));
++});
++
++test("a duplicated lens is rejected, not silently absorbed by the completeness check", () => {
++  engine.initProject("Test", "Desc");
++  const outros = CONDITIONAL_LENSES.filter((l) => l !== "Resilience").map((l) => ({
++    lens: l as string, reason: "n/a",
++  }));
++  const r = engine.recordActivatedLenses(["Resilience", "Resilience"], outros);
++  assert.strictEqual(r.ok, false);
++  if (r.ok) return;
++  assert.ok(r.error.message.includes("twice as activated"));
++});

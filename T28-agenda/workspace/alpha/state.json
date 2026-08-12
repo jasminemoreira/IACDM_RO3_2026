@@ -1,0 +1,46 @@
+{
+ "pulls": 0,
+ "resources": {
+  "alpha-compartilhado_t28-1": {
+   "deleted": false,
+   "seq": 1,
+   "version": "v1"
+  },
+  "alpha-ed1_t28-3": {
+   "deleted": false,
+   "seq": 3,
+   "version": "v3"
+  },
+  "alpha-ed2_t28-4": {
+   "deleted": false,
+   "seq": 4,
+   "version": "v4"
+  },
+  "alpha-ov1_t28-5": {
+   "deleted": false,
+   "seq": 5,
+   "version": "v5"
+  },
+  "alpha-ov2_t28-6": {
+   "deleted": false,
+   "seq": 6,
+   "version": "v6"
+  },
+  "alpha-serie_t28-7": {
+   "deleted": false,
+   "seq": 7,
+   "version": "v7"
+  },
+  "alpha-serie_t28-8": {
+   "deleted": false,
+   "seq": 8,
+   "version": "v8"
+  },
+  "alpha-so-em-a_t28-2": {
+   "deleted": false,
+   "seq": 2,
+   "version": "v2"
+  }
+ },
+ "seq": 8
+}

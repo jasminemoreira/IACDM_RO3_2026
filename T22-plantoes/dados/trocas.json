@@ -1,0 +1,50 @@
+[
+  {
+    "id": "t001",
+    "escala_id": "2026-09",
+    "solicitante_id": "p00",
+    "destinatario_id": "p01",
+    "plantao_do_solicitante_id": "s012",
+    "plantao_do_destinatario_id": "s021",
+    "estado_troca": "rejeitada",
+    "criada_em": "2026-08-10T11:49:33",
+    "decidida_em": "2026-08-10T11:49:43",
+    "motivo": "não tem a habilitação 'cardio' exigida (INRC-II H4) [p01 em 2026-09-02]"
+  },
+  {
+    "id": "t002",
+    "escala_id": "2026-09",
+    "solicitante_id": "p00",
+    "destinatario_id": "p03",
+    "plantao_do_solicitante_id": "s012",
+    "plantao_do_destinatario_id": "s042",
+    "estado_troca": "rejeitada",
+    "criada_em": "2026-08-10T11:49:44",
+    "decidida_em": "2026-08-10T11:49:51",
+    "motivo": "descanso de 12h após o plantão de 2026-09-05; o regime 12x36 exige 36h ininterruptas (CLT art. 59-A) [p00 em 2026-09-05]"
+  },
+  {
+    "id": "t003",
+    "escala_id": "2026-09",
+    "solicitante_id": "p06",
+    "destinatario_id": "p09",
+    "plantao_do_solicitante_id": "s022",
+    "plantao_do_destinatario_id": "s020",
+    "estado_troca": "expirada",
+    "criada_em": "2026-08-10T11:49:52",
+    "decidida_em": "2026-08-10T11:49:52",
+    "motivo": "o plantão mais próximo desta troca já passou"
+  },
+  {
+    "id": "t004",
+    "escala_id": "2026-09",
+    "solicitante_id": "p00",
+    "destinatario_id": "p03",
+    "plantao_do_solicitante_id": "s012",
+    "plantao_do_destinatario_id": "s082",
+    "estado_troca": "efetivada",
+    "criada_em": "2026-08-10T11:50:16",
+    "decidida_em": "2026-08-10T11:50:16",
+    "motivo": ""
+  }
+]

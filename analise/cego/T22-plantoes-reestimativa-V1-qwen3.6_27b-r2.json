@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Existem dependências externas críticas (solver CP-SAT via M-06 e persistência em disco via M-08) cujos falhas ou lentidão afetam diretamente a disponibilidade do serviço."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "O módulo CLI (M-11) é a superfície operacional para pessoas realizarem tarefas complexas de geração e troca, exigindo avaliação de usabilidade e clareza nos fluxos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não indica substituição de sistema legado existente nem define mecanismos de migração de dados ou coexistência com versões anteriores."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O módulo solver (M-06) realiza otimização computacionalmente intensiva onde o custo cresce exponencialmente com a complexidade da instância, exigindo análise de proporcionalidade do recurso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre alocação de turnos e condições de trabalho (M-03, M-06), impactando diretamente a vida laboral das pessoas, ativando riscos éticos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existem fluxos multi-ator com estados explícitos, como a máquina de estados de troca (M-04) e o fluxo de geração/aprovação, exigindo completude nas transições."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra ações críticas (trocas, escalas) que precisam de auditoria e atribuição de autoria, embora o escopo negativo explicitamente exclua autenticação/permissões."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema opera em produção com dependências externas (solver, disco) e processos assíncronos/longos, necessitando detecção de degradação e diagnóstico sem mudanças de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback automáticos que corrijam o estado do sistema em tempo real nem sincronização contínua entre subsistemas independentes; as correções são manuais ou batch."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores (pessoas solicitantes e aprovadores de trocas) têm incentivos potenciais não alinhados dentro do sistema, assumindo cooperação onde pode haver defeição estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces entre módulos são definidas internamente com tipos compartilhados (M-01) e não há contrato público ou comunicação entre times independentes que exija ambiguidade linguística."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura é nova e não menciona evolução de sistemas longevos, tolerância a deriva técnica ou manutenção incremental de especificações exatas ao longo do tempo."
+    }
+  ]
+}

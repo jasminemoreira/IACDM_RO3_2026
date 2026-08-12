@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência local de arquivos YAML (M-07) que podem estar ausentes, corrompidos ou com permissões negadas, exigindo tratamento explícito de erros de E/S e validação de formato antes do processamento."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma interface de linha de comando (M-11) operada por humanos, que requer clareza nas mensagens de erro agregadas (A9), saída formatada legível e códigos de retorno semânticos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O escopo negativo define ausência de persistência, cache ou estado anterior; o sistema recarrega tudo a cada execução, não havendo transição entre versões de dados ou rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A suposição A7 limita o grafo à memória para dezenas/centenas de datasets e a arquitetura é single-threaded sem alocação elástica; o custo computacional é trivial e fixo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema realiza validação técnica e consulta de linhagem de dados, não tomando decisões automatizadas sobre pessoas, classificação social ou moderação de conteúdo humano."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo de estado definido: Carregamento -> Mapeamento -> Validação (INV-1..6) -> Consulta. A validação é bloqueante (A8) e o sistema deve garantir que caminhos excepcionais (erros agregados) não deixem o processo em estado inconsistente."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O problema central é a declaração de donos por domínio e linhagem; as invariantes INV-2 e INV-3 forçam a existência de proprietário, e o sistema serve para auditoria de impacto e procedência."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há requisitos operacionais de produção, telemetria, logs estruturados para diagnóstico remoto ou detecção de degradação em tempo real; é uma ferramenta batch local."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback, sincronização de estado entre nós distribuídos ou correção automática em tempo de execução; a validação é estática no momento do carregamento."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos conflitantes ou API pública exposta; os dados são declarados manualmente por humanos em um contexto colaborativo assumido."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A identidade do dataset depende de uma sintaxe específica (`dominio.nome`, sem pontos nos nomes, A10) e a inversão da aresta declarada (M-08) exige contrato rigoroso para evitar ambiguidades na construção do grafo."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura Hexagonal com núcleo puro (M-01 a M-06) e separação estrita de dependências visa tolerância a mudanças futuras (ex: trocar YAML por banco de dados), gerindo o débito técnico através de interfaces estáveis."
+    }
+  ]
+}

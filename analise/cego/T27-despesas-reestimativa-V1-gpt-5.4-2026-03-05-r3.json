@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa explícita de banco SQLite via M-08/M-09 e superfícies HTTP em M-11."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: UI web server-rendered em M-12 e rotas HTTP usadas manualmente."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não menciona substituição de sistema existente, transição em produção nem convivência com legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve consumo/decisão de recurso com custo crescente relevante além de volume pequeno assumido em A7."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões sobre pessoas no fluxo de aprovação/delegação, definindo quem pode ou não agir sobre despesas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O problema é um fluxo multiator com estados, cadeia de aprovação, rejeição terminal e delegação temporária."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra decisões auditáveis com ator efetivo, em-nome-de, instante e limite exercido na trilha M-06."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema de produção com API, banco e operação temporal, mas a arquitetura não descreve mecanismos operacionais de diagnóstico."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de estado temporal e configuração de runtime avaliada sob demanda: relógio, vigência de delegação e matriz de autoridade."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há múltiplos atores independentes e API pública sem autenticação confiável (A5), assumindo cooperação sujeita a desvio estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre módulos e interface HTTP com erros nomeados e formatos que precisam interpretação inequívoca entre componentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "É um sistema modular e evolutivo com invariantes distribuídos e premissas rígidas, sujeito a tolerâncias de manutenção ao longo do tempo."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O banco de dados SQLite (M-09) é uma dependência externa crítica de persistência; sua indisponibilidade ou corrupção paralisaria o sistema, embora a arquitetura não detalhe estratégias de fallback ou recuperação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma camada de interface web explícita (M-12) com 6 telas server-side para interação humana direta nas operações de triagem e recurso."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve um sistema novo ('stack', 'seed') sem menção a sistemas legados, scripts de migração de dados históricos ou período de coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema utiliza recursos estáticos (thread única, SQLite local) e não envolve alocação elástica, processamento intensivo de dados em escala ou custos variáveis significativos com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automatizadas sobre classificação e prazos (SLA) que afetam diretamente o tratamento de chamados do solicitante, ativando a necessidade de transparência e mecanismos de recurso."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo de negócio definido com estados (aberto, triado, encerrado), transições explícitas (M-05, M-06) e regras de ciclo de vida que exigem completude e tratamento de exceções."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O módulo de trilha (M-07) registra eventos somente-inserção para auditoria, e o módulo de autorização (M-08) rastreia permissões e motivos, garantindo atribuição de ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Como um sistema de produção com concorrência serializada e dependência de disco, exige mecanismos para detectar degradação (ex: bloqueios de transação) sem alterar o código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback em tempo real nem ajustes automáticos de parâmetros baseados no estado do sistema; as regras são estáticas ou configuradas externamente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A7 declara explicitamente que 'abuso é visível, não punido', indicando uma dinâmica estratégica entre solicitantes e o sistema na definição de urgência/impacto."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "A arquitetura é monocamada com tipos TypeScript fortemente tipados e contratos internos bem definidos, sem interfaces públicas externas ou protocolos entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O uso de SQLite em arquivo único (M-09) impõe tolerâncias rígidas de integridade e bloqueio; a evolução do esquema e o acúmulo de dados exigem gestão técnica precisa."
+    }
+  ]
+}

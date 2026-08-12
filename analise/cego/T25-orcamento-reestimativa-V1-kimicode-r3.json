@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência externa explícita: API Anthropic via M-07 upstream (real/simulado), com premissas sobre falha e dados inesperados (A2: `usage` ausente impediria reconciliação)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Superfície operada por pessoa: SPA do painel (M-10) e painel-api com login de operador (M-09) mostrando consumo, saldo, corte e reset."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield); nenhum sistema de produção existente sendo substituído ou modificado, logo não há transição nem rollback a avaliar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O próprio propósito do sistema é decidir e alocar um recurso cujo custo cresce com o uso (gasto em tokens de LLM), com teto, reserva de pior caso e reconciliação de custo real."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas são sobre gasto de entidades identificadas por chave virtual, não scoring, classificação ou moderação de pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados de reserva no escrow (reservar → reconciliar/liberar, par confirmado/reservado) com caminhos de exceção, incluindo reserva órfã cuja política ficou deliberadamente aberta para a Fase 2."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade e decide cortes que alguém depois precisará auditar e atribuir; tetos têm donos (entidades) e há operador autenticado configurando-os."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com requisitos operacionais: painel de consumo/estado de corte, e premissa A3 (escritor único) garantida por operação e não por código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de feedback com sinal de erro (confirmado+reservado vs. teto), configuração de tetos em runtime via PUT /api/tetos afetando comportamento, e risco de oscilação já nomeado (retry storm, reserva de pior caso)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes (apps consumidores com chaves virtuais sob teto global compartilhado) e cooperação assumida: A5 admite que um app com a chave real contorna o gateway, tornando o corte cooperativo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre componentes carregam o invariante (formato do contador, idempotência de `reconciliar`, exceção de `preco`) e há tradução de formato externo (`usage` da API → modelo interno via Adapter)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa com evolução prevista: rate-card com vigência e modelos novos/desconhecidos, e tolerância explícita entre reserva de pior caso e custo real (reconcilia sempre para menos ou igual)."
+    }
+  ]
+}

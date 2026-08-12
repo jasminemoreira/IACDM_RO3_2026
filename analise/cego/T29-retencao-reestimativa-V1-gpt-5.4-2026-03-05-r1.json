@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há APIs, DBs, filas ou serviços de terceiros; os riscos citados são de corrupção de arquivo local, não de dependência externa."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoas: o módulo cli (M-12) com 6 comandos e flags como --allow-lossy."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura substitui/coexiste entre formatos F1 e F2 e inclui migrator (M-10), precheck e política de migração com risco de perda."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais, com custo de CPU/disco crescendo com volume, retenção, downsampling e migração."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; o domínio é compressão, retenção e migração de séries temporais."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos operacionais explícitos com etapas e exceções: ingestão, retenção, migração, validação e expiração via scripts do cli."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema escreve, rejeita, expira e migra dados com relatórios e motivos (WriteReport, MigrationReport), ações que depois precisam ser atribuídas e auditadas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacionalizado em produção por CLI, com degradações possíveis em ingestão/leitura/migração/retenção que precisam ser detectadas sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A política de retenção aplica correção de estado ao acervo ao comparar tier_state/now e gerar um RetentionPlan de downsample/expire."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes, API pública, marketplace ou integração externa com incentivos potencialmente desalinhados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre componentes independentes, especialmente Store, capabilities(), write()/read() e os formatos F1/F2, que exigem semântica não ambígua."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema é modular e evolutivo, com formatos coexistentes, capacidades distintas, limites como ts_bits e bloco de 2 h, exigindo tolerância a variação e manutenção ao longo do tempo."
+    }
+  ]
+}

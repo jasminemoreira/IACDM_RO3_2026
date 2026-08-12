@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: sonda-tls faz handshake de rede com timeout e tipos de erro (timeout/recusado/dns/tls), e repositorio depende de node:sqlite — ambas podem falhar, atrasar ou devolver dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "web-ui expõe 5 telas HTML com sessão e rotas GET/POST operadas por pessoas (login, painel, aprovar pedido, auditar trilha)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (V(1)); nenhum sistema de produção existente é substituído ou modificado e não há caminho de transição/rollback em questão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos que crescem com o uso: varredura sequencial por alvo (A7), trilha append-only que cresce sem bound e custo de scrypt por autenticação — a proporção custo/valor precisa ser questionada."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas (classificar, reconciliar, escalar) recaem sobre certificados e alvos, não sobre pessoas — não há scoring, classificação ou moderação de indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita em pedido (pendente -> aprovado -> fechado) com múltiplos atores (solicitante/aprovador/auditor) e caminhos de exceção (ErroTransicao, escalação por inação)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O núcleo do problema é registrar quem aprovou cada emissão: trilha append-only encadeada por hash, autoria de aprovações e verificação de integridade — atribuição e auditabilidade são propriedades do sistema."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema de produção com requisitos operacionais: varreduras disparadas, falhas de sonda tipadas e verificarIntegridade() precisam permitir detectar degradação e diagnosticar incidentes sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de retroalimentação e configuração em runtime afetando comportamento: reconciliacao compara observação nova vs anterior e corrige (fechar pedido, sinalizar troca, escalar), e politica-limiar tem limiares configuráveis que alteram a classificação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Atores são usuários internos autenticados com papéis fixos; não há API pública, marketplace nem agentes independentes com incentivos estratégicos divergentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de interface entre 11 módulos com convenções formais (Ok|Erro como valor, união Decisao, formato de Entrada da trilha com hash encadeado) — ambiguidade de contrato pode gerar implementações incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema longevo com tolerâncias explícitas em risco: A8 (node:sqlite experimental pode mudar de API em upgrade de Node) e A2 (dependência do relógio da máquina sem mitigação) — evolução e manutenção de módulos estão em jogo."
+    }
+  ]
+}

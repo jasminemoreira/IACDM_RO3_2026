@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de recursos externos ao núcleo: solver de terceiros (ortools CP-SAT, M-06) sujeito a timeout/retorno de status não-ótimo (A4) e persistência em arquivos JSON em disco (M-08) sujeita a falha, ausência ou corrupção — e A7 admite execuções concorrentes se sobrescrevendo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: M-11 expõe os 5 casos de uso como comandos CLI, e o relatório de conformidade (UC-5) e o diagnóstico de inviabilidade (M-07) precisam ser compreensíveis para o operador agir."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nenhum sinal de substituição ou modificação de sistema em produção: o projeto é novo e a única leitura de dado pré-existente (escala do mês anterior, M-05) é dado do próprio sistema, não coexistência com legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome um recurso cujo custo cresce com o uso: tempo de CPU do solver CP-SAT, com limite de 60 s para 30×3×30 (A4/SC-2) e otimalidade não garantida — o custo computacional escala com o tamanho da instância."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão automatizada sobre pessoas: o solver aloca plantões e decide trocas que afetam a vida de trabalhadores, com pesos INRC-II calibrados em outro país (A8) e equidade deliberadamente fora do critério de aceite."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multi-ator com máquina de estados explícita: M-04 implementa o ciclo solicitar → PENDENTE → responder (aceite/recusa) entre duas pessoas, com revalidação no aceite e estados terminais."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém terá que auditar e responder por elas: escalas publicadas e trocas persistidas (M-08) exigem autoria atribuível, e A5 admite que a identidade no comando não é verificada — qualquer um pode aceitar troca em nome de outro."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema operado com requisitos operacionais: M-07 diagnostica inviabilidade antes do solve, M-03 reporta custo por restrição e M-06 devolve status/otimalidade — sinais de que degradação e falhas precisam ser diagnosticáveis sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há sincronização de estado e realimentação: M-05 deriva contadores de fronteira da escala do mês anterior (estado carregado entre ciclos, com risco de deriva — A3/PR-4) e M-04 revalida a escala no aceite da troca, corrigindo estado que pode ter mudado desde a solicitação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores independentes com incentivos potencialmente desalinhados: pessoas declaram preferências, solicitam e aceitam trocas buscando benefício próprio, e o desenho assume cooperação (identidade confiável, A5) onde pode haver defecção estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contrato de interface entre componentes com dupla interpretação: M-02 expõe cada restrição em dois modos (aplicar para o solver, verificar para o avaliador) e o invariante central exige que os dois clientes produzam comportamento compatível — ambiguidade no contrato quebra a arquitetura."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Sistema de vida longa cuja evolução é o eixo do desenho: regras internas parametrizadas, catálogo como único dono das regras para absorver mudanças futuras, pesos recalibráveis (A8) e premissas/PRs abertas indicando dívida técnica acumulável."
+    }
+  ]
+}

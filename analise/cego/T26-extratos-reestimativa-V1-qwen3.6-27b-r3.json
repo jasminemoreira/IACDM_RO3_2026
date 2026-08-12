@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Processamento em lote de arquivos locais e banco SQLite embutido, sem integração com APIs, filas ou serviços de rede sujeitos a falhas transitórias."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo `cli` define superfície operacional (`import, reconcile, review, report`) destinada à interação direta do operador humano."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descreve a concepção de um novo sistema, sem menção a substituição de legado, migração de dados ou fase de coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Algoritmo de matching par-a-par com bloqueio, com risco explícito de degeneração para O(n²) em blocos grandes (premissa A4) e processamento de alto volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Classificação e casamento de transações financeiras, não de perfis ou decisões sobre pessoas, sem impacto ético direto sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Definição explícita de 5 estados terminais, chain of responsibility L0-L5 para deduplicação e fila de pendências com resoluções humanas, modelando fluxo de negócio completo."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Armazenamento obrigatório da camada decisória e evidência em `DecisaoDedup`, registro de resoluções e exigência de rastreabilidade para auditoria de falsos positivos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Ausência de mecanismos de métricas, logs operacionais ou dashboards de saúde; relatórios focam exclusivamente em resultados de negócio e conciliação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Resoluções humanas da fila de pendências alimentam a camada L0 do `dedup-engine`, criando loop de feedback que ajusta decisões futuras, além de janelas e tolerâncias configuráveis."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ferramenta interna de conciliação financeira, sem marketplace, API pública ou atores independentes com incentivos divergentes ou risco de defusão estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Normalização canônica e hashing determinístico eliminam ambiguidades na porta `FonteDeExtrato`, e os contratos de interface são implementados internamente por uma única base de código."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Conciliação opera com janela de data e tolerância de valor configuráveis, e o `matcher` usa similaridade fuzzy para tolerar variações de descrição entre fontes externas."
+    }
+  ]
+}

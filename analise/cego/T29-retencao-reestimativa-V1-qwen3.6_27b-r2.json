@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Premissa P-A7 declara explicitamente que o disco não corrompe bytes e não há checksum, tornando a corrupção de bloco um risco conhecido não mitigado pela arquitetura."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (cli) é a superfície operacional para pessoas, exigindo clareza nos 6 Transaction Scripts (`ingest`, `migrate`, etc.) e feedback de erros (`rejected`, `LossRisk`)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "M-10 (migrator) existe especificamente para gerenciar a transição entre formatos F1 e F2, com lógica de `precheck` para detectar perda antes da escrita."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume de dados (séries temporais) e toma decisões críticas de custo/recursos via `retention` (M-05) e `downsampler` (M-06), onde a eficiência da compressão Gorrila e a retenção afetam diretamente o consumo de disco e CPU."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não toma decisões automatizadas sobre pessoas (scoring, classificação) nem envolve dados pessoais sensíveis sujeitos a impacto humano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define fluxos complexos com transições de estado e exceções: retenção (M-05), downsampling (M-06) e migração com abortagem condicional baseada em `LossRisk` (M-10)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema gera relatórios de auditoria técnica (`WriteReport`, `MigrationReport`) que atribuem causas a rejeições e perdas de dados, permitindo rastrear por que um ponto foi descartado ou migrado com perda."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há módulos dedicados à coleta de métricas, logs estruturados ou health checks em tempo de execução; o sistema é uma ferramenta batch/CLI sem requisitos declarados de monitoramento contínuo."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loops de feedback automáticos nem correção de estado em tempo real; a validação ocorre apenas na entrada (`check_monotonic`) ou pré-processamento (`precheck`), sem ajuste dinâmico."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores independentes com incentivos conflitantes; é um sistema de operador único onde o usuário e o sistema compartilham o objetivo de armazenar dados corretamente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A interface `Store` (M-07) exige rigor semântico para harmonizar formatos incompatíveis (F1 com acesso aleatório vs F2 sequencial), declarando capacidades explícitas (`capabilities`) para evitar ambiguidade contratual."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura lida com tolerâncias rígidas de bits e bytes (M-01, M-02), limites físicos de blocos (P-A5) e riscos de desalinhamento entre formatos, exigindo precisão na manipulação de dados binários."
+    }
+  ]
+}

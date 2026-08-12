@@ -1,0 +1,132 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__versus-claude__get_phase_state",
+      "mcp__versus-claude__get_decisions",
+      "mcp__versus-claude__get_exit_criteria",
+      "mcp__versus-claude__advance_phase",
+      "mcp__versus-claude__start_iteration",
+      "mcp__versus-claude__record_decision",
+      "mcp__versus-claude__update_score",
+      "mcp__versus-claude__mark_exit_criterion",
+      "mcp__versus-claude__check_safeguard",
+      "mcp__versus-claude__check_all_safeguards",
+      "mcp__versus-claude__check_specs_status",
+      "mcp__versus-claude__init_project",
+      "mcp__versus-claude__get_phase_guidance",
+      "mcp__versus-claude__update_project_spec",
+      "mcp__versus-claude__start_new_cycle",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Bash",
+      "WebFetch",
+      "WebSearch",
+      "NotebookEdit"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/inject-context.js\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/phase-gate.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/loop-detector.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/block-destructive.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Grep|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/truncation-check.js\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/test-outcome.js\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/jasmine/INDT/RO3/T24-catalogo/.versus/stop-verify.js\"",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "BEFORE compaction: call get_phase_state() and save the result in MEMORY.md (in your auto memory directory). Include: current phase, iteration, key decisions, next steps."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "STOP. Before doing ANYTHING else — before reading any files, before exploring the codebase — you MUST execute these two MCP tool calls RIGHT NOW:\n1. Call mcp__versus-claude__get_phase_state() to load the current methodology phase\n2. Call mcp__versus-claude__get_phase_guidance() to get detailed instructions\nDO NOT read .versus/state.json or .versus/server.js directly. DO NOT skip these calls. The MCP server versus-claude manages the IACDM methodology state. All methodology interactions MUST go through MCP tools: record_decision() for decisions, update_score() for scoring, mark_exit_criterion() for criteria, advance_phase() for transitions. If get_phase_state returns an error (project not initialized), look at the init_project tool description: it has a BOOTSTRAP PROTOCOL for brownfield projects (workspace with existing code) that requires reading surface files, presenting a proposal, getting user confirmation, then calling init_project with bootstrap_data. For empty workspaces (greenfield), just ask the user for a project name and description, then call init_project directly. If in Phase 6: also call get_decisions(phase=6) to recover testing progress — manual testing spans sessions.\nVISIBILITY: after loading state, START your first response with a one-line banner so the user knows Versus is active, e.g.: '📍 Versus ativo — Fase X (name), iteração Y. Próximo passo: <one line>.' The user must SEE that methodology context was loaded; do not load silently."
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "STOP. Context was compacted. Before doing ANYTHING else, you MUST recover methodology state:\n1. Call mcp__versus-claude__get_phase_state() to reload current phase\n2. Call mcp__versus-claude__get_phase_guidance() to reload instructions\n3. Call mcp__versus-claude__get_decisions() to reload previous decisions\n4. Read MEMORY.md (auto memory) for additional context\nDO NOT read .versus/state.json or .versus/server.js directly. DO NOT skip these calls. Continue where you left off only AFTER completing all 4 steps above.\nVISIBILITY: after recovering, START your first response with a one-line banner so the user knows Versus recovered, e.g.: '📍 Versus retomado — Fase X (name), iteração Y. Continuando: <one line>.'"
+          }
+        ]
+      }
+    ]
+  }
+}

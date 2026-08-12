@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Existem portas externas (fonte-de-metricas, alvo-de-implantacao) que podem falhar ou retornar dados inesperados (Indisponivel), exigindo tratamento no núcleo e nos adaptadores."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo CLI (M-12) que serve como superfície operacional para o humano observar progresso e abortar, gerando requisitos de clareza na saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema define explicitamente a convivência com versão estável e rollback automático; a arquitetura implementa distribuição de pesos e transição de estados (progredindo/revertido)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O sistema é um simulador/orquestrador leve sem alocação elástica ou processamento pesado de dados em tempo real que cresça com a escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões automatizadas afetam disponibilidade técnica e métricas de sistema, não pessoas ou classificação social direta."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O módulo coordenador (M-07) implementa uma máquina de estados explícita com transições definidas e um plano de passos sequenciais que deve ser exaustivo."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": false,
+      "sinal": "O escopo negativo declara explicitamente ausência de persistência ('sem banco, sem retomada, sem histórico'), impedindo auditoria pós-execução."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema opera em produção (ou simulação fiel) com requisitos de diagnóstico; o coordenador emite eventos e o CLI os consome, criando um canal de visibilidade necessário."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de controle em malha fechada: coleta métricas, calcula vereditos/score e ajusta pesos (ação) baseado no erro/desvio, com risco de oscilação ou drift."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes com incentivos conflitantes; é um sistema unipersonal operado por um administrador contra um ambiente passivo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são internas a um único repositório/boundaried context; não há protocolo público entre equipes independentes nem ambiguidade de contrato externo."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema lida com tolerâncias estatísticas (amostra mínima, confiança 98%, limiares defensáveis) e variação temporal (aquecimento), exigindo robustez contra ruído."
+    }
+  ]
+}

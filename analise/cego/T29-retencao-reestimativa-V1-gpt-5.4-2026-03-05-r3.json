@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Não há APIs, DBs, filas ou serviços de terceiros; os riscos citados são de arquivo/disco local, não de dependência externa."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoas: o módulo cli (M-12) com 6 comandos operacionais."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura troca o formato de armazenamento entre F1 e F2 e inclui migrator com precheck, allow-lossy e relatório de migração."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais com custo que cresce com volume, retenção, downsampling e migração."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Não há decisão automatizada sobre pessoas; o sistema comprime, retém e migra dados técnicos de séries temporais."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos operacionais com etapas e exceções explícitas, como ingestão, retenção, migração, expiração e abortar/permitir perda."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra e transforma acervos/séries por nome e produz relatórios de escrita, rejeição e migração que precisam ser atribuíveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional de produção com CLI de report/validate/retain/migrate, e a operabilidade importa para diagnosticar degradação sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A retenção aplica um plano periódico sobre tier_state/now, gerando ações corretivas de downsample e expire para manter o estado alinhado à política."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há múltiplos atores independentes, API pública, marketplace ou integração externa; o projeto assume operador único."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos entre módulos independentes — especialmente Store, capabilities, WriteReport e os formatos F1/F2/bitstream."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema é modular e evolutivo, com formatos alternativos, capabilities e premissas/tetos explícitos, portanto depende de tolerâncias de evolução e manutenção."
+    }
+  ]
+}

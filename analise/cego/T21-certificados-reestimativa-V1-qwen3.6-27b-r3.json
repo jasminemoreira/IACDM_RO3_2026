@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Presença de sonda-tls (rede) e repositorio (SQLite) com tratamento explícito de timeouts, DNS e conexões recusadas na interface."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Módulo web-ui com servidor HTTP, 5 telas HTML renderizadas, login e sessões para operação humana direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Arquitetura descrita como V(1) verde, sem menção a legado, dados migrados ou coexistência com sistema anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Escopo limitado a dezenas de alvos e varredura sequencial única por vez, sem alocação elástica ou custo variável com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Sistema monitora infraestrutura de certificados e não toma decisões automatizadas sobre pessoas, pontuação ou moderação."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Máquina de estados explícita em pedido (pendente -> aprovado -> fechado) e fluxo multiator com papéis definidos em autorizacao."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha append-only com hash (trilha), registro explícito de solicitanteId/aprovador nos pedidos e função auditar nos casos de uso."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema produtivo que exige diagnóstico de falhas de varredura e quebras de integridade em produção via relatórios e telas existentes."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Módulo reconciliacao gera sinais de desvio ao comparar observações reais com pedidos e dispara correções (fechar-pedido, escalar)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Atores são internos e hierárquicos (solicitante/aprovador/auditor), sem API pública, marketplace ou incentivos conflituosos entre entidades."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contratos tipados e internos com erros como valores de retorno, sem comunicação entre times independentes ou protocolos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Anéis de domínio puro, injeção de portas (relogio, repositorio) e regras de dependência acíclica projetadas para evolução e tolerância a variações técnicas."
+    }
+  ]
+}

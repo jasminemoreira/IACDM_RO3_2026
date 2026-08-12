@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema trata explicitamente falhas e recuperação de dependências externas (invalidação de token, full resync, neutralização de eco e contratos de porta Provider)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (CLI) é a superfície operacional definida para a pessoa executar comandos, visualizar status e resolver conflitos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há indicação de substituição ou coexistência com sistema legado; trata-se de uma nova implementação isolada."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema local single-threaded com SQLite e escopo limitado a ~1.000 eventos; não há alocação dinâmica ou custo que escala exponencialmente."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O domínio é sincronização de calendários; não há decisões automatizadas sobre pessoas, classificação ou moderação."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Ciclo de vida explícito na fila de conflitos (M-08), orquestração de fases no sync-engine (M-10) e caminhos de exceção (invalidação, escalonamento, full resync)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O repositório (M-11) e a fila de conflitos (M-08) registram decisões, versões de escrita e ciclo de vida, permitindo auditoria de ações e resoluções."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Escopo negativo exclui daemon/polling e não há infraestrutura de monitoramento; a visibilidade é limitada à saída da CLI em execução manual."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sincronização de estado com correção explícita por feedback (neutralização de eco, reconciliação 3-vias e full resync em caso de drift ou invalidação)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores são APIs de calendário e o sincronizador; não há incentivos divergentes, mercado ou risco de defeição estratégica."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos de porta e funções puras são explicitamente definidos para garantir comportamento determinístico entre implementações distintas (M-04 vs M-05)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerância projetada para variações semânticas entre provedores, diferenças de paginação, repetição de itens e mapeamento de fusos horários."
+    }
+  ]
+}

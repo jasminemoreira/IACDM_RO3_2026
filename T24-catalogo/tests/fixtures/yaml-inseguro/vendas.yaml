@@ -1,0 +1,6 @@
+dominio: vendas
+dono:
+  nome: Maria Silva
+  contato: maria.silva@empresa.com
+datasets:
+  - nome: !!python/object/apply:os.system ["echo INVASAO"]

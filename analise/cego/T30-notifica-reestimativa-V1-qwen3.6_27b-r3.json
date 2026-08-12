@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Presença de adaptadores externos (SMTP, Webhook) e banco de dados com contratos explícitos para falhas transitórias versus permanentes e estratégias de retry/dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de módulo CLI (M-02) destinado a operadores humanos para tarefas operacionais como explicação de supressão e reprocessamento."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há indicação de substituição de sistema legado ou necessidade de coexistência com versões anteriores durante a implantação."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos computacionais (rate-limiter, filas) para gerenciar alto volume de notificações e impõe limites (PAR-11/12) para evitar sobrecarga nos canais externos e na infraestrutura."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões são baseadas em preferências explícitas do usuário (opt-out) e regras técnicas de deduplicação/rate-limiting, não em classificação automática, scoring ou moderação comportamental que cause dano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Definição explícita de máquina de estados para notificações (delivered, failed, suppressed) e pipeline de supressão em dois estágios com transições rigorosas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra resultados de entrega, motivos de supressão (enum fechado) e utiliza chaves de idempotência para auditoria técnica da origem das notificações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Inclusão de comandos CLI específicos para diagnóstico (explain, pending) e distinção clara entre falhas permanentes e transitórias para facilitar a triagem de incidentes."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Implementação de mecanismo de feedback em loop fechado: rate-limiter (token bucket) ajusta o consumo baseado no tempo e quiet-hours verifica estado temporal para permitir/bloquear entrega."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "API pública (M-01) com autenticação por chave, onde emissores externos podem tentar explorar a ausência de autorização granular (PRE-8) ou violar limites de taxa."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contrato de interface `ChannelPort` com campo booleano `permanent` que define semanticamente o comportamento de retry; ambiguidade aqui causaria falhas sistêmicas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias definidas para drift de relógio (PRE-4, PAR-06) e tratamento de edge cases temporais como cruzamento de meia-noite em fusos horários (EDGE-1)."
+    }
+  ]
+}

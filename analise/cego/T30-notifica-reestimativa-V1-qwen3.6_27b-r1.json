@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Presença de adaptadores de canais externos (SMTP, HTTP webhook) e banco de dados SQLite com contratos explícitos de falha transitória versus permanente (ChannelPort.permanent) e estratégias de retry/dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existência de um módulo CLI (M-02) definido como 'Superfície do operador' para tarefas operacionais como explicar supressão e reprocessar falhas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura descreve um sistema novo ('Serviço de notificação') sem menção a sistemas legados em produção ou caminhos de rollback para substituição gradual."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O consumo de recursos é limitado e previsível (worker único, SQLite local), sem escalabilidade elástica nem processamento intensivo de dados/AI que gere custos proporcionais ao uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema executa regras técnicas de entrega e supressão baseadas em preferências explícitas do usuário, sem realizar classificação, scoring ou moderação automatizada que cause dano direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Definição explícita de máquina de estados para notificações (delivered, failed, suppressed, deferred) e pipeline de supressão em dois estágios com transições de estado documentadas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Requisito de idempotência via chave do emissor (R-03), registro de resultados de entrega e dead-letters na Outbox, permitindo auditoria de quem enviou o quê e qual foi o destino."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Módulo CLI (M-02) oferece comandos para diagnóstico operacional ('explain', 'pending') e a arquitetura mantém estado durável de tentativas e motivos de supressão consultáveis."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Implementação de controle de taxa (Token Bucket em M-07) e backoff exponencial com jitter (M-09), formando loops de feedback que regulam o fluxo de entregas para evitar oscilação ou sobrecarga."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Interface pública HTTP (M-01) com autenticação por API Key, onde emissores externos podem agir estrategicamente (ex: spam, abuso de deduplicação), assumindo cooperação limitada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Os contratos de interface são definidos internamente em um único repositório/código-fonte, sem necessidade de interoperabilidade entre equipes independentes ou protocolos externos complexos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura é monolítica e simples (KISS explícito), com dependências mínimas e sem indicação de tolerância a deriva de estado ou manutenção evolutiva complexa entre módulos."
+    }
+  ]
+}

@@ -1,0 +1,1394 @@
+{
+  "periodo": {
+    "inicio": "2026-10-01",
+    "fim": "2026-10-30"
+  },
+  "habilitacoes": [
+    {
+      "id": "clinica",
+      "nome": "Clínica Médica"
+    },
+    {
+      "id": "cardio",
+      "nome": "Cardiologia"
+    }
+  ],
+  "tipos_de_turno": [
+    {
+      "id": "diurno",
+      "nome": "Diurno 12h",
+      "inicio": "07:00",
+      "fim": "19:00",
+      "vira_o_dia": false
+    },
+    {
+      "id": "noturno",
+      "nome": "Noturno 12h",
+      "inicio": "19:00",
+      "fim": "07:00",
+      "vira_o_dia": true
+    }
+  ],
+  "contratos": [
+    {
+      "id": "c12x36",
+      "regime": "12x36",
+      "min_plantoes": 4,
+      "max_plantoes": 7,
+      "max_dias_consecutivos": 1,
+      "min_dias_consecutivos": 1,
+      "min_folgas_consecutivas": 1,
+      "max_fins_de_semana": 3,
+      "exige_fim_de_semana_completo": false,
+      "horizonte_meses": 1
+    }
+  ],
+  "pessoas": [
+    {
+      "id": "p00",
+      "nome": "Pessoa 00",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p01",
+      "nome": "Pessoa 01",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p02",
+      "nome": "Pessoa 02",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p03",
+      "nome": "Pessoa 03",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p04",
+      "nome": "Pessoa 04",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p05",
+      "nome": "Pessoa 05",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p06",
+      "nome": "Pessoa 06",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p07",
+      "nome": "Pessoa 07",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p08",
+      "nome": "Pessoa 08",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p09",
+      "nome": "Pessoa 09",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p10",
+      "nome": "Pessoa 10",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p11",
+      "nome": "Pessoa 11",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p12",
+      "nome": "Pessoa 12",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p13",
+      "nome": "Pessoa 13",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p14",
+      "nome": "Pessoa 14",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p15",
+      "nome": "Pessoa 15",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p16",
+      "nome": "Pessoa 16",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p17",
+      "nome": "Pessoa 17",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p18",
+      "nome": "Pessoa 18",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p19",
+      "nome": "Pessoa 19",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p20",
+      "nome": "Pessoa 20",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p21",
+      "nome": "Pessoa 21",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p22",
+      "nome": "Pessoa 22",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p23",
+      "nome": "Pessoa 23",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p24",
+      "nome": "Pessoa 24",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p25",
+      "nome": "Pessoa 25",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p26",
+      "nome": "Pessoa 26",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p27",
+      "nome": "Pessoa 27",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica",
+        "cardio"
+      ]
+    },
+    {
+      "id": "p28",
+      "nome": "Pessoa 28",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    },
+    {
+      "id": "p29",
+      "nome": "Pessoa 29",
+      "contrato_id": "c12x36",
+      "habilitacoes": [
+        "clinica"
+      ]
+    }
+  ],
+  "plantoes": [
+    {
+      "id": "s000",
+      "data": "2026-10-01",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s001",
+      "data": "2026-10-01",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s002",
+      "data": "2026-10-01",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s010",
+      "data": "2026-10-02",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s011",
+      "data": "2026-10-02",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s012",
+      "data": "2026-10-02",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s020",
+      "data": "2026-10-03",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s021",
+      "data": "2026-10-03",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s022",
+      "data": "2026-10-03",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s030",
+      "data": "2026-10-04",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s031",
+      "data": "2026-10-04",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s032",
+      "data": "2026-10-04",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s040",
+      "data": "2026-10-05",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s041",
+      "data": "2026-10-05",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s042",
+      "data": "2026-10-05",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s050",
+      "data": "2026-10-06",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s051",
+      "data": "2026-10-06",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s052",
+      "data": "2026-10-06",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s060",
+      "data": "2026-10-07",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s061",
+      "data": "2026-10-07",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s062",
+      "data": "2026-10-07",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s070",
+      "data": "2026-10-08",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s071",
+      "data": "2026-10-08",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s072",
+      "data": "2026-10-08",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s080",
+      "data": "2026-10-09",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s081",
+      "data": "2026-10-09",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s082",
+      "data": "2026-10-09",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s090",
+      "data": "2026-10-10",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s091",
+      "data": "2026-10-10",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s092",
+      "data": "2026-10-10",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s100",
+      "data": "2026-10-11",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s101",
+      "data": "2026-10-11",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s102",
+      "data": "2026-10-11",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s110",
+      "data": "2026-10-12",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s111",
+      "data": "2026-10-12",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s112",
+      "data": "2026-10-12",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s120",
+      "data": "2026-10-13",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s121",
+      "data": "2026-10-13",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s122",
+      "data": "2026-10-13",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s130",
+      "data": "2026-10-14",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s131",
+      "data": "2026-10-14",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s132",
+      "data": "2026-10-14",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s140",
+      "data": "2026-10-15",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s141",
+      "data": "2026-10-15",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s142",
+      "data": "2026-10-15",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s150",
+      "data": "2026-10-16",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s151",
+      "data": "2026-10-16",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s152",
+      "data": "2026-10-16",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s160",
+      "data": "2026-10-17",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s161",
+      "data": "2026-10-17",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s162",
+      "data": "2026-10-17",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s170",
+      "data": "2026-10-18",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s171",
+      "data": "2026-10-18",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s172",
+      "data": "2026-10-18",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s180",
+      "data": "2026-10-19",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s181",
+      "data": "2026-10-19",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s182",
+      "data": "2026-10-19",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s190",
+      "data": "2026-10-20",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s191",
+      "data": "2026-10-20",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s192",
+      "data": "2026-10-20",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s200",
+      "data": "2026-10-21",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s201",
+      "data": "2026-10-21",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s202",
+      "data": "2026-10-21",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s210",
+      "data": "2026-10-22",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s211",
+      "data": "2026-10-22",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s212",
+      "data": "2026-10-22",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s220",
+      "data": "2026-10-23",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s221",
+      "data": "2026-10-23",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s222",
+      "data": "2026-10-23",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s230",
+      "data": "2026-10-24",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s231",
+      "data": "2026-10-24",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s232",
+      "data": "2026-10-24",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s240",
+      "data": "2026-10-25",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s241",
+      "data": "2026-10-25",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s242",
+      "data": "2026-10-25",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s250",
+      "data": "2026-10-26",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s251",
+      "data": "2026-10-26",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s252",
+      "data": "2026-10-26",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s260",
+      "data": "2026-10-27",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s261",
+      "data": "2026-10-27",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s262",
+      "data": "2026-10-27",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s270",
+      "data": "2026-10-28",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s271",
+      "data": "2026-10-28",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s272",
+      "data": "2026-10-28",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s280",
+      "data": "2026-10-29",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s281",
+      "data": "2026-10-29",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s282",
+      "data": "2026-10-29",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    },
+    {
+      "id": "s290",
+      "data": "2026-10-30",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s291",
+      "data": "2026-10-30",
+      "tipo_de_turno_id": "noturno",
+      "habilitacao_id": "clinica",
+      "demanda_minima": 1,
+      "demanda_otima": 2
+    },
+    {
+      "id": "s292",
+      "data": "2026-10-30",
+      "tipo_de_turno_id": "diurno",
+      "habilitacao_id": "cardio",
+      "demanda_minima": 1,
+      "demanda_otima": 1
+    }
+  ],
+  "preferencias": [
+    {
+      "pessoa_id": "p00",
+      "data": "2026-10-28",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p00",
+      "data": "2026-10-13",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p01",
+      "data": "2026-10-25",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p01",
+      "data": "2026-10-29",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p02",
+      "data": "2026-10-14",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p02",
+      "data": "2026-10-02",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p03",
+      "data": "2026-10-09",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p03",
+      "data": "2026-10-17",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p04",
+      "data": "2026-10-16",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p04",
+      "data": "2026-10-13",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p05",
+      "data": "2026-10-30",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p05",
+      "data": "2026-10-26",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p06",
+      "data": "2026-10-27",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p06",
+      "data": "2026-10-10",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p07",
+      "data": "2026-10-16",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p07",
+      "data": "2026-10-12",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p08",
+      "data": "2026-10-19",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p08",
+      "data": "2026-10-29",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p09",
+      "data": "2026-10-30",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p09",
+      "data": "2026-10-07",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p10",
+      "data": "2026-10-17",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p10",
+      "data": "2026-10-05",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p11",
+      "data": "2026-10-10",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p11",
+      "data": "2026-10-05",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p12",
+      "data": "2026-10-25",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p12",
+      "data": "2026-10-04",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p13",
+      "data": "2026-10-20",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p13",
+      "data": "2026-10-26",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p14",
+      "data": "2026-10-09",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p14",
+      "data": "2026-10-30",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p15",
+      "data": "2026-10-18",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p15",
+      "data": "2026-10-23",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p16",
+      "data": "2026-10-26",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p16",
+      "data": "2026-10-20",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p17",
+      "data": "2026-10-29",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p17",
+      "data": "2026-10-05",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p18",
+      "data": "2026-10-10",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p18",
+      "data": "2026-10-04",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p19",
+      "data": "2026-10-24",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p19",
+      "data": "2026-10-03",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p20",
+      "data": "2026-10-29",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p20",
+      "data": "2026-10-28",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p21",
+      "data": "2026-10-22",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p21",
+      "data": "2026-10-11",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p22",
+      "data": "2026-10-16",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p22",
+      "data": "2026-10-18",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p23",
+      "data": "2026-10-04",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p23",
+      "data": "2026-10-12",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p24",
+      "data": "2026-10-14",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p24",
+      "data": "2026-10-11",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p25",
+      "data": "2026-10-20",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p25",
+      "data": "2026-10-21",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p26",
+      "data": "2026-10-30",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p26",
+      "data": "2026-10-07",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p27",
+      "data": "2026-10-18",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p27",
+      "data": "2026-10-16",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p28",
+      "data": "2026-10-15",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p28",
+      "data": "2026-10-28",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p29",
+      "data": "2026-10-17",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    },
+    {
+      "pessoa_id": "p29",
+      "data": "2026-10-09",
+      "tipo": "indesejado",
+      "tipo_de_turno_id": "noturno"
+    }
+  ],
+  "regras_internas": [
+    {
+      "id": "INT-01",
+      "descricao": "máximo de noturnos por período",
+      "natureza": "flexivel",
+      "peso": 25,
+      "parametros": {
+        "tipo_de_turno_id": "noturno",
+        "max": 8
+      }
+    }
+  ]
+}

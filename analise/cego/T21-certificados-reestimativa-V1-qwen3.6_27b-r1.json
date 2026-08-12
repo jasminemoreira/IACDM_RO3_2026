@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A arquitetura explicita adaptadores de saída (sonda-tls, repositorio) e define tipos de erro específicos para falhas externas (timeout, recusado, dns), indicando preocupação com a degradação de dependências."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo dedicado 'web-ui' com rotas HTTP e renderização HTML para interação humana direta com o sistema."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O escopo negativo e a descrição indicam um sistema novo (V(1)) sem menção a substituição de legado ou fase de coexistência com outro sistema."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A premissa A7 limita o volume a 'dezenas' e a varredura é sequencial/síncrona, sinalizando que o consumo de recursos (CPU/IO) não foi projetado para escalabilidade ou proporcionalidade em larga escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema classifica estados técnicos de certificados e processos administrativos internos, sem tomar decisões automatizadas que impactem diretamente direitos ou condições de vida de pessoas físicas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há módulos explícitos para máquina de estados ('pedido') e lógica de reconciliação de fluxos de negócio ('reconciliacao'), definindo transições pendente->aprovado->fechado."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura inclui 'trilha' (append-only com hash), 'autorizacao' (atores/papéis) e registro de 'quem aprovou', focando em atribuição e auditoria de ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A presença de uma 'trilha' auditável e a capacidade de 'verificarIntegridade' fornecem mecanismos para diagnosticar o estado do sistema e detectar falhas ou adulterações."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O módulo 'reconciliacao' atua como um laço de controle que compara o estado esperado (pedidos) com o estado observado (certificados atuais) para gerar sinais de correção ou escalação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os atores são internos e hierárquicos (solicitante/aprovador) dentro de um sistema fechado, sem mercado aberto, API pública ou incentivos econômicos conflitantes entre partes independentes."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são definidas internamente em uma única base de código (funções TypeScript/JS), sem troca de mensagens via rede ou protocolo aberto entre equipes independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura é rígida e acíclica com dependências claras; não há indicação de tolerância a deriva de estado acumulada ou manutenção evolutiva complexa entre módulos independentes."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Sistema local sem dependências externas (APIs, filas ou serviços de terceiros); usa apenas SQLite local e Fastify."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existem 6 telas server-rendered (M-12) para operação humana direta (seleção de usuário, bandeja, delegações, auditoria)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto verdefield sem menção a legado, migração de dados ou coexistência com sistema anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Volume pequeno assumido (A7) e stack leve sem recursos elásticos ou consumo que cresça com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Fluxo de aprovação humana de despesas, sem decisões automatizadas de classificação, pontuação ou moderação sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo multiator com estados explícitos da despesa (M-01), cadeia de aprovação por valor, delegação e trilha de auditoria (M-06)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha append-only (M-06) e invariante INV-7 exigem atribuição clara de ator, nome delegado e limite exercido em cada decisão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Arquitetura local e simples sem menção a logs estruturados, métricas, health checks ou mecanismos de diagnóstico em produção."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sem configuração em runtime, loops de feedback ou mecanismos de auto-correção; estados mudam apenas por ações explícitas do usuário."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos atores e premissa A5 explicita que a identidade é confiável e o sistema não protege contra adversários, apenas contra engano."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "Contexto de desenvolvimento único com interfaces internas claras; sem protocolos externos ou contratos entre times independentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": false,
+      "sinal": "Escopo limitado e prémissas rígidas (hierarquia linear, matriz fixa, papel imutável) sem menção a estratégias de evolução ou tolerância a variações."
+    }
+  ]
+}

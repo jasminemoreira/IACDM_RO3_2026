@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de um banco de dados (SQLite via M-09) e a lente deve avaliar o impacto da falha ou lentidão dessa dependência externa."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície de usuário web definida (M-12) com 6 telas server-rendered para interação humana direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há menção a sistemas legados, migração de dados ou coexistência com versões anteriores; trata-se de um sistema novo isolado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo é pequeno (dezenas a centenas de despesas) e não envolve recursos custosos escaláveis como IA ou processamento massivo de dados."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões são operacionais (aprovador financeiro) e não envolvem classificação, scoring ou moderação automatizada de pessoas com impacto ético direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura modela explicitamente estados, transições válidas (M-01), cadeia de aprovação (M-02) e fluxos multi-ator com delegação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Existe módulo de trilha append-only (M-06) para auditoria de decisões, atribuição de ator efetivo e registro de delegações, atendendo à necessidade de responsabilidade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Como um sistema de produção com persistência e estado distribuído (banco + memória), requer capacidade de diagnóstico de degradação ou incidentes em runtime."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema não possui loops de feedback de auto-correção ou sincronização de estado dinâmica; as regras são estáticas e avaliadas sob demanda sem oscilação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A5 assume identidade confiável mas admite contornar SoD por adversário; a arquitetura deve avaliar incentivos e defeitos estratégicos entre atores (solicitante vs aprovador)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": false,
+      "sinal": "As interfaces são contratos internos bem definidos em um único repositório; não há comunicação entre equipes independentes ou protocolos ambíguos externos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A decomposição modular (M-01 a M-12) e as regras de dependência hexagonal indicam preocupação com tolerância a mudanças, evolução e acoplamento ao longo do tempo."
+    }
+  ]
+}

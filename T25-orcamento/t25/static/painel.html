@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T25 — Painel de consumo</title>
+<link rel="stylesheet" href="/painel.css">
+</head>
+<body>
+<header>
+  <h1>T25 — consumo e teto de orçamento</h1>
+  <p id="janela" class="sub"></p>
+</header>
+
+<section id="login">
+  <h2>Acesso do operador</h2>
+  <form id="form-login">
+    <label for="senha">Senha</label>
+    <input id="senha" type="password" autocomplete="current-password" required>
+    <button type="submit">Entrar</button>
+  </form>
+  <p id="erro-login" class="erro" role="alert"></p>
+</section>
+
+<main id="painel" hidden>
+  <section id="global-card">
+    <h2>Teto global</h2>
+    <table>
+      <tbody>
+        <tr><th scope="row">Teto</th><td id="g-teto">—</td></tr>
+        <tr><th scope="row">Confirmado</th><td id="g-confirmado">—</td></tr>
+        <tr><th scope="row">Reservado em voo</th><td id="g-reservado">—</td></tr>
+        <tr><th scope="row">Saldo</th><td id="g-saldo">—</td></tr>
+        <tr><th scope="row">Estado</th><td id="g-estado">—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Entidades consumidoras</h2>
+    <table id="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Entidade</th>
+          <th scope="col">Teto</th>
+          <th scope="col">Confirmado</th>
+          <th scope="col">Reservado</th>
+          <th scope="col">Saldo</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Novo teto</th>
+        </tr>
+      </thead>
+      <tbody id="linhas"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <p class="sub">Valores em USD. O reset ocorre à <strong>meia-noite UTC</strong> do dia 1 —
+  para quem está no Brasil, isso é 21h do último dia do mês anterior.</p>
+</footer>
+
+<script src="/painel.js"></script>
+</body>
+</html>

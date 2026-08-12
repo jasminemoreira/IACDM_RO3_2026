@@ -1,0 +1,34 @@
+{
+  "_fonte": "specs/technical/rate-card-llm.md §1 e §2 (snapshot da skill claude-api, cached 2026-06-24). Valores em NANO-unidades monetarias por token (10^-9 USD) — justificativa da unidade em specs/models/modelo-de-dados.md §1.",
+  "_categorias": "entrada | cache_leitura (x0.1) | cache_escrita_5m (x1.25) | cache_escrita_1h (x2.0) | saida",
+  "precos": [
+    {"modelo": "claude-opus-5", "categoria": "entrada",          "nano_por_token": 5000,  "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 5,00/1M"},
+    {"modelo": "claude-opus-5", "categoria": "saida",            "nano_por_token": 25000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 25,00/1M"},
+    {"modelo": "claude-opus-5", "categoria": "cache_leitura",    "nano_por_token": 500,   "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2: 0,1x entrada"},
+    {"modelo": "claude-opus-5", "categoria": "cache_escrita_5m", "nano_por_token": 6250,  "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2: 1,25x entrada"},
+    {"modelo": "claude-opus-5", "categoria": "cache_escrita_1h", "nano_por_token": 10000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2: 2,0x entrada"},
+
+    {"modelo": "claude-opus-4-8", "categoria": "entrada",          "nano_por_token": 5000,  "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 5,00/1M"},
+    {"modelo": "claude-opus-4-8", "categoria": "saida",            "nano_por_token": 25000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 25,00/1M"},
+    {"modelo": "claude-opus-4-8", "categoria": "cache_leitura",    "nano_por_token": 500,   "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+    {"modelo": "claude-opus-4-8", "categoria": "cache_escrita_5m", "nano_por_token": 6250,  "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+    {"modelo": "claude-opus-4-8", "categoria": "cache_escrita_1h", "nano_por_token": 10000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+
+    {"modelo": "claude-sonnet-5", "categoria": "entrada",          "nano_por_token": 2000,  "vigente_desde": "2000-01-01", "vigente_ate": "2026-08-31", "fonte": "rate-card-llm.md §1: promocional USD 2,00/1M ate 2026-08-31"},
+    {"modelo": "claude-sonnet-5", "categoria": "saida",            "nano_por_token": 10000, "vigente_desde": "2000-01-01", "vigente_ate": "2026-08-31", "fonte": "rate-card-llm.md §1: promocional USD 10,00/1M ate 2026-08-31"},
+    {"modelo": "claude-sonnet-5", "categoria": "cache_leitura",    "nano_por_token": 200,   "vigente_desde": "2000-01-01", "vigente_ate": "2026-08-31", "fonte": "rate-card-llm.md §2 sobre preco promocional"},
+    {"modelo": "claude-sonnet-5", "categoria": "cache_escrita_5m", "nano_por_token": 2500,  "vigente_desde": "2000-01-01", "vigente_ate": "2026-08-31", "fonte": "rate-card-llm.md §2 sobre preco promocional"},
+    {"modelo": "claude-sonnet-5", "categoria": "cache_escrita_1h", "nano_por_token": 4000,  "vigente_desde": "2000-01-01", "vigente_ate": "2026-08-31", "fonte": "rate-card-llm.md §2 sobre preco promocional"},
+    {"modelo": "claude-sonnet-5", "categoria": "entrada",          "nano_por_token": 3000,  "vigente_desde": "2026-09-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 3,00/1M apos o fim da promocao"},
+    {"modelo": "claude-sonnet-5", "categoria": "saida",            "nano_por_token": 15000, "vigente_desde": "2026-09-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 15,00/1M apos o fim da promocao"},
+    {"modelo": "claude-sonnet-5", "categoria": "cache_leitura",    "nano_por_token": 300,   "vigente_desde": "2026-09-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+    {"modelo": "claude-sonnet-5", "categoria": "cache_escrita_5m", "nano_por_token": 3750,  "vigente_desde": "2026-09-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+    {"modelo": "claude-sonnet-5", "categoria": "cache_escrita_1h", "nano_por_token": 6000,  "vigente_desde": "2026-09-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+
+    {"modelo": "claude-haiku-4-5", "categoria": "entrada",          "nano_por_token": 1000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 1,00/1M"},
+    {"modelo": "claude-haiku-4-5", "categoria": "saida",            "nano_por_token": 5000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §1: USD 5,00/1M"},
+    {"modelo": "claude-haiku-4-5", "categoria": "cache_leitura",    "nano_por_token": 100,  "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+    {"modelo": "claude-haiku-4-5", "categoria": "cache_escrita_5m", "nano_por_token": 1250, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"},
+    {"modelo": "claude-haiku-4-5", "categoria": "cache_escrita_1h", "nano_por_token": 2000, "vigente_desde": "2000-01-01", "vigente_ate": null, "fonte": "rate-card-llm.md §2"}
+  ]
+}

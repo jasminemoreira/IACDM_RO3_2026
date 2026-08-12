@@ -1,0 +1,39 @@
+{
+  "projectName": "FIXTURE",
+  "projectDescription": "fixture sintético",
+  "currentPhase": 2,
+  "createdAt": "2026-08-05T00:00:00.000Z",
+  "updatedAt": "2026-08-05T00:00:00.000Z",
+  "decisions": [],
+  "exitCriteria": [],
+  "safeguards": [],
+  "history": [],
+  "stateVersion": 1,
+  "activatedLenses": [
+    {
+      "universal": [
+        "Assumptions",
+        "Architectural",
+        "Implementability",
+        "Scientific",
+        "Security",
+        "Performance",
+        "Regulatory"
+      ],
+      "conditional": [
+        "Resilience",
+        "Observability / Operability",
+        "Control Engineering"
+      ],
+      "notActivated": [
+        {
+          "lens": "Game Theory",
+          "reason": "sem atores estratégicos"
+        }
+      ],
+      "iteration": 1,
+      "againstVersion": 1,
+      "recordedAt": "2026-08-09T00:00:00.000Z"
+    }
+  ]
+}

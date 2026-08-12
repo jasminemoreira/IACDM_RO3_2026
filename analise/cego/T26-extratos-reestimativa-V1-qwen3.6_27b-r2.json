@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A arquitetura depende de arquivos externos (OFX/CSV) e banco de dados SQLite, onde falhas de leitura, corrupção de arquivo ou inconsistência de estado no disco exigem tratamento de erros nos adapters e repository."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe um módulo `cli` (M-11) definido como a superfície do operador humano para comandos import, reconcile, review e report, exigindo avaliação da experiência do usuário nessa interface textual."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A descrição não menciona substituição de sistema legado existente, migração de dados históricos nem necessidade de coexistência com uma versão anterior durante a implantação."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa grandes volumes (fixtures de 50k citados) e utiliza algoritmos de matching com complexidade potencialmente quadrática se o blocking falhar (premissa A4), consumindo recursos computacionais significativos na fase de conciliação."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema automatiza a conciliação financeira e geração de relatórios contábeis, não tomando decisões classificatórias sobre pessoas físicas (como scoring creditício, moderação de conteúdo ou avaliação social)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "A arquitetura define explicitamente estados terminais de conciliação, uma Chain of Responsibility para deduplicação (L0-L5) e um fluxo de resolução humana na fila de pendências, constituindo um processo de negócio complexo com transições de estado."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O projeto exige auditoria de decisões automatizadas (evidência da camada decisória em DecisaoDedup) e rastreabilidade de resoluções humanas, além de garantir invariantes de domínio que protegem a integridade financeira dos dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O módulo `reporter` (M-10) gera resumos e contagens por estado, e o `dedup-engine` registra evidências e camadas decisórias, indicando mecanismos projetados para monitorar a saúde do processo de conciliação e diagnosticar discrepâncias."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sistema possui um loop de correção explícito onde decisões incertas geram pendências para revisão humana (M-09), que alimentam o conhecimento do sistema ou resolvem conflitos, atuando como mecanismo de feedback para corrigir erros de classificação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores externos com incentivos conflitantes ou estratégicos; as fontes de dados (bancos, ERP interno) são sistemas técnicos passivos e não participantes de um mercado ou plataforma competitiva."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A interface de normalização (`canonicalizer`) e os contratos dos adapters (OFX/CSV) lidam com a ambiguidade inerente da linguagem natural nas descrições de transações e formatos heterogêneos, onde diferenças semânticas sutis podem quebrar o matching."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema opera com tolerâncias configuráveis (janela de data, margem de valor) e depende da estabilidade de identificadores externos (FITID), devendo lidar com variações nos dados reais que fogem às premissas ideais de exatidão."
+    }
+  ]
+}
