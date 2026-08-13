@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteira externa de persistência em SQLite/better-sqlite3 no módulo repositorio, que pode falhar, travar ou devolver erro."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: 6 telas server-side em ui-web e rotas HTTP de interação."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de estado legado, contrato já consumido por terceiros, nem necessidade de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo de recurso com custo variável relevante além da execução local simples em nó único e SQLite."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza triagem/prioridade e julgamento de recurso, decisões consequenciais que afetam solicitantes."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções: abrir, triar, reclassificar, recorrer, julgar, reconhecer, encerrar, com prazos de rito."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Há trilha somente-inserção, julgamento por gestor, autorização com motivo e ações que precisam autoria e auditabilidade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como aplicação servida por HTTP e persistência; pode degradar após entrega e exigir diagnóstico em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação temporal do estado por SLA e prazos avaliados contra relogio.agora(), com reclassificação alterando comportamento futuro."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do solicitante; a premissa A7 declara boa-fé sem evidência e há recurso do solicitante."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos com regra embutida e interfaces formais; leituras divergentes de assinaturas, permissões com motivo e eventos podem gerar comportamento incompatível."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de entrada, tempo, configuração de matriz/SLA e ambiente de execução/SQLite, que podem quebrar fora da especificação exata."
+    }
+  ]
+}

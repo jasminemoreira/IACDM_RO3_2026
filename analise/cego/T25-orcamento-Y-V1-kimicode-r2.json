@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de fronteiras fora do processo que podem falhar, travar ou responder inesperado: a API Anthropic via M-07 (incl. streaming) e o arquivo SQLite via M-08."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: a SPA do painel (M-10) e o login/configuração de tetos do operador (M-09)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "M-08 tem migração de schema como responsabilidade explícita, e apps consumidores existentes passam a conviver com o gateway trocando chave real por chave virtual (A5)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O objeto do sistema é exatamente regular um recurso cujo custo cresce com o uso — tokens de LLM tarifados por rate-card com teto em moeda."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequencial: o corte (402/429) pode excluir uma entidade do serviço, inclusive indevidamente se A4 falhar."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo com estados e caminhos de exceção: reservar → enviar → reconciliar/liberar, com reservas órfãs cuja política ficou explicitamente pendente."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade e decide cortes que alguém depois precisará auditar e atribuir (M-08 eventos, M-09 autenticação de operador)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O gateway roda em operação e pode falhar silenciosamente — reservas órfãs, contadores presos, corte indevido — e o painel existe para detectar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há malha de realimentação: a reserva estima, a reconciliação corrige o sinal (reservado→confirmado), e o reset de janela zera o estado — com risco de deriva se órfãs acumularem."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não forçada: apps não detêm a chave real (A5) e não retentam às cegas contra teto esgotado — um ator egoísta contornaria o gateway."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler igual: POST /v1/messages, o formato `usage` traduzido pelo Adapter, e o par (confirmado, reservado) — leituras divergentes quebram o invariante."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de grandezas que variam: relógio do host para a virada UTC (A4), `max_tokens` como limite, e a estimativa de pior caso vs. custo real — tolerâncias, não especificação exata."
+    }
+  ]
+}

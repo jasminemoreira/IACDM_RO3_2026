@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de recurso fora do processo que pode falhar ou devolver dado inesperado: leitura de diretório e parsing de arquivos YAML escritos à mão (M-07, M-09), única porta de entrada de dados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: CLI com subcomandos validar/impacto/procedencia, flag --json, códigos de saída e mensagens de erro acionáveis (M-11, M-02, M-10) — inclusive o humano que escreve o YAML e consome as violações agregadas (A9)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield sem estado ou contrato pré-existente a carregar: sem persistência, sem cache, sem formato que outro código já leia; o YAML só é lido por esta versão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresça com o uso é alocado: grafo cabe em memória com dezenas a centenas de datasets (A7), sem IA/ML, sem infraestrutura elástica, sem processamento de alto volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não toma nem automatiza decisão consequente sobre pessoas: apenas resolve donos declarados e calcula conjuntos de impacto/procedência, sem negação de acesso, corte ou flag acionável sobre alguém."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados e caminhos de exceção: carregar → mapear → construir grafo → validar → consultar, com invariante de que não existe estado 'carregado mas inválido' (A8, contrato 1) e caminho de erro que agrega todas as violações (A9)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O objeto central do sistema é atribuição e prestação de contas: cada dataset/domínio tem dono definido e auditável (INV-2, INV-3), com resolução por herança e sobrescrita, e consultas que atribuem impacto a donos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "Não há sistema em execução contínua que possa degradar silenciosamente: cada execução é one-shot, recarrega tudo e termina com código de saída e mensagem explícita — não há 'produção' a diagnosticar sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema só reage, não regula estado ao longo do tempo: sem retry/backoff, sem sincronização de estado, sem modo watch, sem laço de feedback — recarrega do zero a cada execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não forçada: donos de domínio declaram seus próprios YAMLs (dono, arestas alimentado_por) e o sistema confia na declaração — validação checa forma e invariantes, mas não pode impedir um dono auto-interessado de declarar linhagem ou posse de forma enviesada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leituras divergentes possíveis, já evidenciado pelo projeto: formato DatasetId 'dominio.nome' exigiu proibir ponto em nomes (A10), impact(X) excluir o próprio X precisou ser explícito (A6), e a inversão da aresta alimentado_por é ambígua por natureza (M-08) — além do schema YAML como contrato entre quem escreve e quem lê."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: versões de NetworkX e PyYAML (comportamento de networkx.descendants citado como parte do contrato, A6/A8), ambiente de execução e entrada YAML escrita à mão com variação de volume e forma."
+    }
+  ]
+}

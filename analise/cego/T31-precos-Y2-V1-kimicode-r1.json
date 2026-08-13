@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou devolver dado inesperado: arquivo SQLite local (M-07), bytes de CSV legado no importador (M-08) e sistema de arquivos para assets — apesar de 'zero rede em runtime'."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 4 telas operadas por pessoas (regras, simulador, importação, histórico), com decisões de UX explícitas como preencher 'hoje' de forma visível e editável."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma planilha legada: M-08 importa o formato antigo e M-09 prova paridade linha a linha (CS-1) — estado confiado precisa atravessar a transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Processo único local, SQLite em arquivo único, sem IA, sem processamento de alto volume nem infraestrutura elástica — nenhum recurso cujo custo cresce com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza decisões de preço que recaem sobre quem compra, e a própria arquitetura embute mecanismos de transparência e correção (trace exaustivo I-3, explicador M-06, recalcular)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo com estados e transições: rascunho → validação (M-05) → publicação atômica, com caminhos de exceção nomeados (linhas rejeitadas com motivo, EmpateInsoluvel)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Toda decisão é registrada e auditável: LogDeDecisoes (registrar/listar/obter), versões imutáveis (A-12), histórico consultável e motivo de derrota de cada regra perdedora."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda após entrega e foi desenhado para diagnóstico sem mudar código: trace exaustivo serializado na API, histórico de decisões e endpoint de recálculo de decisão."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há regulação de estado ao longo do tempo: sem retry/backoff, sem sincronização, sem laço de feedback — o motor é função pura e nem lê o relógio (A-04)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Single-user em mesma origem, sem auth nem superfície pública (A-06/A-08): não há ator com incentivo divergente capaz de desviar estrategicamente — desvios seriam acidentais, não estratégicos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos ambiguáveis: formato do CSV legado (moeda BR, 'Ate' textual, SKU com caixa), DTOs da API REST e interfaces dos módulos — faixa fechada [min,max] e half-up só no final são exatamente decisões anti-ambiguidade."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas em toda parte: R$ 0,01 na prova de paridade, arredondamento half-up 2 casas, faixas com bordas 19/20, parsing tolerante a variação de formato do legado."
+    }
+  ]
+}

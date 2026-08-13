@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência de arquivo/armazenamento externo via Store e a premissa P-A7 explicita corrupção de bytes sem checksum."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: o módulo cli com 6 comandos (`ingest`, `read`, `retain`, `migrate`, etc.)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura trata coexistência e transição entre formatos F1 e F2 via `migrator`, `precheck()` e política `--allow-lossy`."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais com retenção, downsampling e troca de formato, consumindo CPU, disco e memória conforme o volume cresce."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A retenção, expiração e migração podem descartar ou rejeitar dados (`expire`, `rejected`, perda lossy), causando dano operacional a quem depende desses registros."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com etapas e exceções explícitas: ingestão, retenção, migração com precheck/aborto, validação e expiração."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra ações e resultados que podem precisar de prestação de contas, como `WriteReport`, `MigrationReport` e exclusão por retenção/expiração."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda sobre disco/arquivos e pode degradar ou falhar após entregue; há rejeições, perdas e corrupção possíveis que precisariam ser diagnosticadas em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação que ajuste comportamento rumo a uma meta; retenção e migração aplicam regras estáticas, não controle dinâmico."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador/produtor em premissas como escritor único (P-A2), entrada monotônica (P-A4) e uso consciente de `--allow-lossy`."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos que precisam leitura inequívoca entre encoder/decoder e stores, como `Store`, bitstream, blocos e esquemas F1/F2."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias estritas de formato e faixa, como `ts_bits` 32 vs 64, bloco de 2 h com teto 4 h, quantização e monotonicidade de timestamps."
+    }
+  ]
+}

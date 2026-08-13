@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteiras externas ao processo que podem falhar ou devolver dado inesperado: leitura de diretório e parsing de arquivos YAML (M-07) escrito à mão por humanos."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: CLI com subcomandos, flag --json, códigos de saída e mensagens de erro 'acionáveis' redigidas em M-02 — frustração/erro do operador é preocupação explícita (A9)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo, sem estado antigo a preservar: não substitui sistema em uso nem formato de dados pré-existente (importação OpenLineage está fora de escopo); o YAML é criado do zero pelos donos."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O consumo cresce com o uso: carregamento inteiro em memória a cada execução (A3/A7, sem cache nem incremental) e travessia transitiva sem limite de saltos (A4) tornam custo função do tamanho do catálogo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Ferramenta de consulta somente-leitura: não toma nem automatiza decisão consequencial sobre pessoa ou entidade — apenas reporta donos e conjuntos de afetados, sem flag, corte ou bloqueio acionado pelo sistema."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um fluxo com transições e caminho de exceção: carregar → mapear → construir grafo → validar → consultar, com regra estrita de que validação precede qualquer consulta (A8) e o estado 'carregado mas inválido' precisa ser impossível."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "É o próprio objeto do sistema: dono declarado por domínio com herança/sobrescrita e invariantes INV-2/INV-3 garantindo que todo dado tem responsável atribuível."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A CLI roda e pode falhar depois de entregue, e o diagnóstico sem mudar código é preocupação embutida: erros agregados com mensagens acionáveis (M-02, A9) e códigos de saída distintos (M-11)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: o sistema não reage a sinal ajustando estado rumo a um alvo — sem retry, sync, watch (explicitamente fora de escopo) ou configuração em runtime; a validação é portão binário, não regulação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação de múltiplos donos de domínio que declaram à mão o próprio YAML e as próprias dependências ('alimentado_por') — um ator interessado poderia omitir ou declarar incorretamente sem enforcement além da validação de forma."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leitura divergente possível: o schema YAML, a gramática de identidade 'dominio.nome' com ambiguidade explicitamente proibida (A10) e a inversão semântica da aresta declarada pelo consumidor (M-08) exigem interpretação única."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende do que pode variar: faixa de escala assumida (A7, dezenas a centenas), semântica exata de networkx.descendants (A6) e comportamento de libs externas (NetworkX, PyYAML) cujas versões podem desviar da especificação."
+    }
+  ]
+}

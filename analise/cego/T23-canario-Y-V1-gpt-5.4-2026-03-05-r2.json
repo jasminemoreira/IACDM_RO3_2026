@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "As portas `fonte-de-metricas`, `alvo-de-implantacao` e `relogio` são externas por interface, mas o escopo negativo elimina rede/serviços reais e a arquitetura mostrada não depende de algo fora do processo que possa falhar por I/O real."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: `M-12 cli`, com entrada do operador, observação de eventos, progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema e `alvo-de-implantacao` explicitam convivência entre canário e versão estável, com rollback para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide alocação de tráfego por pesos no `alvo-de-implantacao`, consumindo recurso operacional cuja exposição cresce por passos do canário."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequente — promover ou reverter uma implantação — que pode causar dano operacional a um serviço/entidade se errar."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "`M-07 coordenador` é uma máquina de estados com fluxo de execução, pausa, reversão, promoção, aborto e exceções por falha/erro."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura emite eventos de decisão e ações de implantação/rollback que alguém pode precisar auditar e atribuir ao operador ou ao sistema."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução que pode degradar; `coordenador` emite eventos e `cli` expõe progresso, motivo e decisão para diagnosticar comportamento sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há um laço de feedback explícito: coleta métricas, julga, pontua e ajusta pesos/promove/reverte no `coordenador`."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há pressuposto de cooperação do operador no fluxo manual de `cli`/`abortar()` e na interpretação dos resultados do canário."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler igual — portas `fonte-de-metricas`, `alvo-de-implantacao`, eventos do `coordenador` e distinção `Amostra | Indisponivel`."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias e variação: limiar de amostra mínima, confiança de 98%, sequência de pesos, limiares da guarda-absoluta e aquecimento de instância."
+    }
+  ]
+}

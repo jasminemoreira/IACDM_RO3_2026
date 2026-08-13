@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende do sistema de arquivos fora do processo: P-A7 declara que um bit trocado em disco perde o resto do bloco F2, sem checksum nem caminho de recuperação."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe uma CLI operada por pessoa (tsz ingest/read/retain/migrate/validate-config/report), incluindo mensagens de erro de rejeição e consentimento --allow-lossy."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "M-10 carrega um acervo populado entre dois formatos vivos (F1↔F2), com precheck, LossRisk e decisão de perda — transição de estado existente é o cerne do UC-4."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide alocação de recurso que cresce com o uso: política de retenção, downsampling por tiers e razão de compressão (P-A10) existem justamente para conter custo de armazenamento de volume contínuo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Ferramenta de compactação de séries temporais sem nenhuma decisão consequencial sobre pessoas — os dados são métricas técnicas e nenhum efeito recai sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados e caminhos de exceção: plano de retenção (downsample→expire), migração com precheck/abort/--allow-lossy, e pontos rejeitados na escrita com reasons."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões pelas quais alguém responderá depois: WriteReport.rejected/reasons, MigrationReport.lossless e o consentimento explícito de perda em --allow-lossy são trilha de auditoria de decisões destrutivas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode falhar em silêncio após entregue: corrupção de bloco (P-A7), escritor concorrente não detectado (P-A2) e rejeições na escrita exigem diagnóstico via report sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loop de regulação contínua: retenção e migração são planos computados e aplicados uma vez por comando, sem sinal de erro, retry ou realimentação que possa oscilar ou derivar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem enforcement: P-A2 (escritor único, sem lock) e I2 (produtor envia timestamps ordenados) são premissas sobre o comportamento de atores externos que um agente auto-interessado ou descuidado pode violar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos binários e de interface que duas leituras corretas podem divergir: schemas F1 (16/12/12 B big-endian), bitstream Gorilla com larguras arbitrárias, e o Protocol Store com capabilities negociadas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de variação de entrada e ambiente: perfis de série imprevisíveis (P-A10), teto de 32 bits em timestamps F1 (2106), quantização de slot, jitter e gaps — o sistema precisa de tolerâncias, não de especificação exata."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de banco SQLite via portas-repositorio/sqlite-adaptador, que pode falhar, travar ou retornar erro."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: API HTTP, 6 telas server-rendered e endpoint operacional do relógio."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Existe estado persistido e schema/seed/migração em SQLite, logo há formato armazenado anterior a preservar ou transicionar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo assume volume pequeno e não há componente de consumo elástico/intensivo ou alocação de recurso que cresça materialmente com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisão consequente de aprovação/rejeição de despesas e pode prejudicar solicitantes por negação ou atraso."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O domínio é um fluxo de aprovação com estados, alçadas, delegação, rejeição terminal e handoffs entre atores."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra decisões e autoria em trilha append-only com ator efetivo, em-nome-de, instante e limite exercido."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como processo com banco e API, podendo degradar ou falhar após deploy e exigir diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há comportamento regulado pelo tempo: delegação entra/sai de vigência sob demanda conforme sinal do relógio."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A5 assume identidade confiável sem autenticação; um ator interessado pode desviar do comportamento esperado e contornar SoD."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca: interfaces de módulos, rotas HTTP, semântica de cadeia de aprovação e fronteiras de vigência."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias de tempo, carga e ambiente: UTC monotônico, volume pequeno, processo único e variação de banco/input."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar, atrasar ou devolver dados inesperados: sonda-tls faz rede TLS e repositorio usa sqlite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: web-ui com login, painel, alvo, trilha e ações de varrer e aprovar pedidos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto descreve V(1) greenfield e um repositório lido só por esta versão, sem estado legado, contrato pré-existente ou plano de rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A arquitetura consome recursos de forma crescente com o uso: varreduras TLS por alvo e persistência/trilha; a própria premissa A7 limita volume pequeno."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequenciais sobre emissões e trocas não autorizadas, escalando situações e registrando aprovações atribuídas a pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pedido pendente->aprovado->fechado, aprovação humana, reconciliação e escalação por inação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra quem solicitou e aprovou, mantém trilha append-only encadeada por hash e expõe auditoria e verificação de integridade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente sujeito a falhas silenciosas de rede, relógio, banco e varredura, e há necessidade operacional de diagnosticar isso em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação temporal do estado: monitoramento periódico de validade, classificação por limiares ao longo do tempo e reconciliação que corrige desvio entre esperado e observado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação humana para aprovar dentro da janela e operar uma varredura por vez; atores podem desviar desse comportamento para seu próprio interesse ou conveniência."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que podem ser lidos de mais de uma forma, como classificar estados por limiares, reconciliar eventos e interpretar interfaces Ok|Erro e evidências."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias de ambiente e variação: relógio correto, API experimental de node:sqlite, certificado TLS real, rede, volume e execução não concorrente."
+    }
+  ]
+}

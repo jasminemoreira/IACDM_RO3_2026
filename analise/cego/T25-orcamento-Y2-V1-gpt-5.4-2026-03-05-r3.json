@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: provedor Anthropic via SDK, banco SQLite em arquivo e tabela de preços/usage vindos de fronteiras de processo/arquivo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: painel-web SPA, painel-api e login por senha de operador para consultar consumo e configurar tetos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "É greenfield nesta versão: não há estado legado, contrato pré-existente compartilhado ou caminho de coexistência/rollback entre versões descrito."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema mede, limita e decide consumo de um recurso cujo custo cresce com uso: chamadas ao LLM cobradas em moeda por tokens."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O gateway toma decisão consequente de negar/cortar consumo por entidade ao atingir teto, afetando pessoas ou times que dependem desse orçamento."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções explícitas: resolver identidade, precificar, reservar, negar ou enviar, reconciliar/liberar, com reservas órfãs ainda sem política."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra consumo, tetos, chaves virtuais e ações operacionais que precisarão de atribuição e auditoria por entidade e operador."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com risco de falha silenciosa do invariante, relógio, reconciliação e upstream, exigindo diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação contínua de estado ao longo do tempo: contadores confirmado/reservado, reconciliação posterior e reset mensal por janela UTC."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação operacional e dos clientes em premissas como não possuir chave real do provedor e existir um único processo escritor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que podem ser lidos de modos divergentes: significado de usage, max_tokens, streaming, idempotência por id_reserva e semântica de modelos/preços."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O funcionamento depende de tolerância a variações de relógio, concorrência SQLite, versões de SDK/specs e presença de campos como usage e max_tokens."
+    }
+  ]
+}

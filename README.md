@@ -23,6 +23,7 @@ Leia **[`RESULTADO-RO3.md`](RESULTADO-RO3.md)** — é a fonte única dos númer
 | caminho | conteúdo |
 |---|---|
 | **[`RESULTADO-RO3.md`](RESULTADO-RO3.md)** | **o resultado completo** — três achados, limitações medidas, sete correções de percurso |
+| [`ADJUDICACAO-ETI.md`](ADJUDICACAO-ETI.md) | a adjudicação da lente Ética: critério datado, cegamento, dois juízes — e por que a fronteira não reproduz |
 | [`INSTRUCOES-REDACAO.md`](INSTRUCOES-REDACAO.md) | como usar os achados no artigo, e o que **não** afirmar |
 | [`LOG-OPERACAO.md`](LOG-OPERACAO.md) | os 12 projetos, os **7 descartes** e as violações de protocolo |
 | [`PROJETOS.md`](PROJETOS.md) | o desenho da amostra — que lentes cada projeto deveria exercitar |
@@ -100,6 +101,12 @@ o dado mostrou. A entrada sobre estimadores foi reescrita quatro vezes.
 saída real e sempre declarado pelo agente. Nenhuma falsificação ocorreu; o achado é que o
 mecanismo não a impediria.
 
+**A cadeia de correção está no repositório, incluindo o que não deu certo.** A sonda lexical
+que sustentaria a adjudicação de ETI foi **retratada** — media densidade de prosa sobre humanos
+e homônimos, não dano — e está preservada em
+[`analise/sonda_eti_refutada.py`](analise/sonda_eti_refutada.py), com a refutação no mesmo
+comando. O que a substituiu está em [`ADJUDICACAO-ETI.md`](ADJUDICACAO-ETI.md).
+
 **Há cinco chaves privadas sintéticas** em `T21-certificados/specs/datasets/`, geradas com
 `openssl` para a suíte de testes daquele projeto. Ver a
 [nota no diretório](T21-certificados/specs/datasets/NOTA-CHAVES-DE-TESTE.md) — a verificação
@@ -118,6 +125,12 @@ botão *Cite this repository*, na barra lateral.
 **No artigo, cite o DOI de conceito:** [`10.5281/zenodo.21908907`](https://doi.org/10.5281/zenodo.21908907).
 Ele resolve sempre para a versão mais recente, então uma correção futura no corpus não
 invalida a citação. O DOI desta versão especificamente é
-[`10.5281/zenodo.21908908`](https://doi.org/10.5281/zenodo.21908908).
+[`10.5281/zenodo.21908908`](https://doi.org/10.5281/zenodo.21908908) (v1.0).
+
+**Duas versões, e a distinção importa para o artigo.** A **v1.0** é o corpus da RO3 tal como
+medido — a taxonomia X, congelada. A **v1.1** acrescenta o que veio depois: o experimento dos
+gatilhos reescritos e a adjudicação de ETI. Um artigo que cite resultados da RO3 pode citar o
+DOI de conceito; um que cite os números da adjudicação **precisa** da v1.1, porque eles não
+existem na v1.0.
 
 INDT · Jasmine Moreira ([0000-0002-3744-9528](https://orcid.org/0000-0002-3744-9528)) · 2026

@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência de arquivo/armazenamento via Store e leitura/escrita de bytes, com risco explícito de corrupção e falha de disco em P-A7."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: o módulo cli (M-12) com 6 comandos e flags operacionais como --allow-lossy."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura prevê migração entre formatos existentes F1 e F2, com precheck, risco de perda e convivência entre contratos de armazenamento."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais com custo que cresce com volume, retenção, downsampling e migração de acervo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "A arquitetura não automatiza decisão consequencial sobre pessoas; compacta, retém e migra dados técnicos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com etapas e exceções explícitas: ingestão, retenção, migração, validação, expiração e abortar/prosseguir em caso de perda."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema produz ações auditáveis como write/expire/migrate e reporta rejected, reasons, LossRisk e MigrationReport."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Após implantado pode degradar ou falhar silenciosamente em leitura, retenção, migração ou corrupção de bloco, exigindo diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A retenção regula o estado do acervo ao longo do tempo com plan(now, tier_state), downsampling e expiração como loop periódico de correção."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador em premissas não impostas, como escritor único (P-A2) e uso consciente de --allow-lossy."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos que precisam leitura inequívoca: Store, bitstream, block e os formatos binários F1/F2."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e limites exatos, como ts_bits 32 vs 64, bloco de 2 h com teto 4 h, quantização e monotonicidade estrita."
+    }
+  ]
+}

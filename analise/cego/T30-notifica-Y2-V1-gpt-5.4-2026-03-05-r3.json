@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas falíveis: SQLite (M-12), SMTP (M-10) e webhook HTTP (M-11), com timeout/retry/dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI do operador (M-02) com comandos explain, pending, retry e serve."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve estado legado, contrato pré-existente a preservar nem caminho de rollback entre versões coexistentes."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos cujo custo cresce com uso: entregas externas, retries, fila durável e processamento de notificações em volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisões automáticas sobre pessoas — opt-out, quiet hours, suppress/defer/rate-limit por destinatário."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções: ingestão, outbox, claim, supressão em dois estágios, retry, dead-letter e estado agregado da notificação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Há ações e decisões que precisam atribuição e auditoria: API key identifica emissor, notificações/entregas têm estados e motivos nomeados de supressão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço em execução contínua com API e worker; falhas de entrega, supressão e filas pendentes precisam diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação ao longo do tempo: retry com backoff e jitter, token bucket por pessoa e reavaliação de supressão na entrega."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação de atores externos: emissor fornece dedup key, destino do webhook é idempotente e qualquer emissor autenticado pode notificar qualquer pessoa."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura divergente: ChannelPort.send com ok/permanent, assinatura HMAC do webhook e enum de decisões/motivos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variações reais: fuso horário/IANA, cruzamento de meia-noite, relógio confiável, timeout, carga e API experimental do node:sqlite."
+    }
+  ]
+}

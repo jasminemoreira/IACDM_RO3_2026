@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-10 e M-11 chamam SMTP e webhooks externos com falha transitória/permanente, timeouts, retries e dead-letter; o próprio contrato ChannelPort.permanent existe por causa dessa fronteira."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-02 (cli) é uma superfície operada por uma pessoa — operador usa explain/pending/retry/serve, com responsabilidade de 'explicar supressão'."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "PRE-2 menciona cadastros antigos/importados sem fuso obrigatório, e M-12 tem migração de schema — há estado preexistente que precisa sobreviver à transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "PRE-1 assume worker único com throughput limitado e PRE-6 concentra API+worker no mesmo processo; custo de recursos cresce com volume de entregas e o desenho limita escala deliberadamente."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente suprimir ou adiar comunicações que atingem pessoas (opt-out, quiet hours, rate limit por pessoa), com transacionais que não podem ser suprimidas — decisão consequente sobre terceiros com mecanismo de explicação (explain)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Pipeline explícito de estados (delivered/partially_delivered/failed/suppressed/deferred), dois estágios de supressão, retries com nextAttemptAt, dead-letter e reprocessamento via retry — fluxo com transições e caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Emissores autenticados por API key emitem notificações em nome de pessoas (PRE-8), e decisões de supressão são nomeadas com motivo para auditoria (decisão nomeada, comando explain) — há obrigação de atribuir e explicar ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "M-02 existe justamente para operação (explicar supressão, listar pendentes, reprocessar) e o sistema roda como serviço que pode falhar silenciosamente (fila, dead-letter) — precisa ser diagnosticável sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Retry com backoff exponencial + Full Jitter (PAR-01) e token bucket com recarga (M-07) são laços de realimentação que ajustam estado rumo a um alvo e podem oscilar (rajada de 20 entregas às 08:00 suprimidas como rate_limited)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "PRE-3 (emissor fornece chave de dedup, senão perde dedup silenciosamente), PRE-7 (assume destino idempotente sem poder garanti-lo) e PRE-8 (qualquer emissor autenticado notifica qualquer pessoa) assumem cooperação de atores que podem desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "ChannelPort.send com o campo permanent é um contrato implementado por dois adaptadores (M-10, M-11) cuja leitura divergente (o que conta como permanente) gera comportamentos incompatíveis; idem payload assinado HMAC sobre id.timestamp.payload e 2xx=sucesso."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas: PAR-06 (300 s de tolerância de relógio), fuso IANA validado, cruzamento de meia-noite (EDGE-1), node:sqlite experimental (PRE-5) — o sistema depende de variações de ambiente, relógio e versão de runtime."
+    }
+  ]
+}

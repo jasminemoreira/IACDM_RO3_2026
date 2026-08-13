@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de arquivo SQLite local, importação de CSV e leitura/gravação persistente fora do núcleo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa na ui-web com 4 telas e fluxo de simulação, importação, regras e histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e importa a planilha existente com prova de paridade e transição de comportamento."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há consumo elástico relevante nem processamento de alto volume; escopo exclui precificação em lote e dependências de rede em runtime."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza decisões de preço que afetam clientes e entidades dependentes, com histórico e explicação da decisão."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de rascunho → validação → publicação → consulta/histórico → recálculo, com erros e avisos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões, histórico, versões publicadas imutáveis e ações que precisam ser auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com persistência, publicação e recálculo; falhas em produção precisariam ser diagnosticadas sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve laço de feedback, sincronização contínua, retry/backoff nem ajuste automático de estado ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação em entradas humanas e operacionais, como importação, validação e publicação single-user sem auth."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há múltiplos contratos suscetíveis a leitura ambígua: parsing monetário BR, faixas 'Ate', intervalos fechados, vigência e contratos API/CSV."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variações de entrada e ambiente, como centavos, arredondamento final, bordas de faixa, normalização de SKU e data."
+    }
+  ]
+}

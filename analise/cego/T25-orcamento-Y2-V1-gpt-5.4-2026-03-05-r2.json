@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: provedor Anthropic via SDK e banco SQLite em arquivo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: painel-web SPA, painel-api e login de operador."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "É greenfield nesta versão; não há estado legado, contrato anterior consumido por terceiros, nem caminho de rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema mede, limita e decide gasto em moeda de consumo de LLM, um recurso cujo custo cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O gateway toma decisão consequencial de negar consumo por teto global ou por entidade, afetando pessoas que dependem desse orçamento."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções: resolver identidade, reservar, negar ou enviar ao provedor, reconciliar e registrar eventos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema decide cortes e registra consumo, tetos, chaves virtuais e eventos que precisam de atribuição e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com falhas silenciosas possíveis, como deriva de reservas, erro de janela e degradação no upstream."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação de estado ao longo do tempo: reserva de pior caso, reconciliação com custo real e reset mensal da janela."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação operacional e dos clientes, explicitamente em premissas como não vazar chave real e existir um único escritor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que podem ser lidos de forma divergente: semantics de usage, max_tokens, idempotência por id_reserva e virada mensal em UTC."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias ambientais e de carga, como relógio do host, semântica transacional do SQLite, concorrência e variação de respostas do provedor."
+    }
+  ]
+}

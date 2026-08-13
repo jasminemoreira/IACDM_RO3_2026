@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há múltiplas fronteiras que podem falhar ou atrasar: SQLite (M-12), SMTP (M-10) e webhook HTTP externo (M-11)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI do operador (M-02) com comandos explain, pending, retry e serve."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado antigo a preservar/transformar: schema e migrações no SQLite (M-12) e premissa sobre cadastros antigos sem fuso (PRE-2)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O serviço consome recursos que crescem com uso: filas duráveis, retries, chamadas externas e armazenamento por notificação/entrega."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza supressão/adiamento de notificações por pessoa, podendo excluir ou atrasar comunicação relevante ao destinatário."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções explícitos: ingestão, enfileiramento, claim, supressão, entrega, retry, dead-letter e agregação de status."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra decisões e ações auditáveis: motivos nomeados de supressão, resultados de entrega, retries e API key do emissor."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço em execução com degradação possível após deploy; a própria CLI operacional indica necessidade de diagnosticar pendências, supressões e reprocessamentos."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laços de realimentação explícitos: retry com backoff/jitter, rate limiter token bucket e reavaliação de supressão no estágio deliver."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação de atores externos: emissor fornece chave de dedup (PRE-3) e destino do webhook é idempotente (PRE-7), mas pode desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura divergente: ChannelPort com semântica de permanent, assinatura webhook e enums/estados de supressão e entrega."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias e variações concretas: relógio confiável, fuso IANA, versões/runtime de node:sqlite experimental e comportamento sob carga de worker único."
+    }
+  ]
+}

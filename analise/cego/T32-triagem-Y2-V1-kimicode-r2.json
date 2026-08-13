@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Persistência em banco SQLite via better-sqlite3 (M-09): há uma fronteira fora do processo — arquivo de banco em disco — que pode falhar, corromper ou devolver erro, e M-02 carrega configuração como dado externo que pode vir inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 entrega 6 telas server-side operadas por pessoas (abrir, fila, triar, chamado, recorrer, julgar) — superfície humana explícita."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: esquema e seed são criados pelo próprio M-09 e nenhum estado pré-existente ou contrato de outra versão precisa atravessar a mudança."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema de baixo volume em nó único com SQLite; nenhum recurso (IA, infraestrutura elástica, processamento massivo) cujo custo cresça materialmente com o uso é decidido ou alocado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A prioridade automática decide a ordem de atendimento de pessoas, e o julgamento de recurso pode negar provimento a um solicitante — decisão consequencial sobre usuários, com A7 (boa-fé do solicitante) declarada sem evidência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Chamado tem ciclo de vida com estados (M-05) e Recurso tem rito próprio com admissibilidade, julgamento e efeito do provimento (M-06), envolvendo múltiplos atores (solicitante, triador, gestor) e caminhos de exceção (prescrição B-3, legitimidade B-5)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha somente-inserção com autoria (M-07), autorização com motivo (M-08) e eventos de julgamento assinados por gestor: ações precisam ser atribuíveis e auditáveis depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Servidor Fastify (M-11) rodando em produção com violação de SLA calculada em tempo de execução (M-04): pode degradar ou falhar silenciosamente e alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema só reage a eventos (abrir, triar, reclassificar, julgar); não há realimentação, retry/backoff, sincronização de estado ou laço autocorrretivo — avanço de relógio existe apenas em teste."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A7 assume solicitante de boa-fé e declara abuso 'visível, não punido', enquanto inflar impacto/urgência eleva a própria prioridade — cooperação assumida, não imposta, com ganho claro para desvio estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos carregam regra na assinatura (sla.prazos recebe abertoEm, pode() devolve motivo, API rejeita 'prioridade' como entrada) — interfaces HTTP e de módulos onde duas leituras corretas poderiam divergir (ex.: 'horas corridas' vs. úteis)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Comportamento depende de dados variáveis: matriz/metas/prazos carregados como configuração (M-02), fonte de tempo injetável (M-01) e faixas de entrada de impacto/urgência — desvios pequenos nesses insumos mudam o resultado."
+    }
+  ]
+}

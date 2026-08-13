@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos JSON e entrada por arquivo/caminho (M-08, M-09), que podem falhar, atrasar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: a CLI (M-11) com cinco comandos de uso."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado antigo que precisa coexistir/ser preservado: escala do mês anterior, rascunhos e trocas persistidos em JSON."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca recurso escasso relevante — plantões — e depende de solve computacional com custo e limite de tempo explícitos (M-06, A4)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A arquitetura automatiza decisões de alocação e revalidação de trocas que podem prejudicar pessoas na distribuição de plantões."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados e handoffs definidos, especialmente a máquina de estados de troca e os cinco casos de uso encadeados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas e trocas que depois precisam ser atribuídas e auditadas, inclusive aceite de troca por identidade informada."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda fora do código puro, pode falhar após entregue, e há pontos de degradação como solve, carga e persistência que exigem diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação na revalidação de troca e na avaliação de conformidade, usando violações/custo como sinal para aceitar ou rejeitar mudanças de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador/usuário; por exemplo, A5 diz que a identidade informada no comando é verdadeira, mas isso não é imposto pelo sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca: interfaces dos módulos, esquema/semântica dos arquivos JSON e catálogo de restrições com dois modos de uso."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de ambiente e entrada — tamanho da instância, versões/dependência do solver, formato de arquivos e premissas como horários fixos e limite de 60 s."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e fora do processo: provedor Anthropic via rede e banco SQLite em arquivo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: painel-web SPA e painel-api com login e configuração de tetos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há formato armazenado e schema com migração em persistencia; mudanças precisam coexistir com estado já gravado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema mede, limita e decide consumo de um recurso de custo variável em moeda por uso de LLM."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O gateway automatiza decisão consequente de negar/cortar uso por teto global e por entidade."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções explícitas: reservar, negar, enviar, reconciliar, liberar e reset mensal."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra consumo, emite/revoga chaves, autentica operador e aplica decisões que precisam atribuição e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com falhas possíveis após deploy, inclusive premissas operacionais A3-A7 e corte síncrono no gateway."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de controle de orçamento: reserva por pior caso, mede custo real e corrige estado na reconciliação contra um teto-alvo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação operacional e dos clientes, explicitada em A5 e na chave virtual que pode ser contornada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes devem interpretar igual: usage adaptado, max_tokens, stop_reason e interfaces dos módulos/endpoints."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O funcionamento depende de tolerar variações de relógio, concorrência, versões/dependências, modelos e comportamento do SQLite."
+    }
+  ]
+}

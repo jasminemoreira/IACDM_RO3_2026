@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 sqlite-adaptador é fronteira fora do processo lógico: banco em arquivo pode falhar, travar ou retornar dados inesperados, e M-11 depende de rede HTTP."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 ui-web expõe 6 telas server-rendered com formulários (bandeja, nova despesa, delegações, auditoria) operadas por pessoas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield com seed próprio (M-09 semear/migrar): não há store populado, formato legado nem consumidor de interface anterior a carregar ou para o qual fazer rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 fixa volume pequeno (dezenas a centenas de despesas) e o sistema não decide nem aloca recurso cujo custo cresça com o uso — sem IA, processamento intensivo ou infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequenciais sobre pessoas: autoridade (M-04) pode negar aprovação/reembolso de despesa e a delegação (M-03) transfere poder de decisão — com efeito direto sobre o solicitante."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Núcleo do sistema é um processo com estados e transições (M-01), cadeia de aprovação com handoffs entre níveis (M-02), delegação com vigência (M-03) e caminhos de exceção (teto, topo, SoD)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-06 trilha append-only registra ator efetivo, em-nome-de e limite exercido (INV-7/INV-8) e M-12 tem tela de auditoria — cada decisão precisa ser atribuível e auditável."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço que roda (api-http + SQLite) e pode degradar ou falhar em silêncio depois de entregue; a arquitetura não prevê logs, métricas nem diagnóstico sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Escopo negativo declara 'não agenda nada': sem cron, timer, retry, sincronização de estado ou laço de feedback — a expiração de delegação é avaliada sob demanda, não regulada ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação em vez de impô-la: A5 aceita identidade sem autenticação e o próprio texto reconhece que toda invariante SoD é contornável por quem chamar a API direto — atores autointeressados podem desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos densos entre partes: assinaturas com uniões de erro (M-01..M-08), o tipo ItemBandeja com origem polimórfica (M-05), portas de repositório (M-08) e a API HTTP (M-11) admitem leituras divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de ambiente e entrada: fronteiras inclusivas de valor (INV-1), inteiros de centavos (INV-12), instantes UTC e monotonicidade do relógio (A6), e versões de SQLite/Fastify — tolerâncias explícitas importam."
+    }
+  ]
+}

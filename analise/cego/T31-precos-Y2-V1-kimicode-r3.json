@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema atravessa fronteiras fora do próprio processo que podem falhar ou devolver dados inesperados: o arquivo SQLite (M-07) e os bytes CSV da planilha legada (M-08, que já prevê linhas inválidas com motivo nomeado)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a UI web M-12 com 4 telas (regras, simulador, importação, histórico), incluindo detalhes interativos como o preenchimento visível e editável da data 'hoje'."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada em uso: o problema declara a substituição, M-08 importa a planilha legada e M-09 prova paridade com os preços originais — estado existente precisa atravessar a transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso cujo custo cresça com o uso: processo local single-user, SQLite em arquivo único, sem IA, sem infraestrutura elástica e sem processamento de alto volume (precificação em lote está no escopo negativo)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequencial que recai sobre pessoas — o preço que compradores pagam — e a própria arquitetura reflete isso com trace exaustivo, explicação contrastiva e histórico auditável (I-3, M-06)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo com estados e transições: rascunho → validação de coerência (M-05) → publicação atômica → versão vigente por data, com caminhos de exceção (rejeitadas na importação, empate insolúvel, avisos de lacuna)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar depois: LogDeDecisoes (registrar/listar/obter), versões imutáveis nunca alteradas (A-12) e trace completo de cada preço decidido."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço que roda após a entrega (API HTTP + UI servidas em processo contínuo) e pode falhar silenciosamente — um preço errado por regra mal publicada — exigindo diagnóstico do porquê sem mudar código; o histórico de decisões e o endpoint de recálculo (M-11) são a resposta a essa pergunta."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há regulação de estado ao longo do tempo: o motor é uma função pura e determinística por consulta (A-04, nunca lê o relógio), sem retry/backoff, sem sincronização e sem nenhum loop de feedback que possa oscilar ou derivar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O desenho assume um único operador local (A-06 single-user, A-08 sem auth e mesma origem); não há fronteira entre atores com incentivos divergentes — o operador das regras é o próprio dono do sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A arquitetura é um emaranhado de contratos que duas partes precisam ler da mesma forma: assinaturas das portas DIP, DTOs REST (data obrigatória), formato do CSV legado com moeda BR e 'Ate' textual, e semântica de faixa fechada [min,max] (A-11)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de entradas que variam e já precisa de tolerâncias explícitas: planilha legada suja (SKU com espaço/caixa, milhar, formato de moeda), tolerância de R$ 0,01 na prova de paridade (M-09) e sensibilidade a bordas de faixa e virada de dia/fuso (P-02/P-03, A-04)."
+    }
+  ]
+}

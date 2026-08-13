@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou degradar: rede em sonda-tls e persistência em repositorio/sqlite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: web-ui com login, painel, alvo, trilha e ações de varrer e aprovar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado persistido e trilha append-only em repositorio; mudanças futuras de esquema/formato precisam coexistir ou migrar o estado anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A arquitetura consome recursos que crescem com o número de alvos e varreduras: handshakes TLS sequenciais, armazenamento de observações e trilha."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema produz decisões potencialmente danosas sobre alvos, como troca-nao-autorizada e escalar, que podem acionar ação humana posterior."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pedido pendente->aprovado->fechado e reconciliação com fechamento, escalação ou nenhuma ação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O problema exige registrar quem aprovou cada emissão e a arquitetura tem pedido com aprovador e trilha auditável encadeada por hash."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode falhar após entregue; há varredura, sonda de rede, banco e verificação de integridade que exigem diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação entre observação periódica, classificação por limiar, abertura/aprovação de pedido e reconciliação que corrige desvios esperados."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação humana para aprovar dentro da janela e registrar corretamente; isso aparece nas premissas A4 e no fluxo de pedidos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca entre módulos, como Decisao, estados de classificação, Ok|Erro e interfaces das portas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias variáveis de ambiente e dependências: relógio correto, API experimental node:sqlite, certificados DER/TLS e volume pequeno de alvos."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteira externa de arquivo/YAML em yaml-loader e catalog-repository; arquivos podem faltar, travar ou vir malformados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI com subcomandos, flag --json, mensagens acionáveis e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de substituir sistema em uso, migrar formato existente ou coexistir com contrato/estado legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso que cresce com uso: recarrega o diretório inteiro em memória e faz travessias de grafo sem cache."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O catálogo declara donos por domínio/dataset e pode apontar ausência de dono ou impacto entre ativos, produzindo efeitos atribuíveis sobre responsáveis."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com etapas e exceções: carregar, mapear, construir grafo, validar sempre antes de consultar, ou falhar com violações agregadas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura modela ownership explicitamente e valida 'todo domínio tem dono' e 'nenhum dataset é órfão de dono'."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A CLI roda após entrega e pode falhar por carga/validação/arquivo; seria necessário diagnosticar causas operacionais sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de feedback que ajuste estado rumo a meta; o sistema só carrega, valida e consulta de forma estática."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do humano que escreve YAML e declara corretamente donos, domínios e arestas; pode haver desvio estratégico ou omissão."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos potencialmente ambíguos que a arquitetura até explicita, como DatasetId com ponto separador, inversão de 'alimentado_por' e exclusão de X em impact(X)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de input e ambiente: versões de PyYAML/NetworkX, forma exata dos YAMLs, nomes sem ponto e catálogo caber em memória."
+    }
+  ]
+}

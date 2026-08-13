@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "As portas `fonte-de-metricas` (que já distingue Amostra de Indisponivel) e `alvo-de-implantacao` (aplicar pesos, rollback) são fronteiras com algo externo ao processo que pode falhar, atrasar ou responder inesperadamente quando os adaptadores reais substituírem os simulados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 `cli` é superfície operada por uma pessoa: o operador acompanha progresso, motivo e decisão final e pode invocar `abortar()`."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é convivência: o canário roda junto da versão estável (distribuição de peso somando 100 em `alvo-de-implantacao`) e rollback = 100% à estável é caminho de reversão explícito."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema simulado, laço monothread e baixo volume de amostras sintéticas; não decide, aloca nem consome recurso cujo custo cresça com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "As decisões (promover/reverter) recaem apenas sobre cenários sintéticos do `simulador-de-cenario`; o escopo negativo exclui qualquer alvo real, logo nenhum efeito consequencial sobre pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é uma máquina de estados explícita (progredindo / pausado / revertido / promovido) com laço de execução, passos de peso (M-06) e caminhos de exceção (aborto manual, guarda-absoluta, estouro de erros)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema decide promover/reverter e emite eventos com motivo e decisão final — ações que alguém precisará auditar e atribuir depois (por que houve rollback, qual veredito sustentou o score)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "`coordenador` expõe `assinar(observador)` justamente para que degradação e decisões sejam diagnosticadas em execução sem mudar código; sem isso, pausas e reversões seriam falhas silenciosas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O laço métricas → veredito → ajuste de peso é um loop de feedback que regula o estado do rollout ao longo do tempo, com risco real de oscilação (progressão/reversão) e deriva de estado entre passos."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operador único via CLI e nenhum ator externo com incentivo a desviar; a arquitetura não assume cooperação de usuários, clientes ou integradores que pudesse ser explorada estrategicamente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos ambíguos em potencial: pesos que devem somar 100 em `aplicar(pesos)`, a distinção Amostra | Indisponivel em `fonte-de-metricas`, e `proximo(atual) -> int | None` admitem duas leituras corretas divergentes entre quem implementa e quem consome."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variação: limiares (≥50 amostras, 98% de confiança, 4 erros consecutivos, score 100, limiares da guarda-absoluta sem fonte — A3) e entradas ruidosas do simulador podem falhar em pequenos desvios da especificação exata."
+    }
+  ]
+}

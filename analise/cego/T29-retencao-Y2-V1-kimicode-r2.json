@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Persistência em disco sem checksum: P-A7 declara que um bit trocado em F2 perde o resto do bloco, e a escrita/leitura depende de arquivos fora do processo que podem falhar ou corromper."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe uma CLI operada por uma pessoa (7 subcomandos), com caminhos de erro sensíveis: validação de config (I3/I6/I7), consentimento via --allow-lossy e relatórios de rejeição que o operador precisa entender."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio UC-4 e o módulo migrator (M-10) carregam um acervo populado entre os formatos F1 e F2, com precheck de perda, política de abort/allow-lossy e relatório lossless — transição de estado existente é o núcleo do sistema."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e aloca armazenamento cujo custo cresce com o volume de dados: tiers de retenção, downsample, compressão por perfil (P-A10) e a decisão P-A8 de migrar em streaming para não carregar o acervo em memória."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Nenhuma decisão consequente recai sobre pessoas: o sistema apenas compacta, agrega e expira séries temporais de infraestrutura; perda de dados é técnica e consentida, sem efeito sobre indivíduos ou entidades das quais dependam."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados, handoffs e caminhos de exceção: plano de retenção (downsample→expire por tier) e a migração em etapas (precheck→abort ou consentimento→migrate→MigrationReport)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar depois: WriteReport.rejected com reasons, precheck devolvendo LossRisk e MigrationReport.lossless — rastro de autoria sobre rejeições e perdas de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema pode degradar silenciosamente em operação: corrupção de bloco sem checksum (P-A7) e pontos rejeitados na escrita exigem que WriteReport/relatórios sejam o mecanismo de detecção sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A retenção é um laço que regula o estado ao longo do tempo: plan(tiers, now, tier_state) depende de estado acumulado por tier e é reaplicado periodicamente, podendo derivar ou oscilar se tier_state divergir do acervo real."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem enforcement: P-A2 (escritor único, sem lock nem WAL) e P-A4/I2 (produtor envia timestamps monotônicos) são comportamentos esperados de atores externos que um agente negligente ou auto-interessado pode violar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos binários byte-exatos (F1 com layouts 16/12/12 B big-endian, blocos Gorilla de R1 §4.1) e o Protocol Store são acordos que duas implementações corretas podem ler de forma divergente — ex.: NaN com payload, -0.0, colisão de slots quantizados."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variação de entrada e ambiente: perfis com jitter, gaps e ieee-edge (dataset-gen), timestamps de 32 bits com teto 2106, quantização de slot, janela de bloco 2h–4h e razão de compressão variável por perfil (P-A10)."
+    }
+  ]
+}

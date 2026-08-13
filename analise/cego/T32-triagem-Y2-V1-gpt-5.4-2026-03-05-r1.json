@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de banco SQLite via better-sqlite3/repositório, que pode falhar, travar ou devolver erro."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: 6 telas web server-side e rotas HTTP para abrir, triar, recorrer e julgar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não indica sistema legado, contrato pré-existente consumido por terceiros, nem necessidade de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo elástico/crescente de recurso caro nem decisão de alocação com custo proporcional relevante além do processamento local simples."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza prioridade e decide admissibilidade/julgamento de recurso, afetando diretamente pessoas solicitantes e seu atendimento."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: abrir, triar, reclassificar, recorrer, julgar, reconhecer, encerrar, com prazos e admissibilidade."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra trilha somente-inserção e ações atribuíveis a autor/gestor, com necessidade explícita de motivo de permissão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com servidor HTTP e persistência; falhas/degradações após deploy precisariam ser detectadas e diagnosticadas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação de estado ao longo do tempo por prazos de SLA e reavaliação/reclassificação baseada em relógio e violação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do solicitante; a premissa A7 diz boa-fé sem evidência e há possibilidade de recurso estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos com regra embutida em assinaturas e permissões com motivo; leituras divergentes de interfaces/funções podem produzir comportamento incompatível."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variação de ambiente e insumos como tempo, configuração de matriz/SLA, entradas e versão/comportamento do SQLite/Node."
+    }
+  ]
+}

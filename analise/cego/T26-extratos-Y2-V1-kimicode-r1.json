@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de arquivos externos (OFX v1 SGML/v2 XML, CSV de bancos) e de SQLite — fontes que podem falhar, estar malformadas ou divergir da premissa A1 (FITID instável é contra-evidência documentada)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 (cli) é superfície operada por pessoa, e M-09 (review-queue) expõe fluxo de resolução humana de pendências com comandos `resolver(id, acao)`."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há estado pré-existente nem contrato legado a carregar: o repositório SQLite é criado e lido apenas por esta versão, e os extratos importados são insumos, não estado do sistema anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de alto volume com custo que cresce com o uso: orçamento de blocking (A4, b ≤ 50), risco de O(n²) em blocos degenerados e fixture de carga de 50k itens (M-12)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes sobre dinheiro — declarar transação duplicada, casada ou órfã anômala afeta a conciliação financeira de quem depende dela; a arquitetura responde com evidência auditável (DecisaoDedup) e correção humana (review-queue), o que confirma que a lente se aplica."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo com estados e caminhos de exceção explícitos: 5 estados de conciliação, cadeia L0→L5 de dedup, e o fluxo pendência → resolução humana → realimentação da camada L0."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Auditabilidade é requisito estrutural: DecisaoDedup sempre registra camada e evidência, resoluções humanas são persistidas e nunca sobrescritas, e o reporter sub-rotula órfão esperado vs anômalo — tudo atribuível e presta-contas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda após entrega e pode degradar silenciosamente (bloco degenerado, FITID instável derrubando L1); o reporter de contagem por estado e o registro de camada/evidência existem justamente para diagnosticar sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Existe um laço de realimentação: resoluções humanas persistidas (M-09) alimentam a camada L0 do dedup-engine, alterando classificações futuras — loop que pode deriva ou propagar erro se a resolução estiver errada."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Nenhum ator com incentivo a desviar: as fontes externas são arquivos passivos e o único ator humano (operador da review) não ganha nada agindo estrategicamente contra o sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que podem ser lidos de dois jeitos: perfis CSV declarativos (carregar/validar_perfil), hash canônico como identidade (A2), normalização de descrição/data/sinal e a ambiguidade 4 deixada em aberto em A7 (abs(valor) confunde estorno com duplicata)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas e dependência de variação de entrada: janela de data e tolerância de valor configuráveis no reconcile-engine (M-08), formatos OFX v1/v2, 3+ perfis de banco e descrições divergentes entre fontes (A6)."
+    }
+  ]
+}

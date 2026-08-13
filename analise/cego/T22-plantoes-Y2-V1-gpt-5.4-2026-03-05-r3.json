@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos JSON e entrada de arquivo no carregador/CLI, que podem falhar, travar ou retornar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa via CLI, com 5 comandos de uso."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de estado legado, formato pré-existente consumido por terceiros, nem transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso real e escasso — plantões de pessoas — e o custo de processamento cresce com escala e uso do solver."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A arquitetura automatiza decisão consequente sobre distribuição de plantões e aceite de trocas, afetando pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados e exceções explícitos, especialmente a máquina de estados de troca e o pipeline de geração."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas e trocas que depois precisam de autoria, rastreabilidade e responsabilização."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que roda e pode degradar após entrega; solver, arquivos e fluxos podem falhar e exigirão diagnóstico em operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação de estado ao longo do tempo via fronteira derivada do mês anterior e revalidação de troca sobre a escala corrente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação verdadeira de atores; as premissas A5 e A7 mostram espaço para desvio estratégico e oportunismo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: formato de instância/JSON, interfaces de módulos e catálogo único de restrições."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de variações de entrada, tamanho de instância, ambiente e comportamento do solver, com tolerâncias explícitas nas premissas."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou devolver dado inesperado: o arquivo SQLite (M-07) e o CSV legado (M-08), que rejeita linha inválida com motivo nomeado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a ui-web (M-12) com 4 telas, incluindo simulador e preenchimento visível/editável da data."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada em uso: importador-csv (M-08), prova de paridade contra o preço original (M-09, CS-1) e necessidade de caminho de transição/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresça com o uso: app local single-user, SQLite em arquivo único, sem IA, sem infraestrutura elástica, sem volume alto de dados."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequente — o preço cobrado de quem compra — e a própria arquitetura responde com mecanismos de transparência e correção (trace exaustivo, explicador, histórico, recalcular)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo com estados e caminhos de exceção: rascunho → validação → publicação atômica → versão vigente, com exceções nomeadas (EmpateInsoluvel, linhas rejeitadas, relatório de erros/avisos)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Toda decisão é registrada (LogDeDecisoes, M-07 registrar/listar/obter) com trace do motivo de cada derrota — algo que alguém precisará auditar e responder depois, mesmo com operador único."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode falhar silenciosamente (preço errado, versão vigente incorreta); o log de decisões, o trace e o endpoint recalcular existem para diagnosticar o 'porquê' sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: sem retry/backoff, sem sincronização, sem setting em runtime que ajuste comportamento — publicação é via única e recálculo é manual."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há contraparte com incentivo divergente dentro do perímetro: operador único confiável, processo local, e a ausência de auth é premissa explícita (A-08), não cooperação assumida entre atores."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos ambiguamente legíveis foram explicitamente desambiguados: formato do CSV legado (`Ate` textual, milhar, moeda BR), semântica de faixa fechada [min,max] com max=∞, regras de precedência/desempate e contrato da API com data obrigatória."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de entradas que variam e define tolerâncias: normalização de SKU (trim+upper), formatos variados do CSV, tolerância de R$ 0,01 na paridade (M-09) e arredondamento half-up só no resultado final (A-13)."
+    }
+  ]
+}

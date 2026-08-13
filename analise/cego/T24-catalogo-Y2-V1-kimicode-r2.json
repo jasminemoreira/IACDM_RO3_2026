@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteira fora do processo: leitura de diretório e parsing de arquivos YAML escritos à mão (M-07), que podem faltar, estar malformados ou ter dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI (M-11) com subcomandos, flag --json, mensagens de erro acionáveis (M-02) e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield sem estado ou contrato pré-existente a preservar: o YAML é escrito pelo humano para esta versão e não há store populado nem consumidores legados."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Consumo de recurso não cresce com o uso: catálogo de dezenas a centenas de datasets cabe em memória (A7), sem processamento de volume nem infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não toma nem automatiza decisão consequencial sobre pessoas; apenas consulta e valida metadados de catálogo declarado."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com transições e caminhos de exceção: carregar → mapear → construir grafo → validar (INV-1..6) → consultar, com agregação de todas as violações (A9) e sem estado 'carregado mas inválido'."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio objeto do sistema é atribuição: donos declarados por domínio com herança e sobrescrita (M-03) e invariantes de dono (INV-2, INV-3) — dados com donos distintos que alguém terá de auditar."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A CLI roda e pode falhar após entrega (YAML inválido, ciclo, referência pendente); o diagnóstico sem mudar código depende das mensagens acionáveis agregadas (M-02, A9) e dos códigos de saída (M-11)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sistema puramente reativo, one-shot: sem retry/backoff, sem sincronização de estado, sem laço de feedback ou autorregulação — recarrega tudo a cada execução."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume que donos de domínio declaram voluntariamente e corretamente dono e linhagem (`alimentado_por`); um ator autointeressado pode omitir dependências ou dono, e só a validação (INV-1..6) coíbe parcialmente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leituras divergentes possíveis: formato de identidade `dominio.nome` com restrição de ponto (A10), semântica da aresta invertida declarada pelo consumidor (M-08), schema YAML e exclusão do próprio X em impact (A6)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de coisas que variam: versões de NetworkX (semântica de `descendants`, não-checar aciclicidade — A6/A8) e PyYAML, e de entrada humana com faixas e formas variadas."
+    }
+  ]
+}

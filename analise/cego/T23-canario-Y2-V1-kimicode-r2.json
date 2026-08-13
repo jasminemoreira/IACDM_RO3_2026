@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A porta fonte-de-metricas distingue Amostra de Indisponivel e contadores (M-05) modela falha/erro de coleta com limite e estouro — há fronteira de dependência que pode falhar ou estallar."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 cli é superfície operada por pessoa: observa eventos, imprime progresso/motivo/decisão e o operador pode abortar manualmente."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é coexistência canário×estável com distribuição de peso somando 100 (M-10) e caminho de rollback para 100% na versão estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há decisão, alocação ou consumo de recurso cujo custo cresça com o uso — amostragem é limitada por mínimos fixos e o substrato é simulado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Automatiza decisão consequente (promover ou reverter um deploy) sem aprovação humana por passo (escopo negativo), cujo efeito recai sobre quem depende do serviço implantado."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é máquina de estados explícita (progredindo/pausado/revertido/promovido) com sequência de passos (M-06), laço de execução e caminhos de exceção (guarda-absoluta, estouro de erros)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A decisão de promover/reverter é auditável: coordenador emite eventos com motivo e desfecho, e a tabela declara dono para cada entidade (metrica, participante, amostra) — embora nada seja persistido entre execuções."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode degradar; a arquitetura responde com assinar(observador)/eventos do coordenador e impressão de motivo pela cli — diagnóstico sem mudar código, mas sem persistência."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de realimentação: o coordenador ajusta pesos do canário com base em sinal de erro das métricas (julgamento/score), com correção imediata pela guarda-absoluta e contadores de erro com reset — regulação no tempo, não reação pontual."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Nenhum ator com incentivo divergente: operador único, participantes são instâncias simuladas sem agência estratégica; não há cooperação assumida que um agente egoísta pudesse desertar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos entre duas partes por toda parte: três portas (relogio, fonte-de-metricas, alvo-de-implantacao), o contrato de eventos coordenador→cli e a distinção Amostra|Indisponivel admitem leituras divergentes entre implementações corretas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de tolerâncias sob variação: limiares fixos (50 amostras, 98% de confiança, 4 erros, limiares da guarda-absoluta) aplicados a métricas ruidosas — A3, A4 e A6 questionam exatamente se o sistema só funciona na especificação exata."
+    }
+  ]
+}

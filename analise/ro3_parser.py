@@ -20,6 +20,9 @@ from pathlib import Path
 
 # ---------------------------------------------------------------- vocabulário
 
+RAIZ = Path(__file__).resolve().parent.parent
+
+
 class ErroDeFormato(Exception):
     """Formato do achado violado. Interrompe — nunca degrada para 'melhor esforço'."""
 
@@ -29,13 +32,38 @@ class ErroDeFormato(Exception):
 # `predicao_cega.py`: uma lista escrita à mão diverge da extensão sem avisar, e aí o
 # parser recusa lente legítima ou aceita nome que o gate já não aceita.
 def _lentes_do_bundle() -> tuple[list[str], list[str]]:
-    import json as _json, re as _re
-    base = Path.home() / ".vscode-server" / "extensions"
-    achadas = sorted(base.glob("jasminemoreira.versus-claude-*/out/bundle/server.js"))
+    """Nomes canônicos das 19 lentes, lidos do bundle do instrumento.
+
+    ORDEM DE BUSCA, e a primeira existe para o artefato ser reprodutível:
+
+    1. `$VERSUS_BUNDLE`, se apontar para um `server.js` — pino explícito.
+    2. `instrumento/server.js` ao lado deste repositório — a cópia ARQUIVADA do
+       bundle que rodou o lote (`versus-claude 0.14.2`, md5 9dfee8be…). É o caminho
+       normal para quem reproduz a análise a partir do repositório publicado.
+    3. o bundle instalado no VSCode — o caminho de quem opera o lote ao vivo, e que
+       ainda exige EXATAMENTE UM instalado.
+
+    A ordem importa: em 2026-08-12, com o lote já arquivado, a máquina passou a ter
+    três versões instaladas (0.14.2, 0.15.0, 0.16.0) porque as correções pós-lote
+    começaram a ser aplicadas. O guard de "exatamente 1" disparou e a análise deixou
+    de rodar — corretamente, porque não saberia contra qual vocabulário validar. Com
+    a cópia arquivada, o resultado publicado deixa de depender do que está instalado.
+    """
+    import json as _json, os as _os, re as _re
+    pino = _os.environ.get("VERSUS_BUNDLE")
+    if pino and Path(pino).is_file():
+        achadas = [Path(pino)]
+    elif (RAIZ / "instrumento" / "server.js").is_file():
+        achadas = [RAIZ / "instrumento" / "server.js"]
+    else:
+        base = Path.home() / ".vscode-server" / "extensions"
+        achadas = sorted(base.glob("jasminemoreira.versus-claude-*/out/bundle/server.js"))
     if len(achadas) != 1:
         raise ErroDeFormato(
             f"{len(achadas)} bundles versus-claude instalados; é preciso exatamente 1 para "
-            f"o parser saber contra qual vocabulário validar.")
+            f"o parser saber contra qual vocabulário validar. Aponte um com "
+            f"VERSUS_BUNDLE=/caminho/para/server.js, ou use a cópia arquivada em "
+            f"instrumento/server.js.")
     txt = achadas[0].read_text(encoding="utf-8", errors="replace")
     defs = _re.findall(
         r'\{\s*name:\s*"([^"]+)",\s*question:\s*"(?:[^"\\]|\\.)*",'

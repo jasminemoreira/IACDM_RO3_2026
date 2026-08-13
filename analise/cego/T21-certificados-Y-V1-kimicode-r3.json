@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 (sonda-tls) cruza fronteira de rede com tipos de falha explícitos (timeout/recusado/dns/tls) e M-09 depende de node:sqlite — ambos fora do processo e sujeitos a falha, lentidão ou dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 (web-ui) expõe 5 telas HTML com sessão e formulários operados por pessoas (login, painel, aprovação de pedidos, trilha) — superfície humana completa."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sistema legado, formato de dados pré-existente ou contrato vivo a transicionar — a arquitetura é V(1), greenfield, sem estado antigo a preservar (A8 fala de upgrade futuro, não de migração de algo em uso)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso de custo crescente com o uso: sem IA/ML, sem processamento de alto volume, sem infraestrutura elástica — A7 assume dezenas de alvos com varredura sequencial, consumo modesto e previsível."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema registra quem aprovou cada emissão e gera decisões consequentes sobre pessoas/entidades — 'troca-nao-autorizada' e 'escalar' (M-04) são flags atribuídas a atores que podem ser agidas contra eles."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-03 modela uma máquina de estados com handoffs entre solicitante e aprovador (pendente -> aprovado -> fechado) e M-04 tem caminhos de exceção (escalação por inação) — fluxo com estados, transições e exceções explícitos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A própria razão de ser do sistema é atribuição: trilha append-only encadeada por hash (M-05) com verificação de integridade, papéis de atores (M-06) e registro de quem aprovou cada emissão — auditabilidade é propriedade central."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente e pode falhar silenciosamente após deploy — sonda pode falhar, relógio pode errar (A2 sem mitigação), pedidos podem apodrecer pendentes; alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-04 (reconciliacao) é um laço de realimentação: compara observação atual com estado anterior e alvo de política (limiares do M-02), gera sinal de erro (classificação, escalação) e corrige estado do sistema — com risco de drift/oscilação (A2, A6)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação de atores auto-interessados: um operador pode aprovar o próprio pedido (escopo negativo admite 'não impõe segregação de funções'), reescrever a trilha (A5) ou ignorar alertas (A4) — deserção estratégica possível."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A arquitetura é definida por contratos formais — a tabela de interfaces com convenções Ok|Erro, os tipos algébricos de Decisao em reconciliar() e o formato das entradas da trilha são contratos que duas leituras corretas poderiam interpretar de forma divergente."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: A8 (API experimental do node:sqlite pode mudar), A2 (desvio do relógio da máquina), timeouts e variação de latência TLS na sonda, e faixas de entrada (limiares, vida útil de certificados) — tolerâncias declaradas ou ausentes."
+    }
+  ]
+}

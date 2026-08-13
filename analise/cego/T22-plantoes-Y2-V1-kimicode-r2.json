@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteiras externas que podem falhar ou devolver algo inesperado: arquivos JSON (M-08, incluindo a escala do mês anterior — A3), o arquivo de instância (M-09, A6) e o solver CP-SAT como dependência de execução (M-06, com status e otimalidade não garantidos — A4)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 é uma CLI operada por pessoas com 5 comandos (gerar, consultar, trocar, responder, conformidade); erros de uso, identidade informada em comando (A5) e mensagens de falha são superfície humana direta."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O repositório JSON é escrito e lido apenas por esta versão do sistema; não há estado legado, formato mantido por terceiros ou contrato vivo de outra versão declarado na arquitetura (a escala do mês anterior é produzida pelo próprio sistema)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "M-06 consome CPU de otimização combinatória cujo custo cresce com o tamanho da instância, sob orçamento explícito (limite_s, A4: 30×3×30 em ≤ 60 s) e com otimalidade_provada como variável de custo/benefício."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e automatiza alocação de plantões e aceite de trocas — decisão consequencial que recai sobre pessoas (descanso, regime legal, preferências), com pesos de equidade publicados mas calibrados em outro contexto (A8)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é uma máquina de estados da troca (solicitar → PENDENTE → responder/aceite) com revalidação no aceite e caminhos de exceção, e UC-1..UC-5 formam fluxos com handoffs entre módulos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trocas e escalas ficam registradas e alguém precisará auditar autoria e aprovação — a própria premissa A5 (identidade informada é verdadeira, sem autenticação) mostra que atribuição de ações é um ponto exposto do desenho."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A geração pode falhar ou degradar depois de entregue (inviabilidade, timeout do solver, ótimo não provado) e a arquitetura prevê superfícies de diagnóstico — ResultadoGeracao{status, otimalidade_provada} e M-07 com conflito localizado — que precisam ser suficientes sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-05 deriva contadores de fronteira do mês anterior para regular equidade ao longo do tempo — um laço de realimentação entre execuções que pode sofrer drift, evidenciado pela PR-4 aberta (contadores S6/S7 sub-representados na virada, A3)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação: pessoas solicitam e aceitam trocas de boa-fé e a identidade no comando é tida como verdadeira (A5) — um ator interessado pode aceitar troca em nome de outro ou manipular trocas em benefício próprio sem enforcement."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "O invariante central é um contrato sujeito a duas leituras: cada restrição declarada uma vez em M-02 é consumida por dois clientes (modo aplicar no solver, modo verificar no avaliador) — leituras divergentes da mesma regra quebram a arquitetura; somam-se os schemas JSON e o formato de instância."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: versão do ortools, desempenho do ambiente (A4 assume ≤ 60 s), faixas de entrada da instância (M-09 valida, A6 assume não-hostil) e formatos de escala anterior — tolerâncias não especificadas podem falhar em pequenos desvios."
+    }
+  ]
+}

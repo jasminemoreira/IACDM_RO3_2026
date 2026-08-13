@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteiras fora do processo que podem falhar ou devolver dados inesperados: arquivos OFX v1/v2 e CSV de múltiplos bancos, biblioteca ofxtools, SQLite — com premissas frágeis declaradas sobre essas fontes (A1 FITID instável, A6 descrição ruidosa)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: o M-11 cli (import, reconcile, review, report) e a fila de revisão humana do M-09, onde o operador pode errar, se frustrar ou resolver pendências de forma confusa."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Existe estado antigo a preservar: resoluções humanas persistidas no SQLite que alimentam a camada L0 e não podem ser sobrescritas, e reimportações que precisam coexistir com dados e decisões já gravados."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O custo cresce com o volume: carga de 50k itens, matching par-a-par com risco explícito de O(n²) reintroduzido por bloco degenerado (A4), consumo de CPU/memória proporcional ao tamanho dos extratos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes em conciliação financeira — classificar duplicata, casar ou rotular órfão anômalo — onde um falso positivo pode esconder uma transação real (VAL-2 exige zero), com mecanismos de auditoria e correção humana embutidos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados, handoffs e caminhos de exceção: 5 estados terminais de conciliação, fluxo dedup L0→L5, transição para pendência e resolução humana na review-queue."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar: DecisaoDedup sempre carrega camada decisora e evidência, resoluções humanas têm autoria persistida e não são sobrescritas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode degradar silenciosamente (bloco degenerado, queda de poder discriminante do score cross-source), e a arquitetura já prevê diagnóstico via camada registrada, evidência e reporter — alguém precisará saber por que um par foi classificado sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há malha de realimentação: as resoluções humanas persistidas na review-queue alimentam a camada L0 do dedup-engine, alterando classificações futuras — um loop que pode derivar ou oscilar se resoluções ruins forem aprendidas como verdade."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem imposição: confia que o operador humano resolve pendências corretamente (em conciliação financeira, um operador interessado poderia desviar para ocultar divergência) e que as fontes externas mantêm identificadores e layouts estáveis."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas leituras corretas podem divergir: perfis CSV declarativos, formato OFX v1/v2, regras de normalização e hash canônico (sinal, data, encoding, descrição) — duas implementações fiéis do contrato podem gerar identidades incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam e só funciona dentro de tolerância: janela de data e tolerância de valor configuráveis, encoding e layout de CSV variáveis, abs(valor) como chave de bloco com ambiguidade de estorno deixada aberta (A7)."
+    }
+  ]
+}

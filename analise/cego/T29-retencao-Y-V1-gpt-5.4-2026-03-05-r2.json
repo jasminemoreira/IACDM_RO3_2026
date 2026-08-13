@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras com arquivo/armazenamento via Store, Block.from_bytes/to_bytes e CLI, e o próprio texto declara risco de corrupção de disco e ausência de checksum/lock."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI M-12 com 6 comandos e flags operacionais como --allow-lossy."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura prevê convivência e transição entre formatos F1 e F2, com migrator, precheck, loss risks e política explícita de migração."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e otimiza consumo de armazenamento/processamento por compressão, retenção, downsampling e troca de formato."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza expiração de dados e rejeição/aceitação de pontos na migração e escrita, podendo causar perda de informação para o dono da série."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com etapas e exceções explícitas: ingestão, retenção, migração, validação, expiração e abortar por padrão salvo consentimento explícito."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra ações que depois precisam ser atribuídas e explicadas, como expire, write com rejected/reasons e MigrationReport.lossless."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como ferramenta que pode falhar ou degradar após entrega, e há riscos operacionais declarados como corrupção silenciosa, rejeições e perda na migração."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Retention.plan e downsampler implementam ajuste periódico de estado do acervo para metas de resolução/retenção, um laço de correção sobre o dataset."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador/produtor em premissas não impostas, como escritor único, entrada monotônica e uso consciente de --allow-lossy."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos que precisam leitura inequívoca entre implementações, como Store.capabilities, write/read, bitstream e layouts F1/F2."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O projeto depende de tolerâncias e limites exatos de representação e entrada, como ts_bits 32 vs 64, quantização, bloco 2 h <= 4 h e monotonicidade estrita."
+    }
+  ]
+}

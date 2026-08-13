@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falháveis: provedores simulados e SQLite, com invalidação de token, paginação, tombstones e commit atômico."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em M-12 CLI, com comandos de sync, status, conflicts e dry-run."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto declara escopo greenfield do sincronizador; o store SQLite é lido só por esta versão e não há transição de estado legado ou contrato já consumido."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e expande recorrências, faz varredura de sobreposição e ciclos sobre ~1.000 eventos por lado, com custo que cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Ele automatiza decisões de propagação, deleção e resolução de conflitos sobre calendários de pessoas, podendo afetar agenda e compromissos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pull → normalizar → reconciliar → aplicar → persistir, além de fila de conflitos aberta→resolvida."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Conflitos persistidos, decisões de resolve por choice humano e ancestral/tokens exigem rastreabilidade de quem decidiu e do estado aplicado."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode degradar em ciclos de sync, paginação e full resync, e precisa diagnosticar falhas sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O núcleo é um laço de sincronização com feedback por ancestral, tokens, neutralização de eco e full resync para corrigir drift."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores externos com incentivos estratégicos modelados; os provedores são tratados como integrações técnicas, não participantes que possam lucrar desviando."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que podem ser lidos de formas divergentes: Provider, Repository, .ics, UID/RECURRENCE-ID, DATE vs DATE-TIME e regras de remoção."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerar variação em fusos, recorrência, itens repetidos, invalidação de token, janela temporal e comportamento de bibliotecas/dependências."
+    }
+  ]
+}

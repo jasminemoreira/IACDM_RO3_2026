@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-07 lê um diretório de arquivos YAML fora do processo — arquivo ausente, YAML malformado ou dados inesperados são entrada externa que pode falhar; a arquitetura responde com agregação de erros (A9), o que confirma a fronteira."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 é uma CLI operada por pessoas (subcomandos, flag --json, códigos de saída) e M-02 existe justamente para redigir mensagens de erro acionáveis — superfície humana explícita."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo, sem persistência, sem formato de dados pré-existente e sem contrato vivo a preservar — o único 'antigo' citado (regra de nome da OpenLineage em A1) é referência externa contrariada por decisão, não estado a transicionar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Carga fixa e pequena por construção: grafo em memória de dezenas a centenas de datasets (A7), sem infraestrutura elástica, sem volume que cresça com o uso — não há recurso cujo custo escale."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema apenas responde consultas informacionais (impacto/procedência); não toma nem automatiza decisão consequencial sobre pessoa ou entidade — nenhum ator é cortado, bloqueado ou sinalizado por ação do sistema."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e caminho de exceção: carregar → mapear → construir grafo → validar (A8: nenhuma consulta sobre catálogo inválido) → consultar, com handoff humano→sistema (quem escreve o YAML é o dono de domínio) e agregação de violações como tratamento da exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A propriedade central do sistema é atribuição: todo domínio tem dono (INV-2), nenhum dataset é órfão de dono (INV-3), e as consultas de impacto/procedência existem para saber quem responde por quê."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "CLI batch sem processo residente: recarrega tudo a cada execução, falha rápido com código de saída e mensagem — não há sistema rodando que possa degradar silenciosamente depois do deploy."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: sem retry, sem sync, sem watch mode, sem configuração em runtime — o sistema reage a uma invocação e termina, nunca regula estado em direção a um alvo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não forçada: donos de domínio declaram à mão seus datasets e arestas, e a validação checa forma (INV-1..INV-6) mas não veracidade — um dono interessado pode omitir linhagem para não constar como afetado ou afetante."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leitura divergente possível: o schema YAML escrito por humanos, o formato de identidade `dominio.nome` (A10 sobre ambiguidade de `a.b.c`), a inversão da aresta `alimentado_por` no mapper e a semântica de exclusão da origem em impact (A6) — todos pontos onde duas leituras corretas divergem."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Dependência de comportamento que varia fora do controle do sistema: versões de NetworkX (funções de DAG não checam aciclicidade, A8; semântica de `descendants`, A6), PyYAML e a constraint de Python travada na Fase 0 — tolerâncias de versão e ambiente precisam ser delimitadas."
+    }
+  ]
+}

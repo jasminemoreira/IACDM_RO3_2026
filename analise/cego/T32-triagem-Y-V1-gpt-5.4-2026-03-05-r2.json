@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteira externa com SQLite/persistência em M-09, que pode falhar, travar ou devolver dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoas: M-12 ui-web com 6 telas e M-11 api-http com fluxos de uso."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há esquema SQLite, Data Mapper e seed em M-09; existe estado armazenado/formato persistido que precisaria sobreviver a mudanças."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura é nó único, thread única, SQLite e templates server-side; não há sinal de consumo elástico ou alocação de recurso com custo crescente relevante."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza prioridade e reclassificação de chamados, decisão consequente que pode prejudicar o solicitante."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com ciclo de vida, reclassificação, recurso, julgamento, prazos e múltiplos estados/atores em M-05, M-06 e M-10."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra trilha somente-inserção e ações com autor/gestor, tornando necessário atribuir e auditar decisões."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como serviço HTTP com banco e pode degradar após implantado; seria preciso diagnosticar falhas sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação que ajuste o comportamento rumo a uma meta; SLA é calculado/avaliado, não regula o sistema."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do solicitante e declara A7 ('age de boa-fé') sem enforcement, com recurso e reclassificação suscetíveis a uso estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos com regra embutida nas assinaturas e rotas HTTP; leituras ambíguas de interfaces como prioridade, prazos e permissões poderiam divergir."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variação de ambiente e insumos — tempo, carga de dados, entradas HTTP e versões de stack/SQLite — que podem sair da especificação exata."
+    }
+  ]
+}

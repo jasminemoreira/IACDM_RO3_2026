@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 (repositorio-json) e M-09 (carregador) cruzam fronteira externa ao processo — arquivos em disco que podem falhar, estar ausentes ou corrompidos — e o solver é invocado com limite_s podendo devolver status sem escala."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 (cli) é superfície operada por pessoas, com 5 comandos e identidade informada no comando (A5)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "UC-1 depende da escala do mês anterior persistida (A3, M-05 fronteira deriva contadores dela): há um 'velho' estado armazenado que precisa sobreviver e ser lido pelo novo ciclo, incluindo formato JSON guardado entre meses/versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso escasso custoso (tempo de cálculo CP-SAT com limite de 60 s, A4) e decide a alocação de horas de trabalho de pessoas; custo cresce com n_pessoas×n_dias."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão consequencial automatizada sobre pessoas: quem trabalha quais turnos (equidade, S1-S7, rejeição/aceite de trocas), com mecanismos de auditoria (avaliador, custo_por_restricao) e transparência (peso publicado) em questão."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é explicitamente uma máquina de estados (troca PENDENTE → aceite/rejeição com revalidação no aceite) com handoffs entre solicitante e destinatário e caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações que exigirão autoria e auditoria posterior: quem solicitou/respondeu cada troca, quem gerou/publicou cada escala — agravado por A5 (identidade não autenticada) e pelo escopo negativo sem papel de gestor."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda após entrega e pode falhar silenciosamente: status do solver sem otimalidade provada, conflitos do diagnostico, troca rejeitada por violação — alguém precisará saber POR QUE (violacoes, custo_por_restricao) sem mexer no código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há realimentação de estado entre ciclos: M-05 deriva contadores de fronteira da escala anterior que alimentam o próximo solve (S6/S7), e a troca revalida e corrige a escala no aceite — laço que pode carregar deriva de estado entre meses (A3, PR-4)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação: pessoas informam preferências e identidade verdadeiras (A5) e respondem trocas de boa fé; um agente egoísta pode manipular preferências, recusar trocas estrategicamente ou agir em nome alheio."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com dupla leitura possível: catalogo-restricoes tem dois modos (aplicar no modelo CP vs verificar na escala) que devem ser semanticamente idênticos — o invariante central da arquitetura —, mais o schema JSON de instância e o formato de escala persistida."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de variações que podem desviar da especificação: versão do ortools/CP-SAT, tempo de solve sob carga (A4), instâncias de entrada variadas incluindo inviáveis deliberadas (M-10), e formato do arquivo do mês anterior."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Lê arquivos externos (OFX v1 SGML/v2 XML, CSV de 3 bancos + livro) via adapters e persiste em SQLite — dependências fora do processo que podem falhar, vir malformadas ou com encoding inesperado (A1: FITID instável é contra-evidência documentada)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 cli é superfície operada por pessoa (import, reconcile, review, report) e M-09 review-queue exige que o operador resolva pendências sem confusão nem erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: o repositório SQLite, os formatos de fixture e as resoluções persistidas são criados e lidos apenas por esta versão; não há estado pré-existente nem contrato legado a carregar ou reverter."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de alto volume com custo crescente: A4 orça blocking (b ≤ 50) contra degeneração O(n²), e M-12 prevê carga de 50k itens — recurso consumido escala com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões consequenciais sobre registros financeiros de pessoas/entidades: classificar transação como duplicata ou casada afeta a conciliação contábil; o escopo negativo ('prefere pendência a falso positivo', VAL-2 zero falsos positivos) e a sub-rotulação de órfão anômalo existem justamente para mitigar dano."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Processo com estados, handoffs e exceções: cadeia L0→L5 do dedup-engine, máquina de 5 estados terminais de conciliação (M-01/M-08), fila de pendências→resolução humana (M-09) que realimenta L0."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Auditabilidade é requisito explícito: DecisaoDedup sempre registra camada e evidência ('sem isso não há como auditar um falso positivo'), resoluções humanas são persistidas e não sobrescritas, e há ground truth rotulado para prestar contas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema roda após entrega e pode degradar silenciosamente: queda de L1 para L2/L3 (A1), blocos degenerados (A4) e score sem poder discriminante (A6) precisam ser detectáveis via evidência por camada e relatórios de M-10 sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Realimentação que altera comportamento futuro: resoluções humanas persistidas (M-09) alimentam a camada L0 do dedup-engine, um loop de correção que pode derivar ou oscilar (resoluções erradas viesam classificações subsequentes); janela/tolerância configuráveis são parâmetros de regime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há ator autointeressado cuja cooperação seja assumida: fontes são arquivos de bancos/ERP (não estratégicos), operador único via CLI, sem API pública, integradores ou incentivos divergentes a desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos passíveis de duas leituras: perfis CSV declarativos com validação (M-04), OFX v1 SGML vs v2 XML (M-03), definição de hash canônico/identidade (A2) e comparabilidade de descrição entre fontes (A6) — cada um admite implementações corretas divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Tolerâncias explícitas em vez de especificação exata: janela de data e tolerância de valor configuráveis (M-08), score de similaridade fuzzy (rapidfuzz), abs(valor) como chave que pode confundir estorno com duplicata (A7) e variação de encoding/layout entre fontes."
+    }
+  ]
+}

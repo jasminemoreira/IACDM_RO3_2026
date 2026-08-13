@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências fora do processo e sujeitas a falha/latência: SQLite (M-12), SMTP (M-10) e destinos HTTP de webhook (M-11)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI do operador (M-02) com comandos explain, pending, retry e serve."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado antigo a preservar/transformar: banco SQLite com schema e migrações em M-12 e cadastros legados citados em PRE-2."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos que crescem com uso — filas duráveis, retries, chamadas externas e armazenamento por notificação/entrega."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões de supressão/adiamento/entrega sobre pessoas, podendo silenciar comunicações por opt-out, quiet hours, duplicate e rate limit."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções explícitos: ingestão, enfileiramento, claim, supressão em 2 estágios, retry, dead-letter e estados agregados da notificação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações e dados precisam atribuição/auditoria: API key identifica emissor, preferências têm dono (pessoa) e decisões de supressão registram motivo nomeado."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço em execução com worker, fila e falhas pós-deploy possíveis; a própria arquitetura prevê operação por CLI para explicar supressão e reprocessar."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laços de realimentação explícitos: retry com backoff e jitter, rate limiter token bucket e defer until/nextAttemptAt ajustando comportamento ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação de atores externos: emissor fornece dedup key (PRE-3), destino webhook é idempotente (PRE-7) e emissor autenticado não abusa da falta de autorização por recurso (PRE-8)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos passíveis de leitura ambígua entre partes: ChannelPort com ok/permanent, assinatura do webhook e interfaces HTTP/CLI."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerar variações de ambiente e entrada: fuso horário IANA, cruzamento de meia-noite, relógio confiável, timeouts, carga e API experimental de node:sqlite."
+    }
+  ]
+}

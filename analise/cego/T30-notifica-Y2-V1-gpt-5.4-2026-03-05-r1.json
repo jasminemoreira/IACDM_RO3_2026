@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis: SQLite, SMTP e destinos de webhook, com timeout/retry/dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI do operador com comandos explain, pending, retry e serve."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "A arquitetura não descreve transição de estado/contrato legado nem convivência com versão anterior; o store é desta versão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O serviço consome recursos que crescem com uso: tentativas de entrega, retries, filas duráveis e chamadas a canais externos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide suprimir, adiar ou entregar notificações por pessoa, afetando diretamente comunicação recebida por pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções: ingestão, enfileiramento, claim, supressão em 2 estágios, retry, dead-letter e agregação de status."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações e decisões precisam atribuição/auditoria: API key identifica emissor, preferências têm dono e supressões geram motivo nomeado."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço em execução com worker/outbox/entregas que pode degradar após deploy e requer diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação temporal com feedback: token bucket por pessoa, quiet hours, retries com backoff e reavaliação no estágio deliver."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação de atores externos: emissor fornece dedup key, consumidor de webhook é idempotente e API key é de emissor confiável."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos potencialmente ambíguos entre partes: ChannelPort com permanent, webhook assinado e interfaces HTTP/CLI/repositórios."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de ambiente e entrada: relógio confiável, fuso IANA obrigatório, node:sqlite experimental e variação de carga/tempo."
+    }
+  ]
+}

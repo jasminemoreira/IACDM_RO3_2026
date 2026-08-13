@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência de arquivo/armazenamento via Store e leitura/escrita de bytes, com risco explícito de corrupção de disco e falhas de I/O."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o CLI M-12 com 6 comandos de uso e operação."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura prevê coexistência e transição entre formatos F1 e F2, com módulo migrator, precheck e política de perda."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais com retenção, downsampling e compressão, logo consome recursos que crescem com volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A retenção, expiração e rejeição de pontos automatizam decisões sobre descarte/perda de dados que podem prejudicar o dono da série."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com etapas e exceções claras: ingestão, retenção, migração, validação e abortar/permitir migração lossy."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema executa ações auditáveis como write, expire, reject e migrate sobre séries nomeadas, exigindo atribuição e prestação de contas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como ferramenta operacional e pode falhar/degradar após entregue; inclusive há riscos declarados como corrupção sem checksum e rejeições de escrita."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A política de retenção regula o estado armazenado ao longo do tempo por meio de plan(), downsampling e expire(), ajustando dados a uma meta de retenção."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador/produtor em premissas frágeis como escritor único, entrada monotônica e uso consciente de --allow-lossy."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos que precisam interpretação única entre partes: Store, capabilities, WriteReport, bitstream e os formatos F1/F2."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias explícitas de formato e entrada, como ts_bits 32/64, bloco 2 h com teto 4 h, quantização e monotonicidade estrita."
+    }
+  ]
+}

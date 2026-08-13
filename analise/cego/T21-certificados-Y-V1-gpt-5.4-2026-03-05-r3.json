@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou atrasar: sonda-tls faz rede TLS e repositorio persiste em sqlite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: web-ui com login, painel, alvo, trilha e ações de varrer e aprovar pedidos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado persistido e trilha append-only em banco; mudanças futuras de schema/formato precisam preservar o estado antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A arquitetura consome recursos que crescem com uso: varreduras TLS por alvo, armazenamento de observações e trilha, com premissa de volume pequeno."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema produz decisões consequentes sobre alvos, como troca-nao-autorizada e escalar, que podem acionar responsabilização humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pedido vai de pendente para aprovado para fechado e reconciliacao decide fechamentos e escalações."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra quem aprovou cada emissão e mantém trilha append-only encadeada por hash para auditoria e autoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente por varreduras e pode degradar em produção; há necessidade de diagnosticar falhas de sonda, banco e integridade da trilha."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação: observação de validade gera classificação por limiar e provoca abertura/fechamento/escalação para corrigir desvio antes do vencimento."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação humana para aprovar dentro da janela e registrar corretamente; a própria premissa A4 depende desse comportamento."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca, como classificar, reconciliar e os resultados Ok|Erro nas interfaces entre módulos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de ambiente e variação: relógio correto, API experimental do node:sqlite, certificados TLS diversos e execução sem concorrência."
+    }
+  ]
+}

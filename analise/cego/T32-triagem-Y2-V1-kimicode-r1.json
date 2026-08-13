@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite (better-sqlite3) — dependência fora do processo que pode falhar, corromper ou rejeitar transação; M-02 carrega matriz/SLA de arquivo/dado externo que pode vir malformado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-side operadas por pessoas (abrir, fila, triar, chamado, recorrer, julgar), além da sessão de papel na M-11."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: o esquema e o seed do SQLite são criados por esta versão e só ela os lê; não há estado ou contrato pré-existente a carregar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nó único, thread única, CRUD de baixo volume em SQLite; nenhum recurso de custo crescente é alocado — a única coisa que cresce é a trilha somente-inserção, sem decisão de alocação associada."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A prioridade automática (M-03) e o julgamento de recurso (M-06) decidem a ordem de atendimento e podem negar recurso a uma pessoa — decisão consequencial com efeito direto sobre o solicitante."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-05 e M-06 definem ciclo de vida com estados, handoffs entre papéis (solicitante, triador, gestor) e caminhos de exceção (inadmissibilidade por prescrição B-3 vs. legitimidade B-5)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-07 (trilha somente-inserção), M-08 (RBAC + legitimidade com motivo) e a exigência de autor e fundamentação em julgar() existem justamente para atribuição e auditoria posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda em produção (Fastify + SQLite) e pode degradar em silêncio — violações de SLA, falhas de transação — sem que a arquitetura mencione logs, métricas ou diagnóstico sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há regulação de estado ao longo do tempo: SLA é avaliado reativamente por consulta (violado(prazos, agora)), sem loop de feedback, retry, sincronização ou ajuste de comportamento em runtime que possa oscilar ou derivar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A7 e A8 assumem cooperação sem enforcement: solicitante de boa-fé ('abuso é visível, não punido') e identidade apenas declarada — um ator interessado pode reclassificar ou recorrer estrategicamente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a duas leituras: o esquema de eventos da trilha usado na reconstrução de histórico (M-07), o formato da matriz/metas como dado (M-02) e a API HTTP (M-11)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: dados de configuração carregados (matriz em M-02, cuja simetria A6 é premissa não validada), faixas de impacto/urgência, versões de Node/better-sqlite3 e comportamento em horas corridas sem calendário."
+    }
+  ]
+}

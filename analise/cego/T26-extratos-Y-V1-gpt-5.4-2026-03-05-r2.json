@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas explícitas com arquivos OFX/CSV e persistência SQLite no repository, que podem falhar, travar ou retornar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o módulo cli para import, reconcile, review e report."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura convive com formatos e estados pré-existentes — OFX v1/v2, múltiplos perfis CSV e dados persistidos/importados que precisam sobreviver a reimportações e deduplicação."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume e custo variável de matching/deduplicação, com fixture de 50k e premissa A4 sobre evitar reintrodução de O(n²)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes de duplicata, conciliação e pendência, com risco explícito de falso positivo e necessidade de revisão humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados terminais de conciliação, fila de revisão, resoluções humanas e handoff entre automação e operador."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura exige auditabilidade: DecisaoDedup sempre registra camada e evidência, e resoluções humanas são persistidas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode degradar após entregue, com importação, matching e conciliação sujeitos a falhas que precisarão ser diagnosticadas em operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de feedback explícito: review-queue alimenta a camada L0 do dedup-engine com resoluções humanas para corrigir decisões futuras."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador humano ao revisar pendências e fornecer resoluções corretas, algo que pode divergir do incentivo real."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos potencialmente ambíguos entre perfis CSV declarativos, variantes OFX, normalização canônica e interfaces de portas compartilhadas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variação explícitas — janela de data, tolerância de valor, encoding, sinal, layouts CSV e estabilidade frágil de identificadores externos."
+    }
+  ]
+}

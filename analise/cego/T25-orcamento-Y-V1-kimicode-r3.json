@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende do provedor Anthropic pela rede (M-07, com streaming e respostas longas fora da transação) e de um banco SQLite em arquivo — duas fronteiras externas que podem falhar, travar ou devolver dados inesperados (ex.: A2, `usage` ausente)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a SPA painel-web (M-10) e a painel-api (M-09) com login de operador para consultar consumo/saldo e configurar tetos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (greenfield): não substitui nem coexiste com sistema, formato de dados ou contrato em uso anterior; a 'migração' citada no M-08 é versionamento interno de schema, não transição de um estado antigo a preservar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O objeto do sistema é justamente alocar e cortar um recurso cujo custo cresce com o uso — gasto em tokens de LLM sob teto em moeda (M-03/M-04) — com custo próprio por decisão em aberto (A6, count_tokens)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O corte automático é uma decisão consequencial aplicada a uma entidade (negação de acesso por orçamento, resposta 402/429), com risco de corte indevido por reset errado (A4) e sem mecanismo de contestação definido."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existe um processo com estados e caminhos de exceção: reserva → envio → reconciliação/liberação no Escrow (M-03), reserva órfã sem política de expiração decidida, e virada de janela mensal (M-06)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade (M-08) e mantém contadores auditáveis de confirmado/reservado, com autenticação de operador (M-02/M-09) — alguém precisará atribuir e responder por cada débito e cada configuração de teto."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O gateway roda como serviço em operação e pode falhar silenciosamente (A3 e A7 não verificadas corromperiam o teto sem sintoma visível); alguém precisaria diagnosticar degradação sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há malha de realimentação: o sistema mede consumo acumulado e corrige o estado (corte/liberação) em direção ao teto-alvo, com risco de oscilação e drift — reset de janela, reservas de pior caso e o retry storm identificado na Fase 0."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação: que apps não contornam o gateway com a chave real (A5, garantida só por operação) e que não retentam cegamente contra teto esgotado — deserção estratégica possível sem enforcement."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos passíveis de duas leituras: formato `usage` traduzido pelo Adapter (M-07), semântica do par (confirmado, reservado) e idempotência de reconciliar (M-03), e a API `POST /v1/messages` com streaming repassada pelo gateway (M-01)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: relógio do host para a virada da janela (A4 não verificada), versão do SDK `anthropic`, `max_tokens` como limite rígido (A1) e vigência de preços no rate-card — pequenos desvios quebram o invariante."
+    }
+  ]
+}

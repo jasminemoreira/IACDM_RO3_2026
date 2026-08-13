@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de dois provedores externos (M-04/M-05) com invalidação de token (410), tombstones, paginação que repete item e janela temporal obrigatória — fronteiras que podem falhar, estagnar ou devolver dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe uma CLI operada por pessoa (sync, status, conflicts resolve, dry-run) com exit codes e saída tabular — superfície de usuário explícita."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield com SQLite local criado e lido apenas por esta versão do sincronizador; nenhum estado preexistente, formato legado ou consumidor externo do contrato precisa sobreviver a uma transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Recurso consumido é um ciclo single-threaded de ~1.000 eventos em <5 s (PR-8) sem infraestrutura elástica, IA ou processamento de alto volume cujo custo cresça com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente qual versão de um evento de agenda prevalece e propaga ou apaga compromissos no calendário de uma pessoa — decisão consequencial com efeito sobre quem depende daquela agenda."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-08 define fila de conflitos com ciclo de vida aberto→resolvido e a regra 'nada aplicado sem decisão', e M-10 orquestra um ciclo com caminhos de exceção (full resync, R-A3) — processo com estados e handoffs."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Conflitos são entidades persistidas com decisão registrada (resolve(id, choice)) e cada AppliedWrite é gravada no ancestral — o sistema registra decisões sobre as quais alguém precisará prestar contas e auditar depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "run_cycle produz SyncReport e a CLI expõe status/conflicts/overlaps: o sistema roda, pode falhar silenciosamente (token inválido, eco lido como mudança externa) e alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um loop de sincronização de estado ao longo do tempo: reconciliação 3-vias contra ancestral, neutralização de eco (A-5) e full resync são sinais de erro e correção com risco clássico de oscilação (echo loops) e deriva de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Os únicos atores são o operador da CLI e os provedores simulados; nenhum ator autointeressado pode desviar estrategicamente do comportamento assumido para benefício próprio — cooperação não é premissa do design."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que duas partes devem ler igual: o formato .ics/ RFC 5545 (TZID, DATE vs DATE-TIME, EXDATE/RDATE/RECURRENCE-ID) e as portas Provider/Repository — dois provedores 'corretos' (REF-5 vs REF-6) já divergem em tombstone, paginação e janela."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de coisas que variam: versões e fidelidade das bibliotecas icalendar/recurring-ical-events (PR-2, PR-7), tokens opacos que não podem ser parseados, e provedores com semânticas divergentes — o sistema precisa tolerar variação, não só especificação exata."
+    }
+  ]
+}

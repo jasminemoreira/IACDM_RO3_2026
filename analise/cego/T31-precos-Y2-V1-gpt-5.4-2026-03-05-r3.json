@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa ao processo em arquivo/banco SQLite e na importação de CSV/arquivo, com possibilidade de falha, dado inesperado ou latência."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: UI web com 4 telas e fluxo de importação, simulação, validação, publicação e histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e importa a planilha legada com prova de paridade e necessidade de transição/rollback conceitual."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo elástico, processamento massivo, infraestrutura variável ou recurso de custo crescente com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza decisão de preço que afeta compradores e operadores, com histórico, explicação e possibilidade de divergência de centavos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções: importar rascunho, validar, publicar, consultar vigente, registrar histórico e recalcular decisões."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões, histórico, publicação de versões imutáveis e decisões recuperáveis, exigindo atribuição e auditabilidade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com persistência local, publicação e consultas; falhas de importação, publicação ou precificação precisam ser diagnosticáveis após entrega."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de verificação/correção na prova de paridade e recalcular decisão contra versão vigente, comparando saída observada com referência para detectar desvio."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do operador ao editar data visível, normalizar/importar regras e publicar rascunhos coerentes, podendo haver desvio estratégico ou negligente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: moeda BR, 'Ate' textual, faixa fechada, vigência, prioridade, explicação e serialização do trace/API."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variações pequenas de entrada e ambiente: centavos, arredondamento final, bordas de faixa, normalização de SKU e formato CSV."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou devolver dados inesperados: arquivo SQLite (M-07, A-07), arquivo CSV legado lido pelo importador (M-08) e sistema de arquivos dos assets locais."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: M-12 com 4 telas (regras, simulador, importação, histórico) e decisões de UX explícitas (data 'hoje' visível e editável, frase contrastiva do explicador)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela/planilha legada em uso: importador CSV com normalização (M-08) e prova de paridade linha a linha com tolerância (M-09, CS-1)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso cujo custo cresça com o uso: processo local single-user, SQLite em arquivo único, e o escopo negativo exclui precificação em lote, reprecificação de catálogo e qualquer infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza uma decisão consequencial — o preço cobrado de um terceiro — e a própria arquitetura exige mecanismos de transparência e correção (trace exaustivo, explicador, histórico, recálculo)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados, transições e caminhos de exceção: rascunho → validação → publicação atômica (M-05, M-07, M-10), com erros/avisos, rejeitadas com motivo e EmpateInsoluvel."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar: LogDeDecisoes (registrar/listar/obter), versões publicadas imutáveis (A-12) e trace exaustivo por decisão."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente após o ship (API HTTP + UI servidas) e pode falhar silenciosamente (publicação, versão vigente por data); o log de decisões é o canal para diagnosticar sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há loop de feedback que regule estado rumo a um alvo: recalcular é recomputação sob demanda, não há retry/backoff, sync nem ajuste de comportamento em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único (A-06 single-user, A-08 sem auth porque não há exposição em rede) e sem parte com incentivo divergente; a cooperação do operador não é apenas presumida — a publicação passa pelo validador de coerência."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos que duas partes precisam ler igual: assinaturas das portas e módulos, schema do CSV legado (moeda BR, 'Ate' textual, SKU com espaço/caixa), DTOs REST e semântica de faixa fechada [min, max] com max=∞."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de entradas que variam e define tolerâncias explícitas: R$ 0,01 na paridade, normalização de formato da planilha, bordas 19/20 de faixa (A-11), arredondamento só no resultado final (A-13) e fuso/relógio (A-04)."
+    }
+  ]
+}

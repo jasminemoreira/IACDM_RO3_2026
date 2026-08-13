@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "As portas externas (`fonte-de-metricas`, `alvo-de-implantacao`, `relogio`) aparecem apenas como interfaces/adaptadores simulados; a arquitetura deliberadamente não fala com serviços, filas, banco, arquivos ou subprocessos reais."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: `cli`, entrada do operador que observa eventos, imprime progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema e a arquitetura tratam explicitamente da convivência entre canário e versão estável, com promoção e rollback para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e aplica distribuição de tráfego/peso entre participantes, alocando recurso operacional cujo custo cresce com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O coordenador automatiza uma decisão consequencial de promover ou reverter implantação, afetando operadores e usuários do serviço dependente."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "`coordenador` é uma máquina de estados com laço de execução, aborto manual, pausa, reversão, promoção e passos de canário."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema toma decisões e emite eventos sobre promoção/rollback que alguém depois precisará atribuir e explicar; há donos explícitos de entidades em vários módulos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A arquitetura prevê execução contínua com degradação possível e diagnóstico via eventos do `coordenador` consumidos pela `cli`, sem imprimir do domínio."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há um laço de controle que observa métricas ao longo do tempo e corrige o estado da implantação ajustando pesos, pausando, promovendo ou revertendo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador no fluxo de `cli`/`abortar()` e confiança na fidelidade do simulador e dos limiares escolhidos, sem mecanismos de incentivo ou enforcement."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre módulos e portas (`coletar -> Amostra | Indisponivel`, `veredito`, distribuição de pesos, participante/papel) que exigem leitura inequívoca para implementações compatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de tolerâncias e variação: amostra mínima de 50, confiança de 98%, limite de 4 erros, limiares da guarda e aquecimento de instância."
+    }
+  ]
+}

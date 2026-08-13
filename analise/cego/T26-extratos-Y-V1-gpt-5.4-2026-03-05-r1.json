@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos OFX/CSV e persistência SQLite, que podem falhar, atrasar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: a CLI de import, reconcile, review e report."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura convive com formatos e estados preexistentes: OFX v1/v2, múltiplos perfis CSV e dados/resoluções persistidos que precisam sobreviver a reimportações."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa volume relevante de dados, com carga de 50k e risco explícito de reintrodução de O(n²) no matching."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes de duplicata/conciliação e a própria arquitetura destaca risco de falso positivo e necessidade de revisão humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados terminais de conciliação, pendências, resoluções humanas e handoff entre automação e revisão."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Decisões de deduplicação e resoluções humanas precisam ser auditáveis; a arquitetura exige camada decisora e evidência em toda DecisaoDedup."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode degradar após implantado, e há pontos de falha silenciosa em importação, matching, persistência e conciliação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação explícito: resoluções humanas persistidas alimentam a camada L0 do dedup-engine para corrigir decisões futuras."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do operador revisor e corretude dos perfis/fontes externas; um ator pode resolver pendências ou configurar perfis de modo conveniente ao próprio interesse."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leituras divergentes: layouts CSV por perfil, OFX v1/v2, normalização canônica e interfaces/portas entre módulos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias e variação de entrada: janela de data, tolerância de valor, descrições divergentes, encoding e blocos de matching sensíveis a pequenos desvios."
+    }
+  ]
+}

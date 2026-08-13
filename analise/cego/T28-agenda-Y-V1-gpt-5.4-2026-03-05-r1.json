@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há múltiplas fronteiras externas que podem falhar ou devolver dados inesperados: provedores M-04/M-05 e persistência SQLite em M-11."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI M-12 com comandos sync, status, conflicts e overlaps."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema preserva e evolui estado anterior em uso: ancestral, mapa de identidade, tokens e fila persistidos em M-11 entre ciclos."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O projeto consome recursos que crescem com uso: expansão de recorrência, varredura de ocorrências e ciclos sobre ~1.000 eventos por lado com meta de tempo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes sobre dados de terceiros — propagar, deletar, mesclar ou escalar conflitos — podendo causar perda ou alteração indevida de eventos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pull → reconciliar → planejar → aplicar → persistir, além do ciclo de vida da conflict-queue e full resync por invalidação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões e ações auditáveis: conflitos persistidos, resolutions humanas, ancestral, tokens e writes aplicados precisam de atribuição posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que roda e pode degradar após entregue; há limites de páginas, invalidação de token, eco, janela e falhas silenciosas que precisam ser diagnosticáveis sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Sincronização é um laço de realimentação: M-10 observa delta, corrige estado remoto/local e usa ancestral, tokens e neutralização de eco para evitar drift."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há sinal de atores com incentivo para desviar do protocolo em benefício próprio; provedores são simulados e a CLI é de operador único."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua entre partes: porta Provider, mapeamento ICS↔canônico, DATE vs DATE-TIME, TZID, tombstones e semântica de remoção."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerar variação de ambiente e insumo: diferenças semânticas entre provedores, repetição de item, invalidação de token, janela temporal e comportamento de bibliotecas de calendário."
+    }
+  ]
+}

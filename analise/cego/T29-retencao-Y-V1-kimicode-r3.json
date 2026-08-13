@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteira externa ao processo — arquivos em disco lidos/escritos pelos adapters store-f1/f2 — e P-A7 declara que um bit corrompido em F2 perde o bloco inteiro, sem checksum nem detecção."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é uma CLI operada por uma pessoa (`tsz ingest/read/retain/migrate/...`), com caminhos de erro sensíveis como `--allow-lossy` e abort de migração que precisam ser compreensíveis ao operador."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O cerne do sistema é a troca de formato de dados já armazenados: M-10 migrator com precheck, LossRisk, abort por padrão e MigrationReport — existe um 'velho' (acervo F1/F2) que precisa sobreviver à transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Sistema de alto volume de dados cujo consumo de disco/cômputo cresce com o uso: retenção, downsampling e razão de compressão (P-A10, CA-4) são decisões de alocação de recurso proporcional ao valor."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequenciais e irreversíveis sobre dados de terceiros — expiração por retenção e migração lossy — com mecanismos de consentimento (--allow-lossy) e prestação de contas (MigrationReport.lossless) já embutidos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processos com estados e caminhos de exceção: o plano de retenção (validate → plan → downsample → expire) e a migração (precheck → abort/allow-lossy → migrate → relatório), com transições e handoffs entre módulos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema decide e registra coisas pelas quais alguém terá de responder depois: pontos rejeitados com razões (WriteReport), perda declarada (LossRisk/lossless) e expiração de dados — atribuição via relatórios é parte do contrato."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode falhar ou degradar silenciosamente após entregue — rejeições de escrita em F1, corrupção sem checksum (P-A7) — e existe o comando `tsz report` justamente para diagnosticar sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: retention.plan é função pura one-shot de (tiers, now, tier_state), sem sinal de erro, retry/backoff ou ajuste contínuo de estado rumo a um alvo que possa oscilar ou derivar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem impor: P-A2 (escritor único declarado, sem lock nem WAL) e P-A4/I2 (produtores enviam timestamps estritamente crescentes) — um ator desalinhado pode desviar sem custo técnico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos binários e de protocolo sujeitos a duas leituras: os schemas byte-exatos de F1/F2, o codec Gorilla (R1 §4.1) e a porta Store com semânticas de `rejected`, `capabilities` e iteração implementadas por três módulos distintos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de faixas de entrada que variam e quebra fora da tolerância: teto de 14 bits do primeiro delta (MAX_BLOCK_SECONDS), ts_bits=32 (teto 2106), quantização de slots, perfis ieee-edge e variação de plataforma no round-trip de floats (P-A1)."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de arquivo em disco como fronteira externa que pode falhar/corromper — P-A7 declara explicitamente 'o disco não corrompe bytes' e que um bit trocado em F2 perde o resto do bloco, cenário nomeado para esta lente."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: o cli (M-12) com 7 comandos (ingest, read, retain, migrate, validate-config, report, gen-dataset), incluindo mensagens de erro de validate e o consentimento --allow-lossy."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "UC-4 é literalmente migrar um acervo existente do formato F1 para F2 com estado antigo a preservar: módulo migrator (M-10) com precheck, LossRisk, política de abort e relatório lossless."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca e consome recurso que cresce com o uso: armazenamento de séries temporais com razão de compressão dependente de perfil (P-A10), retenção por tiers e downsampling decidindo quanto recurso cada resolução consome."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema toma decisão consequencial automática sobre dados: retenção expira pontos (expire) e downsampling destrói resolução original; a migração F2→F1 pode descartar dados — com mecanismos de transparência/consentimento (precheck, --allow-lossy, WriteReport.rejected) que a lente deve avaliar."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processos com estados, transições e caminhos de exceção: o plano de retenção (downsample→expire entre tiers), o fluxo de migração (precheck→migrate→report com abort/allow-lossy) e o ciclo de vida de blocos append-only."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar depois: WriteReport{written, rejected, reasons}, MigrationReport{read, written, rejected, lossless} e LossRisk existem para dar conta do que foi perdido/rejeitado e por quê."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda e pode falhar silenciosamente após entregue: corrupção de bloco sem checksum (P-A7), rejeições de escrita em F1 e o comando `tsz report` (UC-6) como superfície de diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação que ajuste estado rumo a um alvo: retenção é plano computado uma vez (função pura) e executado, sem retry/backoff, sync contínuo ou setting que se autorregule em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação de atores sem enforcement: P-A2 (escritor único, sem lock — operador pode violar), P-A4 (produtor envia timestamps ordenados; um produtor egoísta/desleixado se beneficia de não garantir), e o integrador que ignora rejected/lossless."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos binários e de interface que duas leituras corretas podem divergir: layout byte-exato de F1 (Metadata 16 B, ArchiveInfo 12 B, big-endian), bitstream de largura arbitrária (M-01), e a porta Store com semântica de read/write/capabilities."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de entradas que variam e só funciona dentro de tolerâncias: teto de timestamp 2106 e quantização de slot em F1, teto de bloco 4 h pelo delta de 14 bits (P-A5), perfis de série variáveis (P-A10) e a questão P-A1 de round-trip bit-exato de doubles."
+    }
+  ]
+}

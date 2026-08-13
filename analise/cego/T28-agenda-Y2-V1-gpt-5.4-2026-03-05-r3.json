@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e falíveis nas portas Provider e Repository, com invalidação de token, paginação, tombstones e commit SQLite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em M-12 cli, com comandos sync, status, conflicts e overlaps."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há transição de estado legado ou contrato já consumido por outra versão; o SQLite é lido só por este sincronizador neste ciclo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e expande recorrências, pagina deltas e compara ~1.000 eventos por lado, com custo que cresce com volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide propagar, mesclar ou escalar mudanças de agenda de pessoas, podendo afetar compromissos reais por conflito ou erro."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pull, normalizar, reconciliar, aplicar, commit, full resync e fila de conflitos aberto→resolvido."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Conflitos persistidos, resoluções humanas e writes aplicados precisam ser atribuíveis e auditáveis no repositório e na CLI."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sincronizador roda em ciclos e pode degradar ou falhar silenciosamente após entregue; diagnóstico operacional importa para tokens, eco e full resync."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um sistema de sincronização que regula estado ao longo do tempo, com loop de reconciliação, neutralização de eco e correção por full resync."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "A arquitetura não expõe incentivos estratégicos relevantes; provedores e operador são tratados como cooperativos pelo contrato, não como atores oportunistas."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua entre partes: Provider, Repository, modelo canônico, UID/RECURRENCE-ID, DATE vs DATE-TIME e semântica de remoção."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerar variações de provedores, tokens opacos, TZID, recorrência, itens repetidos, janela temporal e bibliotecas externas."
+    }
+  ]
+}

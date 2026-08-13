@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-07 upstream depende do provedor Anthropic pela rede (pode falhar, estrear lento ou devolver usage inesperado — A2), e M-08 depende de banco em arquivo fora da lógica de domínio."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-10 painel-web (SPA) e M-09 painel-api são superfícies operadas por uma pessoa (operador), inclusive login e configuração de tetos; o cliente também recebe 402/429 que precisa ser compreensível."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Os apps consumidores hoje chamam o provedor diretamente (A5 — depende de operação não terem a chave real); o gateway expõe o mesmo contrato POST /v1/messages e deve coexistir/transicionar esse caminho antigo, e M-08 já prevê migração de schema."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema inteiro existe para alocar um recurso cujo custo cresce com o uso (tokens/moeda, teto mensal); A6 (count_tokens possivelmente cobrado) é exatamente a pergunta de proporcionalidade."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O corte automático é uma decisão consequencial que exclui uma entidade do serviço (402/429 sem envio ao provedor); cabe perguntar quem é prejudicado e se há mecanismo de correção/transparência (o painel é candidato, mas a política de reserva órfã está indecisa)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O fluxo reserva → envio → reconciliação é um processo com estados (reservado/confirmado/liberado), handoffs e caminhos de exceção — inclusive o de reserva órfã, explicitamente adiado para a Fase 2."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso atribuíveis por entidade (M-08 eventos.registrar/consultar) e decisões auditáveis — quem configurou cada teto (PUT protegido por operador), por que uma requisição foi negada (motivo na Decisao)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Gateway e banco rodam continuamente e podem falhar em silêncio — lost update (A3/A7), relógio errado (A4), reservas que nunca fecham (A2) — e alguém precisaria diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O escrow é um laço de realimentação: o sinal de consumo (confirmado+reservado) ajusta a admissão rumo à meta do teto, e a reconciliação corrige o estado — com risco de drift por reservas órfãs e de oscilação na virada da janela (A4)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não forçada: A5 — um app com a chave real pode contornar o gateway — e a retentativa cega do cliente contra teto esgotado (retry storm) é deserção estratégica de ator auto-interessado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler igual: POST /v1/messages espelhando a API do Anthropic, o formato usage traduzido pelo Adapter, o protocolo de streaming e o par (confirmado, reservado) — cada um admite duas leituras corretas divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: versão do SDK anthropic, formato de usage por modelo, vigência do rate-card, relógio do host (A4) e carga concorrente sobre um único escritor SQLite (A3/A7) — pequenos desvios furam o invariante."
+    }
+  ]
+}

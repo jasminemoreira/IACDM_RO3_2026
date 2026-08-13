@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 lê/grava arquivos JSON e UC-1 depende da escala do mês anterior em disco — fronteiras fora do processo que podem falhar, estar ausentes ou corrompidas."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 é uma CLI operada por pessoas com 5 comandos — superfície humana explícita onde confusão ou erro de uso é possível."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield: a escala do mês anterior é produzida e lida pelo próprio sistema na mesma versão; não há store populado, formato legado ou contrato vivo de terceiros a preservar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "M-06 consome CPU de solver cujo custo cresce com o tamanho da instância (A4: 30×3×30 em ≤ 60 s, com limite_s como alocação explícita de recurso)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e automata a alocação de plantões de pessoas nomeadas (Escala, Troca, Preferencia) — decisão consequente que recai diretamente sobre quem trabalha, com equidade apenas como peso flexível."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é uma máquina de estados da troca (PENDENTE → aceite/recusa) com handoff entre solicitante e destinatário e revalidação no aceite — processo com estados e caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas e trocas que alguém precisará auditar e atribuir depois (quem solicitou, quem aceitou), e A5 assume identidade sem autenticação — autoria das ações é questão aberta."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O CLI roda recorrentemente (mensal) e pode falhar silenciosamente após entregue — solve INFEASIBLE, JSON corrompido, fronteira errada — e alguém precisará saber o porquê sem mudar código; M-07 e Avaliacao.custo_por_restricao são os únicos mecanismos de diagnóstico declarados."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-05 propaga contadores de fronteira da escala anterior para o mês seguinte — sincronização de estado entre execuções ao longo do tempo, com risco de deriva já admitido em A3/PR-4 (contadores sub-representados na virada)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação sem enforcement: A5 confia na identidade informada no comando, e trocas e preferências são declaradas por atores auto-interessados que podem desviar (aceitar troca em nome de outro, manipular preferências)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "O catálogo de restrições tem dois modos (aplicar no modelo CP-SAT vs verificar na escala concreta) que precisam significar exatamente a mesma regra, e os schemas JSON de instância/escala são contratos que duas leituras corretas podem divergir."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: versão do ortools (apenas M-06 isola), tamanho da instância (A4 só garante 30×3×30), e formato/conteúdo do arquivo de entrada — sem tolerâncias declaradas para desvios."
+    }
+  ]
+}

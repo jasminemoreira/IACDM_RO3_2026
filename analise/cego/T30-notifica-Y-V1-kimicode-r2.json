@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências fora do processo: servidores SMTP (M-10), endpoints de webhook com timeout e HMAC (M-11) e o próprio SQLite (M-12), com distinção explícita entre falha permanente e transitória no ChannelPort."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI do operador (M-02) com explain/pending/retry e a API de preferências e unsubscribe consumida por destinatários."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A premissa PRE-2 assume cadastros antigos/importados sem fuso IANA, ou seja, há dados legados que precisam coexistir/transitar para o novo contrato obrigatório."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca e consome recursos que escalam com o uso: worker único com throughput limitado (PRE-1), fila durável, retries com backoff e teto de entregas por pessoa (rate-limiter)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A cadeia de supressão toma decisões consequenciais sobre pessoas (suprimir/adiar entregas, opt-out, quiet-hours), com mecanismos de auditoria como o explain e motivo nomeado da decisão."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há máquina de estados explícita de Notificação/Entrega (suppressed, deferred, delivered, failed, dead_letter) com transições, retries e caminho de exceção via dead-letter."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações precisam ser atribuíveis e auditáveis: decisões de supressão nomeadas com motivo, idempotência por emissor (API key), reprocessamento pelo operador e registros de resultado por entrega."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema em execução contínua (API + worker) que pode falhar silenciosamente — fila travada por tick, dead-letters acumulando — e já prevê ferramentas de diagnóstico sem mudar código (explain, pending, retry)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laços de realimentação que regulam estado: retry com backoff exponencial + Full Jitter, token bucket com recarga consumido na entrega, e deferimento até a abertura da janela — todos com risco de oscilação/rajada às 08:00."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação de atores auto-interessados: emissores que fornecem chave de dedup (PRE-3), destinos de webhook idempotentes (PRE-7) e qualquer emissor autenticado podendo notificar qualquer pessoa (PRE-8)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que admitem duas leituras corretas: o ChannelPort com semântica de `permanent`, o enum fechado de motivos de supressão, e o formato de assinatura HMAC `id.timestamp.payload` que o consumidor precisa interpretar igual."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: `node:sqlite` experimental isolado em M-12 (PRE-5), relógio do servidor que pode retroceder (PRE-4), tolerância de 300 s na verificação de assinatura e fusos IANA como entrada variável."
+    }
+  ]
+}

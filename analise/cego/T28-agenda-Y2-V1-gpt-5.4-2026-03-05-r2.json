@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há múltiplas fronteiras externas falíveis: provedores externos em M-04/M-05 e persistência SQLite em M-11, com invalidação de token, paginação e full resync."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em M-12: CLI com comandos de sync, status, conflicts e overlaps."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O estado persistido em SQLite é lido só por este sistema e o texto não descreve transição de contrato legado ou rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome processamento proporcional ao volume de eventos, expansão de recorrência e ciclos de sync, com meta explícita de ~1.000 eventos por lado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões de propagação, merge e conflito sobre agendas de pessoas, podendo afetar compromissos e exigir escalonamento humano."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pull → normalizar → reconciliar → planejar → aplicar → persistir, além da fila de conflitos aberto/resolvido."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema persiste ancestral, tokens, conflitos e resoluções; decisões e alterações precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que roda ciclos e pode degradar silenciosamente por drift, invalidação de token, eco e falhas de sync, exigindo diagnóstico em operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O problema é sincronização de estado ao longo do tempo, com laço de correção, neutralização de eco, full resync e risco de drift entre calendários."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O texto não descreve atores com incentivo estratégico a desviar do protocolo; os provedores são tratados como integrações técnicas, não agentes estratégicos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura divergente: porta Provider, modelo canônico, .ics, UID/RECURRENCE-ID, DATE vs DATE-TIME e semântica de tombstone/removed."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de variações de entrada e ambiente: TZID, recorrência, duplicação de item em paginação, janela temporal obrigatória e fidelidade de bibliotecas externas."
+    }
+  ]
+}

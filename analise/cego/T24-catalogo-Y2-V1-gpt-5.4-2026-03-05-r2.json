@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteira externa de arquivo/YAML no yaml-loader e catalog-repository; leitura pode falhar, atrasar ou vir malformada."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI com subcomandos, flag --json, mensagens de erro e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto descreve trabalho greenfield, sem estado legado, formato já consumido por terceiros ou contrato pré-existente a preservar/rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso que cresce com uso: carrega diretório inteiro em memória e calcula travessias transitivas sobre grafo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "A arquitetura consulta e valida catálogo, mas não automatiza decisão consequencial sobre pessoas ou entidades das quais dependam."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com etapas e exceções: carregar, mapear, construir grafo, validar e só então consultar; erro agregado interrompe o restante."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema modela donos por domínio/dataset e invariantes de ownership, exigindo atribuição e responsabilização."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode falhar após entregue, e a operação depende de diagnosticar falhas de carga/validação pela CLI sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação operacional, sincronização contínua, retry/backoff ou ajuste de comportamento ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação de humanos que escrevem YAML corretamente e declaram donos/dependências de boa-fé; podem desviar ou omitir a seu favor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos interpretáveis entre humano e sistema: schema YAML, identidade dominio.nome, inversão semântica de alimentado_por e exclusão do próprio X em impact."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Há tolerâncias explícitas e pontos sensíveis a variação: nomes sem ponto, DAG estrito, grafo caber em memória, versões/comportamento de NetworkX e formato de entrada."
+    }
+  ]
+}

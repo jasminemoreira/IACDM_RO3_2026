@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências fora do processo: provedores externos simulados (M-04, M-05) e persistência SQLite (M-11), ambos podem falhar, invalidar token ou devolver dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI M-12 com comandos sync, status, conflicts e overlaps."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema preserva e evolui estado anterior já armazenado: ancestral, mapa de identidade e tokens no repositório, além de full resync quando token invalida."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O projeto consome recursos que crescem com uso: expansão de recorrência, varredura de ocorrências e ciclos de sync com ~1.000 eventos por lado e meta de desempenho explícita."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes sobre dados de terceiros — propagar, deletar, manter conflito ou escalar — e pode causar perda ou alteração indevida de eventos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: pull, reconciliar, aplicar, commit, fila de conflitos aberta→resolvida e caminho de ESCALATE sem aplicação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra ações e decisões que precisam prestação de contas: ancestral persistido, tokens, fila de conflitos e resolução manual via CLI."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode degradar após entregue; há ciclos de sync, paginação, full resync e regras excepcionais cujo diagnóstico operacional importa."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação de sincronização: o engine lê estado externo, compara com ancestral e corrige divergência por propagação, resync e neutralização de eco."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação de atores externos e operadores: provedores preservarem UID, adaptadores honrarem contratos opacos e humano resolver conflitos corretamente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: Provider/Repository por DbC, semântica de tombstone versus ausência, DATE versus DATE-TIME e mapeamento ICS↔canônico."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerância a variações: semânticas diferentes entre provedores, repetição de item, invalidação de token, TZID, recorrência e limites de janela temporal."
+    }
+  ]
+}

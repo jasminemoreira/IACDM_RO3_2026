@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteiras fora do processo que podem falhar ou devolver dados inesperados: arquivos JSON no disco (repositorio-json, carregador) e o subprocesso/biblioteca do solver CP-SAT, que pode estourar o limite de 60 s ou retornar status de inviabilidade."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: o módulo cli expõe os 5 casos de uso (gerar, consultar, trocar, responder, conformidade) como comandos que usuários precisam completar sem confusão ou erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: o repositório JSON e o formato de instância só são lidos por esta versão do sistema; a escala do mês anterior é produzida pelo próprio sistema, não um estado legado de terceiros que precise sobreviver a uma transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome um recurso cujo custo cresce com o uso: tempo de CPU do solver CP-SAT, que escala com o tamanho da instância (30×3×30) e é explicitamente orçado em 60 s (A4, SC-2)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequente sobre pessoas: a alocação de plantões determina noites, fins de semana, fadiga e equidade de quem trabalha — com efeito direto sobre os escalados e mecanismos de auditoria/correção (avaliador, troca, conformidade) em jogo."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo com estados, handoffs e caminhos de exceção: a máquina de estados da troca (solicitar → PENDENTE → responder/aceite com revalidação) em M-04, envolvendo múltiplos atores (solicitante, destinatário, aprovador)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões e ações pelas quais alguém terá que responder depois — trocas solicitadas/aceitas e escalas publicadas precisam de autoria atribuível; a própria premissa A5 (identidade declarada sem autenticação) sinaliza a lacuna de atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode falhar ou degradar depois de entregue (solver sem solução, timeout, instância inviável) e alguém precisa saber o porquê sem mudar código — sinal materializado no módulo diagnostico (M-07) e nos status/otimalidade de ResultadoGeracao."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sistema regula estado ao longo do tempo, não só reage: a fronteira (M-05) carrega contadores S6/S7 da escala anterior para o mês seguinte, um laço de realimentação mensal de equidade/fadiga sujeito a deriva de estado (A3/PR-4: contadores sub-representados na virada)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem imposição: trocas entre pessoas pressupõem aceite honesto e a identidade do comando é tomada como verdadeira (A5) — um ator autointeressado poderia aceitar troca em nome de outro ou manipular preferências declaradas."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam interpretar igual: o catálogo de restrições com dois modos (aplicar/verificar) deve produzir leituras idênticas da mesma regra no solver e no avaliador, e os esquemas de instância e de JSON persistido admitem leituras divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam e pode falhar em pequenos desvios: versão do ortools/CP-SAT, o orçamento exato de 60 s sobre instâncias de tamanho variável, horários de turno assumidos fixos (A1) e faixas de entrada do gerador sintético."
+    }
+  ]
+}

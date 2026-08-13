@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "As portas M-09 e M-10 são fronteiras com o exterior, e M-09 distingue explicitamente Amostra de Indisponivel — há um modo de falha de dependência modelado na própria interface."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (cli) é a superfície operada por uma pessoa: imprime progresso, motivo e decisão final, e é o único módulo que escreve no terminal."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é a convivência canário × versão estável, com caminho de rollback explícito (100% à estável em M-10)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Laço monothread local sobre simulador, sem recurso cujo custo cresça com o uso — não há infraestrutura elástica, volume de dados ou custo por chamada em jogo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza a decisão de promover ou reverter uma versão que atende tráfego, sem aprovação humana por passo — uma promoção errada prejudica os usuários servidos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é uma máquina de estados (progredindo/pausado/revertido/promovido) com laço de execução, aborto manual e caminhos de exceção (contadores, guarda-absoluta)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O coordenador decide e emite eventos de promoção/rollback pelos quais alguém terá de responder depois — e o escopo negativo declara que nada é persistido entre execuções."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O laço roda continuamente e pode falhar em silêncio — daí o barramento de eventos (assinar/observador) e o escopo negativo admitir que degradação por latência p99 fica indetectada."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de realimentação clássico: métricas geram sinal de erro e o plano-de-passos ajusta os pesos do canário rumo ao alvo, com risco de oscilação entre passos e rollback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operador único e simulador sem agência própria — nenhum ator com interesse em desviar do comportamento assumido; não há API pública, marketplace ou integrador estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Três portas com adaptadores (relogio, fonte-de-metricas, alvo-de-implantacao) são contratos que duas implementações corretas podem ler de formas divergentes — ex.: semântica de Indisponivel ou da soma de pesos = 100."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias numéricas — amostra mínima 50, confiança 98%, limite de 4 erros, limiares da guarda-absoluta (A3/A4) — onde pequenas variações de regime mudam o veredito."
+    }
+  ]
+}

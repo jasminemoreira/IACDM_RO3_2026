@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 sonda-tls depende de rede (timeout/recusado/dns/tls) e M-09 depende de node:sqlite — duas fronteiras externas que podem falhar, travar ou devolver dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 web-ui expõe 5 telas HTML com login e sessão operadas por pessoas (painel, alvo, trilha, aprovação de pedidos)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo (V(1)): não há sistema antigo em uso, formato de dados pré-existente ou contrato vivo a preservar/transicionar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A varredura sequencial consome recursos proporcionais ao número de alvos e a trilha append-only cresce sem bound — A7 já sinaliza custo crescente com o volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e registra 'troca-nao-autorizada' e 'escalar' — flags acionáveis que atribuem conduta a operadores identificados, com impacto sobre quem é sinalizado."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-03 pedido é uma máquina de estados pendente->aprovado->fechado com handoff solicitante/aprovador e caminho de exceção (escalação por inação em M-04)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A finalidade central é registrar quem aprovou cada emissão: trilha append-only encadeada por hash (M-05), papel 'auditor' (M-06) e caso de uso auditar/verificarIntegridade (M-10)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Servidor node:http rodando continuamente que pode falhar silenciosamente (sondas que falham, certificados vencendo, fila de pedidos parada) e alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Loop de realimentação: classificar por limiares (M-02) -> reconciliar (M-04) -> abrir/escalar pedido -> renovação, regulando o estado rumo a 'certificado válido'; depende do relógio (A2, risco de drift) e de limiares que podem oscilar entre estados."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação: A4 (um humano aprova na janela) e o escopo negativo admite 'não impõe segregação de funções' — um aprovador auto-interessado poderia aprovar o próprio pedido ou ignorar escalações."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos entre partes que admitem leituras divergentes: a gramática DER/X.509 em deDer (M-01), o tipo união Decisao de reconciliar (M-04) e o formato encadeado da trilha (M-05) precisam ser interpretados identicamente por produtor e verificador."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de coisas que variam: A8 (API experimental do node:sqlite pode mudar de versão), o relógio da máquina (A2), timeouts de handshake TLS e faixas de entrada (vidaTotal, limiares) — pequenos desvios quebram o funcionamento."
+    }
+  ]
+}

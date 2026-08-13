@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite (better-sqlite3) via arquivo em disco — fronteira fora do processo que pode falhar, travar ou corromper; seed e emTransacao dependem dela."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-side operadas por pessoas (abrir, fila, triar, chamado, recorrer, julgar) e M-11 rejeita entradas — superfície de usuário com risco de confusão e erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: esquema e seed são criados pelo próprio M-09 e nenhum estado pré-existente, formato legado ou consumidor externo do contrato precisa sobreviver à transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "M-07 mantém trilha somente-inserção que cresce sem bound com o uso e A4 proíbe reescrita — consumo de armazenamento cresce monotonicamente sem mecanismo de contenção."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "M-03/M-04 automatizam prioridade e prazos que determinam a ordem de atendimento de pessoas, e M-06 julga recursos com efeito direto no solicitante — decisão consequencial sobre quem é atendido antes."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-05/M-06 definem ciclo de vida com estados, handoffs entre solicitante/triador/gestor e caminhos de exceção (inadmissibilidade B-3/B-5, reclassificação, provimento) — fluxo com transições e exceções."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-07 trilha somente-inserção registra autoria de cada evento e M-08 exige motivo na permissão — o sistema foi desenhado para auditar e atribuir ações a autores."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "M-11/M-12 formam um serviço HTTP que rodará e pode degradar após o deploy (violações de SLA silenciosas, falhas de persistência) e nenhum módulo prevê logs, métricas ou diagnóstico sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema apenas reage a comandos humanos (triar, reclassificar, julgar); não há sincronização de estado, retry/backoff, ajuste automático de comportamento nem laço de realimentação que possa oscilar ou desviar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A7 assume boa-fé do solicitante sem evidência e o escopo pune nada: reclassificar (M-05) e recorrer (M-06) são canais onde um ator auto-interessado pode escalar a própria prioridade estrategicamente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Múltiplos contratos entre partes: API HTTP de M-11, esquema de eventos da trilha em M-07, matriz/metas carregadas como dado por M-02 e o contrato de permissão-com-motivo de M-08 — todos legíveis de mais de uma forma."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de variações: faixas de entrada de impacto/urgência, dados de configuração (matriz, metas, prazos) em M-02, e versões de Node/Fastify/better-sqlite3 — desvios pequenos podem quebrar a derivação ou a persistência."
+    }
+  ]
+}

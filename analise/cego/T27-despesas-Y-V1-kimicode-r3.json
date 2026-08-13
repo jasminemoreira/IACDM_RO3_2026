@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite (banco fora do processo lógico do núcleo) e M-08/M-10 dependem de transações de leitura-para-atualização que podem falhar, estalar ou abortar — fronteira externa acionável."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-rendered e M-11 uma API HTTP, superfícies operadas por pessoas (seleção de usuário, bandeja, formulários de aprovação/delegação)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "É sistema novo sobre banco novo com seed próprio (M-09 migrar/semear); não há estado, formato ou contrato antigo em uso que precise sobreviver ou transitar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 fixa volume pequeno (dezenas a centenas de despesas), sem IA, sem processamento de alto volume nem infraestrutura elástica; não há recurso cujo custo cresça com o uso a justificar a lente."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide aprovação/rejeição de despesas e aplica SoD contra solicitantes — decisão consequencial que pode excluir ou prejudicar quem está sujeito a ela, já com trilha de auditoria (M-06/INV-7) como mecanismo de transparência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "É o coração do sistema: máquina de estados da despesa (M-01), cadeia de aprovação multi-nível (M-02), handoffs entre aprovadores e por delegação, e caminhos de exceção (rejeição terminal INV-11, teto INV-10, topo INV-13)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "INV-7 exige ator efetivo, em-nome-de e limite exercido por decisão, e M-06 é trilha append-only (INV-8) — cada ação precisa ser atribuível e auditável por construção."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "M-11/M-12 rodam como serviço HTTP com banco que pode degradar após o deploy; a trilha de domínio (M-06) não responde por que o sistema falhou ou ficou lento — operação exige saber diagnosticar sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: a expiração de delegação é avaliada sob demanda contra o relógio (sem cron/timer, explicitamente), não há retry, sync nem ajuste de estado rumo a um alvo — o sistema só reage a comandos."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A5 assume identidade confiável sem autenticação e toda a SoD (INV-2, INV-4, INV-13) pressupõe cooperação dos atores; um ator egoísta que chame a API direto desvia com proveito — cooperação assumida, não forçada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A granularidade E = I₀/C depende de cada módulo ser implementável só pela interface declarada; contratos como `cadeiaPara`, `resolver` e o tipo `ItemBandeja` admitem leituras divergentes (fronteiras inclusivas, null em emNomeDe) entre implementações corretas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações toleradas explicitamente: fronteiras inclusivas de valor (INV-1), fronteiras de vigência de delegação (A6, UTC/monotônico), inteiro de centavos (INV-12) e carga sob A7 — pontos onde pequenos desvios quebram o comportamento."
+    }
+  ]
+}

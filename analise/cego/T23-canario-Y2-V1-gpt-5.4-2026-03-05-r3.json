@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "As portas externas (`fonte-de-metricas`, `alvo-de-implantacao`, `relogio`) estão descritas como interfaces/adaptadores, mas o escopo negativo exclui serviços reais, rede, banco, fila, arquivo ou subprocesso falhando em runtime."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: `cli` é a entrada do operador, observa eventos e imprime progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema e `alvo-de-implantacao` modelam convivência entre canário e versão estável, com distribuição de peso e rollback para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide e aplica distribuição de tráfego/peso entre participantes ao longo de passos, consumindo capacidade operacional cujo custo cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "A arquitetura automatiza decisão de implantação entre versões, mas o texto não mostra efeito consequencial sobre pessoas ou entidades dependentes além da operação técnica."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo explícito com máquina de estados (`progredindo / pausado / revertido / promovido`), passos, aborto manual e caminhos de exceção como rollback imediato."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "`coordenador` emite eventos e a `cli` relata progresso, motivo e decisão final; são ações e decisões que alguém depois pode precisar atribuir e explicar."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que executa um laço de decisão e pode degradar em runtime; a arquitetura já prevê eventos operacionais, progresso, motivo e desfecho para diagnóstico."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O `coordenador` regula a implantação ao longo do tempo com feedback de métricas, score, guarda absoluta e ajuste de pesos por `plano-de-passos`, incluindo correção por rollback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador no `cli`, inclusive aborto manual e interpretação de progresso/decisão, sem mecanismo descrito que imponha esse comportamento."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam interpretar igual — p.ex. `coletar(...) -> Amostra | Indisponivel`, `julgar(...) -> Veredito` e `aplicar(pesos)` — com risco de leitura divergente dos significados."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de tolerâncias e variações explícitas: amostra mínima de 50, confiança de 98%, limiares da guarda absoluta, limite de 4 erros e variação de cenários/aquecimento."
+    }
+  ]
+}

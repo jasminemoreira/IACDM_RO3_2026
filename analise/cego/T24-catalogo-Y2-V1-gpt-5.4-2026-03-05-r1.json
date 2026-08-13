@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteira externa de arquivo/YAML no carregamento: diretório, arquivos e parser PyYAML podem falhar, atrasar ou retornar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI com subcomandos, flag --json, mensagens acionáveis e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto descreve trabalho greenfield sem estado legado, formato pré-existente consumido por terceiros ou interface já em uso que precise coexistir/retroceder."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A arquitetura consome recurso que cresce com uso: carrega o diretório inteiro em memória e calcula travessias transitivas completas no grafo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema consulta e valida catálogo/linhagem, mas não automatiza decisão consequencial sobre pessoas ou entidades das quais dependam."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com etapas e exceções: load -> map -> construir grafo -> validate -> consultar, além do caminho de erro agregado."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema modela donos por domínio/dataset, ownership herdado e invariantes como 'todo domínio tem dono' e 'nenhum dataset é órfão de dono'."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A ferramenta executa fora do código-fonte e pode falhar/degradar em runtime no carregamento, validação e consultas, exigindo diagnóstico por mensagens e saídas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação operacional, retry/backoff, sincronização contínua nem regulação de estado ao longo do tempo; a execução é batch por comando."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do humano que escreve YAML e declara ownership/linhagem corretamente, podendo haver desvio estratégico ou omissão em benefício próprio."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: identidade dominio.nome, restrição do ponto, inversão semântica de 'alimentado_por' e contrato explícito de impact(X) excluir X."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de entrada e ambiente: nomes sem ponto, DAG estrito, catálogo caber em memória, versões/comportamento de NetworkX e PyYAML."
+    }
+  ]
+}

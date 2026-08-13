@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de dois provedores externos (M-04/M-05) cujos contratos preveem explicitamente falha, invalidação de token (410), paginação que repete itens e remoções ambíguas — além de PR-6, que assume a janela de falha entre escrita no provedor e commit local."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe uma CLI operada por uma pessoa (sync, status, conflicts list/resolve, overlaps, dry-run, exit codes, saída tabular), incluindo o fluxo de resolução manual de conflitos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema coexiste com dois calendários vivos que já existem e continuam em uso pelos usuários; o ancestral e o mapa de identidade (M-11) existem justamente para preservar o estado 'antigo' entre ciclos e provedores."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso cujo custo cresça com o uso: PR-8 fixa ~1.000 eventos por lado em <5 s single-threaded, sem infraestrutura elástica, IA ou processamento de alto volume — o consumo é limitado e proporcional por construção."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões sobre compromissos de pessoas: propagações, merges (POL-1 a POL-4) e deleções de eventos podem alterar ou remover reuniões reais; o design já prevê mecanismos de correção e transparência (ESCALATE, fila humana, dry-run), o que é exatamente o que a lente examina."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processos com estados e caminhos de exceção: o ciclo pull→normalizar→reconciliar→planejar→aplicar→persistir (M-10), o ciclo de vida aberto→resolvido da fila de conflitos (M-08), full resync, neutralização de eco e limite de páginas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Conflitos são entidades persistidas com decisão registrada ('nada aplicado sem decisão', M-08) e cada escrita vira AppliedWrite commitada com ancestral e token (M-11), tornando cada ação atribuível e auditável a posteriori."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda fora do desenvolvimento e pode falhar silenciosamente: M-10 produz SyncReport e M-12 expõe status/overlaps/dry-run justamente para diagnosticar estado e degradação sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sincronizador é um loop de realimentação: compara estado observado com um alvo (ancestral), aplica correções e persiste tokens; a neutralização de eco (A-5, PR-6) e a regra R-A3 existem para evitar oscilação e drift entre os dois lados."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há ator auto-interessado cuja cooperação seja assumida: os provedores são simulados e fiéis por premissa (PR-2), e o único operador humano é quem resolve conflitos, sem incentivo para desviar do comportamento esperado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "O sistema vive de contratos interpretáveis de duas formas: o formato ics/RFC 5545 (TZID, DATE vs DATE-TIME, RECURRENCE-ID), as portas Provider/Repository com pré e pós-condições, e o token de estado declarado opaco — dois leitores corretos podem divergir."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: fidelidade dos provedores simulados ao real (PR-2), comportamento de bibliotecas externas de recorrência (PR-7), preservação de UID (PR-3) e variações de fuso/formato — tolerâncias a pequenos desvios são centrais."
+    }
+  ]
+}

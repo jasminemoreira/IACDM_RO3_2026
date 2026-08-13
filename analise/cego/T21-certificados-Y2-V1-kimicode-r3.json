@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 sonda-tls faz handshake TLS em rede (timeout/recusado/dns/tls já tipados como ErroSonda) e M-09 depende de node:sqlite — duas fronteiras externas que podem falhar, travar ou devolver dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 web-ui expõe 5 telas HTML com sessão e formulários (login, painel, alvo, trilha, aprovação de pedidos) operadas por pessoas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield: nenhum dado legado, formato já lido por outro código ou contrato vivo de consumidores a carregar — o banco sqlite só é lido por esta versão via M-09."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A varredura é sequencial com um handshake TLS por alvo e sem paginação no painel — custo cresce com o número de alvos (A7 admite degradação além de dezenas)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema atribui responsabilidade nominal (quem aprovou cada emissão) e gera flags acionáveis contra pessoas — 'troca-nao-autorizada' e 'escalar' por inação do aprovador."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-03 define máquina de estados com handoffs entre atores (pendente -> aprovado -> fechado) e M-04 trata caminhos de exceção (troca não autorizada, escalação por pedido pendente)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O objetivo central é auditabilidade: trilha append-only encadeada por hash (M-05), papel 'auditor' (M-06) e autoria registrada de cada aprovação."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente e pode falhar em silêncio — sondas que falham, classificações erradas por relógio (A2), pedidos parados — e alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-04 reconciliacao fecha um laço de feedback: compara estado observado com esperado (pedidos abertos) e emite ações corretivas; 'escalar' é sinal de erro que persiste no tempo com risco de drift entre observações."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem impor: não há segregação de funções (escopo negativo explícito), então um mesmo ator pode solicitar e aprovar; A4 assume aprovador agindo na janela e A5 assume operador honesto diante de trilha reescrevível."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com múltiplas leituras possíveis: união Decisao de M-04, esquema Observacao, formato da entrada de trilha encadeada por hash e a convenção Ok|Erro — duas implementações corretas podem divergir."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Dependências que variam: node:sqlite experimental pode mudar de API (A8), relógio da máquina pode desviar (A2, sem mitigação), timeouts e comportamento TLS variam por alvo e ambiente."
+    }
+  ]
+}

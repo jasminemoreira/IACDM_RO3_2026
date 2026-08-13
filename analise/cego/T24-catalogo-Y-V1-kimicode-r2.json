@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema lê arquivos YAML de um diretório externo (M-07) e depende de bibliotecas externas (NetworkX, PyYAML); arquivos ausentes, malformados ou com conteúdo inesperado são fronteiras de falha reais, tratadas pelo contrato binário de M-09 (catálogo válido ou erro)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "A CLI (M-11) é operada por pessoas — donos de domínio escrevem YAML e corrigem erros; a arquitetura já reconhece isso com mensagens acionáveis (M-02), agregação de todas as violações (A9) e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sistema antigo, formato de dados prévio ou contrato vivo a preservar: é um sistema novo que apenas lê YAML escrito do zero pelos humanos, sem estado legado."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresce com o uso é alocado: A7 fixa a escala em dezenas a centenas de datasets cabendo em memória, e o escopo negativo exclui persistência, cache, rede e infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema só consulta e reporta linhagem e donos; não toma nem automatiza nenhuma decisão consequencial (corte, negação de acesso, flag acionável) que possa prejudicar ou excluir alguém."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O carregamento é um processo com transições e caminhos de exceção: M-09 orquestra loader → mapper → grafo → validação (A8), com o contrato 'válido ou erro' que proíbe o estado intermediário 'carregado mas inválido'."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A propriedade é o cerne do domínio: donos declarados por domínio com resolução por herança (M-03), INV-2 e INV-3 garantindo que nenhum dado fique sem dono — exatamente atribuição auditável de entidades de dados."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "É uma CLI one-shot sem vida em produção: cada execução recarrega tudo e reporta falhas diretamente via mensagens e códigos de saída; não há sistema rodando que possa degradar silenciosamente entre execuções."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação: sem retry/backoff, sem sincronização, sem configuração em runtime que ajuste comportamento — o escopo negativo exclui até modo watch e arquivo de configuração."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume que donos de domínio declaram dono e arestas de linhagem correta e completamente; a validação só checa forma e invariantes, não veracidade — um dono auto-interessado poderia omitir aresta ou dono para escapar de accountability, sem enforcement do sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a duas leituras: o schema YAML entre quem escreve e o parser (M-07/M-08), a inversão da aresta declarada pelo consumidor ('alimentado_por: X' vira 'X -> eu'), e o formato de identidade 'dominio.nome' cuja ambiguidade A10 precisa proibir explicitamente."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: versões de NetworkX/PyYAML (sem pinagem declarada na tabela), formato de entrada escrito à mão com margem para variação, e a semântica exata de networkx.descendants (A6) cuja tolerância de ±1 elemento decide o critério de acerto."
+    }
+  ]
+}

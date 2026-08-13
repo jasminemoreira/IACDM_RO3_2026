@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa ao processo lógico no SQLite/arquivo local e na importação de CSV, que podem falhar, travar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa na ui-web com 4 telas e também fluxo manual de importação, simulação, publicação e histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema substitui uma tabela legada e há importador-csv + prova-paridade para conviver/transicionar do formato antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura é local, sem dependências de rede, sem processamento elástico e sem sinal de consumo de recurso que cresça de modo relevante com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisão consequente de preço por SKU/quantidade, podendo prejudicar cliente ou negócio; há histórico, trace e explicação da decisão."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções: importar rascunho, validar, publicar, consultar vigente, registrar histórico e recalcular decisão."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema publica versões imutáveis, registra decisões e mantém histórico/trace que precisarão ser auditáveis e atribuíveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com persistência local e operações de publicação/precificação/importação que podem degradar ou falhar após entrega e exigem diagnóstico."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de correção explícito na prova-paridade, que compara saída do motor com a planilha legada e sinaliza divergências para ajuste antes da publicação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador ao editar data visível, importar/validar antes de publicar e respeitar processo single-user sem trava."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: moeda BR, 'Ate' textual, SKU normalizado, faixa fechada [min,max], vigência e regra de arredondamento."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variações pequenas de entrada/ambiente, como centavos, bordas de faixa 19/20, parsing BR e data/fuso."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras fora do processo que podem falhar: banco SQLite em disco (better-sqlite3), dados de configuração carregados como dado (M-02) e templates no servidor — disco cheio, arquivo corrompido ou configuração inesperada não têm tratamento descrito."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-side operadas por pessoas (abrir, fila, triar, chamado, recorrer, julgar), incluindo fluxos de erro como recurso inadmitido que o usuário precisa entender."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema greenfield: o esquema e o seed do SQLite (M-09) são criados por esta versão e só ela os lê; não há estado legado, formato preexistente nem consumidor externo de contrato antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há recurso de custo crescente com o uso: thread única, SQLite embarcado, volume de chamados modesto, sem ML, sem processamento de alto volume nem infraestrutura elástica."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisão consequente sobre pessoas — a prioridade do chamado determina prazos e ordem de atendimento do solicitante — e a própria arquitetura já embute mecanismos de correção (recurso) e transparência (trilha), que a lente deve auditar."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O núcleo é um processo com estados, transições e papéis: ciclo de vida do Chamado (M-05), rito de Recurso com admissibilidade e julgamento (M-06), handoffs solicitante→triador→gestor e caminhos de exceção (inadmissão B-3/B-5, prescrição)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Há obrigação explícita de atribuição e auditoria: trilha somente-inserção (M-07), autoria registrada em recurso e julgamento (autor, gestor), e autorização com motivo (M-08) — cada ação precisa ser respondível depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um servidor HTTP (M-11) que roda e pode degradar em produção — violações de SLA silenciosas, falhas de escrita, erros de configuração — e a arquitetura não menciona logs, métricas ou qualquer meio de diagnosticar sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema só reage a eventos discretos; prazos são recalculados deterministicamente a partir de abertoEm, sem loop de feedback, retry/backoff, sincronização de estado ou ajuste em runtime que possa oscilar ou derivar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A7 assume cooperacao declarada e sem evidência — 'o solicitante age de boa-fé; abuso é visível, não punido' — e reclassificação e recurso são alavancas que um ator auto-interessado pode usar estrategicamente (ex.: recorrer para ganhar tempo ou forçar prioridade maior)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler do mesmo jeito: a API HTTP entre ui-web e casos-de-uso (incluindo a rejeição de prioridade como entrada), o formato dos eventos da trilha e o esquema SQLite — leituras divergentes (ex.: semântica de 'horas corridas' ou dos eixos do recurso) produzem comportamentos incompatíveis."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: entradas de usuário fora da faixa (impacto/urgência), dados da matriz de configuração carregados como dado (M-02) e versões de ambiente/dependências (Node, better-sqlite3) — pequenos desvios podem quebrar a derivação de prioridade ou o boot."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 lê/grava arquivos JSON em disco, M-06 invoca um solver externo (ortools/CP-SAT) que pode estourar o limite_s ou devolver status inesperado, e M-09 faz parse de arquivo que A6 admite poder ser hostil — três fronteiras fora do processo que podem falhar, travar ou retornar dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 expõe os 5 casos de uso como comandos CLI operados por pessoas — superfície humana onde confusão, erro de digitação ou fluxo frustrante são falhas possíveis."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O formato JSON persistido por M-08 é um contrato de dados vivo: A3 exige que a escala do mês anterior (estado antigo armazenado) sobreviva e seja legível pelo próximo ciclo, e M-05 a consome — mudança de schema quebra essa coexistência."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O consumo computacional do CP-SAT cresce com o tamanho da instância (A4 assume 30×3×30 em ≤60s e M-06 recebe limite_s como parâmetro) — recurso cujo custo escala com o uso e precisa ser proporcional ao valor entregue."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequencial sobre pessoas — quem trabalha qual plantão — com pesos INRC-II calibrados em outro país (A8), equidade deliberadamente fora do aceite, e mecanismos de auditoria/correção (avaliador, conformidade) que a lente deve interrogar."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é explicitamente uma máquina de estados (solicitar → PENDENTE → responder com revalidação no aceite) com handoffs entre dois atores e caminhos de exceção (recusa, escala inválida no aceite) que podem ficar incompletos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trocas são registradas e aprovadas — ações que alguém precisará auditar e atribuir depois — e A5 expõe exatamente o ponto fraco: a identidade no comando é assumida verdadeira, sem autoria verificável de quem aceitou o quê."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema pode falhar silenciosamente após entregue: o solver pode devolver otimalidade não provada (M-06 expõe status/otimalidade_provada) e os contadores S6/S7 podem sub-representar a virada de mês (A3, PR-4 aberta) sem sinal — alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-05 fecha um laço de realimentação mês a mês: contadores de fronteira derivados da escala anterior alimentam o próximo solve (S6/S7), um feedback que pode acumular deriva ou oscilar entre meses se a entrada vier incompleta (A3)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não enforced: A5 assume identidade verdadeira (qualquer um pode aceitar troca em nome de outro), o aceite de trocas assume boa-fé entre pares, e preferências declaradas podem ser manipuladas estrategicamente por quem conhece os pesos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A própria invariante central é gramatical: aplicar(modelo) e verificar(escala) são dois modos do mesmo contrato em M-02 que dois clientes (M-03, M-06) devem ler de forma idêntica — duas leituras corretas divergentes quebram o ponto em que a arquitetura foi desenhada para não falhar; somam-se os schemas JSON de M-08/M-09."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema só é garantido em especificação exata: A4 fixa 30×3×30/60s como ponto nominal, os pesos INRC-II são tolerâncias calibradas para outro contexto (A8), e variações de entrada (instâncias maiores, horários não fixos violando A1, versões do ortools) testam tolerâncias que a arquitetura não declara."
+    }
+  ]
+}

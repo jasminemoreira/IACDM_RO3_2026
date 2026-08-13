@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite, um banco fora do processo que pode falhar, travar em transação leitura-para-atualização ou retornar dados inesperados; as portas M-08 são exatamente essa fronteira."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 entrega 6 telas server-rendered com formulários que uma pessoa opera diretamente (bandeja, nova despesa, delegações, trilha)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo: não há estado antigo em uso a preservar nem contrato vivo a transitar — a matriz DoA e usuários nascem por seed (`semear()`), e o schema é criado por `migrar()` do zero."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A7 assume volume pequeno e registra que 'a bandeja sem paginação degrada' — o custo de M-05/M-08 cresce com o número de despesas e o sistema decide não paginar nem buscar."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisão consequente sobre terceiros: aprovar/rejeitar despesa e conceder/revogar delegação afetam solicitantes; INV-9 (motivo obrigatório) e a trilha de auditoria são os mecanismos de correção e transparência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O núcleo é um processo com estados e handoffs multi-ator: máquina de estados em M-01, cadeia de aprovação em M-02, passagem de responsabilidade por delegação em M-03, com exceções nomeadas (ErroSoD, ErroAcimaDoTeto, ErroSemAutoridadeAcima)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "INV-7 e INV-8 obrigam trilha append-only com ator efetivo, em-nome-de, instante e limite exercido (M-06) — cada decisão precisa ser atribuível e auditável, inclusive em delegação."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "M-11 é um servidor HTTP em operação contínua sobre SQLite; degradação (transações travadas, erros 5xx) precisaria ser diagnosticada sem mudar código, e a trilha M-06 cobre auditoria de domínio, não operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O escopo negativo exclui cron, timer, retry, sync e qualquer ajuste de estado em direção a um alvo — a expiração de delegação é avaliada sob demanda no instante do ato, sem laço de realimentação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A5 assume identidade confiável sem autenticação e declara que o sistema 'impõe SoD contra engano, não contra adversário' — a cooperação dos chamadores é assumida, não imposta, e um agente auto-interessado pode desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos precisam de leitura única: assinaturas dos módulos (ex.: `resolver` em M-04), o tipo `ItemBandeja` com `origem: 'propria' | { emNomeDe }`, as rotas HTTP de M-11 e a semântica de fronteiras (INV-1 inclusiva) admitem leituras divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Há tolerâncias explícitas por toda parte: fronteira inclusiva de limite (INV-1), dinheiro só em inteiro de centavos (INV-12), instantes UTC monotônicos com vigências ambíguas 'na fronteira' (A6) e transição read-for-update dependente de um único escritor (A4)."
+    }
+  ]
+}

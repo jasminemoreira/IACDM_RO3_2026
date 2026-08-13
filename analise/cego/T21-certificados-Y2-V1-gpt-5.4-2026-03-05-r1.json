@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou atrasar: `sonda-tls` faz rede/TLS e `repositorio` persiste em `node:sqlite`."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas em `web-ui`, com login, painel, trilha e ações de varrer/abrir/aprovar pedidos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto descreve V(1) sem estado legado, contrato pré-existente compartilhado ou necessidade de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos que crescem com uso — varreduras TLS sequenciais, armazenamento de observações/trilha e custo crescente se o número de alvos aumentar."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e sinaliza `troca-nao-autorizada`, `escalar` e aprovações, produzindo efeitos sobre pessoas responsáveis por emissão e operação de certificados."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e handoffs: `pedido` vai de `pendente -> aprovado -> fechado`, com exceções e reconciliação contra inação/troca."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra quem aprovou cada emissão e mantém `trilha` append-only encadeada por hash para auditoria e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode degradar após implantado; há varredura, rede, banco e verificação de integridade cuja causa de falha precisará ser diagnosticada."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação de estado ao longo do tempo: monitoramento periódico de validade, comparação `anterior/atual`, limiares e reconciliação que corrige desvios por pedido/escalação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação humana para aprovar dentro da janela e operar uma varredura por vez; atores podem desviar desse comportamento."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca, como `Decisao[]`, classificações de estado, convenção `Ok | Erro` e interfaces entre módulos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias a variação de ambiente e entradas: relógio correto, API experimental de `node:sqlite`, erros de rede/TLS e volume de alvos."
+    }
+  ]
+}

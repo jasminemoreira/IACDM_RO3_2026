@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de arquivo/banco SQLite e de entrada CSV, com fronteiras que podem falhar, travar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: UI web com 4 telas e fluxo de importação/simulação/histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e importa a planilha antiga, com prova de paridade e convivência com dados pré-existentes."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Há consumo de recurso que cresce com uso na prova de paridade e no reprocessamento de linhas/importações, exigindo proporcionalidade ao volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza decisão de preço sobre produtos, podendo prejudicar clientes ou o negócio; a arquitetura inclui histórico e explicação da decisão."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com estados e exceções: importar rascunho, validar, publicar, consultar histórico e recalcular decisões."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema publica versões imutáveis, registra decisões e mantém histórico/trace para auditoria e atribuição posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com persistência e operações de publicação/precificação; falhas em produção precisariam ser diagnosticadas sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Existe laço de verificação/correção na prova de paridade, que compara saídas do motor com a tabela legada para detectar desvio."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação na entrada manual/importada; um operador pode escolher data, prioridade ou CSV de modo oportunista se agir por interesse próprio."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos suscetíveis a leitura ambígua: moeda BR, 'Ate' textual, intervalos fechados, vigência, data obrigatória e frase explicativa."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de tolerâncias e variações pequenas de entrada/ambiente, como arredondamento, bordas de faixa, normalização de SKU e tolerância de R$ 0,01."
+    }
+  ]
+}

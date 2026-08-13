@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos JSON e entrada por arquivo/CLI (M-08, M-09, M-11), que podem falhar, atrasar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa via CLI com cinco comandos de uso (M-11)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado antigo a preservar e coexistir: escala do mês anterior é carregada e influencia a geração via fronteira (UC-1, M-05, M-08)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso escasso e executa otimização por solver, com custo de computação e valor sensíveis à escala e ao limite de tempo (M-06, A4)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide distribuições de plantões e aceita/rejeita trocas que afetam pessoas sujeitas a impacto direto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados e exceções, especialmente a máquina de estados de troca e a revalidação no aceite (M-04, UC-3, UC-4)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas e trocas cuja autoria e responsabilização futura importam, inclusive decisões de aceite/resposta (M-08, M-04)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode degradar em operação, com solver, diagnósticos e persistência sujeitos a falhas que precisariam ser explicadas sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura reage a comandos e valida no aceite, mas não descreve laço de realimentação que ajuste comportamento continuamente rumo a uma meta."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação e identidade verdadeira; sem autenticação, um ator pode aceitar troca em nome de outro (A5)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca — JSON de instância/escala, interfaces dos módulos e catálogo único de restrições com dois modos de uso."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de ambiente e variação de carga/entrada, como premissas de tempo do CP-SAT, formato dos arquivos e execução sem concorrência (A4, A7)."
+    }
+  ]
+}

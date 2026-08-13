@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas explícitas com arquivos OFX/CSV, biblioteca ofxtools e persistência SQLite, que podem falhar, atrasar ou retornar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o módulo cli para import, reconcile, review e report."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "A arquitetura convive com formatos e estados preexistentes — OFX v1/v2, 3 perfis CSV de banco, perfil do livro e decisões humanas persistidas que não podem ser sobrescritas."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa volume relevante e custo cresce com uso: geração de carga 50k, matching por blocking e risco declarado de degenerar para O(n²)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes sobre deduplicação e conciliação, com risco explícito de falso positivo e necessidade de revisão/correção humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções explícitos: importação, deduplicação em camadas L0-L5, fila de pendências, resoluções humanas e 5 estados terminais de conciliação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura exige auditabilidade: DecisaoDedup sempre registra camada e evidência, há resoluções humanas persistidas e entidades cujo histórico precisa de autoria e prestação de contas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que roda e pode degradar silenciosamente após entrega; importação, matching, persistência e conciliação exigem diagnóstico operacional sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação explícito: resoluções humanas alimentam a camada L0 do dedup-engine, corrigindo decisões futuras em direção ao comportamento desejado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador humano ao revisar pendências e registrar resoluções corretas, algo de que um ator interessado pode desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos potencialmente ambíguos entre partes: OFX SGML/XML, perfis CSV declarativos, normalização de descrição/data/sinal e interfaces de portas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variação explícitas: janela de data, tolerância de valor, estabilidade frágil de FITID, variação de descrições e tamanho de blocos no matching."
+    }
+  ]
+}

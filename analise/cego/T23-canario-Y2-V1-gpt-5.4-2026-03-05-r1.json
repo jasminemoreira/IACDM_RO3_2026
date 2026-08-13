@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "As dependências externas são apenas portas/adaptadores simulados no mesmo processo; não há rede, banco, fila, arquivo ou subprocesso externo descrito."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: o módulo `cli`, entrada do operador que observa eventos e imprime progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema exige convivência com a versão estável e rollback automático; `alvo-de-implantacao` distribui peso entre canário e estável e rollback volta 100% à estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso operacional que cresce com uso: distribuição de tráfego/peso entre versões ao longo dos passos do canário."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "A arquitetura automatiza decisão de implantação sobre versões de software, sem indicar efeito consequencial direto sobre pessoas ou entidades dependentes delas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções: `coordenador` é uma máquina de estados (progredindo/pausado/revertido/promovido) com aborto manual e rollback imediato."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema emite eventos, decide promover ou reverter, e essas ações podem precisar atribuição e auditoria; há donos explícitos de entidades como `metrica`, `veredito` e `participante`."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema executa um laço que pode degradar em runtime e já prevê emissão de eventos, progresso, motivo e decisão final para diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há um laço de controle com feedback por métricas: o `coordenador` ajusta o peso do canário por passos e corrige via promoção, pausa ou rollback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do operador e fidelidade do simulador; há aborto manual e premissas sobre comportamento adequado não impostas pela arquitetura."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Existem contratos que duas partes devem interpretar igual — por exemplo `Amostra | Indisponivel`, `Veredito`, direção de `metrica` e distribuição de pesos com soma 100."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variação: amostra mínima de 50, confiança de 98%, limiares da guarda absoluta, limite de 4 erros e aquecimento de instância."
+    }
+  ]
+}

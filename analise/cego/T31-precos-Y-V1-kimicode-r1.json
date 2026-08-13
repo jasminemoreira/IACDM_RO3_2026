@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de fronteiras fora do processo que podem falhar ou devolver dados inesperados: arquivo SQLite (A-07), arquivo CSV da planilha legada (M-08) e sistema de arquivos — apesar de não haver rede em runtime."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoas: UI web com 4 telas (M-12), incluindo decisões de UX explícitas como data preenchida com 'hoje' de forma visível e editável, e mensagens de rejeição com motivo nomeado (M-08)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada em uso: importador CSV normalizando formato antigo (M-08) e prova de paridade contra os preços originais (M-09, CS-1) existem justamente para a transição do velho para o novo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Consumo de recurso não cresce com o uso: processo single-user, SQLite local em arquivo único, sem ML, sem infraestrutura elástica e sem processamento de alto volume — RETE foi descartado justamente por desproporção quantitativa."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide o preço cobrado de clientes — decisão consequencial que pode prejudicar quem paga (sobrepreço por regra errada) — e a própria arquitetura responde com trace exaustivo (I-3), explicação contrastiva (M-06) e recálculo (M-10)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há um processo com estados e transições: rascunho → validação de coerência (M-05) → publicação atômica (M-07), com caminhos de exceção (linhas rejeitadas, empate insolúvel, erros vs. avisos)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar e responder por elas: log imutável de decisões (LogDeDecisoes), versões publicadas nunca alteradas (A-12, I-4/I-7), histórico e recálculo por id."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que roda após a entrega e pode falhar silenciosamente (preço errado); a operação precisa diagnosticar o porquê sem mudar código — trace exaustivo serializado (M-11), log de decisões e telas de histórico/simulador são os mecanismos."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há malha de realimentação: o motor é função pura que nunca lê relógio (A-04), sem retry/backoff, sem sincronização nem ajuste de estado em runtime rumo a um alvo — só reação a cada requisição."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há atores com incentivos divergentes: processo single-user (A-06), sem auth por deliberação de escopo (A-08), sem API pública ou integradores que possam desertar estrategicamente de uma cooperação assumida."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "A arquitetura é densa em contratos que duas partes precisam ler igual: assinaturas dos 12 módulos, contrato REST com data obrigatória (M-11), schema do CSV legado com formatos BR ambíguos (M-08), e regras de precedência/desempate (M-04)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Há tolerâncias explícitas e dependência de variação: tolerância de R$ 0,01 na paridade (M-09), arredondamento half-up só no resultado final (A-13), parsing tolerante a milhar/caixa/espaço do legado (M-08) e intervalos fechados com bordas 19/20 (A-11)."
+    }
+  ]
+}

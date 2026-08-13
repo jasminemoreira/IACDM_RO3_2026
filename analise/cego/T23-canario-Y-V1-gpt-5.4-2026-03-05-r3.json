@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "As portas externas (`relogio`, `fonte-de-metricas`, `alvo-de-implantacao`) são adaptadores/simuladas no escopo descrito; não há dependência externa real fora do processo nesta arquitetura."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: `cli` recebe entrada do operador e exibe progresso, motivo e decisão final."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O problema e o `alvo-de-implantacao` explicitam convivência entre canário e versão estável, com rollback para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso variável — distribuição de tráfego/peso entre canário e estável — cujo custo cresce com uso e escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza uma decisão consequente — promover ou reverter uma implantação — que pode causar dano operacional a serviços e seus responsáveis."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "`coordenador` implementa uma máquina de estados com progresso, pausa, reversão, promoção e aborto, com caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O `coordenador` emite eventos e a `cli` relata motivo e decisão final; ações e decisões precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema que executa um laço de decisão e pode degradar em operação; há necessidade de detectar e diagnosticar por eventos/motivos emitidos."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há um laço de feedback: métricas geram veredito/score e o `coordenador` ajusta o peso do canário ou faz rollback."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do operador e fidelidade do simulador/fornecedor de métricas; um ator interessado pode abortar, configurar cenários ou operar limiares em benefício próprio."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que exigem leitura inequívoca entre módulos, como `coletar(...) -> Amostra | Indisponivel`, `Veredito`, distribuição de pesos e direção da métrica."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A decisão depende de tolerâncias e variações pequenas — amostra mínima 50, confiança 98%, limite de 4 erros, limiares de guarda e ruído de métricas."
+    }
+  ]
+}

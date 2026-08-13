@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependência de rede externa (API Anthropic via M-07) que pode falhar, ser lenta ou devolver dados inesperados — A2 (`usage` ausente) e variante de streaming já indicam a fronteira."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a SPA painel-web (M-10) e a painel-api com login de operador (M-09)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema greenfield: o banco SQLite embutido só é lido por esta versão e não há contrato ou estado preexistente a carregar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O próprio objeto do sistema é alocar e cortar um recurso cujo custo cresce com o uso (tokens/custo de LLM); A6 questiona custo não contabilizado da própria decisão de admissão."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão automatizada e consequente: o corte automático ao atingir o teto nega serviço às entidades (e às pessoas que delas dependem), com efeito direto de bloqueio (402/429)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados e caminhos de exceção: ciclo reserva → reconciliação/liberação do escrow (par confirmado/reservado), incluindo reserva órfã deliberadamente sem política definida."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade e decisões de corte que alguém precisará auditar e atribuir (M-08 eventos, M-09 configuração de tetos por operador autenticado)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda e pode degradar silenciosamente — reservas órfãs, lost update (A3/A7), relógio (A4) — e o painel existe para detectar consumo/estado de corte sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Regulação de estado ao longo do tempo: laço reserva-de-pior-caso → reconciliação-com-custo-real corrige o contador; virada de janela mensal e tetos alteráveis em runtime mudam o comportamento (risco de deriva/oscilação)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação: A5 pressupõe que apps não contornam o gateway com a chave real; clientes auto-interessados poderiam burlar ou fazer retry storm contra teto esgotado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos entre partes com leituras divergentes possíveis: formato `usage` traduzido pelo Adapter, contrato `POST /v1/messages` com streaming, e o formato do contador como par (confirmado, reservado) que duas implementações poderiam interpretar de modos distintos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: relógio do host para a virada da janela (A4 não verificada), versão do SDK `anthropic`, faixas de `max_tokens`/tokens de entrada e variação de carga sob concorrência."
+    }
+  ]
+}

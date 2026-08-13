@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite (arquivo fora do processo) e M-08/M-10 dependem de transação leitura-para-atualização — fronteira que pode falhar, travar ou corromper."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-rendered operadas por pessoas (bandeja, nova despesa, delegações, auditoria) com formulários POST."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema novo sem estado legado: não há dados, formato ou contrato antigo em uso a preservar; `migrar()` de M-09 apenas cria o schema inicial."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresça com o uso: sem IA/ML, sem processamento de alto volume, e A7 limita explicitamente a dezenas/centenas de despesas."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide aprovação/rejeição de despesas e validade de delegações — decisões consequenciais que podem negar ou travar o reembolso de alguém, com trilha (M-06) como mecanismo de auditoria/correção."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-01 define estados e transições da despesa, M-02 monta cadeia multi-ator de aprovação, M-03 gerencia vigência/revogação — fluxo com handoffs e caminhos de exceção (INV-9, INV-11, INV-13)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-06 é trilha append-only com ator efetivo, em-nome-de, instante e limite exercido (INV-7, INV-8) — cada decisão precisa ser atribuível e auditável."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "M-11 é um servidor Fastify com banco que rodará e pode degradar em produção; a arquitetura não prevê logs/métricas/health, então a lente precisa interrogar como diagnosticar falha sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema só reage sob demanda: o escopo negativo proíbe cron/timer e a expiração de delegação é avaliada no ato, sem laço de feedback, retry ou sinal de erro a corrigir."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A5 assume identidade informada confiável sem autenticação e M-12 tem seleção livre de usuário — a SoD vale contra engano, mas um ator auto-interessado pode desertar chamando a API com outra identidade."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Doze módulos com contratos explícitos (assinaturas, `ItemBandeja`, `Resultado | ErroNomeado`, formato Evento/Decisão, API HTTP) que duas implementações corretas poderiam ler de formas divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de variações e fronteiras exatas: INV-1 com fronteira inclusiva de limite, A6 com vigências ambíguas na fronteira do instante UTC, A4 com escritor único no banco e A7 com carga limite da bandeja sem paginação."
+    }
+  ]
+}

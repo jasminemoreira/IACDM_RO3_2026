@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras com sistema de arquivos/armazenamento (`store-f1`, `store-f2`, `cli`) e a premissa P-A7 explicita corrupção de bytes e perda de bloco."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa via CLI (`tsz ingest/read/retain/migrate/validate-config/report/gen-dataset`)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há migração explícita entre formatos/contratos existentes (`migrator`, `store-f1`, `store-f2`) com `precheck`, abort e `--allow-lossy`."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa e armazena séries temporais com custo que cresce com volume, retenção, downsampling e migração de acervo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "A arquitetura compacta/armazena séries e aplica retenção, mas não automatiza decisão consequencial sobre pessoas ou entidades das quais dependam."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com etapas e exceções claras: ingestão, retenção, expiração e migração com rejeição/consentimento explícito."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra e transforma acervos por série, e ações como escrita, expiração e migração precisam ser atribuíveis/auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema pode degradar após entregue (falhas de escrita, rejeições, corrupção, perdas na migração) e há operação contínua via CLI/armazenamento."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A retenção regula o estado do acervo ao longo do tempo com `plan()`/expire/downsample, corrigindo desvio entre estado atual e política alvo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador/produtor em premissas não impostas, como escritor único (P-A2) e entrada monotônica (P-A4)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e formatos que exigem interpretação única (`Store`, bitstream, blocos, F1/F2, Gorilla, relatórios de rejeição/capabilities)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e limites exatos de representação e entrada, como `ts_bits`, quantização, bloco 2 h ≤ 4 h e monotonicidade estrita."
+    }
+  ]
+}

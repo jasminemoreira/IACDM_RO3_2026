@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de fronteiras externas que falham ou devolvem dado inesperado: arquivos OFX/CSV de bancos (A1 — FITID instável), biblioteca ofxtools, e SQLite como banco de dados; M-03/M-04/M-05 são exatamente esses pontos de contato."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: o CLI (M-11) com comandos import/reconcile/review/report e a fila de revisão humana (M-09), onde o operador precisa resolver pendências sem confusão nem erro."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield: o SQLite é criado e lido apenas por esta versão do sistema, e não há estado populado, formato legado ou contrato já consumido por terceiros a carregar ou dar rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Processamento de alto volume cujo custo cresce com o uso: carga de 50k no fixture (M-12) e orçamento de blocking (A4 — bloco degenerado reintroduz O(n²)) tornam o custo computacional uma decisão de design explícita."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Automatiza decisão consequente sobre registros financeiros: dedup e conciliação decidem fusão/estado de lançamentos que pessoas depois auditam e respondem por — daí VAL-2 exigir zero falsos positivos e o escopo negativo proibir fundir sob evidência fraca."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O núcleo é um processo com estados e caminhos de exceção: 5 estados terminais de conciliação (M-01), cadeia de decisão L0→L5 (M-07) e fluxo de pendência → resolução humana (M-09), com transições que podem ficar incompletas."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Auditabilidade é propriedade do sistema: DecisaoDedup sempre carrega camada decisora e evidência, resoluções humanas são persistidas e nunca sobrescritas (M-09, escopo negativo) — toda decisão precisa ser atribuível e respondível depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda e pode degradar silenciosamente após entregue: queda de L1 para L2/L3 por FITID instável (A1) ou bloco degenerado (A4) mudam o comportamento sem erro visível, e alguém precisaria diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há malha de realimentação: resoluções humanas persistidas (M-09) alimentam a camada L0 do dedup-engine, alterando decisões automáticas futuras — loop que pode derivar ou oscilar; além disso janela de data e tolerância de valor são settings em runtime que mudam o comportamento (M-08)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ferramenta de operador único sem ator com incentivo a desviar estrategicamente: as premissas frágeis (A1, A6, A7) são sobre estabilidade de dados externos, não sobre comportamento interessado de usuário, integrador ou operador."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que duas leituras corretas podem divergir: perfis declarativos de CSV (M-04 — encoding, sinal, formato de data), gramáticas OFX v1 SGML / v2 XML (M-03) e a definição do hash canônico (M-02), que precisa ser inequívoca pois a identidade do CSV depende dela (A2)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam e só funciona dentro de tolerâncias: janela de data e tolerância de valor configuráveis (M-08), FITID que pode variar entre downloads (A1), descrição comparável entre fontes (A6) e abs(valor) que pode confundir estorno com duplicata (A7)."
+    }
+  ]
+}

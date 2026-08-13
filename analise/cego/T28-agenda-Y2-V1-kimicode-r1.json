@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de fronteiras externas que falham de formas variadas: invalidação de token (410), tombstones, paginação que repete item, e a janela não-atômica entre escrita no provedor e commit local (PR-6)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é uma CLI operada por pessoa, com comandos de resolução de conflito (`conflicts resolve --take a|b|merge`), exit codes e saída tabular — superfície onde confusão gera erro operacional."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield: o SQLite do ancestral/fila é criado e lido apenas por esta versão, e os provedores são simulados sem estado pré-existente a preservar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O custo do ciclo cresce com o volume de eventos: PR-8 fixa < 5 s com ~1.000 eventos/lado, M-09 é O(n log n) e a decisão single-threaded foi tomada contra a alternativa async."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O reconciler/policies decidem automaticamente qual versão de um evento sobrevive na agenda de uma pessoa; erro de resolução apaga ou sobrescreve compromissos reais, e a fila de conflitos é o mecanismo de correção."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processos com estados e caminhos de exceção: ciclo de vida do conflito (aberto→resolvido), ciclo de sync com full resync, invalidação de token e verificação fora de janela (R-A3)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Conflitos são entidades persistidas com decisão registrada ('nada aplicado sem decisão') e o SyncReport registra o que foi aplicado — ações que alguém precisará auditar e atribuir depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema pode falhar silenciosamente em operação (PR-7: 'UC-8 falha silenciosamente'; eco lido como mudança externa), e precisa-se diagnosticar o porquê via SyncReport/status sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um loop de regulação de estado entre dois calendários: neutralização de eco (A-5) é controle de realimentação, com risco explícito de oscilação (duplicação a cada ciclo, PR-3) e deriva ancestral↔token (PR-1)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Operador único e provedores simulados: nenhum ator com incentivo próprio capaz de desviar estrategicamente — as falhas dos provedores são técnicas (tokens, janelas), não defeção interessada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos suscetíveis a duas leituras corretas: token de estado 'opaco: proibido parsear', DATE vs DATE-TIME, TZID, e a porta Provider implementada por dois adaptadores com semânticas distintas (alpha vs beta)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de coisas que variam: semânticas divergentes dos dois provedores, versão do `recurring-ical-events` (PR-7), fusos horários, e entrada que pode repetir item na paginação — o sistema precisa tolerar desvio, não especificação exata."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende do provedor Anthropic via rede (M-07, chamada longa fora da transação), do arquivo SQLite e do relógio do host — todos podem falhar, travar ou devolver dados inesperados (A2, A4)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a SPA painel-web (M-10) e a painel-api com login de operador (M-09), que mostram consumo, saldo, corte e reset."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield com banco embutido próprio; o 'schema e migração' do M-08 é do próprio armazenamento — não há estado populado nem contrato preexistente a carregar."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema existe justamente para alocar e cortar um recurso cujo custo cresce com o uso — gasto de LLM em moeda, com reserva de pior caso e reconciliação (M-03, M-04)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisão automatizada consequente: o corte ao atingir o teto nega serviço a entidades das quais pessoas dependem, com efeito direto (402/429) e necessidade de transparência/correção."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo com estados e transições explícitas: reservar → enviar → reconciliar/liberar, com caminhos de exceção (negação, reserva órfã sem política de expiração, idempotência por id_reserva)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade (M-08), autentica operador para alterar tetos (M-09) e emite/revoga chaves (M-02) — ações e gastos precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Gateway em execução contínua que pode degradar silenciosamente — reservas órfãs, contadores presos, corte indevido por relógio (A4) — e alguém precisará diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de regulação de estado no tempo: reserva de pior caso corrigida pela reconciliação, contadores (confirmado, reservado) e virada de janela mensal — com risco de deriva entre reservado e confirmado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação não imposta: A5 (apps não possuem a chave real) e A6 (count_tokens não cobrado) — um ator auto-interessado pode contornar o gateway ou explorar a admissão gratuita."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que duas partes devem ler igual: formato `usage` traduzido pelo Adapter (M-07), assinaturas do escrow, vigência do rate-card por instante e semântica da variante de streaming."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de coisas que variam: relógio do host (A4), comportamento do SQLite sob concorrência (A7), presença de `usage` (A2) e faixas de tokens — pequenos desvios falam o invariante do teto."
+    }
+  ]
+}

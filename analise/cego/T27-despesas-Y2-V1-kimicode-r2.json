@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite fora do processo (banco pode falhar, travar, corromper), e M-11 é um servidor HTTP exposto a entradas inesperadas."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 define 6 telas server-rendered operadas por pessoas (bandeja, nova despesa, delegações, auditoria)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield com seed próprio (M-09 `semear`): não há estado pré-existente nem contrato que outra versão já leia para carregar ou reverter."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 fixa volume pequeno (dezenas a centenas de despesas) e não há recurso cujo custo cresça com o uso (sem IA, sem infra elástica, sem processamento em massa)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide aprovação/rejeição de despesas de pessoas e delegação de autoridade — decisões consequenciais com efeito sobre solicitantes."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-01 define máquina de estados com transições e rejeição terminal, M-02 monta cadeias de aprovação multi-ator, M-03 trata vigência/revogação — fluxo com handoffs e caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "INV-7/INV-8 (M-06) exigem trilha append-only com ator efetivo, em-nome-de e limite exercido — auditoria e atribuição são requisito explícito."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Fastify + SQLite rodam como serviço persistente que pode degradar em produção, e a arquitetura não prevê logs/métricas — só a trilha de domínio."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há regulação ao longo do tempo: expiração de delegação é avaliada sob demanda contra o relógio, sem retry/backoff, sem loop de feedback, sem sincronização de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A5 aceita explicitamente identidade confiável sem autenticação — o design assume cooperação ('SoD contra engano, não contra adversário'), e um ator auto-interessado pode desviar chamando a API direto."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos tipados entre módulos (fronteira inclusiva de INV-1, semântica de `ativaEm` na fronteira de vigência, formato de ErroSoD) admitem duas leituras corretas divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações: valores em centavos em qualquer magnitude, instantes em fronteiras de vigência (A6), versões de Fastify/SQLite e ambiente — pode falhar em pequenos desvios da especificação."
+    }
+  ]
+}

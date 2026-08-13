@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "Tudo que é exterior está atrás de portas com adaptadores in-process (simulador, relógio virtual); não há rede, banco, fila, arquivo ou subprocesso real que possa falhar — a 'indisponibilidade' é um dado simulado, não uma dependência externa."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (cli) é superfície operada por uma pessoa: o operador inicia, aborta e interpreta progresso, motivo e decisão final via terminal."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio domínio é a transição: canário convive com a versão estável sob distribuição de pesos (M-10), com caminho de rollback definido (100% à estável)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresça com o uso: janela acumula amostras em memória com amostra mínima fixa, e o substrato é simulado localmente, sem infraestrutura elástica ou processamento de volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O coordenador decide automaticamente promover ou reverter uma versão em produção — decisão cujo efeito recai sobre os usuários que dependem do serviço, sem aprovação humana por passo (escopo negativo)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é uma máquina de estados explícita (progredindo / pausado / revertido / promovido) com laço de execução, aborto manual e caminhos de exceção."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema decide rollback/promoção e emite eventos com motivo — algo que alguém precisará auditar e responder depois, agravado pelo escopo negativo de não persistir nada entre execuções."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A arquitetura já assume a necessidade de diagnóstico em execução: coordenador emite eventos e cli os observa para expor progresso, motivo e decisão final sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de feedback regulador: métricas → vereditos/score → progressão de pesos ou rollback (guarda-absoluta), com risco clássico de oscilação entre passos e reversões."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Nenhum ator com incentivo próprio: operador, participantes e métricas não são partes estratégicas capazes de desviar para benefício individual; não há cooperação assumida sem enforcement."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que duas partes precisam ler igual: as três portas (relogio, fonte-de-metricas, alvo-de-implantacao), os tipos Amostra | Indisponivel e Veredito, e o formato dos eventos coordenador→observador."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de valores que podem variar: limiares da guarda-absoluta (A3), amostra mínima de 50 (A4), confiança de 98% no Mann-Whitney e limiar de score 100 (A6) — tolerâncias onde pequenas variações mudam o veredito."
+    }
+  ]
+}

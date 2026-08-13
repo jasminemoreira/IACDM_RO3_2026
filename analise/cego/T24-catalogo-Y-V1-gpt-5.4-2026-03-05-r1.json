@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de sistema de arquivos e parsing YAML em `yaml-loader`/`catalog-repository`, que pode falhar, atrasar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa na `cli`, com subcomandos, flag `--json`, mensagens de erro e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há transição descrita de sistema existente, formato legado ou contrato antigo a preservar/coexistir."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso computacional que cresce com o tamanho do catálogo/grafo, ainda que assuma escala pequena e tudo em memória (`A7`, `A4`)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema materializa donos por domínio/dataset e pode produzir atribuição incorreta de responsabilidade ou impacto sobre entidades se houver erro de catálogo ou linhagem."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de carregamento→mapeamento→grafo→validação→consulta, com caminho excepcional agregado de violações e regra de 'não consultar inválido'."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O problema e as invariantes tratam explicitamente de ownership e responsabilização: domínios têm dono e datasets não podem ficar órfãos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A ferramenta roda fora do código de teste e pode falhar em uso; operadores precisariam diagnosticar falhas de carga/validação/execução pela CLI sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação que ajuste estado rumo a meta; o sistema apenas carrega, valida e responde consultas sem correção automática."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do humano que escreve YAML corretamente e declara donos/linhagem sem omissões estratégicas, mas isso não é totalmente imposto pelo sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos e gramática suscetíveis a leitura ambígua, explicitados por `A6`, `A10` e pela inversão semântica de aresta em `catalog-mapper` (`alimentado_por: X` vira `X -> eu`)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de entrada e ambiente: versão/comportamento do NetworkX, forma exata de IDs `dominio.nome`, restrição sem ponto e variação de arquivos YAML."
+    }
+  ]
+}

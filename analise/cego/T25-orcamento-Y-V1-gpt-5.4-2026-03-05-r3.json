@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências fora do processo e sujeitas a falha/latência/dados inesperados: SDK Anthropic no upstream, arquivo SQLite e rate-card em arquivo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: painel-web SPA, painel-api e login/senha de operador para consultar consumo e configurar tetos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado persistido e schema/migração no módulo persistencia; mudanças precisam coexistir com dados já gravados e ter caminho de transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema mede, limita e decide consumo de um recurso cujo custo cresce com uso: chamadas ao provedor LLM cobradas em moeda/tokens."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A arquitetura automatiza uma decisão consequente de negar/cortar consumo por teto global ou por entidade, podendo prejudicar a parte sujeita ao corte."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções explícitas: resolver identidade, reservar, negar ou enviar ao provedor, reconciliar/liberar e registrar evento."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema decide cortes e registra consumo por entidade, com chave virtual, operador autenticado e eventos consultáveis que depois exigem atribuição e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com falhas possíveis após deploy; a própria arquitetura cita premissas operacionais e modos de falha que precisarão ser detectados e diagnosticados."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de controle de orçamento: reservar pior caso, medir custo real via usage e reconciliar contadores para manter o estado próximo do teto alvo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação operacional e dos clientes em pontos não totalmente impostos por código, como não contornar o gateway e manter chave real só no gateway."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam interpretar igual — usage→modelo interno, stop_reason, semântica de reservar/reconciliar/liberar e de janelas/tetos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de ambiente e variação real: relógio do host, semântica transacional do SQLite, presença de usage, versões/formatos do provedor e carga concorrente."
+    }
+  ]
+}

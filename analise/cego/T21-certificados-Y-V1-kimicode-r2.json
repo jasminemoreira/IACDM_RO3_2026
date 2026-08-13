@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 sonda-tls faz handshake TLS contra hosts externos que podem falhar, estourar timeout, recusar conexão ou devolver certificado inesperado, e M-09 depende de node:sqlite; há fronteiras externas falíveis por todo o sistema."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 web-ui expõe 5 telas (login, painel, alvo, trilha) com formulários POST operadas por pessoas — solicitante e aprovador precisam completar tarefas sem confusão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O sistema é novo: não há sistema legado em uso, formato de dados antigo nem contrato vivo a preservar — o escopo negativo e as premissas não mencionam transição de estado anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 assume volume pequeno (dezenas de alvos), varredura sequencial e disparo manual — nenhum recurso de custo crescente é alocado ou consumido em escala que justifique a lente."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e registra quem aprovou cada emissão e classifica trocas como 'troca-nao-autorizada' (M-04) — uma decisão consequencial automatizada que pode prejudicar ou acusar um operador sujeito a ela."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-03 modela uma máquina de estados pendente -> aprovado -> fechado com handoff entre solicitante e aprovador, e M-04 trata caminhos de exceção (escalação por inação) — fluxo com estados e exceções a verificar."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Registrar 'quem aprovou cada emissão' é o próprio requisito: M-05 (trilha hash-encadeada) e M-06 (papéis de atores) existem para atribuição e auditoria de ações."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente monitorando alvos e pode falhar silenciosamente (A2: relógio errado sem mitigação; A1: certificados inalcançáveis invisíveis) — alguém precisará diagnosticar degradação em produção sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O sistema reage ao sinal 'dias restantes' e ajusta estado via M-02 (classificar por limiares) e M-04 (decidir escalar/abrir ação), buscando convergir para 'certificado renovado antes do vencimento' — um laço de feedback com risco de oscilação/deriva de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação: A4 assume humano que aprova dentro da janela, e o escopo negativo admite que não impõe segregação de funções — um aprovador interessado poderia aprovar emissão própria ou ignorar pedidos."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos com leitura ambígua: A3 define inferência de emissão por 'fingerprint diferente com notAfter avançado', e os discriminadores de Decisao em M-04 podem ser implementados de formas divergentes por dois leitores corretos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variação tolerável: A2 (relógio da máquina correto), A8 (API experimental de node:sqlite mudando de versão) e A7 (carga de alvos) — falhas ocorrem com pequenos desvios da especificação exata."
+    }
+  ]
+}

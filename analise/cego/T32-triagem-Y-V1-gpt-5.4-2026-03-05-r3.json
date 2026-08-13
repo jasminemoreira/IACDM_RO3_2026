@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência fora do processo na persistência SQLite via better-sqlite3/repositório, que pode falhar, travar ou retornar erro."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoas: 6 telas server-side em ui-web e rotas de entrada em api-http."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Existe esquema, seed e formato persistido em SQLite no repositorio, logo há estado antigo a preservar ou migrar quando o sistema evoluir."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura declarada é nó único, thread única, sem uso de infraestrutura elástica ou processamento intensivo que indique consumo de recurso crescendo como preocupação central."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza prioridade e reclassificação de chamados, decisão consequente que pode prejudicar o solicitante; há até recurso e julgamento."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há rito explícito com ciclo de vida, estados, reclassificação, recurso, julgamento e prazos entre atores."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra trilha somente-inserção, autoria por autor/gestor/usuário e decisões que precisarão ser auditáveis e atribuíveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com servidor HTTP, banco e fluxos transacionais que podem degradar ou falhar após entrega."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura reage a comandos e calcula prazos, mas não descreve laço de realimentação que ajuste comportamento para perseguir uma meta em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A própria premissa A7 assume boa-fé do solicitante e admite possibilidade de abuso, sinal explícito de cooperação presumida e desvio estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que carregam regra e precisam leitura inequívoca — por exemplo prioridade.derivar, sla.prazos e autorizacao.pode com motivo."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de ambiente e entrada — relógio, SQLite, versões de dependências, carga e combinações de impacto/urgência/prazos."
+    }
+  ]
+}

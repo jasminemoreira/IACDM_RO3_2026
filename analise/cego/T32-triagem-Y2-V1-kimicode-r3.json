@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite/disco (better-sqlite3) e M-11 expõe fronteira HTTP — banco em arquivo pode falhar, travar ou corromper, e clientes podem enviar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 define 6 telas server-side operadas por pessoas (abrir, fila, triar, chamado, recorrer, julgar), incluindo distinção de motivos de rejeição que o usuário precisa entender."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield com seed próprio: nenhum store populado, formato legado ou consumidor pré-existente precisa sobreviver à mudança."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "M-07 é somente-inserção e nunca reescrita nem compactada — o volume da trilha cresce a cada operação, sem limite declarado, e o custo de armazenamento/consulta cresce com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente a prioridade de atendimento de pessoas (M-03/M-05) e julga recursos contra elas (M-06) — decisão consequencial com efeito direto sobre solicitantes."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-05 e M-06 definem ciclo de vida com estados, prazos de rito (recorrer/julgar), prescrição e handoffs entre solicitante, triador e gestor — fluxo com exceções que pode ficar incompleto."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-07 registra trilha de eventos para auditoria, M-08 exige autoria e motivo por ação, e M-06 exige fundamentação do julgamento — há obrigação explícita de atribuir e prestar contas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como servidor (Fastify + SQLite) e pode falhar ou degradar silenciosamente — violações de SLA e filas paradas precisam ser detectáveis em produção, e a arquitetura não menciona logs ou métricas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A reclassificação (M-05) corrige prioridade e recalcula prazos ao longo do ciclo de vida, e a configuração como dado (M-02) altera comportamento em runtime — há regulação de estado no tempo com risco de deriva (ex.: reclassificações sucessivas)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A7 assume o solicitante de boa-fé sem mecanismo de punição, e A8 aceita identidade apenas declarada — a cooperação é presumida, não imposta, e um ator interessado pode abusar de reclassificação/recurso ou personificar outro."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos densos que duas leituras podem divergir: matriz(impacto, urgência) de M-03, o formato de Evento da trilha (M-07), Permissao-com-motivo de M-08 e o contrato HTTP de M-11."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variação tolerável: valores de impacto/urgência fora da matriz, configuração carregada como dado (M-02) que pode vir malformada, relógio e ambiente — pequenos desvios de especificação podem quebrar a derivação de prioridade."
+    }
+  ]
+}

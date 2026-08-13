@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de banco/SQLite via M-08/M-09, que pode falhar, bloquear ou retornar erro."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: API HTTP em M-11 e telas server-rendered em M-12."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto descreve trabalho greenfield com schema/seed próprios; não há estado legado nem contrato existente a preservar ou conviver."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura não mostra consumo elástico/intensivo nem decisão de alocação de recurso cujo custo cresça materialmente com uso; assume volume pequeno (A7)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisão consequente sobre aprovação/rejeição de despesas e delegação de autoridade, afetando pessoas e áreas dependentes do gasto."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O domínio é um fluxo explícito com estados, cadeia de aprovação, rejeição terminal, delegação e handoffs entre atores."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Há trilha append-only com ator efetivo, em-nome-de, instante e limite exercido em M-06 para auditoria e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como processo com API e persistência e pode degradar após deploy; seria preciso diagnosticar falhas em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há estado regulado ao longo do tempo por vigência/revogação de delegações avaliada contra relógio sob demanda em M-03/M-07/M-04."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A5 assume cooperação na identidade informada; um ator pode desviar estrategicamente chamando a API direta e contornar SoD."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que exigem leitura inequívoca, como fronteiras temporais de vigência, limite inclusivo e campos ator/em-nome-de/origem nas interfaces e API."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias de ambiente e entrada, como UTC monotônico (A6), SQLite/transações (A4) e fronteiras exatas de valor e tempo."
+    }
+  ]
+}

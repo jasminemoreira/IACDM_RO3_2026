@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou atrasar: sonda-tls faz rede TLS e repositorio usa sqlite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas em web-ui, com login, painel, trilha e fluxos de pedido/aprovação."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto descreve V(1) sem estado legado, contrato pré-existente ou necessidade de conviver/migrar com versão anterior."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A varredura consome recursos de rede/tempo por alvo e o próprio texto assume custo crescente com volume pequeno de alvos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e registra troca-nao-autorizada, escalação e aprovações, com efeitos sobre pessoas responsáveis por emissões."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e handoffs: pedido pendente->aprovado->fechado, além de exceções de reconciliação e escalação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra quem aprovou cada emissão e mantém trilha append-only encadeada para auditoria e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução que pode degradar em varreduras, rede, banco e trilha, exigindo diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação ao longo do tempo: monitoramento periódico de validade, classificação por limiares e reconciliação para corrigir divergência entre esperado e observado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação humana para aprovar dentro da janela e seguir o fluxo; há espaço para desvio estratégico ou inação."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca entre módulos, como DER->Observacao, Decisao[], estados e convenções Ok|Erro."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de tolerâncias de ambiente e variação: relógio correto, API experimental node:sqlite, formatos de certificado, timeout e volume de alvos."
+    }
+  ]
+}

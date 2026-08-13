@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos JSON e entrada por caminho/arquivo; disco e dados externos podem falhar, atrasar ou vir inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em M-11 cli, com 5 comandos de uso."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de estado legado, contrato já consumido por terceiros, nem necessidade de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso escasso e valioso — plantões de pessoas — e o custo computacional do solve cresce com a escala do problema."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e revalida alocações de plantões e trocas que afetam pessoas diretamente."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções, especialmente na troca PENDENTE→resposta, além dos 5 casos de uso encadeados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Escalas, trocas e aceitações precisam atribuição e auditoria; a própria premissa A5 expõe necessidade de autoria confiável."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema executa solve, diagnóstico, carga e persistência após entrega e pode falhar/degradar em operação sem mudança de código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há regulação de estado ao longo do tempo pela fronteira derivada do mês anterior e revalidação de trocas contra a escala corrente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação de operadores e identidades verdadeiras; A5 e A7 mostram espaço para desvio estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos interpretáveis entre módulos e arquivos — interfaces de restrição, formatos JSON e regras/validações que precisam leitura inequívoca."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de variação de entrada, tamanho de instância, ambiente de execução e comportamento do solver, com tolerâncias explicitadas em premissas como A4."
+    }
+  ]
+}

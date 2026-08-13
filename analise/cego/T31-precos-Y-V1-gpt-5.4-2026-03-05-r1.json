@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou devolver dado inesperado: SQLite em arquivo único e importação de CSV/planilha legada."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: UI web com 4 telas e fluxo de importação/simulação/histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e inclui importador CSV + prova de paridade para conviver/transicionar do modelo antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo elástico ou recurso cujo custo cresça materialmente com uso; escopo é local, single-user e sem dependência de rede em runtime."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza decisão consequente de preço por SKU/quantidade, com potencial de prejuízo ou exclusão comercial e mecanismos de explicação/histórico."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções: importar rascunho → validar → publicar → consultar/recalcular, com rejeições e erros nomeados."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema publica versões imutáveis, registra decisões e mantém histórico/trace para auditoria e atribuição posterior."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com persistência e adapters onde falhas/degradações precisam ser diagnosticadas depois do deploy; há log e histórico de decisões."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de correção explícito na prova de paridade, que reconsulta o motor e compara divergências contra o legado para ajustar/coibir drift na migração."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do operador na importação/validação/publicação e entrada correta de data editável; um ator pode desviar em benefício próprio se não seguir o fluxo esperado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leituras divergentes: parsing BR de moeda, 'Ate' textual, intervalo fechado [min,max], vigência e data obrigatória na API."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e pequenas variações de entrada/ambiente: centavos com tolerância de R$ 0,01, arredondamento final, bordas de faixa e normalização de SKU/texto."
+    }
+  ]
+}

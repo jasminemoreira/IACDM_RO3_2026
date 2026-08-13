@@ -1,0 +1,66 @@
+{
+  "projeto": "T29-retencao",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende do disco como fronteira externa falível: P-A7 declara que um bit corrompido em F2 perde o bloco inteiro e não há checksum; leitura/escrita de arquivos pode falhar ou devolver dado inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe uma CLI operada por pessoa (7 subcomandos), com superfícies de erro e consentimento (rejected/reasons, abort do precheck, --allow-lossy) que o operador precisa entender para não errar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio domínio é carregar acervos populados entre formatos (migrator F1↔F2, UC-4), com risco de perda, precheck e política de abort/allow-lossy — transição de estado existente com necessidade de reversibilidade."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O consumo de disco cresce com o volume ingerido e a arquitetura decide ativamente esse recurso: tiers de retenção, downsample e expire existem justamente para proporcionar custo de armazenamento ao valor do dado."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "Nenhuma decisão consequencial recai sobre pessoas: o sistema comprime, retém e migra séries temporais; a perda de dados em migração lossy é decisão técnica do operador, não efeito sobre indivíduos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados, handoffs e caminhos de exceção: plano de retenção (downsample→expire por tier), migração (precheck→abort ou allow-lossy→relatório), e rejeição de pontos na escrita."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra fatos pelos quais alguém terá de responder depois: WriteReport.rejected/reasons, MigrationReport.lossless e a exigência de consentimento explícito para perda são trilha de auditoria de ações destrutivas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema pode degradar em silêncio após entregue — corrupção sem checksum (P-A7), pontos rejeitados na escrita — e já nasce a preocupação de diagnóstico via `tsz report` e contadores de rejeição."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "A retenção regula o estado do acervo ao longo do tempo: retention.plan recebe tier_state e now e corrige o armazenamento (downsample/expire) em ciclos repetidos, com risco de deriva ou oscilação entre tiers se o estado retroalimentado for inconsistente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não enforcement: P-A2 (escritor único declarado, sem lock), I2 (produtor envia timestamps ordenados — desviar é erro, não é reordenado) e o operador honesto ao passar --allow-lossy."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler igual: o Protocol Store (capabilities, WriteReport), os schemas byte-exatos de F1 (big-endian, slots de 12 B) e F2 (bloco Gorilla) — duas implementações corretas podem divergir em leituras ambíguas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de faixas que variam e pode falhar em pequenos desvios: timestamps quantizados com teto de 2106 (32 bits), delta inicial de 14 bits limitando bloco a 4 h, colisão de pontos no mesmo slot, perfis de entrada extremos (ieee-edge, gaps, jitter)."
+    }
+  ]
+}

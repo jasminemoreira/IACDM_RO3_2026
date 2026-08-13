@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite via better-sqlite3 — fronteira com disco/arquivo que pode falhar, corromper ou devolver dados inesperados; M-02 carrega matriz/metas como dado externo ao código."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 expõe 6 telas server-side operadas por pessoas (solicitante, atendente, gestor), incluindo fluxos de erro como recurso inadmitido."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield: esquema e seed novos, nenhum estado ou contrato preexistente precisa sobreviver à transição nem caminho de rollback é exigido."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A trilha (M-07) é somente-inserção e nunca reescrita nem podada (A4) — armazenamento cresce sem limite com o uso, recurso cujo custo escala com o tempo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente a prioridade que determina o atendimento de pessoas; A6 (pesos iguais sem evidência) e A7 (boa-fé assumida) sustentam decisões consequenciais sem base validada."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Ciclo de vida explícito do chamado (M-05) e rito de recurso com admissibilidade, julgamento e provimento (M-06), com handoffs entre solicitante/atendente/gestor e caminhos de exceção (B-3, B-5)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Trilha de auditoria somente-inserção (M-07), permissão com motivo (M-08) e autoria registrada (autor do recurso, gestor que julga) — ações precisam ser atribuíveis e auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Servidor Fastify + banco que roda continuamente e pode degradar em produção (ex.: SLA violado silenciosamente, disco cheio); nenhum módulo de logs/métricas aparece na decomposição."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema só reage a comandos; não há realimentação que regule estado no tempo — SLA é avaliação pontual (`violado`), não loop de correção, retry ou sincronização."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A7 assume boa-fé do solicitante sem mecanismo de punição e A8 aceita identidade declarada sem prova — cooperação assumida, não imposta; recurso pode ser usado estrategicamente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que duas partes precisam ler igual: matriz de configuração como dado (M-02), esquema de eventos da trilha (M-07), e a API HTTP que rejeita `prioridade` como entrada (M-11)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de variações fora do seu controle: entradas de usuário em faixas (impacto/urgência), relógio em horas corridas sem calendário (A9), versões de dependências e ambiente de execução — sem tolerâncias declaradas."
+    }
+  ]
+}

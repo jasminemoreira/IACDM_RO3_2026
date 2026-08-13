@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou devolver dado inesperado: SQLite em arquivo local e importação de CSV/planilha."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoas: UI web com 4 telas e fluxo de importação/simulação/histórico."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada e importa a planilha existente com prova de paridade e necessidade implícita de transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Não há sinal de consumo elástico ou recurso cujo custo cresça materialmente com uso; escopo local, sem rede e sem processamento massivo."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza decisões de preço que afetam clientes e entidades dependentes dessas decisões, com histórico e explicação."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções: importar rascunho, validar, publicar, consultar histórico e recalcular decisão."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões, mantém histórico, versões publicadas imutáveis e exige rastreabilidade por trace e obtenção por id."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com persistência e operações de publicação/consulta; falhas e degradações precisarão ser diagnosticadas após entrega."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de verificação/correção na prova de paridade e recalcular decisão, comparando saída do motor com referência para detectar desvio."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação na entrada e operação: usuário escolhe/edita a data, prepara planilha coerente e publica rascunho válido sem enforcement forte."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: moeda BR, 'Ate' textual, SKU normalizado, intervalo fechado, vigência e regra de arredondamento."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de tolerâncias e pequenas variações de entrada/ambiente: centavos, bordas de faixa 19/20, data, formato CSV e normalização de SKU."
+    }
+  ]
+}

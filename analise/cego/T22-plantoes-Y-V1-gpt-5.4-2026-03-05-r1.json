@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos JSON e entrada por arquivo/CLI (M-08, M-09, M-11), que podem falhar, atrasar ou vir com dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa via CLI, com 5 comandos de uso (M-11)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado antigo que precisa coexistir com o novo: escala do mês anterior e formatos persistidos em JSON são reutilizados na geração e consulta."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso escasso e valioso — plantões — e consome computação de solver com custo que cresce com o tamanho da instância."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "A arquitetura automatiza decisões de alocação e revalidação de trocas que podem beneficiar ou prejudicar pessoas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxos com estados e exceções, especialmente a máquina de estados de troca e os 5 casos de uso encadeados entre módulos."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas e trocas que depois podem exigir autoria, responsabilidade e auditoria sobre decisões e mudanças."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável que pode degradar após entregue, com solver, diagnósticos e persistência onde falhas precisam ser entendidas em operação."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "A arquitetura reage a comandos e valida estados, mas não descreve laço de realimentação que ajuste comportamento continuamente a partir de erro medido."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Há cooperação assumida e não imposta: identidade verdadeira no CLI e aceite correto de trocas (A5) podem ser explorados por atores interessados."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura única — interfaces de módulos, formato de instância, JSON persistido e catálogo de restrições com dois modos de uso."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de variações de entrada, escala, ambiente e desempenho do solver, com premissas explícitas sobre tamanho, tempo e formato."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 (fonte-de-metricas) distingue Amostra de Indisponivel — há uma fronteira de coleta que pode falhar ou ficar indisponível, e M-05 separa falha total de sucessão de erros."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 (cli) é superfície operada por uma pessoa: o operador inicia, observa progresso/motivo/decisão e pode abortar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é convivência canário×estável: M-10 distribui pesos somando 100 entre os dois papéis e rollback = 100% à versão estável em uso."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Simulação local monothread sem recurso cujo custo cresça com o uso — amostragem fixa (≥50 pontos/métrica), sem infra elástica, IA ou volume de dados."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O coordenador promove ou reverte automaticamente a versão que usuários do serviço recebem, sem aprovação humana por passo (escopo negativo) — decisão consequencial sobre terceiros sujeitos a ela."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é uma máquina de estados (progredindo/pausado/revertido/promovido) com laço de execução, transições por passo do M-06 e caminhos de exceção (guarda-absoluta, abortar)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O coordenador emite eventos com motivo e decisão final (alguém prestará contas de um rollback), e a arquitetura atribui explicitamente um dono a cada objeto de valor (metrica, veredito, participante, amostra)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O domínio emite eventos para observadores (M-07 `assinar`) justamente para que a CLI mostre progresso e o porquê da decisão — diagnóstico do comportamento em execução sem alterar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laço de realimentação: métricas coletadas geram vereditos que ajustam os pesos do canário rumo à promoção ou reversão; A7 admite corrida não modelada entre abortar e julgamento (deriva/oscilação de estado)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "O único ator é o operador, tratado como confiável; não há cliente, integrador ou parte com incentivo divergente cuja cooperação seja assumida."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Três portas (relogio, fonte-de-metricas, alvo-de-implantacao) são contratos que adaptadores independentes — simulado vs. real — devem interpretar da mesma forma (ex.: Amostra vs. Indisponivel, semântica de Veredito)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias em toda parte — amostra mínima ≥50, Mann-Whitney a 98%, limiar único de score 100, limite de 4 erros, limiares da guarda-absoluta — e A3/A4/A6 questionam exatamente esses pontos."
+    }
+  ]
+}

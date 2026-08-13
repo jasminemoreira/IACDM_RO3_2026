@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos OFX/CSV, biblioteca ofxtools e persistência SQLite via repository, que podem falhar, travar ou retornar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa no módulo cli para import, reconcile, review e report."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não indica estado legado, contrato já consumido por terceiros ou necessidade de transição/rollback entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume e custo cresce com uso; há carga de 50k, matching por blocking e risco declarado de reintroduzir O(n²)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide duplicata/conciliação e gera pendências ou resoluções humanas, podendo causar dano por falso positivo; o próprio texto exige auditabilidade e correção."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito com importação, deduplicação, conciliação, fila de revisão, resoluções humanas e 5 estados terminais."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "DecisaoDedup sempre registra camada e evidência, há resoluções humanas persistidas e estados auditáveis que alguém precisará atribuir e explicar."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema executável com CLI, persistência e integrações de arquivo que pode degradar em operação e exigir diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de correção via review-queue alimentando a camada L0 do dedup-engine e sincronização de estado entre novas importações, deduplicação e conciliação ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador na revisão/resolução de pendências e fidelidade dos perfis declarativos/fontes externas, comportamentos que podem desviar do pretendido."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos interpretáveis entre formatos OFX/CSV, perfis declarativos, normalização canônica e portas/interfaces que podem ter leitura ambígua entre implementações."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variações de entrada como janela de data, tolerância de valor, encoding, layouts CSV, estabilidade de FITID e tamanho de blocos."
+    }
+  ]
+}

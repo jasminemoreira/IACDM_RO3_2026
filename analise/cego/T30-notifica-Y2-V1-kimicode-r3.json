@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dependências externas explícitas: SMTP (M-10), webhooks HTTP (M-11) e SQLite (M-12), com contrato `permanent` e retry/backoff prevendo falha, lentidão e respostas inesperadas."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: a CLI do operador (M-02, `explain`, `pending`, `retry`) e a própria notificação com one-click unsubscribe voltada ao destinatário."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Nenhum estado legado ou contrato pré-existente a carregar: sistema greenfield cujo único store (SQLite via M-12) é lido apenas por esta versão; a menção a cadastros antigos na PRE-2 é risco assumido, não migração."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca e suprime um recurso que escala com o uso: teto por pessoa (token bucket, PAR-11/12), retenção da outbox e decisão explícita de suprimir excedentes em vez de agrupá-los."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente suprimir ou adiar comunicações dirigidas a pessoas (opt-out, quiet-hours, rate limit), com mecanismos de explicação (`explain`) e correção (`retry`) previstos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Fluxo com estados e caminhos de exceção explícitos: ciclo de vida da entrega (enfileirada → claimed → delivered/dead_letter), estágios de supressão e agregação de estado da notificação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações precisam ser atribuíveis: decisões de supressão são nomeadas com motivo, emissores são identificados por API key (PRE-8) e webhooks carregam identidade/assinatura auditável."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda continuamente (worker em laço, outbox, dead-letter) e já prevê diagnóstico sem mudar código: `explain <id>` para explicar supressão e `pending` para listar pendências."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Laços de regulação explícitos: retry com Full Jitter e contagem até dead-letter, token bucket com recarga, e reavaliação de supressão no estágio deliver — todos suscetíveis a oscilação ou drift de estado."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não enforceada: o emissor fornece a chave de dedup (PRE-3), o consumidor do webhook é idempotente do lado dele (PRE-7) e qualquer emissor autenticado pode notificar qualquer pessoa (PRE-8)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leituras divergentes possíveis: `ChannelPort.send` e o significado exato de `permanent`, o payload assinado `id.timestamp.payload` e o enum fechado de motivos de supressão."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Dependências de variáveis com tolerância: relógio do servidor (PRE-4, tolerância de 300 s), `node:sqlite` experimental isolado (PRE-5/RSK-01), fusos IANA e cruzamento de meia-noite, timeouts e janelas de dedup."
+    }
+  ]
+}

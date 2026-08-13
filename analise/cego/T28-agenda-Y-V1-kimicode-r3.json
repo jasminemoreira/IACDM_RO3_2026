@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Fronteiras externas explícitas: M-04/M-05 simulam invalidação de token (410), tombstones, paginação com repetição de item (A-2) e PR-6 admite falha na janela entre escrita no provedor e commit local."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é superfície operada por pessoa: comandos sync/status/conflicts resolve, saída tabular, exit codes e dry-run — a tabela de ativação inclui CLI explicitamente."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema coexistirá com dois calendários externos já em uso e cheios de dados; o mapa de identidade (PR-3) e o ancestral têm que preservar o estado pré-existente sem duplicar eventos no primeiro ciclo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "CLI local, single-threaded, SQLite local e ~1.000 eventos por ciclo (PR-8): não há recurso cujo custo cresça com o uso (sem nuvem elástica, sem ML, sem alto volume contínuo)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide automaticamente propagar, mesclar ou deletar eventos do calendário de pessoas (M-06/M-07); ESCALATE e a fila humana (M-08) são justamente o mecanismo de correção/transparência dessa decisão automatizada."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processos com estados e caminhos de exceção: ciclo de vida do conflito aberto→resolvido (M-08), ciclo pull→reconciliar→aplicar com full resync, limite de páginas e R-A3 (M-10)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Conflitos são entidades persistidas com decisão registrada (resolve(id, choice) com --take a|b|merge) e 'nada aplicado sem decisão': toda ação fica atribuível e auditável depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema pode falhar silenciosamente após entregue (eco lido como mudança externa, UC-8 falhando em silêncio, token divergente) e o operador depende de SyncReport e do comando status para diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O próprio ciclo de sincronização é um laço de realimentação — lê deltas, aplica escritas e lê o eco de volta — com neutralização de eco (A-5) e risco real de oscilação A→B→A e de divergência entre ancestral e token (PR-1/PR-6)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Ator único operando a CLI e provedores simulados sem incentivos próprios: nenhum participante ganha desviando do comportamento assumido, não há cooperação estratégica sendo presumida."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leituras divergentes possíveis: porta Provider ('exatamente um de next_page_token/next_state_token não-nulo', token opaco, tombstone versus ausência) e o próprio formato ics (DATE versus DATE-TIME, TZID) lidos por dois provedores."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de variação fora do seu controle: comportamentos distintos dos dois provedores (janela obrigatória versus sem janela, item repetido), versões de bibliotecas (PR-7) e entradas ics reais heterogêneas que devem ser toleradas, não só a especificação exata."
+    }
+  ]
+}

@@ -56,8 +56,22 @@ _RE_LENSDEF = re.compile(
 
 
 def _bundle() -> Path:
-    """server.js da extensão instalada. Exige versão única — se houver mais de uma,
-    qual delas o estimador espelha vira pergunta que só a máquina responde."""
+    """server.js do instrumento. Exige versão única — se houver mais de uma, qual delas
+    o estimador espelha vira pergunta que só a máquina responde.
+
+    Mesma ordem de busca do `ro3_parser`: `$VERSUS_BUNDLE`, depois a cópia arquivada em
+    `instrumento/server.js`, e só então o que está instalado no VSCode. A cópia arquivada
+    existe para o artefato publicado não depender do estado da máquina — em 2026-08-12,
+    com as correções pós-lote sendo aplicadas, passaram a coexistir 0.14.2, 0.15.0 e
+    0.16.0, e o guard travou a análise do lote já fechado.
+    """
+    import os as _os
+    pino = _os.environ.get("VERSUS_BUNDLE")
+    if pino and Path(pino).is_file():
+        return Path(pino)
+    arquivado = Path(__file__).resolve().parent.parent / "instrumento" / "server.js"
+    if arquivado.is_file():
+        return arquivado
     base = Path.home() / ".vscode-server" / "extensions"
     achadas = sorted(base.glob("jasminemoreira.versus-claude-*/out/bundle/server.js"))
     if not achadas:

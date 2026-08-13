@@ -1,0 +1,66 @@
+{
+  "projeto": "T32-triagem",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de banco SQLite via better-sqlite3/repositório, que pode falhar, travar ou devolver erro inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoas: 6 telas server-side em ui-web e rotas HTTP para abrir, triar, recorrer e julgar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "O texto não indica estado pré-existente, contrato legado ou necessidade de coexistir/retroceder entre versões."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura não mostra consumo de recurso de custo variável relevante nem alocação dinâmica cujo custo cresça materialmente com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza prioridade e reclassificação de chamados, uma decisão consequencial que afeta pessoas e seu atendimento."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados, transições e exceções: abrir, triar, reclassificar, recorrer, julgar, reconhecer e encerrar."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra trilha somente-inserção, julgamento de recurso e autorização com motivo, exigindo autoria e auditabilidade."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com servidor HTTP e persistência, sujeito a falhas/degradação após deploy que precisam ser diagnosticadas."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de feedback ou mecanismo de autorregulação contínua; o sistema reage a comandos e calcula prazos sem corrigir estado por realimentação."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do solicitante; a premissa A7 declara boa-fé sem evidência e há possibilidade de recurso estratégico."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que carregam regra e podem ser lidos de forma divergente se ambíguos, como autorização com motivo, matriz/metas e interfaces HTTP/domínio."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações possíveis de ambiente e entrada — relógio, SQLite, configuração de matriz/SLA, papéis e faixas de dados — que podem quebrar fora da especificação exata."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T28-agenda",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Dois provedores externos (M-04/M-05) com invalidação de token (410), paginação, tombstones e full resync, mais SQLite e a janela não-atômica entre escrita no provedor e commit local (PR-6)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 é uma superfície operada por pessoa: comandos sync/status/conflicts/overlaps, dry-run, exit codes e saída tabular — incluindo a fricção de resolver conflitos via `conflicts resolve <id> --take a|b|merge`."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema passa a coexistir com duas agendas vivas já em uso, cujos dados anteriores à primeira sincronização precisam ser adotados via mapa de identidade e full resync, sem destruir o estado antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O consumo cresce com o volume de uso: PR-8 fixa orçamento (<5 s com ~1.000 eventos/lado), há limite de páginas por ciclo e o overlap-detector é O(n log n) sobre ocorrências."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Políticas (M-07) decidem automaticamente qual versão de um evento prevalece e propagam deleções nas agendas de pessoas; ESCALATE e a fila humana (M-08) existem como mecanismo de correção, o que confirma decisão consequencial."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processos com estados e caminhos de exceção: o ciclo pull→normalizar→reconciliar→planejar→aplicar→persistir (M-10), o ciclo de vida aberto→resolvido da fila de conflitos (M-08) e o desvio de full resync."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões pelas quais alguém prestará contas depois: conflitos persistidos com a escolha feita (M-08), AppliedWrite e ancestral gravados em commit (M-11) e SyncReport por ciclo (M-10)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode falhar silenciosamente após entregue (PR-7 cita UC-8 falhando em silêncio; eco, token invalidado); SyncReport, comando status e exit codes são a superfície de diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um laço de realimentação clássico: o sync reage a deltas e ajusta estado rumo à convergência, com neutralização de eco (A-5) e risco real de oscilação ping-pong entre os dois lados."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Nenhum ator tem incentivo próprio a desviar: as premissas sobre provedores (PR-2, PR-3) são de fidelidade técnica, não de cooperação estratégica, e o operador único não ganha nada agindo contra o sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos com leituras divergentes possíveis: a porta Provider impõe invariantes finos (exatamente um token não-nulo, token opaco, ausência≠remoção) implementados por dois provedores, além do formato .ics e do modelo canônico."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: bibliotecas externas cuja correção é premissa (recurring-ical-events, PR-7), semânticas divergentes entre provedores (A-2 item repetido na paginação) e variação de TZID/DATE versus DATE-TIME."
+    }
+  ]
+}

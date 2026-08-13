@@ -1,0 +1,66 @@
+{
+  "projeto": "T22-plantoes",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-08 lê/grava arquivos JSON (incl. escala do mês anterior, A3) e M-09 carrega arquivo de instância possivelmente hostil (A6); M-06 depende do subprocesso/biblioteca ortools que pode falhar, estourar o limite de 60s (A4) ou retornar status inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-11 é uma CLI operada por pessoas com 5 comandos, incluindo solicitar/responder troca; a tabela de lentes ativa explicitamente para CLI e tooling operacional."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema consome a escala do mês anterior já publicada (M-05, A3) como estado antigo que deve ser preservado na virada de mês, e M-08 define um formato de dados armazenado que persistirá entre execuções."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O consumo é um solve CP-SAT pontual com limite fixo de 60s e instância 30×3×30 (A4); não há recurso cujo custo cresça com o uso que o sistema aloque ou decida."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide a alocação de plantões de pessoas reais com restrições legais e pesos calibrados em outro país (A8), aceita/rejeita trocas que afetam jornada, e o escopo negativo deixa 'equidade' como termo flexível sem mecanismo de correção ou auditoria humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-04 é uma máquina de estados explícita (PENDENTE → aceite/recusa) com revalidação no aceite, e os UC-1..UC-5 são fluxos com handoffs entre módulos e caminhos de exceção (conflito em M-07, ErroDeValidacao em M-09)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra escalas publicadas e trocas aceitas que alguém precisará auditar depois (UC-5 conformidade), e A5 assume identidade sem autenticação — autoria de ações é exatamente a propriedade em jogo."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda após entrega e pode falhar silenciosamente — solver sem otimalidade provada (A4), contadores S6/S7 sub-representados na virada (PR-4), sobrescrita por execuções concorrentes (A7) — sem qualquer mecanismo declarado de detecção ou diagnóstico."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação contínuo, retry, sincronização ou ajuste dinâmico de parâmetro em runtime; o fluxo é gerar → avaliar pontualmente, sem regulagem em direção a um alvo ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação: identidade do comando tomada como verdadeira (A5), aceites de troca entre pares com interesses próprios, e pesos/preferências que um ator autointeressado poderia manipular em benefício próprio."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há múltiplos contratos suscetíveis a duas leituras: o catálogo com dois modos (aplicar vs. verificar) que devem ser semanticamente idênticos, o schema JSON de M-08/M-09, e a compilação de L1 em sucessões proibidas cuja equivalência com a restrição original depende de A1."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema só funciona na especificação exata assumida: horários de turno fixos (A1), exatamente um contrato por pessoa (A2), escala anterior cobrindo o mês inteiro (A3), 30×3×30 em ≤60s (A4) — pequenas variações de entrada ou ambiente quebram invariantes em vez de serem toleradas."
+    }
+  ]
+}

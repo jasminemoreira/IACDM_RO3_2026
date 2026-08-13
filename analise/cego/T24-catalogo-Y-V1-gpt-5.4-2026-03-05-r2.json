@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de arquivo/diretório e parsing YAML na borda (`yaml-loader`, `catalog-repository.load(Path)`), que pode falhar, travar ou retornar dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI com subcomandos, flag `--json`, mensagens acionáveis e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há contrato de dados pré-existente a preservar/coexistir: YAML manual e a semântica assumida de identidade/linhagem, inclusive com desvio explícito da OpenLineage em A1."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recurso que cresce com uso — carrega o diretório inteiro em memória e faz travessias/validação sobre o grafo, com hipótese explícita de caber em memória (A7)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza atribuição de dono e reporte de violações por domínio/dataset; erros ou ausência de dono podem prejudicar entidades sujeitas a essa decisão catalogada."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com etapas e exceções bem definidas: carregar → mapear → construir grafo → validar → consultar, com caminho de erro agregado e bloqueio de consulta em catálogo inválido (A8, A9)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema é catálogo de dados com donos declarados por domínio, e invariantes exigem dono de domínio e de dataset (INV-2, INV-3)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A ferramenta executa e pode falhar após entregue, mas a arquitetura mostra operação via CLI/erros e não explicita meios diagnósticos além disso."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação que ajuste comportamento em runtime; a execução é carga-validacao-consulta, sem retry, sync ou controle para meta."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do humano que escreve YAML corretamente e declara ownership/linhagem conforme esperado, podendo haver desvio estratégico ou conveniente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a leitura ambígua: identidade `dominio.nome`, restrição do ponto (A10), inversão semântica de `alimentado_por`, e exclusão da origem em `impact(X)` (A6)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de ambiente e entrada — versão/comportamento do NetworkX e PyYAML, forma dos YAMLs e limites de tamanho do catálogo — com tolerâncias explicitadas por assunções e validações."
+    }
+  ]
+}

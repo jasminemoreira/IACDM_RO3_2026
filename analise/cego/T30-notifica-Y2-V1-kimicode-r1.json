@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de fronteiras externas que falham, atrasam ou respondem inesperado: SMTP (M-10), webhooks HTTP (M-11, timeout PAR-10), SQLite (M-12), relógio do servidor (PRE-4) — com contrato ok/permanent, retry com Full Jitter e dead-letter já desenhados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-02 expõe superfície operada por pessoa (CLI do operador: explain, pending, retry, serve — UC-8)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield; o schema/migração do SQLite em M-12 é lido apenas por esta versão e não há contrato ou estado preexistente a carregar — a menção a cadastros antigos (PRE-2) é risco assumido, não transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema decide alocação de recursos cujo custo cresce com o uso: envios SMTP/webhook, tentativas de retry, fila durável e armazenamento — com decisões explícitas de proporcionalidade (teto por pessoa, supressão do excedente em vez de digest, jitter)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas com efeito sobre pessoas: suprimir/adiar/entregar notificações (opt-out, quiet hours, rate limit) pode fazer alguém não receber um aviso; a decisão é nomeada com motivo e explicável via CLI."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados, handoffs e caminhos de exceção: máquina de estado Notificação/Entregas (delivered, partially_delivered, failed, suppressed, deferred), handoff ingestão→worker, retry e dead-letter."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra decisões que alguém precisará auditar/atribuir: motivo nomeado de supressão, identidade do emissor por API key, dead letters — e a ausência deliberada de autorização por recurso (PRE-8) é matéria de accountability."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda e pode degradar silenciosamente após ship: worker único cujo tick travado para todas as entregas (PRE-1), pendências e dead letters que exigem diagnóstico via CLI do operador sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Regula estado no tempo com risco de oscilação/deriva: backoff exponencial com Full Jitter, token bucket com recarga, deferral de quiet hours que concentra entregas na abertura da janela (a consequência aceita das 20 entregas às 08:00 é um sinal de feedback)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não-imposta de atores: emissor fornece chave de dedup (PRE-3), qualquer emissor autenticado pode notificar qualquer pessoa (PRE-8), destino do webhook é idempotente do lado dele (PRE-7)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos entre duas partes que admitem leituras divergentes: semântica de ChannelPort.permanent (o ponto sensível declarado), formato da assinatura HMAC id.timestamp.payload, regra 2xx=sucesso e o contrato de idempotência do POST."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações e tolerâncias: tolerância de relógio de 300 s (PAR-06), fuso IANA validado na fronteira (PRE-2/EDGE-2), API experimental node:sqlite (PRE-5), timeouts e contagens de retry como parâmetros de tolerância."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende do provedor Anthropic via rede (M-07), de um banco em arquivo (M-08) e do relógio do host — todas fronteiras que podem falhar, atrasar ou devolver dados inesperados (resposta sem `usage`, A2/A4)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma SPA de painel operada por uma pessoa (M-10, painel-web) com login de operador (M-09) — superfície humana explícita."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Sistema greenfield: não há estado populado, formato legado ou interface viva de terceiros a carregar; o schema do SQLite é criado por esta versão (M-08)."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O próprio objeto do sistema é alocar um recurso cujo custo cresce com o uso — orçamento em moeda com teto (M-03, M-04, M-05) — além da premissa A6 sobre custo da própria decisão de admissão."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O corte automático nega acesso a entidades (pessoas ou projetos dependendo do serviço): decisão consequencial com efeito sobre pessoas, sem mecanismo de contestação visível no desenho."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O fluxo reserva → envio → reconciliação (M-01, M-03) tem estados e caminhos de exceção, incluindo reserva órfã explicitamente sem política de expiração definida."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra eventos de uso por entidade (M-08), configura tetos por operador autenticado (M-09) e o painel existe para prestar contas de consumo — auditoria e atribuição são centrais."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda continuamente como gateway e pode falhar em silêncio (contadores corrompidos, reservas presas, relógio errado); o único canal de diagnóstico previsto é o painel de leitura (M-09/M-10)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "O laço de feedback é o núcleo: reserva estimada corrigida pela reconciliação com custo real (M-03, M-04), com risco de drift entre `reservado` e `confirmado` e de erro por virada de janela (M-06, A4)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume que apps consumidores não contornam o gateway (A5) e que operadores configuram tetos de boa fé — cooperação assumida diante de atores com incentivo a gastar além do teto."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler da mesma forma: a API `POST /v1/messages` compatível com a Anthropic, o formato `usage` adaptado (M-07) e o contrato do contador `(confirmado, reservado)` do escrow."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: preços com vigência na tabela (M-05), valores de `usage` por modelo, carga concorrente sobre o event loop único e desvios do relógio do host (A4) — tolerâncias não especificadas."
+    }
+  ]
+}

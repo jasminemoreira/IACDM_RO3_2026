@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteira externa de arquivo/YAML no yaml-loader e catalog-repository; diretório, arquivos e parsing podem falhar, atrasar ou vir inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: CLI com subcomandos, flag --json, mensagens acionáveis e códigos de saída."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há estado legado, store compartilhado nem contrato pré-existente a preservar; o YAML é lido só por esta versão em cenário greenfield."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo assume catálogo pequeno em memória, sem infraestrutura elástica, sem processamento volumoso e sem consumo de recurso que cresça materialmente com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema consulta/valida catálogo e linhagem, mas não automatiza decisão consequencial sobre pessoas ou entidades das quais dependam."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo explícito de carregamento→mapeamento→grafo→validação→consulta, com exceções e regra de 'ou válido ou erro'."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio problema modela donos por domínio/dataset e invariantes de ownership; os dados exigem atribuição e responsabilização."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "A ferramenta roda como software entregue e pode falhar/degradar em uso; diagnóstico operacional depende de erros agregados, mensagens e códigos de saída."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há laço de realimentação operacional, sincronização contínua, retry/backoff nem ajuste automático de estado ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação do humano que escreve YAML corretamente e declara ownership/linhagem sem omissões; há espaço para desvio estratégico ou negligente."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que podem ser lidos de mais de um jeito, explicitamente mitigados por A6 e A10 e pela inversão semântica de alimentado_por no mapper."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de entrada e ambiente — formato YAML, restrição de nomes, versão/comportamento de NetworkX/PyYAML e tamanhos de catálogo que devem caber em memória."
+    }
+  ]
+}

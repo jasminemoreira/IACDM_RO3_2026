@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de fronteiras externas que falham ou mentem: arquivos OFX v1/v2 e CSV de bancos (A1 — FITID instável, encoding, layouts), mais SQLite como dependência de processo (M-03, M-04, M-05)."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "A tabela ativa explicitamente CLI e ferramentas operacionais: M-11 expõe import/reconcile/review/report a um operador humano, e M-09 é uma superfície de trabalho (listar/resolver pendências)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há 'velho' a preservar: resoluções humanas persistidas que alimentam L0, casamentos e identidades já gravados no SQLite — reimportações e futuras mudanças de schema/hash devem coexistir com esse estado sem sobrescrevê-lo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "Custo cresce com o volume: A4 declara orçamento de blocking (b ≤ 50) sob risco de bloco degenerado reintroduzir O(n²), e M-12 prevê carga de 50k — consumo de recurso precisa ser proporcional ao valor."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequentes sobre registros financeiros (duplicata, casamento, órfão anômalo) com VAL-2 exigindo zero falsos positivos; existem mecanismos de auditoria/correção (evidência por camada, review-queue) que a lente deve interrogar."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Processo com estados, transições e caminhos de exceção explícitos: 5 estados terminais de conciliação, chain L0→L5, fluxo pendência → resolução humana → realimentação do L0, e casos 1:N/N:1 que viram pendência."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Auditabilidade é requisito estrutural: DecisaoDedup sempre carrega camada (L0-L5) e evidência, resoluções humanas são persistidas e não sobrescritas — cada decisão precisa ser atribuível e respondível depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema batch que pode falhar ou degradar silenciosamente após entregue: diagnosticar por que um item caiu em L3 ou virou órfão exige inspeção sem mudar código — daí a evidência por camada e o resumo por estado do reporter."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há loop de feedback: resoluções humanas persistidas retroalimentam a camada L0 do dedup-engine, alterando decisões futuras — loop que pode derivar (uma resolução errada vira precedente); tolerâncias configuráveis também mudam comportamento em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação não forçada do operador na fila de revisão: um resolver auto-interessado pode aprovar em massa para zerar pendências, e nada na arquitetura (resolver(id, acao) sem fricção ou verificação) impede a defecção."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos legíveis de dois modos: perfis CSV declarativos, a especificação do hash canônico, a porta FonteDeExtrato com dois implementadores (OFX/CSV) e DecisaoDedup — duas implementações corretas do mesmo contrato podem divergir."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema vive de tolerâncias: janela de data e tolerância de valor configuráveis (M-08), abs(valor) como chave sob variação de sinal/estorno (A7), descrições ruidosas entre fontes (A6) e FITID instável (A1) — variação pequena no input muda o veredito."
+    }
+  ]
+}

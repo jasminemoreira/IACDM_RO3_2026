@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Depende de serviços externos que falham/lentam: SMTP (M-10), webhooks HTTP com timeout PAR-10 (M-11), além do SQLite (M-12) — o contrato ChannelPort.permanent e o dead-letter existem exatamente para essa fronteira."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-02 é superfície operada por uma pessoa (operador): comandos explain/pending/retry/serve para diagnosticar supressão e reprocessar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Greenfield: o schema SQLite em M-12 só é lido por esta versão do sistema; não há estado populado, formato legado ou contrato vivo de terceiros a carregar ou dar rollback."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca recursos cujo custo cresce com o uso: envios externos tarifados/limitados (token bucket por pessoa em M-07), fila durável (M-08) e worker único (PRE-1) com throughput limitado — custo a 10x escala é questão aberta declarada em RSK-02."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "Decisões automatizadas com efeito direto sobre pessoas: suprimir/adiar/entregar notificações (M-04), opt-out, quiet hours e teto de interrupção existem para proteger o destinatário — inclui decisão de suprimir o excedente às 08:00 em vez de entregá-lo."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados, transições e caminhos de exceção: ciclo de vida da entrega (pending → delivered/failed/dead_letter), estado agregado da notificação, retries com próxima tentativa e reprocessamento manual (M-08/M-09/M-02)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações precisam ser atribuíveis e auditáveis: decisão de supressão nomeada com motivo de enum fechado (M-04), comando explain (M-02), autenticação por API key identificando o emissor (M-01/PRE-8) e chave de idempotência do emissor (R-03)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda e pode degradar silenciosamente: tick do worker, fila de pendentes, dead letters e o próprio CLI (pending/explain) existem para diagnosticar em produção sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Regulação de estado ao longo do tempo com realimentação: retry com backoff exponencial + Full Jitter (PAR-01..04), token bucket com recarga (M-07) e o laço claim→reavalia→reagenda do worker (M-09) — risco clássico de oscilação/rajada na abertura da janela."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação de atores que podem desertar: PRE-3 (emissor fornece a chave de dedup; se não fornecer, perde dedup silenciosamente), PRE-8 (qualquer emissor autenticado pode notificar qualquer pessoa) e PRE-7 (destino do webhook precisa ser idempotente do lado dele)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos ambíguos entre duas partes: o campo ChannelPort.permanent decide retry vs. dead-letter (duas leituras corretas divergem), o formato de assinatura HMAC id.timestamp.payload (PAR-07/08) e '2xx = sucesso' (PAR-09) precisam ser lidos identicamente pelos dois lados."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Depende de coisas que variam fora da especificação exata: relógio do servidor com tolerância de 300 s (PAR-06/PRE-4), node:sqlite experimental isolado em M-12 (PRE-5), fusos IANA no cadastro (PRE-2) e timeouts/limites parametrizados (PAR-10, PAR-11/12)."
+    }
+  ]
+}

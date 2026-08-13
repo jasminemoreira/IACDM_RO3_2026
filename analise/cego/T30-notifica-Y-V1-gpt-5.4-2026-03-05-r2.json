@@ -1,0 +1,66 @@
+{
+  "projeto": "T30-notifica",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas e falháveis: SQLite (M-12), SMTP (M-10) e webhook HTTP (M-11), com timeout, retry e dead-letter."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: a CLI M-02 para explicar supressão, listar pendentes e reprocessar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado antigo a preservar/transformar: schema e migrações no SQLite em M-12 e cadastros antigos citados em PRE-2."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema consome recursos que crescem com uso: fila durável, retries, chamadas a canais externos e volume de notificações/entregas."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza supressão/adiamento de notificações por pessoa, podendo impedir ou atrasar comunicações para o destinatário."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções: ingestão, supressão em 2 estágios, outbox, retry, dead-letter e agregação de estado da notificação."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Ações e decisões precisam atribuição e auditoria: API key identifica emissor, e há decisões nomeadas de supressão e resultados de entrega."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um serviço em execução com degradações possíveis após deploy; a própria CLI operacional M-02 indica necessidade de diagnosticar pendências e supressões."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laços de feedback explícitos: retry com backoff/jitter, rate limiting por token bucket e reavaliação de supressão na entrega."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação de atores externos: emissor fornece dedup key (PRE-3), destino webhook é idempotente (PRE-7) e emissor autenticado não abusa do escopo amplo (PRE-8)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes precisam ler igual: ChannelPort com campo 'permanent', assinatura HMAC do webhook e semântica dos endpoints/status."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias e variações reais: fuso/quiet hours, relógio com tolerância PAR-06, carga, timeouts e runtime experimental node:sqlite (PRE-5)."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Duas fronteiras externas que podem falhar, travar ou responder inesperado: sonda-tls (rede, com ErroSonda tipado timeout/recusado/dns/tls) e repositorio sobre node:sqlite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "web-ui é superfície operada por pessoas: 5 telas HTML, login/sessão e formulários POST (/alvos, /varrer, /pedidos/:id/aprovar)."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield V(1): o banco sqlite e o formato da trilha só são lidos por esta versão; nenhum estado populado ou contrato preexistente precisa atravessar a mudança."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O custo cresce com o uso: varredura sequencial por alvo e trilha append-only sem retenção — a própria premissa A7 limita o volume a dezenas de alvos por causa disso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide e registra coisas com efeito sobre pessoas: atribui aprovações a atores nomeados, sinaliza 'troca-nao-autorizada' e 'escalar' por inação — flags que recaem sobre operadores identificáveis."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Pedido é uma máquina de estados explícita (pendente -> aprovado -> fechado) com handoff solicitante/aprovador e caminhos de exceção (ErroTransicao, escalonamento por inação)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A finalidade central é atribuição: trilha append-only encadeada por hash registrando quem aprovou cada emissão, com papéis (solicitante/aprovador/auditor) e caso de uso auditar()."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema que roda continuamente e pode falhar em silêncio — sonda que não responde, relógio errado (A2 sem mitigação) — exigindo diagnóstico do porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "reconciliacao é um laço de feedback: compara o estado observado com o anterior e com pedidos abertos e corrige (fechar pedido, sinalizar troca, escalar); limiares configuráveis mudam o comportamento em runtime."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O design assume cooperação sem impor: A4 (humano aprova na janela), A6 (uma varredura por vez) e o escopo negativo declara que não impõe segregação de funções — um ator interessado pode aprovar o próprio pedido."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos que duas partes precisam ler igual: o tipo união Decisao, a convenção Ok|Erro, o formato de Entrada da trilha (hashAnterior/hash) e as bordas de classificar (o que acontece exatamente no limiar) admitem leituras divergentes."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: relógio da máquina (A2), API experimental do node:sqlite (A8), timeouts e comportamentos de handshake TLS — pequenos desvios quebram classificação ou persistência."
+    }
+  ]
+}

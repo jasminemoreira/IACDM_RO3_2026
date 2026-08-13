@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": false,
+      "sinal": "As dependências externas são portas e adaptadores locais/simulados; não há rede, banco, fila, arquivo ou subprocesso externo descrito."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há uma superfície operada por pessoa: M-12 cli, entrada do operador e observador de eventos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema e M-10 explicitam convivência entre canário e versão estável, com rollback para 100% estável."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema aloca um recurso de implantação/tráfego por pesos do canário versus estável, cujo custo cresce com uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O coordenador automatiza promoção ou rollback, decisão consequente que pode afetar serviços/entidades implantadas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 é uma máquina de estados com fluxo progredindo/pausado/revertido/promovido e caminho de aborto/rollback."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema emite eventos, toma decisão final de promover ou reverter e há donos explícitos de métricas, participantes e pesos."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução que pode degradar; M-07 emite eventos e M-12 mostra progresso, motivo e decisão para diagnóstico operacional."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há um laço de feedback: coleta métricas, julga, pontua e ajusta distribuição de pesos/rollback em direção ao alvo de implantação segura."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação do operador e fidelidade do simulador/limiares; um ator interessado pode abortar, configurar ou interpretar a seu favor."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre módulos e portas (`coletar`, `distribuicao`, vereditos, indisponibilidade vs amostra) que precisam leitura inequívoca."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de tolerâncias e variações como amostra mínima 50, limite de 4 erros, limiares da guarda e ruído das métricas."
+    }
+  ]
+}

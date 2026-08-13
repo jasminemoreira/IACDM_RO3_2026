@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de banco SQLite via M-08/M-09, que pode falhar, travar ou responder inesperadamente."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: API HTTP em M-11 e 6 telas server-rendered em M-12."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "M-09 define schema, migração e seed; existe estado persistido/formato armazenado que precisa coexistir ou evoluir."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A arquitetura assume volume pequeno (A7) e não mostra consumo elástico ou recurso de custo crescente relevante."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisão consequente de aprovação/rejeição de despesas e delegação de autoridade, podendo afetar pessoas e orçamento."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O domínio tem fila de aprovação com estados, transições, alçadas, delegação, rejeição terminal e múltiplos atores."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Há trilha append-only com ator efetivo, em-nome-de, instante e limite exercido em M-06."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com API, transações e persistência, sujeito a degradação/falha após deploy."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "M-07 expõe relógio controlável e a autoridade/delegação é reavaliada sob demanda contra o instante atual, formando laço de correção temporal de estado efetivo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A5 assume identidade confiável sem autenticação; a arquitetura depende de cooperação e admite desvio estratégico pela API."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que exigem interpretação única entre módulos e interfaces HTTP, como cadeia de aprovação, vigência e origem em bandeja."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de tempo, carga, entradas e ambiente de persistência; há fronteiras exatas como vigência e limites inclusivos."
+    }
+  ]
+}

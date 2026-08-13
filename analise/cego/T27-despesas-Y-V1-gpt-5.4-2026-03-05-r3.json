@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependência externa de banco SQLite em M-09/M-08, que pode falhar, travar ou devolver erro inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfícies operadas por pessoas: API HTTP em M-11 e 6 telas server-rendered em M-12."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "M-09 define schema, migração e seed; existe estado persistido/formato armazenado que precisa coexistir ou ser evoluído."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "O escopo e as premissas indicam volume pequeno e sem consumo elástico ou processamento de custo crescente relevante."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza aprovação/rejeição de despesas e delegação de autoridade, decisões que podem prejudicar pessoas ou áreas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "O domínio é um fluxo explícito com estados, cadeia de aprovação, rejeição terminal, delegação e exceções."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra trilha append-only com ator, em-nome-de, instante e limite exercido para auditoria e atribuição."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com banco, API e relógio controlável, sujeito a falhas/degradação que precisarão ser diagnosticadas após deploy."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há comportamento regulado por sinal temporal: delegação ativa/expirada é reavaliada sob demanda contra o relógio para corrigir autoridade vigente."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A premissa A5 assume identidade confiável sem autenticação; um ator interessado pode desviar e contornar SoD chamando a API."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura única entre módulos e clientes, como interfaces de M-01..M-11 e regras de fronteira/vigência."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "A arquitetura depende de variações de tempo, entrada, carga e ambiente — p.ex. fronteiras de vigência, valor em centavos e comportamento do SQLite."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de fronteiras externas que podem falhar ou retornar dados inesperados: arquivos OFX v1 SGML / v2 XML de bancos, CSVs com perfis declarativos, e um SQLite — M-03, M-04 e M-05 são exatamente essas bordas, e A1 (FITID instável) é contra-evidência já documentada de dado externo que quebra."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: o M-11 (cli) com comandos import/reconcile/review/report e o M-09 (review-queue), onde um humano resolve pendências — caminho propenso a confusão e erro do operador."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há estado antigo a preservar: é um sistema novo, sem sistema em produção sendo substituído, sem formato de dados legado a migrar e sem contrato vivo a transitar — o escopo negativo reforça que não há coexistência com nada existente."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O custo cresce com o volume: M-12 prevê carga de 50k, M-06 faz score par-a-par dentro de blocos, e A4 declara que bloco degenerado reintroduz O(n²) — consumo de recurso explicitamente orçado e sensível à escala."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema automatiza decisões consequenciais sobre entidades: dedup L0–L5 e conciliação decidem se um lançamento é duplicata, casado ou órfão anômalo, afetando a conciliação financeira de quem é auditado — o próprio texto exige trilha de evidência em DecisaoDedup e proíbe sobrescrever decisão humana."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados, handoffs e exceções: 5 estados terminais de conciliação (M-01), chain L0→L5 com pendência como saída (M-07), fila de revisão humana que realimenta L0 (M-09) e 1:N/N:1 virando pendência — fluxo que pode ficar incompleto."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema grava decisões que alguém precisará auditar e atribuir: DecisaoDedup carrega camada e evidência, resoluções humanas são persistidas (M-09), o reporter sub-rotula órfão esperado vs anômalo (M-10), e VAL-2 exige zero falsos positivos auditáveis."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e pode degradar silenciosamente após entregue: bloco degenerado (A4), queda de poder discriminante do score cross-source (A6) e falsos positivos de dedup exigem diagnóstico do porquê sem mudar código — camada que decidiu e evidência já são o embrião disso."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação que ajusta o comportamento futuro: as resoluções humanas persistidas (M-09) alimentam a camada L0 do dedup-engine (M-07), e janelas de data/tolerância configuráveis (M-08) alteram o resultado — o sistema regula, não apenas reage, e pode derivar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há ator com incentivo a desviar: o operador é único, as fontes externas (bancos/ERP) emitem extratos sem estratégia contra o importador, e o escopo negativo exclui rede, API pública e autenticação — cooperação não é assumida porque não há jogo."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos suscetíveis a duas leituras corretas: perfis CSV declarativos com validar_perfil (M-04), hash canônico e normalização de descrição/data/sinal/encoding (M-02), portas FonteDeExtrato e repositórios com dublês em memória, e A7 (abs(valor) confunde estorno com duplicata) é ambiguidade declarada em aberto."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam e tem tolerâncias explícitas: OFX v1 SGML vs v2 XML, perfis de 3 bancos + livro, janela de data e tolerância de valor configuráveis (M-08), Decimal(2) em Dinheiro, e premissas A1/A6 sobre variabilidade de FITID e descrição entre fontes."
+    }
+  ]
+}

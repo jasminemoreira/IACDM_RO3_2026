@@ -1,0 +1,66 @@
+{
+  "projeto": "T26-extratos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas com arquivos OFX/CSV e persistência SQLite via adapters/repository, que podem falhar, travar ou trazer dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe uma superfície operada por pessoa: o módulo cli para import, reconcile, review e report."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de transição de estado/contrato já em uso por versões anteriores; o store e interfaces descritos parecem próprios desta versão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema processa alto volume e custo cresce com uso: matching/deduplicação, blocking e fixture de carga de 50k com risco explícito de O(n²)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide duplicata, pendência e conciliação de lançamentos financeiros, podendo afetar pessoas/entidades, com revisão humana e auditoria explícitas."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados terminais de conciliação, fila de pendências, resoluções humanas e exceções como casos 1:N/N:1 virando pendência."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura exige auditabilidade: DecisaoDedup sempre registra camada e evidência, e resoluções humanas são persistidas."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema operacional que pode degradar após entregue em importação, matching e persistência, exigindo diagnóstico de falhas e falsos positivos sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação: resoluções humanas persistidas alimentam a camada L0 do dedup-engine, corrigindo decisões futuras ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação de atores ao declarar perfis CSV estáveis/corretos e ao depender de revisão humana e fontes externas que podem desviar do esperado."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos potencialmente ambíguos entre formatos e normalização: OFX v1/v2, perfis CSV declarativos, identidade canônica e interfaces de portas."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O comportamento depende de tolerâncias e variação de entrada/configuração: janela de data, tolerância de valor, estabilidade de FITID, descrição comparável e tamanho de bloco."
+    }
+  ]
+}

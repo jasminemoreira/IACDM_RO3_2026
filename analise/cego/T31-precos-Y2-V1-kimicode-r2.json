@@ -1,0 +1,66 @@
+{
+  "projeto": "T31-precos",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema depende de recursos fora do processo que podem falhar ou devolver dados inesperados: o arquivo SQLite (M-07, porta LogDeDecisoes/RepositorioDeVersoes) e a planilha legada lida pelo importador-csv (M-08), que já prevê linhas rejeitadas com motivo."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: M-12 ui-web com 4 telas (regras, simulador, importação, histórico), incluindo decisões de UX explícitas como o preenchimento visível e editável da data 'hoje'."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O sistema substitui uma tabela legada em uso: M-08 importa a planilha existente e M-09 prova-paridade (CS-1) reconsulta cada linha no motor novo comparando com o preço original — estado legado precisa atravessar a transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Nenhum recurso cujo custo cresce com o uso: processo único, SQLite local, sem rede em runtime, sem AI/ML, sem infraestrutura elástica nem processamento de alto volume."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O motor automatiza uma decisão consequente sobre pessoas — o preço cobrado de quem compra — e a arquitetura já embute os mecanismos que a lente pede: trace exaustivo (I-3), explicador contrastivo (M-06), histórico e recalcular(decisao_id) como caminho de correção."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo com estados e transições: rascunho → validação (M-05, com erros vs. avisos) → publicação atômica (M-07) → versão vigente, além dos fluxos de importação com rejeitadas e de recálculo de decisão."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra o que alguém precisará auditar depois: LogDeDecisoes (registrar/listar/obter), versões publicadas imutáveis (A-12) e trace com motivo de derrota de cada regra perdedora — toda decisão é atribuível a uma versão e a uma regra."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda após a entrega e pode falhar ou divergir silenciosamente (preço errado, divergência de paridade, publicação parcial); o histórico de decisões e o trace serializado na API existem para diagnosticar o porquê sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Não há regulação de estado ao longo do tempo: nenhum retry/backoff, sincronização, ou laço de feedback autocorrigível — a seleção de versão vigente é consulta determinística por data, não um sinal de erro que o sistema corrige."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A cooperação é assumida, não enforced: sem auth (A-08) e com a data fornecida pelo chamador (A-04), qualquer cliente da API pode escolher a data para obter preço de outra vigência, e qualquer pessoa com acesso ao processo pode publicar regras em benefício próprio."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há múltiplos contratos que duas leituras corretas podem divergir: o schema do CSV legado (`Ate` textual, SKU com espaço/caixa), as portas DIP, os DTOs da API (data obrigatória) e as convenções de fronteira como faixa fechada [min,max] e arredondamento só no resultado final."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam e define tolerâncias explícitas: faixas fechadas com bordas 19/20 (P-02/P-03), arredondamento half-up que muda centavos se aplicado em etapas (P-09), tolerância de R$ 0,01 na paridade, parsing de formatos BR variados e premissa de inteiro ≥ 1 (A-01) que quebra com entrada fracionária."
+    }
+  ]
+}

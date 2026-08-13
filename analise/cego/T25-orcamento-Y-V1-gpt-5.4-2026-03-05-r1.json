@@ -1,0 +1,66 @@
+{
+  "projeto": "T25-orcamento",
+  "modulos_estimados": 10,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há dependências externas e fora do processo: provedor Anthropic via upstream, banco SQLite em arquivo e leitura de arquivo/tabela de preços."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa: painel-web SPA, painel-api e login por senha de operador para consultar e configurar tetos."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "Há estado persistido e schema/migração em persistencia; mudanças futuras precisam coexistir ou migrar dados já gravados."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "O sistema mede, limita e decide consumo de um recurso monetizado por uso de LLM, com custo crescendo a cada chamada."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O gateway toma decisão consequente de negar acesso/cortar consumo por teto global e por entidade, podendo prejudicar a parte sujeita ao corte."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há fluxo com estados e exceções claras: resolver identidade, reservar, negar ou enviar ao provedor, reconciliar ou liberar reserva."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O sistema registra consumo, emite/revoga chaves virtuais e permite alterar tetos; essas ações e dados pedem atribuição e auditoria."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "É um sistema em execução com falhas possíveis de concorrência, relógio, reconciliação e upstream, exigindo diagnóstico sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de controle de orçamento: reserva por pior caso, reconciliação por custo real e estado de corte para manter gasto sob o teto."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação operacional e dos clientes: chave real do provedor não pode vazar e apps não devem contornar o gateway."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que duas partes devem interpretar igual: usage adaptado, semântica de reservar/reconciliar/liberar, janelas UTC e erros como ModeloSemPreco."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de tolerâncias de ambiente e variação: relógio do host, semântica transacional do SQLite, presença de usage e limite rígido de max_tokens."
+    }
+  ]
+}

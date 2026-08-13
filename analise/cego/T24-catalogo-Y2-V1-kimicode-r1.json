@@ -1,0 +1,66 @@
+{
+  "projeto": "T24-catalogo",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "O sistema lê arquivos YAML de um diretório externo (M-07, yaml-loader/PyYAML): fronteira fora do processo que pode falhar, estar ausente ou devolver dados malformados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Há superfície operada por pessoa: CLI com subcomandos, flag --json, códigos de saída (M-11) e mensagens de erro acionáveis redigidas em M-02, além dos humanos que escrevem os YAMLs à mão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield sem persistência nem cache (escopo negativo); nenhum estado populado ou contrato pré-existente precisa sobreviver a uma transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "CLI local que carrega dezenas a centenas de datasets em memória (A7), recarregando a cada execução; não há recurso cujo custo cresça de forma relevante com o uso."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": false,
+      "sinal": "O sistema não toma nem automatiza decisão consequencial sobre pessoas: apenas valida forma e reporta donos e linhagem declarados pelos próprios humanos."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Existe fluxo com estados e caminhos de exceção: carregar → mapear → construir grafo → validar (A8, validação sempre antes de consulta), com agregação de erros em vez de falha na primeira violação (A9) e a exclusão explícita do estado 'carregado mas inválido'."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "O próprio propósito do sistema é atribuição: donos declarados por domínio com herança e sobrescrita (M-03), e INV-2/INV-3 exigem que todo domínio e dataset tenha dono identificável."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": false,
+      "sinal": "CLI síncrona de execução única que termina a cada chamada; falhas são a própria saída (erros agregados e explícitos), sem operação contínua onde algo possa degradar silenciosamente."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "Sistema sem estado entre execuções, sem retry, sem sincronização e sem laço de realimentação — reage a cada invocação e descarta tudo ao terminar."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "Múltiplos donos de domínio declaram seus próprios YAMLs (dono, datasets, arestas); a validação checa apenas a forma (INV-1..INV-6), assumindo cooperação na veracidade — um dono interessado pode omitir linhagem ou declarar-se dono sem contraprova."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos entre duas partes sujeitos a leituras divergentes: o schema YAML escrito por humanos e lido pelo loader, a semântica invertida de 'alimentado_por' (M-08), o formato 'dominio.nome' (A10) e a exclusão do próprio X em impact (A6, que o próprio texto exige tornar explícita)."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de coisas que variam: versões de NetworkX (cuja semântica de descendants define o critério de acerto, A6) e PyYAML, e entradas YAML de forma variável — pequenos desvios de versão ou de entrada podem quebrar a igualdade exata de conjuntos."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "projeto": "T27-despesas",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "M-09 persiste em SQLite (arquivo/banco fora do processo de domínio) e M-11 expõe HTTP — bordas que podem falhar, travar ou devolver dados inesperados."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 entrega 6 telas server-rendered operadas por pessoas (bandeja, delegações, formulários POST), superfície onde o usuário pode se confundir ou errar."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield: o schema é criado por migrar()/semear() e só esta versão lê o banco; não há estado preexistente nem consumidores de um contrato antigo."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "A7 fixa volume pequeno (dezenas a centenas) e não há recurso de custo crescente com o uso (sem IA, sem processamento em massa, sem infra elástica)."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema decide aprovar/rejeitar despesas de pessoas e delegar autoridade sobre elas — decisão consequencial cujo efeito recai sobre solicitantes, com trilha/auditoria como mecanismo de transparência."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-01 define máquina de estados com transições e caminho terminal, M-02 monta cadeia multi-ator, e há caminhos de exceção (ErroSoD, ErroAcimaDoTeto, ErroSemAutoridadeAcima)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "M-06 é trilha append-only com ator efetivo, em-nome-de e limite exercido (INV-7/INV-8), e há tela de auditoria — cada ação precisa ser atribuível e respondível."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda como serviço (Fastify + SQLite) que pode degradar ou falhar silenciosamente após o deploy, e a trilha de domínio não substitui diagnóstico operacional (logs/métricas não aparecem)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": false,
+      "sinal": "O sistema só reage a comandos; não há retry/backoff, sincronização de estado, setting dinâmico ou laço de feedback — a expiração de delegação é avaliada sob demanda, não regulada ao longo do tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A5 assume identidade confiável sem autenticação e a própria premissa declara que o SoD vale 'contra engano, não contra adversário' — a cooperação dos atores é assumida, não forçada."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos explícitos entre 12 módulos e uma API HTTP; INV-1 (fronteira inclusiva valor ≤ limite), centavos inteiros e instantes UTC existem justamente porque cada contrato admite duas leituras."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de faixas que podem variar — relógio UTC monotônico (A6), volume pequeno (A7), versões de Fastify/SQLite, faixas de valor e vigência — e degrada fora da especificação exata."
+    }
+  ]
+}

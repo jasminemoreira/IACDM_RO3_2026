@@ -1,0 +1,66 @@
+{
+  "projeto": "T23-canario",
+  "modulos_estimados": 12,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "A porta fonte-de-metricas (M-09) distingue explicitamente Amostra de Indisponivel — há uma fronteira externa de coleta que pode falhar, atrasar ou devolver dados inesperados; e alvo-de-implantacao (M-10) é outra porta cujo aplicar(pesos) pode falhar."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "M-12 cli é a entrada do operador (pessoa operando ferramenta operacional), com abortar() manual e exigência de imprimir progresso, motivo e decisão final sem confusão."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": true,
+      "sinal": "O próprio problema é coexistência do canário com a versão estável em produção, com caminho de rollback (100% à estável) — há um 'antigo' rodando que deve sobreviver à transição."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": false,
+      "sinal": "Sistema sintético de laço monothread sem recurso cujo custo cresça com o uso (sem ML, sem infraestrutura elástica, sem volume de dados custoso); escopo negativo exclui persistência e sistemas reais."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O coordenador automatiza uma decisão consequente — promover ou reverter uma versão em produção — que pode prejudicar usuários/serviço se errada; exige-se mecanismo de transparência (motivo do rollback impresso, eventos assináveis) e correção (abortar)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "M-07 coordenador é explicitamente uma máquina de estados (progredindo/pausado/revertido/promovido) com laço de execução, plano-de-passos (M-06) e caminhos de exceção (guarda-absoluta, contadores de erro, aborto)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "Cada decisão (progresso, rollback, promoção) precisa ser atribuível e auditável depois — daí a exigência de emitir eventos com motivo e decisão final; donos de dados são definidos por módulo (veredito em julgamento, participante em alvo-de-implantacao)."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda e decide sem intervenção, e a arquitetura já embute o sinal: coordenador emite eventos via assinar(observador) para que se saiba POR QUE uma decisão ocorreu sem mudar código."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "É um laço de realimentação clássico: métricas geram sinal de erro (vereditos, guarda-absoluta, contadores) e o sistema corrige estado (ajuste de pesos, rollback) rumo ao alvo — com risco real de oscilação/deriva entre passos."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": false,
+      "sinal": "Não há ator autointeressado cuja cooperação seja assumida: o único ator humano é o operador da CLI, e os 'participantes' são instâncias simuladas sem incentivo próprio para desviar."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "As três portas (relogio, fonte-de-metricas, alvo-de-implantacao) e os contratos entre módulos (ex.: distribuicao com soma 100, Amostra vs Indisponivel) admitem duas leituras corretas que divergem — contratos que duas implementações (simulador vs. adaptador real) devem interpretar igual."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de quantidades que variam e só funciona dentro de tolerâncias: amostra mínima ≥50 (A4), limiares da guarda-absoluta (A3), confiança de 98% no Mann-Whitney, score exigido 100 (A6) — pequenos desvios de ruído derrubam canários sadios."
+    }
+  ]
+}

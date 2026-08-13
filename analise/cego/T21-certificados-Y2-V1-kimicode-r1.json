@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "sonda-tls (M-08) cruza fronteira de rede com falhas tipadas (timeout/recusado/dns/tls) e repositorio (M-09) depende de node:sqlite — dependências fora do processo que podem falhar, travar ou responder inesperado."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "web-ui (M-11) expõe 5 telas com sessão e formulários (login, painel, aprovação de pedidos) operadas por pessoas."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Projeto greenfield em V(1): nenhum estado populado, formato legado ou contrato com consumidores existentes precisa atravessar uma transição; o banco só é lido por esta versão."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A7 reconhece que o custo cresce com o uso: varredura sequencial sobre os alvos e painel sem paginação — consumo de rede/CPU proporcional ao número de alvos."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema registra quem aprovou cada emissão, marca 'troca-nao-autorizada' e escala por inação (A4) — decisões automatizadas cujo efeito recai sobre pessoas (aprovadores e operadores responsabilizados)."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "pedido (M-03) é uma máquina de estados pendente -> aprovado -> fechado com handoff solicitante/aprovador e caminho de exceção (escalação por inação em reconciliacao, M-04)."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A própria finalidade é atribuição: trilha append-only encadeada por hash (M-05), registro de aprovador por emissão e verificação de integridade — ações que alguém terá de auditar e responder depois."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "Sistema rodando pode degradar silenciosamente (sondas falhando, pedidos parados, trilha quebrada) e alguém precisará diagnosticar o porquê sem mudar código; nenhum módulo de logging/métricas aparece na V(1)."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "reconciliacao (M-04) compara observação nova com anterior e com pedidos abertos ao longo do tempo, gerando sinal de erro (troca não autorizada, escalação) — laço de feedback que pode oscilar ou derivar (classificação por limiares em M-02)."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "O desenho assume cooperação sem impor: A4 assume que um humano aprova na janela e o escopo negativo admite que não há segregação de funções — um ator auto-interessado pode desviar (aprovar o próprio pedido, ignorar alertas)."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Contratos compartilhados entre os 11 módulos — união Decisao de M-04, convenção Ok|Erro, estados de classificar — admitem leituras divergentes entre produtor e consumidor."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "Dependência de coisas que variam: node:sqlite experimental (A8), relógio da máquina sem mitigação (A2), handshakes TLS heterogêneos e timeout configurável na sonda — tolerâncias que podem falhar em pequenos desvios."
+    }
+  ]
+}

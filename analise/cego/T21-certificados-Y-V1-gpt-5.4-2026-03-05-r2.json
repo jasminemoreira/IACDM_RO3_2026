@@ -1,0 +1,66 @@
+{
+  "projeto": "T21-certificados",
+  "modulos_estimados": 11,
+  "lentes": [
+    {
+      "lente": "Resilience",
+      "ativa": true,
+      "sinal": "Há fronteiras externas que podem falhar ou atrasar: rede em `sonda-tls` e persistência em `repositorio`/SQLite."
+    },
+    {
+      "lente": "UI/UX",
+      "ativa": true,
+      "sinal": "Existe superfície operada por pessoa em `web-ui`, com login, painel, trilha e ações de varredura e aprovação."
+    },
+    {
+      "lente": "Migration / Coexistence",
+      "ativa": false,
+      "sinal": "Não há sinal de sistema legado, formato anterior, contrato antigo ou transição/coexistência descrita na arquitetura."
+    },
+    {
+      "lente": "Sustainability / Proportionality",
+      "ativa": true,
+      "sinal": "A varredura consome recursos de rede/tempo por alvo e o próprio texto assume crescimento de custo com volume em A7."
+    },
+    {
+      "lente": "Ethical / Human Impact",
+      "ativa": true,
+      "sinal": "O sistema produz decisões consequentes sobre alvos, como `troca-nao-autorizada`, `escalar` e aprovação de emissão, que podem gerar dano operacional."
+    },
+    {
+      "lente": "Process / Workflow",
+      "ativa": true,
+      "sinal": "Há processo explícito com estados e exceções em `pedido` (`pendente -> aprovado -> fechado`) e handoffs entre solicitante/aprovador/auditor."
+    },
+    {
+      "lente": "Governance / Accountability",
+      "ativa": true,
+      "sinal": "A arquitetura registra autoria e auditabilidade: 'quem aprovou cada emissão', atores/papéis em `autorizacao` e trilha append-only em `trilha`."
+    },
+    {
+      "lente": "Observability / Operability",
+      "ativa": true,
+      "sinal": "O sistema roda continuamente o suficiente para degradar após entrega, com falhas de sonda, banco, relógio e integridade que precisam ser diagnosticadas em execução."
+    },
+    {
+      "lente": "Control Engineering",
+      "ativa": true,
+      "sinal": "Há laço de realimentação entre observar certificado, classificar por limiar e reconciliar/acionar `escalar` ou fechar pedido conforme o estado muda no tempo."
+    },
+    {
+      "lente": "Game Theory",
+      "ativa": true,
+      "sinal": "A arquitetura assume cooperação humana em aprovar dentro da janela (A4) e uma varredura por vez disparada por pessoa (A6), comportamentos que não são totalmente impostos pelo sistema."
+    },
+    {
+      "lente": "Linguistics / Grammar",
+      "ativa": true,
+      "sinal": "Há contratos que precisam leitura inequívoca, como `Decisao[]`, estados de classificação e convenção `Ok | Erro` entre módulos."
+    },
+    {
+      "lente": "Mechanical Engineering",
+      "ativa": true,
+      "sinal": "O sistema depende de variações de ambiente e tolerâncias: relógio correto (A2), API experimental de `node:sqlite` (A8), certificado TLS variado e execução concorrente (A6)."
+    }
+  ]
+}
