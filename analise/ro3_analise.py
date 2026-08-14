@@ -20,10 +20,27 @@ Num módulo denso, quase nada seria exclusivo pelo critério de módulo, e a med
 diria mais sobre o tamanho do módulo que sobre a lente. O §3 já fixou `duplica`
 como o discriminante de "mesmo defeito"; este passo apenas o usa.
 
-Consequência assumida: a medida herda o viés de quem marca `duplica` — declarado
-no §7 como L6. O viés conservador do §3 (na dúvida, não marcar duplicata) empurra
-a favor da ortogonalidade, ou seja, contra a hipótese nula. Subdeclarar duplicata
-INFLA a contribuição exclusiva; o erro conservador seria superdeclarar.
+Consequência assumida: a medida herda o viés de quem marca `duplica`.
+
+DIREÇÃO DO VIÉS — e a palavra "conservador" não é usada aqui, de propósito.
+A regra do §3 ("na dúvida, não marque duplicata") produz MENOS fusões, logo MAIS
+clusters, logo é mais provável que uma lente seja a única ocupante de um cluster.
+Isso INFLA a contribuição exclusiva, que é a variável dependente. Ou seja: a regra
+enviesa a favor da hipótese de ortogonalidade.
+
+A regra é prudente quanto ao ATO DE MARCAR — asseverar que dois achados são o mesmo
+defeito é uma afirmação positiva, e abster-se é o default defensável. Mas é o oposto
+de prudente QUANTO À HIPÓTESE. Chamar isso de "viés conservador" sem dizer conservador
+em relação a quê conflaciona as duas coisas; o §3 e o §7 do protocolo o fazem, e a
+`ERRATA-CRITERIO-DUPLICA.md` na raiz do pacote registra a leitura correta.
+
+O CORRETIVO está no desenho, não na regra: a remarcação cega, e em particular a
+UNIÃO das clusterizações — que funde todo par que qualquer avaliador agrupou, e é
+portanto a leitura mais hostil à hipótese. Diferença medida: 1.029 clusters sob a
+marcação do gerador contra 668 sob a união, 35% a menos. Nenhuma lente chega a zero
+sob nenhuma das quatro.
+
+Por isso o Passo 2 nunca deve ser reportado só sob a marcação do gerador.
 """
 
 from __future__ import annotations

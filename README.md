@@ -46,6 +46,7 @@ in Portuguese.
 | caminho | conteúdo |
 |---|---|
 | **[`RESULTADO-RO3.md`](RESULTADO-RO3.md)** | **o resultado completo** — três achados, limitações medidas, sete correções de percurso |
+| [`ERRATA-CRITERIO-DUPLICA.md`](ERRATA-CRITERIO-DUPLICA.md) | esclarecimento sobre a cláusula de viés do §3 do protocolo — o protocolo não é alterado |
 | [`ADJUDICACAO-ETI.md`](ADJUDICACAO-ETI.md) | a adjudicação da lente Ética: critério datado, cegamento, dois juízes — e por que a fronteira não reproduz |
 | [`INSTRUCOES-REDACAO.md`](INSTRUCOES-REDACAO.md) | como usar os achados no artigo, e o que **não** afirmar |
 | [`LOG-OPERACAO.md`](LOG-OPERACAO.md) | os 12 projetos, os **7 descartes** e as violações de protocolo |
@@ -162,6 +163,13 @@ o dado mostrou. A entrada sobre estimadores foi reescrita quatro vezes.
 **O gate de testes travou em 4 de 12 projetos** e foi contornado nos quatro, sempre com a
 saída real e sempre declarado pelo agente. Nenhuma falsificação ocorreu; o achado é que o
 mecanismo não a impediria.
+
+**Uma cláusula do protocolo é ambígua, e a errata diz qual é a leitura correta.** O §3
+descreve a direção do viés da marcação de duplicatas usando "conservador" em dois sentidos
+incompatíveis. O protocolo fica como está — é o pré-registro —, e
+[`ERRATA-CRITERIO-DUPLICA.md`](ERRATA-CRITERIO-DUPLICA.md) registra a leitura correta: a
+regra enviesa **a favor** da hipótese, e a união das quatro clusterizações é o corretivo
+desenhado para isso.
 
 **A cadeia de correção está no repositório, incluindo o que não deu certo.** A sonda lexical
 que sustentaria a adjudicação de ETI foi **retratada** — media densidade de prosa sobre humanos

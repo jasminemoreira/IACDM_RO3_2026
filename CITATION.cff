@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+cff-version: 1.3.0
 title: >-
   IACDM RO3 — corpus e análise do experimento de ortogonalidade
   das 19 lentes de crítica
@@ -42,5 +42,5 @@ identifiers:
     description: DOI da versão 1.0.0 (primeiro snapshot)
 license: CC-BY-4.0
 repository-code: https://github.com/jasminemoreira/IACDM_RO3_2026
-date-released: 2026-08-13
-version: 1.2.0
+date-released: 2026-08-14
+version: 1.3.0
