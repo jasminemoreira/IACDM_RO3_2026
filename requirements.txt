@@ -1,0 +1,25 @@
+# Dependências — IACDM RO3
+#
+# NÃO HÁ DEPENDÊNCIAS PYTHON DE TERCEIROS.
+#
+# O pipeline inteiro usa apenas a biblioteca padrão, inclusive as chamadas HTTP
+# (`urllib.request`). Isto vale tanto para o caminho offline — recomputar os números do
+# paper a partir das saídas arquivadas — quanto para o caminho de recoleta.
+#
+# Verificável:
+#     python3 tools/checar_dependencias.py
+#
+# PYTHON
+#   3.10 ou superior. Desenvolvido e executado em 3.12.1.
+#
+# FERRAMENTAS EXTERNAS — nenhuma é necessária para recomputar os números do paper.
+# Só fazem falta a quem quiser REEXECUTAR a coleta:
+#
+#   ollama          juiz cego local (`qwen3.6:27b`)          https://ollama.com
+#   kimi CLI        estimador/juiz Kimi, sessão OAuth        https://www.kimi.com/code
+#   OPENAI_API_KEY  estimador/juiz `gpt-5.4-2026-03-05`      https://platform.openai.com
+#   QWEN_API_KEY    estimador/juiz `qwen3.6-27b` (DashScope) https://dashscope.aliyuncs.com
+#
+# versus-claude 0.14.2 — o instrumento que GEROU o corpus — não é necessário para
+# recomputar nada. A cópia usada está arquivada em `instrumento/server.js`
+# (md5 9dfee8beb881…), e o pipeline a lê de lá. Ver README, "Reproduzir".

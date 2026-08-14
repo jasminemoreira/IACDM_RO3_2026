@@ -25,29 +25,38 @@ máquina. Anote a versão que o MCP reportou no `initialize` da sessão.
 
 Motivo do descarte integral do ciclo 1 em `_lote-1-descartado/MOTIVO.md`.
 
+> **Proveniência do identificador do modelo.** A coluna registra `claude-opus-5`, recuperado
+> dos **transcripts das sessões** em 2026-08-13 — não do `state.json`, que guarda apenas
+> `"agent": "claude"`. Verificação: **5.328 mensagens de assistente** nos doze projetos
+> válidos e nos dois descartes do slot T21, **todas** com `model: "claude-opus-5"`, mais duas
+> entradas `<synthetic>` que são do harness e não saída de modelo. **Nenhuma troca de modelo
+> durante o lote** — o confundidor que o preâmbulo deste arquivo temia fica descartado, e
+> tardiamente: a anotação não foi feita na hora, como o próprio preâmbulo recomendava, e só
+> foi possível porque os transcripts sobreviveram. Eles **não** estão no pacote publicado.
+
 **Ciclo 2** — lista congelada em 2026-08-08. Build corrente: **versus-claude 0.14.2**,
 única versão instalada. Os projetos válidos rodam todos sobre ela; os descartes abaixo
 são justamente o preço de manter isso verdadeiro.
 
 | taskId | modelo | build | início | fim | duração | desfecho |
 |---|---|---|---|---|---|---|
-| ~~T21-cofre~~ | Claude | 0.13.0 | 2026-08-08 | 2026-08-08 | | **descartado** — reset assimétrico do laço |
-| ~~T21-quotas~~ | Claude | 0.13.1 | 2026-08-08 | 2026-08-08 | | **descartado** — lente por nome não canônico na matriz |
-| T21-certificados | Claude | 0.14.2 | 2026-08-09 | 2026-08-09 | 4,1 h | **concluído** — 110 achados, 12 módulos, 2 iterações |
-| T24-catalogo | Claude | 0.14.2 | 2026-08-09 | 2026-08-09 | 1,1 h | **concluído** — 75 achados, 9 módulos, 2 iterações |
-| T22-plantoes | Claude | 0.14.2 | 2026-08-10 | 2026-08-10 | 5,3 h | **concluído** — 71 achados, 11 módulos, 2 iterações |
-| T23-canario | Claude | 0.14.2 | 2026-08-10 | 2026-08-10 | 1,9 h | **concluído** — 72 achados, 12 módulos, 2 iterações |
-| T25-orcamento | Claude | 0.14.2 | 2026-08-10 | 2026-08-10 | 4,1 h | **concluído** — 68 achados, 10 módulos, 2 iterações |
-| T26-extratos | Claude | 0.14.2 | 2026-08-10 | 2026-08-10 | 2,7 h | **concluído** — 112 achados, 12 módulos, 2 iterações |
-| T27-despesas | Claude | 0.14.2 | 2026-08-11 | 2026-08-11 | 3,6 h | **concluído** — 95 achados, 12 módulos, **3 iterações** |
-| T28-agenda | Claude | 0.14.2 | 2026-08-11 | 2026-08-11 | 3,0 h | **concluído** — 105 achados, 12 módulos, 3 iterações |
-| T29-retencao | Claude | 0.14.2 | 2026-08-11 | 2026-08-11 | 3,3 h | **concluído** — 109 achados, 12 módulos, 2 iterações |
-| T30-notifica | Claude | 0.14.2 | 2026-08-11 | 2026-08-11 | 2,2 h | **concluído** — 96 achados, 12 módulos, 2 iterações |
-| T31-precos | Claude | 0.14.2 | 2026-08-11 | 2026-08-12 | 3,3 h | **concluído** — 109 achados, 12 módulos, **4 iterações**; liberado para ciclo 2 |
-| T32-triagem | Claude | 0.14.2 | 2026-08-12 | 2026-08-12 | 2,2 h | **concluído** — 78 achados, 12 módulos, 2 iterações |
+| ~~T21-cofre~~ | claude-opus-5 | 0.13.0 | 2026-08-08 | 2026-08-08 | | **descartado** — reset assimétrico do laço |
+| ~~T21-quotas~~ | claude-opus-5 | 0.13.1 | 2026-08-08 | 2026-08-08 | | **descartado** — lente por nome não canônico na matriz |
+| T21-certificados | claude-opus-5 | 0.14.2 | 2026-08-09 | 2026-08-09 | 4,1 h | **concluído** — 110 achados, 12 módulos, 2 iterações |
+| T24-catalogo | claude-opus-5 | 0.14.2 | 2026-08-09 | 2026-08-09 | 1,1 h | **concluído** — 75 achados, 9 módulos, 2 iterações |
+| T22-plantoes | claude-opus-5 | 0.14.2 | 2026-08-10 | 2026-08-10 | 5,3 h | **concluído** — 71 achados, 11 módulos, 2 iterações |
+| T23-canario | claude-opus-5 | 0.14.2 | 2026-08-10 | 2026-08-10 | 1,9 h | **concluído** — 72 achados, 12 módulos, 2 iterações |
+| T25-orcamento | claude-opus-5 | 0.14.2 | 2026-08-10 | 2026-08-10 | 4,1 h | **concluído** — 68 achados, 10 módulos, 2 iterações |
+| T26-extratos | claude-opus-5 | 0.14.2 | 2026-08-10 | 2026-08-10 | 2,7 h | **concluído** — 112 achados, 12 módulos, 2 iterações |
+| T27-despesas | claude-opus-5 | 0.14.2 | 2026-08-11 | 2026-08-11 | 3,6 h | **concluído** — 95 achados, 12 módulos, **3 iterações** |
+| T28-agenda | claude-opus-5 | 0.14.2 | 2026-08-11 | 2026-08-11 | 3,0 h | **concluído** — 105 achados, 12 módulos, 3 iterações |
+| T29-retencao | claude-opus-5 | 0.14.2 | 2026-08-11 | 2026-08-11 | 3,3 h | **concluído** — 109 achados, 12 módulos, 2 iterações |
+| T30-notifica | claude-opus-5 | 0.14.2 | 2026-08-11 | 2026-08-11 | 2,2 h | **concluído** — 96 achados, 12 módulos, 2 iterações |
+| T31-precos | claude-opus-5 | 0.14.2 | 2026-08-11 | 2026-08-12 | 3,3 h | **concluído** — 109 achados, 12 módulos, **4 iterações**; liberado para ciclo 2 |
+| T32-triagem | claude-opus-5 | 0.14.2 | 2026-08-12 | 2026-08-12 | 2,2 h | **concluído** — 78 achados, 12 módulos, 2 iterações |
 
 **Lote encerrado em 2026-08-12.** 12 projetos válidos sob instrumento único (`versus-claude 0.14.2`),
-1.100 achados, 1.029 defeitos distintos, 130 módulos, 35 h de execução. Sete descartes,
+1.100 achados, 1.029 defeitos distintos, 130 módulos, 36,8 h de execução. Sete descartes,
 todos com motivo registrado. Nenhum projeto perdido desde a 0.14.2.
 
 ## Violações de protocolo

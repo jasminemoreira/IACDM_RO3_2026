@@ -16,6 +16,29 @@ auditável.
 
 Leia **[`RESULTADO-RO3.md`](RESULTADO-RO3.md)** — é a fonte única dos números.
 
+<details>
+<summary><b>Summary in English</b></summary>
+
+Corpus and analysis of an experiment testing **RQ3** of the IACDM methodology: *does each of
+19 architectural-critique lenses detect a failure class no other lens detects?*
+
+Twelve software projects were built from scratch, each in a single 2–4 hour session, all
+under the same instrument (`versus-claude 0.14.2`, homogeneity verified by hash), producing
+**1,100 critique findings** and 1,029 distinct defects across 130 modules.
+
+**No lens showed zero exclusive contribution** — in no project, and under four independent
+clusterings of what counts as "the same defect", including the union of all four, which
+collapses 1,029 defects into 668. Mean overlap 11%.
+
+Two unplanned findings: the **activation criterion** is the fragile part, not the taxonomy;
+and the method produces commitments — architectural premises, resolutions of critical
+findings — that **no mechanism ever re-confronts** with the built artifact.
+
+Everything needed to recompute the paper's numbers is archived here and runs **offline, with
+no API keys and no third-party Python packages**. See *Reproduzir* below; the documents are
+in Portuguese.
+</details>
+
 ---
 
 ## O que há aqui
@@ -31,6 +54,7 @@ Leia **[`RESULTADO-RO3.md`](RESULTADO-RO3.md)** — é a fonte única dos númer
 | [`ACHADOS-METODO.md`](ACHADOS-METODO.md) | M1–M8, sobre gates, hooks e safeguards |
 | [`CLASSIFICACAO-FORMA-VS-QUALIDADE-FASE2.md`](CLASSIFICACAO-FORMA-VS-QUALIDADE-FASE2.md) | a regra que autoriza uma trava — **normativo** |
 | [`patches/`](patches/) | especificação corretiva pós-lote, com evidência por item |
+| [`FORMATOS.md`](FORMATOS.md) | schema dos JSONs, colunas da matriz, convenção de nomes |
 | [`analise/`](analise/) | o pipeline: parser, Passos 1–5, remarcação cega, estimativa de lentes |
 | [`instrumento/`](instrumento/) | o bundle `versus-claude 0.14.2` que rodou os doze |
 | `T21…T32/` | os doze projetos |
@@ -52,18 +76,55 @@ A **matriz de cobertura** é o dado primário. O `state.json` traz o registro es
 lentes declaradas ativas em cada iteração do laço crítica↔revisão, mais as decisões
 narrativas — que é de onde vieram todos os achados de método.
 
-## Reproduzir a análise
+## Reproduzir
+
+**Requisitos: Python 3.10 ou superior. Nada além disso.** O pipeline é stdlib puro — sem
+pacotes de terceiros, inclusive nas chamadas HTTP. Verificável:
 
 ```bash
-python3 analise/test_formato.py          # 18 casos adversariais de formato
-python3 analise/ro3_analise.py T21-certificados T24-catalogo … T32-triagem
+python3 tools/checar_dependencias.py
+```
+
+### Caminho A — recomputar os números do paper *(offline, sem chave nenhuma)*
+
+**É este que reproduz tudo o que o artigo afirma.** Roda a partir das saídas já arquivadas;
+não faz chamada de rede.
+
+```bash
+python3 analise/test_formato.py                    # 18 casos adversariais de formato
+python3 analise/ro3_analise.py T21-certificados T24-catalogo T22-plantoes T23-canario \
+    T25-orcamento T26-extratos T27-despesas T28-agenda T29-retencao T30-notifica \
+    T31-precos T32-triagem                          # Passos 1–5 sobre os doze
+python3 analise/cegar_duplicatas.py comparar T22-plantoes \
+    analise/cego/T22-plantoes-resposta.json         # κ, a partir da resposta arquivada
+python3 analise/sonda_eti_refutada.py               # a sonda retratada e sua refutação
 ```
 
 O agregado dos doze está em [`analise/saidas/AGREGADO-12.md`](analise/saidas/AGREGADO-12.md).
 
-A remarcação cega e a estimativa de lentes chamam modelos externos e exigem
-`OPENAI_API_KEY` ou `QWEN_API_KEY` no ambiente. Sem elas, falham com mensagem explícita —
-nunca com resultado silenciosamente diferente.
+**O `versus-claude 0.14.2` não é necessário.** Ele gerou o corpus, que está arquivado; a
+cópia do bundle usada está em [`instrumento/`](instrumento/) e o pipeline lê os nomes
+canônicos das lentes de lá. Um `$VERSUS_BUNDLE` pode apontar para outro, se quiser.
+
+### Caminho B — reexecutar a coleta *(exige chaves e ferramentas externas)*
+
+Só para quem quiser **refazer** as avaliações em vez de recomputar a partir delas. Nada do
+que o paper afirma depende disto.
+
+```bash
+OPENAI_API_KEY=… python3 analise/cegar_duplicatas.py julgar T22-plantoes gpt-5.4-2026-03-05
+QWEN_API_KEY=…   python3 analise/reestimar_lentes.py T22-plantoes --versao 1 --n 3 --modelo qwen3.6-27b
+                 python3 analise/reestimar_lentes.py T22-plantoes --versao 1 --n 3 --modelo kimicode
+```
+
+Ferramentas: `ollama` para o juiz local, o CLI `kimi` com sessão OAuth, e chaves da OpenAI
+e do DashScope. Ausentes, os scripts **falham com mensagem explícita** — nunca com
+resultado silenciosamente diferente. Reexecução não reproduz os JSONs byte a byte: os
+modelos são estocásticos e alguns não expõem `seed`.
+
+### Formatos
+
+Schema dos JSONs, colunas da matriz e a convenção `T21–T32`: **[`FORMATOS.md`](FORMATOS.md)**.
 
 ## Números
 
@@ -71,6 +132,7 @@ nunca com resultado silenciosamente diferente.
 corpus            12 projetos · 1.100 achados · 1.029 defeitos distintos · 130 módulos · 37 h
 descartes         7, todos documentados
 instrumento       versus-claude 0.14.2 — server.js md5 9dfee8be… idêntico nos doze
+agente gerador    claude-opus-5 — uniforme nos doze, verificado nos transcripts
 ortogonalidade    0 lentes com contribuição exclusiva zero, em 4 clusterizações
 sobreposição      média 11% · mínimo 2% (ARQ) · máximo 33% (SUS)
 pares de lentes   41 de 171 (24%) compartilham algum defeito · maior Jaccard 0,10 (DES×SUS)

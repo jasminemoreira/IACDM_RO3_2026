@@ -19,9 +19,9 @@ correção é parte do resultado, não constrangimento a esconder.
 | achados | **1.100** — 195 críticos, 657 importantes, 248 sugestões |
 | defeitos distintos | **1.029** (clusters por `duplica` do modelo gerador) |
 | módulos | 130 |
-| execução | **37 h** · 1,1 a 5,3 h por projeto, mediana 3,3 h |
+| execução | **36,8 h** · 1,1 a 5,3 h por projeto, mediana 3,3 h. Soma de `createdAt → updatedAt`; **inclui pausas do operador**, não é esforço |
 | iterações do laço 2↔3 | 28 no total — nove projetos com 2, dois com 3, um com 4 |
-| agente gerador | Claude, em todos os doze |
+| agente gerador | **`claude-opus-5`**, em todos os doze — verificado em 5.328 mensagens de assistente nos transcripts das sessões, sem troca durante o lote (`LOG-OPERACAO.md`) |
 
 **Cobertura das 12 condicionais** (projetos em que ativou):
 
@@ -181,6 +181,14 @@ lentes, e com direção:
 
 **SUS, RES, CTR, ETI e LIN erram numa direção só** — 35 divergências unidirecionais. Não é
 ruído; é leitura sistematicamente diferente do critério.
+
+> ⚠ **O número 35 é somado sobre três estimadores, e não deve ser usado como força de
+> evidência.** As decisões não são independentes entre estimadores. Os **casos limpos** — os
+> dois estimadores capazes concordando entre si *contra* a Fase 2 — são **três**. A
+> adjudicação desses três por contribuição exclusiva **pega emprestada a variável dependente
+> do estudo** e vale só descritivamente: CTR e ETI produziram exclusivos (6 defeitos, 1
+> crítico); SUS não. O warrant do achado é a **misleitura documentada** — os estimadores
+> citam o gatilho estreito —, não "a Fase 2 acerta".
 
 **MEC é o espelho**: em 5 de 6 os externos ativam o que a Fase 2 recusou.
 
@@ -414,7 +422,7 @@ sobre estimadores foi reescrita **quatro vezes**.
 # 7. NÚMEROS DE REFERÊNCIA RÁPIDA
 
 ```
-corpus            12 projetos · 1.100 achados · 1.029 defeitos · 130 módulos · 37 h
+corpus            12 projetos · 1.100 achados · 1.029 defeitos · 130 módulos · 36,8 h
 severidade        195 críticos · 657 importantes · 248 sugestões
 descartes         7, todos documentados
 ortogonalidade    0 lentes com contribuição exclusiva zero, em 4 clusterizações
