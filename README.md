@@ -197,10 +197,23 @@ Ele resolve sempre para a versão mais recente, então uma correção futura no 
 invalida a citação. O DOI desta versão especificamente é
 [`10.5281/zenodo.21908908`](https://doi.org/10.5281/zenodo.21908908) (v1.0).
 
-**Duas versões, e a distinção importa para o artigo.** A **v1.0** é o corpus da RO3 tal como
-medido — a taxonomia X, congelada. A **v1.1** acrescenta o que veio depois: o experimento dos
-gatilhos reescritos e a adjudicação de ETI. Um artigo que cite resultados da RO3 pode citar o
-DOI de conceito; um que cite os números da adjudicação **precisa** da v1.1, porque eles não
-existem na v1.0.
+### As versões arquivadas
+
+| versão | DOI | o que acrescenta |
+|---|---|---|
+| **v1.0** | [`10.5281/zenodo.21908908`](https://doi.org/10.5281/zenodo.21908908) | **o corpus da RO3 tal como medido** — taxonomia X, congelada |
+| v1.1 | [`10.5281/zenodo.21925568`](https://doi.org/10.5281/zenodo.21925568) | experimento dos gatilhos reescritos · adjudicação de ETI · sonda refutada |
+| v1.2 | [`10.5281/zenodo.21926465`](https://doi.org/10.5281/zenodo.21926465) | executabilidade, formatos, identificador do modelo gerador |
+| v1.3 | [`10.5281/zenodo.21939285`](https://doi.org/10.5281/zenodo.21939285) | errata sobre a cláusula de viés do critério de duplicatas |
+
+**A distinção importa para quem cita.** A **v1.0** é o corpus da RO3 como medido. Quem cite
+resultados da RO3 pode usar o DOI de conceito; quem cite os números da **adjudicação de ETI**
+ou do **experimento dos gatilhos** precisa da **v1.1 ou posterior**, porque eles não existem
+na v1.0.
+
+> **Nota sobre esta tabela.** Cada versão só pode listar os DOIs das **anteriores** — o DOI
+> de uma versão é emitido no momento em que ela é arquivada, depois de o conteúdo estar
+> fechado. A tabela acima, portanto, sempre estará uma linha atrás de si mesma. O DOI de
+> conceito não tem esse problema e é o que resolve sempre para a mais recente.
 
 INDT · Jasmine Moreira ([0000-0002-3744-9528](https://orcid.org/0000-0002-3744-9528)) · 2026
