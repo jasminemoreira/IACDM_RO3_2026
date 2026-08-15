@@ -56,7 +56,7 @@ in Portuguese.
 | [`CLASSIFICACAO-FORMA-VS-QUALIDADE-FASE2.md`](CLASSIFICACAO-FORMA-VS-QUALIDADE-FASE2.md) | a regra que autoriza uma trava — **normativo** |
 | [`patches/`](patches/) | especificação corretiva pós-lote, com evidência por item |
 | [`FORMATOS.md`](FORMATOS.md) | schema dos JSONs, colunas da matriz, convenção de nomes |
-| [`analise/`](analise/) | o pipeline: parser, Passos 1–5, remarcação cega, estimativa de lentes |
+| [`analise/`](analise/) | o pipeline: parser, Passos 1–5, remarcação cega, estimativa de lentes, figuras |
 | [`instrumento/`](instrumento/) | o bundle `versus-claude 0.14.2` que rodou os doze |
 | `T21…T32/` | os doze projetos |
 
@@ -122,6 +122,21 @@ Ferramentas: `ollama` para o juiz local, o CLI `kimi` com sessão OAuth, e chave
 e do DashScope. Ausentes, os scripts **falham com mensagem explícita** — nunca com
 resultado silenciosamente diferente. Reexecução não reproduz os JSONs byte a byte: os
 modelos são estocásticos e alguns não expõem `seed`.
+
+### As figuras do paper
+
+```bash
+python3 analise/figuras.py --conferir            # recomputa os dados e confere
+Rscript --vanilla analise/figuras/make_figures.R # renderiza (R 4.5 + ggplot2)
+```
+
+Nenhum número é digitado no script de plotagem: os quatro conjuntos são recomputados do
+corpus e escritos em `analise/saidas/figuras/*.csv`. O **`--conferir`** compara as tabelas
+recomputadas do §1.4 e do §5.1, célula a célula, com o que está escrito no
+`RESULTADO-RO3.md`, e sai com código 1 se divergirem.
+
+Só a renderização precisa de R. Quem quiser apenas conferir o que está plotado roda o
+primeiro comando, que é stdlib como o resto do pipeline.
 
 ### Formatos
 
