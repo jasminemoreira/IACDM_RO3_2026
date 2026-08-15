@@ -20,6 +20,12 @@
 #   OPENAI_API_KEY  estimador/juiz `gpt-5.4-2026-03-05`      https://platform.openai.com
 #   QWEN_API_KEY    estimador/juiz `qwen3.6-27b` (DashScope) https://dashscope.aliyuncs.com
 #
+# RENDERIZAR AS FIGURAS — R 4.5 e ggplot2, só para transformar CSV em PDF.
+# Os NÚMEROS das figuras saem do `analise/figuras.py`, que é stdlib como todo o resto:
+# quem só quer conferir o que está plotado não precisa de R.
+#
+#   R >= 4.5 + ggplot2   `Rscript --vanilla analise/figuras/make_figures.R`
+#
 # versus-claude 0.14.2 — o instrumento que GEROU o corpus — não é necessário para
 # recomputar nada. A cópia usada está arquivada em `instrumento/server.js`
 # (md5 9dfee8beb881…), e o pipeline a lê de lá. Ver README, "Reproduzir".

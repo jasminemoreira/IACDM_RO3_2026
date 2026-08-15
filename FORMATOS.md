@@ -171,6 +171,37 @@ O critério, fixado e datado **antes** da leitura, está em `analise/CRITERIO-AD
 Os agregados intermediários existem porque a análise era incremental — cada projeto novo
 podia refutar a leitura anterior, e cinco refutaram. `RESULTADO-RO3.md` §6 tabula.
 
+### `analise/saidas/figuras/` — os dados das figuras do paper
+
+| padrão | conteúdo |
+|---|---|
+| `fig-robustness.csv` | contribuição exclusiva por lente sob as quatro clusterizações — §1.4 |
+| `fig-divergences.csv` | divergências de ativação por lente, com direção — §2.4 |
+| `fig-kappa-rates.csv` | pares marcados por avaliador — §5.1 |
+| `fig-kappa-chance.csv` | co-marcações observadas, esperadas ao acaso e κ, por par — §5.1 |
+| `fig-annotations.csv` | anotações de eixo que carregam número, montadas do computado |
+| `fig-*.pdf` | as figuras renderizadas |
+
+Formato longo: uma linha por ponto plotado, **na ordem do eixo**, com os rótulos de legenda
+já montados e suas contagens embutidas. Quem consome não ordena, não rotula, não deriva.
+
+`fig-kappa-chance.csv` traz `expected` em precisão plena e **não traz o ratio** — ele é
+`observed / expected`, computado no script da figura. Dividir pelos 0,24 / 0,54 / 0,14
+arredondados da tabela do §5.1 erra o ratio em até meia unidade.
+
+**Como regenerar:**
+
+```
+python3 analise/figuras.py --conferir     # computa os CSV e confere contra o RESULTADO-RO3.md
+Rscript --vanilla analise/figuras/make_figures.R
+```
+
+O `--conferir` recomputa as tabelas do §1.4 e do §5.1 direto do corpus e as compara, célula
+a célula, com o que está escrito na fonte única. **Sai com código 1 se divergirem.** Foi
+assim que se descobriu que o painel do §5.1, computado à mão no fechamento, usava aresta
+declarada para o gerador e fecho transitivo para os juízes cegos — duas definições de
+"mesmo defeito" dentro do mesmo κ.
+
 ---
 
 ## Códigos das lentes

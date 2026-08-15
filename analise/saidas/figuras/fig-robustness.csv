@@ -1,0 +1,77 @@
+lens,code,clustering,value
+Assumptions,PRE,"Generator, Opus 5 (1,029 clusters)",98
+Architectural,ARQ,"Generator, Opus 5 (1,029 clusters)",88
+UI/UX,UX,"Generator, Opus 5 (1,029 clusters)",73
+Security,SEG,"Generator, Opus 5 (1,029 clusters)",74
+Scientific,CIE,"Generator, Opus 5 (1,029 clusters)",55
+Process,PRO,"Generator, Opus 5 (1,029 clusters)",60
+Linguistics,LIN,"Generator, Opus 5 (1,029 clusters)",76
+Governance,GOV,"Generator, Opus 5 (1,029 clusters)",52
+Performance,DES,"Generator, Opus 5 (1,029 clusters)",47
+Observability,OBS,"Generator, Opus 5 (1,029 clusters)",36
+Implementability,IMP,"Generator, Opus 5 (1,029 clusters)",70
+Mechanical Eng.,MEC,"Generator, Opus 5 (1,029 clusters)",42
+Control Eng.,CTR,"Generator, Opus 5 (1,029 clusters)",42
+Regulatory,REG,"Generator, Opus 5 (1,029 clusters)",34
+Game Theory,JOG,"Generator, Opus 5 (1,029 clusters)",20
+Resilience,RES,"Generator, Opus 5 (1,029 clusters)",56
+Sustainability,SUS,"Generator, Opus 5 (1,029 clusters)",26
+Ethical,ETI,"Generator, Opus 5 (1,029 clusters)",15
+Migration,MIG,"Generator, Opus 5 (1,029 clusters)",14
+Assumptions,PRE,Qwen full (960),85
+Architectural,ARQ,Qwen full (960),75
+UI/UX,UX,Qwen full (960),68
+Security,SEG,Qwen full (960),65
+Scientific,CIE,Qwen full (960),48
+Process,PRO,Qwen full (960),60
+Linguistics,LIN,Qwen full (960),57
+Governance,GOV,Qwen full (960),48
+Performance,DES,Qwen full (960),44
+Observability,OBS,Qwen full (960),34
+Implementability,IMP,Qwen full (960),53
+Mechanical Eng.,MEC,Qwen full (960),36
+Control Eng.,CTR,Qwen full (960),37
+Regulatory,REG,Qwen full (960),36
+Game Theory,JOG,Qwen full (960),25
+Resilience,RES,Qwen full (960),52
+Sustainability,SUS,Qwen full (960),28
+Ethical,ETI,Qwen full (960),18
+Migration,MIG,Qwen full (960),9
+Assumptions,PRE,GPT-5.4 (788),62
+Architectural,ARQ,GPT-5.4 (788),57
+UI/UX,UX,GPT-5.4 (788),44
+Security,SEG,GPT-5.4 (788),46
+Scientific,CIE,GPT-5.4 (788),45
+Process,PRO,GPT-5.4 (788),38
+Linguistics,LIN,GPT-5.4 (788),42
+Governance,GOV,GPT-5.4 (788),34
+Performance,DES,GPT-5.4 (788),29
+Observability,OBS,GPT-5.4 (788),23
+Implementability,IMP,GPT-5.4 (788),32
+Mechanical Eng.,MEC,GPT-5.4 (788),30
+Control Eng.,CTR,GPT-5.4 (788),27
+Regulatory,REG,GPT-5.4 (788),27
+Game Theory,JOG,GPT-5.4 (788),24
+Resilience,RES,GPT-5.4 (788),28
+Sustainability,SUS,GPT-5.4 (788),16
+Ethical,ETI,GPT-5.4 (788),13
+Migration,MIG,GPT-5.4 (788),7
+Assumptions,PRE,Union of 4 (668),53
+Architectural,ARQ,Union of 4 (668),47
+UI/UX,UX,Union of 4 (668),39
+Security,SEG,Union of 4 (668),38
+Scientific,CIE,Union of 4 (668),37
+Process,PRO,Union of 4 (668),31
+Linguistics,LIN,Union of 4 (668),27
+Governance,GOV,Union of 4 (668),25
+Performance,DES,Union of 4 (668),24
+Observability,OBS,Union of 4 (668),23
+Implementability,IMP,Union of 4 (668),22
+Mechanical Eng.,MEC,Union of 4 (668),22
+Control Eng.,CTR,Union of 4 (668),18
+Regulatory,REG,Union of 4 (668),18
+Game Theory,JOG,Union of 4 (668),17
+Resilience,RES,Union of 4 (668),16
+Sustainability,SUS,Union of 4 (668),13
+Ethical,ETI,Union of 4 (668),11
+Migration,MIG,Union of 4 (668),3

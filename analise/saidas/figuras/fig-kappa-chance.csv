@@ -1,0 +1,7 @@
+pair,observed,expected,kappa
+Qwen full × GPT-5.4,84,1.0088238146,0.338062
+Generator (Opus 5) × Qwen full,33,0.2433045671,0.279359
+Generator (Opus 5) × GPT-5.4,48,0.5406768157,0.225504
+Generator (Opus 5) × Qwen Q4 (local),13,0.1383496558,0.152458
+Qwen Q4 (local) × Qwen full,17,0.2581402114,0.139816
+Qwen Q4 (local) × GPT-5.4,24,0.5736449142,0.110021

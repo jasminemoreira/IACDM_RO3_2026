@@ -332,17 +332,24 @@ Painel completo, **51.565 pares avaliáveis** nos doze projetos:
 | par de avaliadores | pares em comum | esperado ao acaso | κ de Cohen |
 |---|---|---|---|
 | **qwen full × gpt-5.4** | **84** | 1,01 | **0,338** |
-| gerador × qwen full | 33 | 0,21 | 0,293 |
-| gerador × gpt-5.4 | 45 | 0,47 | 0,217 |
-| gerador × qwen Q4 local | 13 | 0,12 | 0,163 |
+| gerador × qwen full | 33 | 0,24 | 0,279 |
+| gerador × gpt-5.4 | 48 | 0,54 | 0,226 |
+| gerador × qwen Q4 local | 13 | 0,14 | 0,152 |
 | Q4 local × qwen full | 17 | 0,26 | 0,140 |
 | Q4 local × gpt-5.4 | 24 | 0,57 | 0,110 |
 
-Pares marcados: gerador **71**, Q4 local 87, Qwen full 153, GPT **340**.
+Pares marcados: gerador **82**, Q4 local 87, Qwen full 153, GPT **340**.
 
-**Todos os pares estão dezenas de vezes acima do acaso.** O que varia é a **taxa de
-marcação**, não o julgamento. O GPT recuperou **63%** das marcações do gerador lendo apenas
-as descrições cegadas; o Qwen full, 46%.
+> **Os 82 do gerador são pares, não marcadores.** As matrizes trazem **71** marcadores
+> `duplica:`, que são arestas; o fecho transitivo delas implica 82 pares, porque 5 clusters
+> de tamanho 3 e 2 de tamanho 4 afirmam mais pares do que declaram arestas. O κ compara
+> decisões pareadas, e os juízes cegos entregam **grupos** — todo par dentro do grupo. Usar
+> aresta de um lado e grupo do outro mediria duas coisas diferentes. O fecho é também o que
+> define os 1.029 clusters do §1.4: uma só definição de "mesmo defeito" no resultado inteiro.
+
+**Todos os pares estão dezenas de vezes acima do acaso** — de 42× a 136×. O que varia é a
+**taxa de marcação**, não o julgamento. O GPT recuperou **59%** das marcações do gerador
+lendo apenas as descrições cegadas; o Qwen full, 40%.
 
 **Vinte e sete pares foram confirmados pelos três** — gerador, Qwen full e GPT.
 

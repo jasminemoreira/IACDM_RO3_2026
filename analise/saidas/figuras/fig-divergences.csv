@@ -1,0 +1,14 @@
+lens,code,direction,value
+Sustainability,SUS,Phase 2 activated; external reader declined,-11
+Observability,OBS,Phase 2 activated; external reader declined,-6
+Observability,OBS,External reader activated; Phase 2 declined,4
+Control Eng.,CTR,Phase 2 activated; external reader declined,-8
+Control Eng.,CTR,External reader activated; Phase 2 declined,1
+Resilience,RES,Phase 2 activated; external reader declined,-7
+Mechanical Eng.,MEC,Phase 2 activated; external reader declined,-1
+Mechanical Eng.,MEC,External reader activated; Phase 2 declined,5
+Ethical,ETI,Phase 2 activated; external reader declined,-5
+Linguistics,LIN,Phase 2 activated; external reader declined,-4
+Game Theory,JOG,Phase 2 activated; external reader declined,-2
+Game Theory,JOG,External reader activated; Phase 2 declined,1
+Process,PRO,Phase 2 activated; external reader declined,-2
