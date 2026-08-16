@@ -315,14 +315,19 @@ fazer o trabalho.
 ### A medição que separa as duas coisas
 
 Se a redeclaração fosse cópia, as justificativas de não-ativação seriam idênticas entre
-iterações. Medido em **11 projetos** do ciclo 2, comparando it1 com a última iteração:
+iterações. Medido nos **12 projetos** do ciclo 2, comparando **iterações consecutivas**:
 
 | | resultado |
 |---|---|
-| projetos com ≥2 iterações | 11 |
-| conjunto mudou entre iterações | 2 (T26-extratos, T31-precos) |
+| projetos com ≥2 iterações | 12 |
+| comparações lente a lente | 36 |
+| conjunto mudou entre iterações | 3 — T26 (MIG), T31 (CTR), T32 (OBS) |
 | **justificativas idênticas** | **0 — nenhuma, em nenhum projeto** |
-| similaridade média dos textos | 0,09 a 0,65 |
+| Jaccard de tokens de palavra | 0,41 no conjunto · 0,23 a 0,59 por projeto |
+
+Comando: `python3 analise/redeclaracao.py`. A tabela anterior media 11 projetos, comparava
+it1 com a última iteração, e usava `difflib.SequenceMatcher` em caractere — cujo piso de
+0,09 era artefato da heurística *autojunk*, que descarta espaço e vogais em textos longos.
 
 Exemplo do T26, a mesma lente nas duas iterações:
 
