@@ -55,6 +55,16 @@ identifiers:
     value: 10.5281/zenodo.21939285
     description: >-
       versão 1.3.0 — errata sobre a cláusula de viés do critério de duplicatas
+  - type: doi
+    value: 10.5281/zenodo.21952689
+    description: >-
+      versão 1.4.0 — geração das figuras absorvida no pipeline e correção do
+      painel de concordância da marcação de duplicatas
+  - type: doi
+    value: 10.5281/zenodo.21967113
+    description: >-
+      versão 1.5.0 — medida de similaridade da redeclaração nomeada e
+      substituída por Jaccard sobre tokens
 license: CC-BY-4.0
 repository-code: https://github.com/jasminemoreira/IACDM_RO3_2026
 date-released: '2026-08-16'
