@@ -208,8 +208,21 @@ o que é independente do domínio do projeto — confundidor para uma contagem q
 cobertura determinada pelo tipo de projeto.
 
 **Verificação de que a redeclaração é trabalho real, não formalidade:** as justificativas de
-não-ativação foram comparadas entre iterações nos 12 projetos. **Zero textos idênticos**,
-similaridade média de 0,09 a 0,65 — cada iteração reargumenta contra a versão nova.
+não-ativação foram comparadas entre **iterações consecutivas**, lente a lente, nos 12
+projetos — **36 comparações**. **Zero textos idênticos.** Jaccard sobre tokens de palavra:
+**0,41** no conjunto, com média por projeto de **0,23 a 0,59**. Cada iteração reargumenta
+contra a versão nova.
+
+Comando: `python3 analise/redeclaracao.py`.
+
+> **Correção (2026-08-16).** Uma versão anterior desta linha dizia *"similaridade média de
+> 0,09 a 0,65"*, sem nomear a medida. Era `difflib.SequenceMatcher().ratio()` — Ratcliff/
+> Obershelp em caractere — e tinha três defeitos: o piso 0,09 era artefato da heurística
+> *autojunk* do `difflib`, que em textos de 200+ caracteres descarta o espaço e as vogais
+> (no T30 isso derruba 0,405 para 0,091); a faixa foi computada sobre **onze** projetos,
+> antes de o T32 fechar, e reportada como dos doze; e comparava só a primeira iteração com
+> a última, ignorando as intermediárias. A conclusão não muda por nenhuma medida — os
+> textos não se repetem —, mas a faixa publicada não era reportável.
 
 ---
 

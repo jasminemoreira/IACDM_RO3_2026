@@ -105,6 +105,9 @@ Estado da metodologia, escrito pela extensão. Campos que a análise usa:
   "recordedAt": "2026-08-10T01:14:12.419Z" }
 ```
 
+O campo `reason` de cada `notActivated` é comparado entre iterações consecutivas por
+`analise/redeclaracao.py`, que é o teste de que a redeclaração é trabalho e não ritual.
+
 **Uma entrada por iteração, não acumulada.** Em 3 dos 12 projetos o conjunto muda entre
 iterações. Comparar uma estimativa sobre a V(1) com a **união** das iterações é erro — a
 comparação correta é contra a entrada da iteração correspondente.
