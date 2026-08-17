@@ -131,7 +131,24 @@ salvar(p2, "fig-divergences.pdf", width = 6.0, height = 4.0)
 
 # =====================================================================
 # Figura 3 — marcação de duplicatas: (a) taxas, (b) concordância vs acaso
-# =====================================================================
+#
+# OS DOIS PAINÉIS ENTRAM LADO A LADO, e a escala de exportação tem de bater.
+# No `emse-ro3.tex` eles são incluídos como frações de \textwidth; se a razão das
+# larguras aqui não for a razão das frações lá, os dois renderizam em corpos
+# diferentes e, alinhados por baseline, um sobe em relação ao outro.
+#
+# Era o caso: 3,0 in em 0,41 tw contra 3,9 in em 0,55 tw dá 3,2% de diferença de
+# escala e ~6 pt de degrau vertical entre os títulos. Passava despercebido com o
+# título centrado; com o título alinhado à esquerda, salta à vista.
+#
+# Derivar a largura do (b) da fração amarra as duas coisas. Se as frações do .tex
+# mudarem, muda-se FRAC_A/FRAC_B aqui e só aqui.
+FRAC_A <- 0.41   # \includegraphics[width=0.41\textwidth]{fig-kappa-rates.pdf}
+FRAC_B <- 0.55   # \includegraphics[width=0.55\textwidth]{fig-kappa-chance.pdf}
+LARG_A <- 3.0
+LARG_B <- LARG_A * FRAC_B / FRAC_A
+ALTURA <- 2.9    # igual nos dois: com a escala casada, as alturas casam também
+
 rates <- ler("fig-kappa-rates.csv")
 rates$evaluator <- niveis_y(rates$evaluator)
 
@@ -144,7 +161,7 @@ p3a <- ggplot(rates, aes(x = marked_pairs, y = evaluator)) +
   theme_paper() +
   theme(panel.grid.major.y = element_blank())
 
-salvar(p3a, "fig-kappa-rates.pdf", width = 3.0, height = 2.9)
+salvar(p3a, "fig-kappa-rates.pdf", width = LARG_A, height = ALTURA)
 
 chance <- ler("fig-kappa-chance.csv")
 chance$pair <- niveis_y(chance$pair)
@@ -161,4 +178,4 @@ p3b <- ggplot(chance, aes(x = ratio, y = pair)) +
   theme_paper() +
   theme(panel.grid.major.y = element_blank())
 
-salvar(p3b, "fig-kappa-chance.pdf", width = 3.9, height = 2.9)
+salvar(p3b, "fig-kappa-chance.pdf", width = LARG_B, height = ALTURA)

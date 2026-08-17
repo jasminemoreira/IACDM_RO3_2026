@@ -31,6 +31,7 @@ só o registro dela dentro do pacote é que espera.
 |---|---|---|
 | `25649f4` | DOI da v1.6 no README e no `CITATION.cff`; terceira linha de "a partir de qual versão citar", agora incluindo as taxas de divergência | não — regresso conhecido |
 | `d49e81b` | título dos painéis κ alinhado à esquerda da figura; o do (b) estava cortado na borda direita. Só recorte — nenhum valor muda | não — defeito visual |
+| `e57a4d0` | largura do painel (b) derivada da fração de `\textwidth` do `.tex`; as duas escalas não batiam e os rótulos (a)/(b) saíam ~6 pt desalinhados | não — defeito visual |
 
 ## Antes de cortar
 
