@@ -167,24 +167,48 @@ remove uma explicação fácil que teria enfraquecido o resultado.
 As divergências dos três estimadores capazes **não se espalham** — concentram-se em poucas
 lentes, e com direção:
 
-| lente | divergências | Fase 2 ativou e não viram | Fase 2 recusou e viram |
-|---|---|---|---|
-| **SUS** | 11 | **11** | 0 |
-| OBS | 10 | 6 | 4 |
-| **CTR** | 9 | **8** | 1 |
-| **RES** | 7 | **7** | 0 |
-| **MEC** | 6 | 1 | **5** |
-| **ETI** | 5 | **5** | 0 |
-| LIN | 4 | 4 | 0 |
-| JOG | 3 | 2 | 1 |
-| PRO | 2 | 2 | 0 |
+A unidade de decisão é **estimador × projeto** — 3 × 12 = **36 por lente**. As três rodadas
+consolidam antes: 3/3 ativa, 0/3 inativa, o resto é **oscilação** e não entra em numerador
+nem em denominador. Cada direção só pode ocorrer no subconjunto de projetos com a declaração
+correspondente, e é esse o denominador dela.
 
-**SUS, RES, CTR, ETI e LIN erram numa direção só** — 35 divergências unidirecionais. Não é
-ruído; é leitura sistematicamente diferente do critério.
+| lente | decl. it1 | recusada it1 | Fase 2 ativou e não viram | Fase 2 recusou e viram |
+|---|---|---|---|---|
+| **SUS** | 12 | 0 | **11 / 25** | — *(sem oportunidade)* |
+| OBS | 8 | 4 | 6 / 21 | 4 / 11 |
+| **CTR** | 11 | 1 | **8 / 28** | 1 / 2 |
+| **RES** | 12 | 0 | **7 / 33** | — *(sem oportunidade)* |
+| **MEC** | 10 | 2 | 1 / 27 | **5 / 5** |
+| **ETI** | 5 | 7 | **5 / 13** | **0 / 19** |
+| LIN | 12 | 0 | 4 / 31 | — *(sem oportunidade)* |
+| JOG | 7 | 5 | 2 / 17 | 1 / 12 |
+| PRO | 12 | 0 | 2 / 34 | — *(sem oportunidade)* |
+| MIG | 3 | 9 | 0 / 9 | 0 / 26 |
+| UX · GOV | 12 | 0 | 0 / 36 · 0 / 33 | — *(sem oportunidade)* |
 
-> ⚠ **O número 35 é somado sobre três estimadores, e não deve ser usado como força de
-> evidência.** As decisões não são independentes entre estimadores. Os **casos limpos** — os
-> dois estimadores capazes concordando entre si *contra* a Fase 2 — são **três**. A
+Comando: `python3 analise/divergencias.py`.
+
+> ⚠ **Quatro dos cinco zeros da direção inversa são estruturais.** SUS, RES, LIN e PRO foram
+> **declaradas nos doze projetos** na iteração 1 — não existe projeto em que a Fase 2 as
+> tenha recusado, logo não havia onde o sentido inverso ocorrer. O zero delas não é evidência
+> sobre a lente; é a cobertura. **Só ETI tem zero informativo**: foi recusada em 7 projetos,
+> **19 decisões estáveis podiam divergir nesse sentido, e nenhuma divergiu.**
+
+**Por taxa, a ordem não é a da contagem bruta.** SUS diverge em **11 de 25** decisões
+estáveis (44%) e ETI em **5 de 13** (38%); RES em 21%, LIN em 13%, PRO em 6%. A contagem
+crua faz RES parecer mais problemática que ETI, e é o contrário.
+
+**SUS é também a lente que mais oscila**: das 36 decisões possíveis, 11 não fecharam 3/3 nem
+0/3. Sobre as 25 que fecharam, quase metade diverge — instabilidade e divergência na mesma
+lente, o que reforça que o problema é o critério e não o julgamento.
+
+Não é ruído; é leitura sistematicamente diferente do critério.
+
+> ⚠ **Nenhuma contagem desta tabela é de eventos independentes**, e nenhuma deve ser usada
+> como força de evidência. Cada divergência é contada uma vez por estimador, e os três leem
+> o mesmo pacote — somar sobre eles multiplica a mesma decisão por até três. (Uma redação
+> anterior citava "35 divergências unidirecionais", que é essa soma.) Os **casos limpos** —
+> os dois estimadores capazes concordando entre si *contra* a Fase 2 — são **três**. A
 > adjudicação desses três por contribuição exclusiva **pega emprestada a variável dependente
 > do estudo** e vale só descritivamente: CTR e ETI produziram exclusivos (6 defeitos, 1
 > crítico); SUS não. O warrant do achado é a **misleitura documentada** — os estimadores
