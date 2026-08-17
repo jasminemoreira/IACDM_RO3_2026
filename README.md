@@ -222,6 +222,7 @@ invalida a citação. O DOI desta versão especificamente é
 | v1.3 | [`10.5281/zenodo.21939285`](https://doi.org/10.5281/zenodo.21939285) | errata sobre a cláusula de viés do critério de duplicatas |
 | v1.4 | [`10.5281/zenodo.21952689`](https://doi.org/10.5281/zenodo.21952689) | figuras recomputáveis do corpus · **correção do painel κ do §5.1** |
 | v1.5 | [`10.5281/zenodo.21967113`](https://doi.org/10.5281/zenodo.21967113) | **correção da faixa de similaridade** da redeclaração, agora Jaccard nomeado |
+| v1.6 | *(DOI ao indexar)* | denominadores das divergências · **quatro `b = 0` que eram estruturais** |
 
 **A distinção importa para quem cita.** A **v1.0** é o corpus da RO3 como medido. Quem cite
 resultados da RO3 pode usar o DOI de conceito; quem cite os números da **adjudicação de ETI**
