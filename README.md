@@ -222,18 +222,21 @@ invalida a citação. O DOI desta versão especificamente é
 | v1.3 | [`10.5281/zenodo.21939285`](https://doi.org/10.5281/zenodo.21939285) | errata sobre a cláusula de viés do critério de duplicatas |
 | v1.4 | [`10.5281/zenodo.21952689`](https://doi.org/10.5281/zenodo.21952689) | figuras recomputáveis do corpus · **correção do painel κ do §5.1** |
 | v1.5 | [`10.5281/zenodo.21967113`](https://doi.org/10.5281/zenodo.21967113) | **correção da faixa de similaridade** da redeclaração, agora Jaccard nomeado |
-| v1.6 | *(DOI ao indexar)* | denominadores das divergências · **quatro `b = 0` que eram estruturais** |
+| v1.6 | [`10.5281/zenodo.21984162`](https://doi.org/10.5281/zenodo.21984162) | denominadores das divergências · **quatro `b = 0` que eram estruturais** |
 
 **A distinção importa para quem cita.** A **v1.0** é o corpus da RO3 como medido. Quem cite
 resultados da RO3 pode usar o DOI de conceito; quem cite os números da **adjudicação de ETI**
 ou do **experimento dos gatilhos** precisa da **v1.1 ou posterior**, porque eles não existem
 na v1.0.
 
-**Duas versões corrigem números, não acrescentam.** Quem cite o **painel κ do §5.1** precisa
-da **v1.4 ou posterior** — as anteriores comparam arestas declaradas contra fechos
-transitivos. Quem cite a **similaridade das justificativas de redeclaração** precisa da
-**v1.5 ou posterior** — as anteriores trazem uma faixa cujo piso é artefato de heurística de
-biblioteca. Nenhuma conclusão muda em qualquer dos dois casos.
+**Três versões corrigem números ou enquadramento, não só acrescentam.** Quem cite o
+**painel κ do §5.1** precisa da **v1.4 ou posterior** — as anteriores comparam arestas
+declaradas contra fechos transitivos. Quem cite a **similaridade das justificativas de
+redeclaração** precisa da **v1.5 ou posterior** — as anteriores trazem uma faixa cujo piso é
+artefato de heurística de biblioteca. Quem cite as **taxas de divergência de ativação**, ou
+a afirmação de que elas correm numa direção só, precisa da **v1.6 ou posterior** — nas
+anteriores os denominadores não existem e quatro dos cinco zeros aparecem sem a ressalva de
+que eram estruturais. Nenhuma conclusão muda em nenhum dos três casos.
 
 > **Nota sobre esta tabela.** Cada versão só pode listar os DOIs das **anteriores** — o DOI
 > de uma versão é emitido no momento em que ela é arquivada, depois de o conteúdo estar
