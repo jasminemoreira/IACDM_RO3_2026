@@ -12,17 +12,24 @@ a cada corte.
 
 ## Janela aberta
 
-Nada. A **v1.6** fechou a que existia entre ela e a v1.5: os denominadores das divergências,
-a ressalva dos quatro `b = 0` estruturais, o `analise/divergencias.py` e os DOIs da v1.4 e
-v1.5 estão publicados.
+**Nenhuma que afete o manuscrito.** A v1.6 fechou a que existia: denominadores, ressalva dos
+quatro `b = 0` estruturais e `analise/divergencias.py` estão publicados, e o *Data
+availability* foi fechado contra o DOI dela.
 
-> **Quando algo entrar aqui, esta seção volta a valer.** Enquanto houver linha em
-> "Acumulado", há número citável no manuscrito que nenhum DOI reproduz — e o *Data
-> availability* não deve ser fechado contra o DOI mais recente sem conferir esta lista.
+O que está pendente é só o **regresso conhecido** — o DOI de uma versão é emitido depois de
+o conteúdo dela estar fechado, então nenhuma versão pode listar o próprio. O registro do DOI
+da v1.6 entra na próxima. Isso **não** é número citável sem lastro: a v1.6 existe e resolve;
+só o registro dela dentro do pacote é que espera.
+
+> **Quando entrar aqui algo que não seja o regresso, esta seção volta a valer.** Enquanto
+> houver linha de conteúdo em "Acumulado", há número citável no manuscrito que nenhum DOI
+> reproduz — e o *Data availability* não deve ser fechado sem conferir esta lista.
 
 ## Acumulado desde a v1.6
 
-*(vazio)*
+| commit | o que entrou | afeta citação? |
+|---|---|---|
+| `25649f4` | DOI da v1.6 no README e no `CITATION.cff`; terceira linha de "a partir de qual versão citar", agora incluindo as taxas de divergência | não — regresso conhecido |
 
 ## Antes de cortar
 
