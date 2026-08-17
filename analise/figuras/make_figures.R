@@ -63,7 +63,13 @@ theme_paper <- function(base = 10) {
       panel.grid.major = element_line(colour = grid, linewidth = 0.3),
       legend.title     = element_blank(),
       legend.text      = element_text(size = base - 1),
-      plot.title       = element_text(size = base - 1, hjust = 0.5, colour = ink),
+      # Título alinhado à ESQUERDA DA FIGURA, não centrado no painel. Centrado, ele
+      # herda o deslocamento dos rótulos do eixo y — que em (b) ocupam 2,13 das 3,9
+      # polegadas — e transborda pela direita. Alargar não resolve: o centro do painel
+      # anda junto, e só a partir de 5,0 in o título caberia, ao custo de 22% de
+      # redução de fonte em relação ao painel (a) quando os dois entram lado a lado.
+      plot.title          = element_text(size = base - 1, hjust = 0, colour = ink),
+      plot.title.position = "plot",
       plot.margin      = margin(4, 8, 4, 4)
     )
 }

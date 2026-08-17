@@ -30,6 +30,7 @@ só o registro dela dentro do pacote é que espera.
 | commit | o que entrou | afeta citação? |
 |---|---|---|
 | `25649f4` | DOI da v1.6 no README e no `CITATION.cff`; terceira linha de "a partir de qual versão citar", agora incluindo as taxas de divergência | não — regresso conhecido |
+| `PENDENTE` | título dos painéis κ alinhado à esquerda da figura; o do (b) estava cortado na borda direita. Só recorte — nenhum valor muda | não — defeito visual |
 
 ## Antes de cortar
 
