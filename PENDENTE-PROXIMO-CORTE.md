@@ -13,8 +13,12 @@ instrução sem trava.
 ## Janela aberta
 
 **Nenhuma.** A v1.8 publicou a tabela número→comando, as quatro correções que a auditoria
-dela encontrou e a nota sobre as figuras. Pendente apenas o **regresso conhecido**: o DOI da
-v1.8 só pode ser registrado num snapshot posterior.
+dela encontrou e a nota sobre as figuras, e o DOI dela — `10.5281/zenodo.21994736` — já está
+registrado aqui. O manuscrito foi re-congelado contra esse snapshot, valor a valor.
+
+Sobra só o **regresso conhecido**: este registro em si vive num commit posterior à v1.8. Se
+nada mais mudar, ele não precisa de snapshot próprio — a v1.8 continua reproduzindo todo
+valor citado, que é a única propriedade que importa.
 
 > **Quando entrar aqui algo que não seja o regresso, esta seção volta a valer.** Enquanto
 > houver linha de conteúdo em "Acumulado", há número citável no manuscrito que nenhum DOI

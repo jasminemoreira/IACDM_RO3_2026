@@ -216,6 +216,9 @@ invalida a citação. O DOI desta versão especificamente é
 
 ### As versões arquivadas
 
+**A v1.8 é a versão de referência.** É o snapshot contra o qual o manuscrito congelado foi
+verificado valor a valor, e o único que contém a tabela número→comando.
+
 | versão | DOI | o que acrescenta |
 |---|---|---|
 | **v1.0** | [`10.5281/zenodo.21908908`](https://doi.org/10.5281/zenodo.21908908) | **o corpus da RO3 tal como medido** — taxonomia X, congelada |
@@ -226,7 +229,7 @@ invalida a citação. O DOI desta versão especificamente é
 | v1.5 | [`10.5281/zenodo.21967113`](https://doi.org/10.5281/zenodo.21967113) | **correção da faixa de similaridade** da redeclaração, agora Jaccard nomeado |
 | v1.6 | [`10.5281/zenodo.21984162`](https://doi.org/10.5281/zenodo.21984162) | denominadores das divergências · **quatro `b = 0` que eram estruturais** |
 | v1.7 | [`10.5281/zenodo.21993454`](https://doi.org/10.5281/zenodo.21993454) | legibilidade da figura κ — recorte, alinhamento e rótulos de eixo · **nenhum valor muda** |
-| **v1.8** | *(DOI ao indexar)* | **tabela número→comando** · quatro correções que a auditoria encontrou · fecho da série |
+| **v1.8** | [`10.5281/zenodo.21994736`](https://doi.org/10.5281/zenodo.21994736) | **tabela número→comando** · quatro correções que a auditoria encontrou · **fecho da série** |
 
 **A distinção importa para quem cita.** A **v1.0** é o corpus da RO3 como medido. Quem cite
 resultados da RO3 pode usar o DOI de conceito; quem cite os números da **adjudicação de ETI**

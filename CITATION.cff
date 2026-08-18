@@ -75,6 +75,11 @@ identifiers:
     description: >-
       versão 1.7.0 — legibilidade da figura de concordância de marcação; nenhum
       valor alterado
+  - type: doi
+    value: 10.5281/zenodo.21994736
+    description: >-
+      versão 1.8.0 — tabela número→comando, as quatro correções que a auditoria
+      dela encontrou, e o fecho da série; snapshot de referência do manuscrito
 license: CC-BY-4.0
 repository-code: https://github.com/jasminemoreira/IACDM_RO3_2026
 date-released: '2026-08-18'
