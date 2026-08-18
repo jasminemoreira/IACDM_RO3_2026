@@ -12,27 +12,18 @@ a cada corte.
 
 ## Janela aberta
 
-**Nenhuma que afete o manuscrito.** A v1.6 fechou a que existia: denominadores, ressalva dos
-quatro `b = 0` estruturais e `analise/divergencias.py` estão publicados, e o *Data
-availability* foi fechado contra o DOI dela.
-
-O que está pendente é só o **regresso conhecido** — o DOI de uma versão é emitido depois de
-o conteúdo dela estar fechado, então nenhuma versão pode listar o próprio. O registro do DOI
-da v1.6 entra na próxima. Isso **não** é número citável sem lastro: a v1.6 existe e resolve;
-só o registro dela dentro do pacote é que espera.
+**Nenhuma que afete o manuscrito.** A **v1.7** publicou as três correções visuais da figura
+κ. Pendente apenas o **regresso conhecido** — o DOI da v1.7 só pode ser registrado na
+próxima versão, porque é emitido depois de o conteúdo dela estar fechado.
 
 > **Quando entrar aqui algo que não seja o regresso, esta seção volta a valer.** Enquanto
 > houver linha de conteúdo em "Acumulado", há número citável no manuscrito que nenhum DOI
 > reproduz — e o *Data availability* não deve ser fechado sem conferir esta lista.
 
-## Acumulado desde a v1.6
+## Acumulado desde a v1.7
 
 | commit | o que entrou | afeta citação? |
 |---|---|---|
-| `25649f4` | DOI da v1.6 no README e no `CITATION.cff`; terceira linha de "a partir de qual versão citar", agora incluindo as taxas de divergência | não — regresso conhecido |
-| `d49e81b` | título dos painéis κ alinhado à esquerda da figura; o do (b) estava cortado na borda direita. Só recorte — nenhum valor muda | não — defeito visual |
-| `e57a4d0` | largura do painel (b) derivada da fração de `\textwidth` do `.tex`; as duas escalas não batiam e os rótulos (a)/(b) saíam ~6 pt desalinhados | não — defeito visual |
-| `3e8b1f1` | rótulo do eixo x nos dois painéis κ: "Marked pairs" e "Ratio (observed ÷ expected)" | não — cosmético |
 
 ## Antes de cortar
 
