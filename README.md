@@ -55,6 +55,8 @@ in Portuguese.
 | [`ACHADOS-METODO.md`](ACHADOS-METODO.md) | M1–M8, sobre gates, hooks e safeguards |
 | [`CLASSIFICACAO-FORMA-VS-QUALIDADE-FASE2.md`](CLASSIFICACAO-FORMA-VS-QUALIDADE-FASE2.md) | a regra que autoriza uma trava — **normativo** |
 | [`patches/`](patches/) | especificação corretiva pós-lote, com evidência por item |
+| [`TABELA-NUMEROS.md`](TABELA-NUMEROS.md) | cada valor do paper e o comando que o reproduz — gerada, não transcrita |
+| [`NOTA-FIGURAS.md`](NOTA-FIGURAS.md) | o paper tabula os valores exportados; as figuras seguem válidas como artefato |
 | [`FORMATOS.md`](FORMATOS.md) | schema dos JSONs, colunas da matriz, convenção de nomes |
 | [`analise/`](analise/) | o pipeline: parser, Passos 1–5, remarcação cega, estimativa de lentes, figuras |
 | [`instrumento/`](instrumento/) | o bundle `versus-claude 0.14.2` que rodou os doze |
@@ -224,6 +226,7 @@ invalida a citação. O DOI desta versão especificamente é
 | v1.5 | [`10.5281/zenodo.21967113`](https://doi.org/10.5281/zenodo.21967113) | **correção da faixa de similaridade** da redeclaração, agora Jaccard nomeado |
 | v1.6 | [`10.5281/zenodo.21984162`](https://doi.org/10.5281/zenodo.21984162) | denominadores das divergências · **quatro `b = 0` que eram estruturais** |
 | v1.7 | [`10.5281/zenodo.21993454`](https://doi.org/10.5281/zenodo.21993454) | legibilidade da figura κ — recorte, alinhamento e rótulos de eixo · **nenhum valor muda** |
+| **v1.8** | *(DOI ao indexar)* | **tabela número→comando** · quatro correções que a auditoria encontrou · fecho da série |
 
 **A distinção importa para quem cita.** A **v1.0** é o corpus da RO3 como medido. Quem cite
 resultados da RO3 pode usar o DOI de conceito; quem cite os números da **adjudicação de ETI**
@@ -237,7 +240,9 @@ redeclaração** precisa da **v1.5 ou posterior** — as anteriores trazem uma f
 artefato de heurística de biblioteca. Quem cite as **taxas de divergência de ativação**, ou
 a afirmação de que elas correm numa direção só, precisa da **v1.6 ou posterior** — nas
 anteriores os denominadores não existem e quatro dos cinco zeros aparecem sem a ressalva de
-que eram estruturais. Nenhuma conclusão muda em nenhum dos três casos.
+que eram estruturais. Quem cite `ARQ × PRE`, a mediana de horas por projeto ou as contagens de critério de
+saída precisa da **v1.8** — as anteriores trazem quatro valores que a auditoria da tabela
+número→comando corrigiu. Nenhuma conclusão muda em nenhum dos casos.
 
 **A v1.7 é o contrário disso** — corrige só legibilidade da figura κ (recorte do
 título, escala entre os painéis, rótulos de eixo) e não mexe em valor nenhum. Quem cita
