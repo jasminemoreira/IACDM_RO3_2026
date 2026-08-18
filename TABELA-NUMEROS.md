@@ -74,7 +74,10 @@ python3 analise/ro3_analise.py T*-*  (Passos 3 e 4)  ·  python3 tools/tabela_nu
 | `24%` | idem, proporção |
 | `0.10` | maior Jaccard par a par — DES × SUS |
 | `9` | defeitos em comum nesse par |
-| `0.01` | ARQ × PRE — o par que o §4 do protocolo suspeitava a priori |
+| `0.005` | ARQ × PRE — Jaccard de defeitos; o par que o §4 suspeitava a priori |
+| `1` | ARQ × PRE — defeitos em comum |
+| `196` | ARQ × PRE — clusters em que uma ou outra participa |
+| `0.36` | ARQ × PRE — Jaccard de MÓDULOS: olham os mesmos módulos |
 
 ## Contribuição exclusiva e concordância de marcação
 

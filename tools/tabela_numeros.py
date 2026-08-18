@@ -102,6 +102,10 @@ def bloco_cobertura():
 def bloco_sobreposicao():
     part, soz = Counter(), Counter()
     comum = defaultdict(int)
+    mods = defaultdict(set)
+    for ws in projetos():
+        for a in carregar(ws).achados:
+            mods[a.lente].add((ws.name, a.modulo))
     for ws in projetos():
         for g in clusters(carregar(ws)):
             ls = sorted({a.lente for a in g})
@@ -118,6 +122,8 @@ def bloco_sobreposicao():
     ov = {l: (part[l] - soz[l]) / part[l] for l in part}
     acima = [l for l in sorted(ov, key=ov.get, reverse=True) if ov[l] > 0.15]
     jacs = {k: v / (part[k[0]] + part[k[1]] - v) for k, v in comum.items()}
+    A, B = mods["Architectural"], mods["Assumptions"]
+    jmod = len(A & B) / len(A | B)
     maior = max(jacs, key=jacs.get)
     tot = 19; pares = tot * (tot - 1) // 2
     return [(pc(sum(ov.values()) / len(ov)), "sobreposição média das 19 lentes"),
@@ -129,8 +135,16 @@ def bloco_sobreposicao():
             (pc(len(comum) / pares), "idem, proporção"),
             (f"{jacs[maior]:.2f}", f"maior Jaccard par a par — {SIGLA[maior[0]]} × {SIGLA[maior[1]]}"),
             (str(comum[maior]), "defeitos em comum nesse par"),
-            (f"{jacs.get((('Architectural'), ('Assumptions')), 0.0):.2f}",
-             "ARQ × PRE — o par que o §4 do protocolo suspeitava a priori")]
+            # três casas: o par a priori vale 0,005 e arredondar para 0,01 esconde a
+            # ordem de grandeza — foi arredondando que ele virou "0,00" antes.
+            (f"{jacs.get(('Architectural', 'Assumptions'), 0.0):.3f}",
+             "ARQ × PRE — Jaccard de defeitos; o par que o §4 suspeitava a priori"),
+            (str(comum.get(('Architectural', 'Assumptions'), 0)),
+             "ARQ × PRE — defeitos em comum"),
+            (str(part["Architectural"] + part["Assumptions"]
+                 - comum.get(('Architectural', 'Assumptions'), 0)),
+             "ARQ × PRE — clusters em que uma ou outra participa"),
+            (f"{jmod:.2f}", "ARQ × PRE — Jaccard de MÓDULOS: olham os mesmos módulos")]
 
 
 def bloco_estimadores():

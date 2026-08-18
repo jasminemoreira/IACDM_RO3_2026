@@ -26,7 +26,16 @@ valor citado, que é a única propriedade que importa.
 
 ## Acumulado desde a v1.8
 
-*(vazio)*
+| commit | o que entrou | afeta citação? |
+|---|---|---|
+| `3022a7d` | DOI da v1.8 registrado; v1.8 marcada como versão de referência | não — regresso conhecido |
+| `3022a7d` | `TABELA-NUMEROS.md` passa a trazer `ARQ × PRE` em três casas (0,005), com os 196 clusters e o Jaccard de módulos 0,36, que o manuscrito re-congelado cita | **não** — ver abaixo |
+
+> **Por que a segunda linha não abre janela.** Os três valores **já são reproduzidos pela
+> v1.8**: o Passo 4 do `ro3_analise.py` imprime `ARQ × PRE | 0.36 | 1 | 0.005` naquele
+> snapshot. O que estava incompleto era o índice, que arredondava para `0.01` e não listava
+> os outros dois. A propriedade que precisa valer — todo valor citado tem snapshot publicado
+> que o reproduz — vale na v1.8. Um corte novo melhoraria o índice, não a reprodutibilidade.
 
 ## Antes de cortar
 
