@@ -157,7 +157,7 @@ p3a <- ggplot(rates, aes(x = marked_pairs, y = evaluator)) +
   geom_text(aes(label = marked_pairs), hjust = -0.25, colour = ink, size = 3.0) +
   scale_x_continuous(limits = c(0, teto(rates$marked_pairs, 405)),
                      breaks = seq(0, 400, 100)) +
-  labs(x = NULL, y = NULL, title = "(a) Marked pairs per marker") +
+  labs(x = "Marked pairs", y = NULL, title = "(a) Marked pairs per marker") +
   theme_paper() +
   theme(panel.grid.major.y = element_blank())
 
@@ -174,7 +174,10 @@ p3b <- ggplot(chance, aes(x = ratio, y = pair)) +
   geom_text(aes(label = sprintf("κ = %.3f", kappa)),
             hjust = -0.12, colour = muted, size = 2.9) +
   scale_x_continuous(limits = c(0, teto(chance$ratio, 235)), breaks = seq(0, 200, 50)) +
-  labs(x = NULL, y = NULL, title = "(b) Observed co-marks ÷ expected by chance") +
+  # Forma curta de propósito: o título já nomeia a quantidade, e o eixo aqui diz
+  # só que a unidade é uma razão. A linha tracejada em 1× está explicada na legenda.
+  labs(x = "Ratio (observed ÷ expected)", y = NULL,
+       title = "(b) Observed co-marks ÷ expected by chance") +
   theme_paper() +
   theme(panel.grid.major.y = element_blank())
 
