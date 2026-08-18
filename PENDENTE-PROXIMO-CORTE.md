@@ -13,8 +13,8 @@ a cada corte.
 ## Janela aberta
 
 **Nenhuma que afete o manuscrito.** A **v1.7** publicou as três correções visuais da figura
-κ. Pendente apenas o **regresso conhecido** — o DOI da v1.7 só pode ser registrado na
-próxima versão, porque é emitido depois de o conteúdo dela estar fechado.
+κ, e o DOI dela já está registrado. Pendente apenas o **regresso conhecido**: esse registro
+em si só existirá num snapshot a partir da próxima versão.
 
 > **Quando entrar aqui algo que não seja o regresso, esta seção volta a valer.** Enquanto
 > houver linha de conteúdo em "Acumulado", há número citável no manuscrito que nenhum DOI
@@ -24,6 +24,7 @@ próxima versão, porque é emitido depois de o conteúdo dela estar fechado.
 
 | commit | o que entrou | afeta citação? |
 |---|---|---|
+| `cfba04c` | DOI da v1.7 no README e no `CITATION.cff`; a nota de "a partir de qual versão citar" ganha o contraponto — a v1.7 não é versão de número | não — regresso conhecido |
 
 ## Antes de cortar
 

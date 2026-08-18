@@ -223,7 +223,7 @@ invalida a citação. O DOI desta versão especificamente é
 | v1.4 | [`10.5281/zenodo.21952689`](https://doi.org/10.5281/zenodo.21952689) | figuras recomputáveis do corpus · **correção do painel κ do §5.1** |
 | v1.5 | [`10.5281/zenodo.21967113`](https://doi.org/10.5281/zenodo.21967113) | **correção da faixa de similaridade** da redeclaração, agora Jaccard nomeado |
 | v1.6 | [`10.5281/zenodo.21984162`](https://doi.org/10.5281/zenodo.21984162) | denominadores das divergências · **quatro `b = 0` que eram estruturais** |
-| v1.7 | *(DOI ao indexar)* | legibilidade da figura κ — recorte, alinhamento e rótulos de eixo · nenhum valor muda |
+| v1.7 | [`10.5281/zenodo.21993454`](https://doi.org/10.5281/zenodo.21993454) | legibilidade da figura κ — recorte, alinhamento e rótulos de eixo · **nenhum valor muda** |
 
 **A distinção importa para quem cita.** A **v1.0** é o corpus da RO3 como medido. Quem cite
 resultados da RO3 pode usar o DOI de conceito; quem cite os números da **adjudicação de ETI**
@@ -238,6 +238,10 @@ artefato de heurística de biblioteca. Quem cite as **taxas de divergência de a
 a afirmação de que elas correm numa direção só, precisa da **v1.6 ou posterior** — nas
 anteriores os denominadores não existem e quatro dos cinco zeros aparecem sem a ressalva de
 que eram estruturais. Nenhuma conclusão muda em nenhum dos três casos.
+
+**A v1.7 é o contrário disso** — corrige só legibilidade da figura κ (recorte do
+título, escala entre os painéis, rótulos de eixo) e não mexe em valor nenhum. Quem cita
+número não precisa dela; a v1.6 basta.
 
 > **Nota sobre esta tabela.** Cada versão só pode listar os DOIs das **anteriores** — o DOI
 > de uma versão é emitido no momento em que ela é arquivada, depois de o conteúdo estar

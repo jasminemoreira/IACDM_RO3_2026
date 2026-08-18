@@ -70,6 +70,11 @@ identifiers:
     description: >-
       versão 1.6.0 — denominadores das divergências de ativação e a ressalva de
       que quatro dos cinco zeros de direção inversa eram estruturais
+  - type: doi
+    value: 10.5281/zenodo.21993454
+    description: >-
+      versão 1.7.0 — legibilidade da figura de concordância de marcação; nenhum
+      valor alterado
 license: CC-BY-4.0
 repository-code: https://github.com/jasminemoreira/IACDM_RO3_2026
 date-released: '2026-08-18'
