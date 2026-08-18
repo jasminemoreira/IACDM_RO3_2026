@@ -19,7 +19,7 @@ correção é parte do resultado, não constrangimento a esconder.
 | achados | **1.100** — 195 críticos, 657 importantes, 248 sugestões |
 | defeitos distintos | **1.029** (clusters por `duplica` do modelo gerador) |
 | módulos | 130 |
-| execução | **36,8 h** · 1,1 a 5,3 h por projeto, mediana 3,3 h. Soma de `createdAt → updatedAt`; **inclui pausas do operador**, não é esforço |
+| execução | **36,8 h** · 1,1 a 5,3 h por projeto, mediana **3,2 h**. Soma de `createdAt → updatedAt`; **inclui pausas do operador**, não é esforço |
 | iterações do laço 2↔3 | 28 no total — nove projetos com 2, dois com 3, um com 4 |
 | agente gerador | **`claude-opus-5`**, em todos os doze — verificado em 5.328 mensagens de assistente nos transcripts das sessões, sem troca durante o lote (`LOG-OPERACAO.md`) |
 
@@ -64,7 +64,9 @@ ao menos um defeito**. O maior é `DES × SUS`, com 9 defeitos em comum e Jaccar
 O §4 nomeia **`ARQ × PRE`** como par suspeito *a priori* — a intuição de que "premissas" e
 "arquitetura" perguntariam a mesma coisa.
 
-**Medido: Jaccard de defeitos 0,00.** A suspeita da própria teoria não se confirmou. Isto é
+**Medido: Jaccard de defeitos 0,005** — **1 defeito em comum** de 196 clusters em que uma
+ou outra participa (T23-canario, `ARC-04` + `ASM-02`). A suspeita da própria teoria não se
+confirmou. Isto é
 evidência mais forte que confirmar uma expectativa, porque era uma predição que podia
 falhar e falhou contra a intuição de quem escreveu o método.
 
@@ -336,7 +338,7 @@ dito assim de propósito.
 
 ## 4.2 O critério de saída registra a afirmação, não o estado do mecanismo
 
-Os critérios de saída são substanciais: **390 registros, 791 caracteres de média, zero
+Os critérios de saída são substanciais: **468 registros, 801 caracteres de média, zero
 vazios**. Mas nos quatro projetos em que o gate foi contornado, o critério `tests_passing`
 registrou o resultado corretamente e **não mencionou que o mecanismo falhara**.
 
@@ -472,7 +474,7 @@ descartes         7, todos documentados
 ortogonalidade    0 lentes com contribuição exclusiva zero, em 4 clusterizações
 sobreposição      média 11% · min 2% (ARQ) · max 33% (SUS)
 pares de lentes   41 de 171 (24%) compartilham algum defeito · maior Jaccard 0,10 (DES×SUS)
-ARQ × PRE         Jaccard 0,00 — a suspeita a priori do §4 não se confirma
+ARQ × PRE         Jaccard 0,005 — 1 defeito em comum; a suspeita a priori do §4 não se confirma
 robustez          união dos 4 avaliadores: 1.029 → 668 clusters, nenhuma lente em zero
 ativação          9,7 de 12 condicionais por projeto (it1) · 3 projetos com conjunto evoluindo
 estimadores       gpt 91% · kimi 89% · qwen Q4 81% · qwen full 74% (× Fase 2)

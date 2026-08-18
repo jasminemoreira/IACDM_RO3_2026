@@ -1,16 +1,16 @@
 # RO3 — análise de ortogonalidade das lentes
 
-Projetos: 12 (T21-certificados, T24-catalogo, T22-plantoes, T23-canario, T25-orcamento, T26-extratos, T27-despesas, T28-agenda, T29-retencao, T30-notifica, T31-precos, T32-triagem)  
+Projetos: 12 (T21-certificados, T22-plantoes, T23-canario, T24-catalogo, T25-orcamento, T26-extratos, T27-despesas, T28-agenda, T29-retencao, T30-notifica, T31-precos, T32-triagem)  
 Achados: 1100  ·  Defeitos distintos (clusters): 1029  ·  Módulos: 130
-
-
-> ⚠ **T24-catalogo: a última versão da arquitetura tem menos módulos que uma anterior** — V(1) 11 · V(2) 9 · V(3) 9. Ou a Fase 3 removeu módulos, ou escreveu a última versão como *delta*; o texto não distingue os dois. A contagem acima usa a última tabela. Nenhum Passo depende dela: os Passos 1 e 4 usam o módulo escrito em cada achado.
 
 
 > ⚠ **T22-plantoes: a última versão da arquitetura tem menos módulos que uma anterior** — V(1) 11 · V(2) 12 · V(3) 11. Ou a Fase 3 removeu módulos, ou escreveu a última versão como *delta*; o texto não distingue os dois. A contagem acima usa a última tabela. Nenhum Passo depende dela: os Passos 1 e 4 usam o módulo escrito em cada achado.
 
 
 > ⚠ **T23-canario: a última versão da arquitetura tem menos módulos que uma anterior** — V(1) 12 · V(2) 12 · V(3) 4. Ou a Fase 3 removeu módulos, ou escreveu a última versão como *delta*; o texto não distingue os dois. A contagem acima usa a última tabela. Nenhum Passo depende dela: os Passos 1 e 4 usam o módulo escrito em cada achado.
+
+
+> ⚠ **T24-catalogo: a última versão da arquitetura tem menos módulos que uma anterior** — V(1) 11 · V(2) 9 · V(3) 9. Ou a Fase 3 removeu módulos, ou escreveu a última versão como *delta*; o texto não distingue os dois. A contagem acima usa a última tabela. Nenhum Passo depende dela: os Passos 1 e 4 usam o módulo escrito em cada achado.
 
 
 ## Passo 1 — incidência agregada (módulo × lente)
@@ -869,33 +869,34 @@ Nenhuma lente produziu achados sem nenhuma contribuição exclusiva.
 
 | par | Jaccard módulos | defeitos em comum | Jaccard defeitos | a priori? |
 |---|---|---|---|---|
-| DES × SUS | 0.40 | 9 | 0.10 |  |
-| ETI × JOG | 0.23 | 2 | 0.05 |  |
-| CTR × PRO | 0.20 | 3 | 0.03 |  |
-| JOG × SEG | 0.08 | 2 | 0.02 |  |
-| ETI × REG | 0.15 | 1 | 0.02 |  |
-| MEC × MIG | 0.07 | 1 | 0.02 |  |
-| JOG × REG | 0.11 | 1 | 0.02 |  |
-| PRO × RES | 0.17 | 2 | 0.02 |  |
-| GOV × SEG | 0.26 | 2 | 0.01 |  |
-| IMP × CIE | 0.23 | 2 | 0.01 |  |
-| PRE × SUS | 0.24 | 2 | 0.01 |  |
-| IMP × LIN | 0.28 | 2 | 0.01 |  |
-| REG × SUS | 0.19 | 1 | 0.01 |  |
-| MEC × REG | 0.16 | 1 | 0.01 |  |
-| CTR × REG | 0.09 | 1 | 0.01 |  |
-| CTR × MEC | 0.12 | 1 | 0.01 |  |
-| JOG × PRO | 0.25 | 1 | 0.01 |  |
-| GOV × REG | 0.24 | 1 | 0.01 |  |
-| GOV × MEC | 0.10 | 1 | 0.01 |  |
-| OBS × RES | 0.33 | 1 | 0.01 |  |
-| CTR × GOV | 0.15 | 1 | 0.01 |  |
-| PRO × REG | 0.16 | 1 | 0.01 |  |
-| CTR × RES | 0.17 | 1 | 0.01 |  |
-| IMP × REG | 0.19 | 1 | 0.01 |  |
-| SEG × SUS | 0.18 | 1 | 0.01 |  |
+| DES × SUS | 0.40 | 9 | 0.101 |  |
+| ETI × JOG | 0.23 | 2 | 0.049 |  |
+| CTR × PRO | 0.20 | 3 | 0.026 |  |
+| JOG × SEG | 0.08 | 2 | 0.019 |  |
+| ETI × REG | 0.15 | 1 | 0.018 |  |
+| MEC × MIG | 0.07 | 1 | 0.017 |  |
+| JOG × REG | 0.11 | 1 | 0.016 |  |
+| PRO × RES | 0.17 | 2 | 0.015 |  |
+| GOV × SEG | 0.26 | 2 | 0.015 |  |
+| IMP × CIE | 0.23 | 2 | 0.015 |  |
+| PRE × SUS | 0.24 | 2 | 0.014 |  |
+| IMP × LIN | 0.28 | 2 | 0.013 |  |
+| REG × SUS | 0.19 | 1 | 0.013 |  |
+| MEC × REG | 0.16 | 1 | 0.012 |  |
+| CTR × REG | 0.09 | 1 | 0.012 |  |
+| CTR × MEC | 0.12 | 1 | 0.011 |  |
+| JOG × PRO | 0.25 | 1 | 0.011 |  |
+| GOV × REG | 0.24 | 1 | 0.011 |  |
+| GOV × MEC | 0.10 | 1 | 0.010 |  |
+| OBS × RES | 0.33 | 1 | 0.010 |  |
+| CTR × GOV | 0.15 | 1 | 0.010 |  |
+| PRO × REG | 0.16 | 1 | 0.009 |  |
+| CTR × RES | 0.17 | 1 | 0.009 |  |
+| IMP × REG | 0.19 | 1 | 0.008 |  |
+| SEG × SUS | 0.18 | 1 | 0.008 |  |
+| ARQ × PRE | 0.36 | 1 | 0.005 | sim (§4) ⟵ fora do top 25, incluído por ser a priori |
 
-*(146 pares restantes omitidos da tabela; todos estão no JSON — nenhum corte silencioso.)*
+*(145 pares restantes omitidos da tabela; todos estão no JSON — nenhum corte silencioso. Os pares a priori do §4 nunca são omitidos, independentemente da posição.)*
 
 ### Módulos removidos entre versões da arquitetura
 
@@ -908,8 +909,6 @@ O que seria anomalia é um módulo ausente de TODAS as versões — isso o gate
 cruzado da v0.13.0 barra na origem, e não chega até aqui.
 
 - `T21-certificados` · **casos-de-uso** existia numa versão anterior · 10 achado(s): ARC-01, GAM-01, GOV-01, OBS-01, PER-01, PER-04, PRO-04, REG-01, RES-02, SUS-02
-- `T24-catalogo` · **catalog-repository** existia numa versão anterior · 10 achado(s): ARC-01, ASM-02, CTRL-01, IMPL-02, PERF-01, PROC-02, RES-02, RES-03, SEC-02, SUS-01
-- `T24-catalogo` · **errors** existia numa versão anterior · 1 achado(s): ARC-02
 - `T22-plantoes` · **catalogo-restricoes** existia numa versão anterior · 9 achado(s): ARQ-02, ASS-01, CIE-01, ETI-02, GAM-02, IMP-01, LIN-01, REG-01, REG-02
 - `T22-plantoes` · **fronteira** existia numa versão anterior · 5 achado(s): ARQ-03, ASS-02, CIE-03, CTL-01, CTL-02
 - `T22-plantoes` · **diario** existia numa versão anterior · 9 achado(s): ARQ-05, GOV-04, IMP-04, LIN-05, PER-04, PRO-05, RES-04, SEC-04, SUS-03
@@ -922,6 +921,8 @@ cruzado da v0.13.0 barra na origem, e não chega até aqui.
 - `T23-canario` · **alvo-de-implantacao** existia numa versão anterior · 8 achado(s): ASM-08, LIN-03, MIG-01, MIG-03, PRO-03, PRO-04, SEC-02, SUS-03
 - `T23-canario` · **fonte-de-metricas** existia numa versão anterior · 3 achado(s): LIN-01, LIN-04, RES-01
 - `T23-canario` · **contadores** existia numa versão anterior · 2 achado(s): RES-02, RES-04
+- `T24-catalogo` · **catalog-repository** existia numa versão anterior · 10 achado(s): ARC-01, ASM-02, CTRL-01, IMPL-02, PERF-01, PROC-02, RES-02, RES-03, SEC-02, SUS-01
+- `T24-catalogo` · **errors** existia numa versão anterior · 1 achado(s): ARC-02
 - `T26-extratos` · **canonicalizer** existia numa versão anterior · 4 achado(s): ARC-06, ASM-02, LIN-04, PRF-05
 - `T26-extratos` · **repository** existia numa versão anterior · 13 achado(s): ASM-04, GOV-03, IMP-04, MEC-03, OBS-04, PRF-03, REG-01, REG-02, RES-01, RES-04, SEC-03, SEC-06, SUS-01
 - `T29-retencao` · **block** existia numa versão anterior · 3 achado(s): ARQ-05, ASM-03, MEC-04

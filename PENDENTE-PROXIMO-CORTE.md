@@ -12,9 +12,9 @@ a cada corte.
 
 ## Janela aberta
 
-**Nenhuma que afete o manuscrito.** A **v1.7** publicou as três correções visuais da figura
-κ, e o DOI dela já está registrado. Pendente apenas o **regresso conhecido**: esse registro
-em si só existirá num snapshot a partir da próxima versão.
+**Aberta.** A tabela número→comando e as quatro correções que ela encontrou não estão em
+nenhum DOI publicado. A **v1.8** — o fecho da série — é o snapshot que as carrega, e o
+manuscrito não deve ser submetido citando a v1.7 para esses valores.
 
 > **Quando entrar aqui algo que não seja o regresso, esta seção volta a valer.** Enquanto
 > houver linha de conteúdo em "Acumulado", há número citável no manuscrito que nenhum DOI
@@ -24,6 +24,8 @@ em si só existirá num snapshot a partir da próxima versão.
 
 | commit | o que entrou | afeta citação? |
 |---|---|---|
+| `846c364` | `tools/tabela_numeros.py` e `TABELA-NUMEROS.md`: 197 valores × comando, com auditoria de cobertura contra o `.tex` | **sim — é o artefato pedido** |
+| `846c364` | quatro correções que a auditoria achou: ARQ×PRE, mediana, critérios de saída | **sim — quatro números do manuscrito** |
 | `cfba04c` | DOI da v1.7 no README e no `CITATION.cff`; a nota de "a partir de qual versão citar" ganha o contraponto — a v1.7 não é versão de número | não — regresso conhecido |
 
 ## Antes de cortar

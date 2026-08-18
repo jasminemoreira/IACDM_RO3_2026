@@ -295,14 +295,22 @@ def relatorio(projetos) -> str:
     L.append("\n## Passo 4 — sobreposição par a par\n")
     L.append("| par | Jaccard módulos | defeitos em comum | Jaccard defeitos | a priori? |")
     L.append("|---|---|---|---|---|")
-    for d in pares[:25]:
+    # Os pares NOMEADOS a priori pelo §4 entram sempre, mesmo fora do top 25. A coluna
+    # "a priori?" existe para exibi-los, e ordenar por Jaccard os empurra para o fim
+    # justamente quando a predição se sustenta — que é o caso interessante. Truncar aqui
+    # já custou uma leitura errada: `ARQ × PRE` ficou de fora, e a ausência na tabela foi
+    # lida como ausência de sobreposição. Eles compartilham 1 defeito, não zero.
+    mostrar = pares[:25] + [d for d in pares[25:] if d["a_priori"]]
+    for d in mostrar:
         marca = "sim (§4)" if d["a_priori"] else ""
+        fora_do_top = " ⟵ fora do top 25, incluído por ser a priori" if d in pares[25:] else ""
         L.append(f"| {SIGLA.get(d['lente_a'])} × {SIGLA.get(d['lente_b'])} | "
                  f"{d['jaccard_modulos']:.2f} | {d['defeitos_em_comum']} | "
-                 f"{d['jaccard_defeitos']:.2f} | {marca} |")
-    if len(pares) > 25:
-        L.append(f"\n*({len(pares) - 25} pares restantes omitidos da tabela; todos estão no JSON — "
-                 f"nenhum corte silencioso.)*")
+                 f"{d['jaccard_defeitos']:.3f} | {marca}{fora_do_top} |")
+    if len(pares) > len(mostrar):
+        L.append(f"\n*({len(pares) - len(mostrar)} pares restantes omitidos da tabela; todos "
+                 f"estão no JSON — nenhum corte silencioso. Os pares a priori do §4 nunca "
+                 f"são omitidos, independentemente da posição.)*")
 
     deriva = [(p.task_id, m, ids) for p in projetos
               for m, ids in getattr(p, "modulos_de_versoes_antigas", {}).items()]
